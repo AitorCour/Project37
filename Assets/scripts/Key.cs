@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Key : MonoBehaviour 
 {
 	private PlayerBehaviour plBehaviour;
 	public GameObject keyObject;
 	private bool isInsideTrigger = false;
 	private int key = 1;
+
+	public GameObject TextPanel = null;
+	public string message = "Hello World";
+	public Text eText;
+	private bool MessageReaded = false;
 	// Use this for initialization
 	void Start () 
 	{
@@ -19,8 +24,13 @@ public class Key : MonoBehaviour
 	{
 		if(isInsideTrigger && Input.GetKeyDown(KeyCode.C))
 		{
-			plBehaviour.GetKeys(key);
-			keyObject.SetActive(false);
+			//plBehaviour.GetKeys(key);
+			//keyObject.SetActive(false);
+			if(MessageReaded)
+			{
+				ReadEnd();
+			}
+			else Read();
 		}
 		
 	}
@@ -38,5 +48,22 @@ public class Key : MonoBehaviour
 		{
 			isInsideTrigger = false;
 		}
+	}
+	private void Read()
+	{
+		TextPanel.SetActive(true);
+		eText.text = message;
+		Debug.Log("reading");
+		MessageReaded = true;
+		Time.timeScale = 0;
+		plBehaviour.GetKeys(key);
+	}
+	private void ReadEnd()
+	{
+		TextPanel.SetActive(false);
+		Debug.Log("quit");
+		MessageReaded = false;
+		Time.timeScale = 1;
+		keyObject.SetActive(false);
 	}
 }
