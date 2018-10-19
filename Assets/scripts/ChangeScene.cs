@@ -9,13 +9,15 @@ public class ChangeScene : MonoBehaviour
 {
 	public int scene; //se introduce la scena a la que se quiere ir
 	private bool isInsideTrigger = false;
+	public Animator animator;
 
 	void Update()
 	{
 		if (isInsideTrigger && Input.GetKeyDown(KeyCode.C))
 		{
 			Debug.Log ("Change Scene");
-			SceneManager.LoadScene(scene); //linea que hace que funcione
+			//SceneManager.LoadScene(scene); //linea que hace que funcione
+			Fade();
 		}
 	}
 
@@ -43,5 +45,10 @@ public class ChangeScene : MonoBehaviour
 	{
 		Debug.Log("Exit Game");
 		Application.Quit();
+	}
+	public void Fade()
+	{
+		animator.SetTrigger("FadeOut");
+		//SceneManager.LoadScene(scene);
 	}
 }
