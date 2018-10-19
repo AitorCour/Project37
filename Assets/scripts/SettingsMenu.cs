@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class SettingsMenu : MonoBehaviour 
 {
-	public Dropdown resolutionDropdown;
+	public TMP_Dropdown resolutionDropdown;
 	Resolution[] resolutions;
 	void Start ()
 	{
