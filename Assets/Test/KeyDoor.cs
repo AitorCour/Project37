@@ -15,6 +15,9 @@ public class KeyDoor : MonoBehaviour
 	private bool MessageReaded = false;
 	public string message = "Hello World";
 	public Text eText;
+
+	public Animator animator;
+	public Image black;
 	void Start()
 	{
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
@@ -26,13 +29,15 @@ public class KeyDoor : MonoBehaviour
 			if(plBehaviour.Keys >= key)
 			{
 				//Debug.Log ("Change Scene");
-				SceneManager.LoadScene(scene); //cambio scene
+				//SceneManager.LoadScene(scene); //cambio scene
+				StartCoroutine(Fade());
 				plBehaviour.LoseKeys(key); //player pierde una o lo que se necesiten de llaves
 				isDoorOpen = true;
 			}
 			else if(isDoorOpen) // utilizar esto para si vuelve a la habitación o lo que sea, que la puerta ya esté abierta
 			{
-				SceneManager.LoadScene(scene);
+				//SceneManager.LoadScene(scene);
+				StartCoroutine(Fade());
 			}
 			else if (MessageReaded)
 			{
@@ -70,5 +75,11 @@ public class KeyDoor : MonoBehaviour
 		Debug.Log("quit");
 		MessageReaded = false;
 		Time.timeScale = 1;
+	}
+	 IEnumerator Fade()
+	{
+		animator.SetBool("Fade", true);
+		yield return new WaitUntil(()=>black.color.a==1);
+		SceneManager.LoadScene(scene);
 	}
 }

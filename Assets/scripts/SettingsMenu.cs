@@ -21,7 +21,7 @@ public class SettingsMenu : MonoBehaviour
 			string option = resolutions[i].width + " x " + resolutions[i].height;
 			options.Add(option);
 
-			if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+			if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)//Probar a comparar con Screen.height/.width, por el tema de comparar solo la ventana
 			{
 				currentResolutionIndex = i;
 			}

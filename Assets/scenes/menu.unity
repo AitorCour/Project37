@@ -669,6 +669,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 166420273}
   m_CullTransparentMesh: 0
+--- !u!114 &203873508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114683066044014910, guid: 09023a25379dbb5438a919bfdd1926fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1406732661}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &242175100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,7 +1276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene: 0
-  black: {fileID: 0}
+  black: {fileID: 203873508}
   animator: {fileID: 2124264020}
 --- !u!4 &592886319
 Transform:
@@ -1527,13 +1533,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 592886317}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 592886318}
+        m_MethodName: FadeChangeScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
