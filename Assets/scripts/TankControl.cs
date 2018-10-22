@@ -17,6 +17,7 @@ public class TankControl : MonoBehaviour
 	void Start () 
 	{
 		speed = iniSpeed;
+		controller = GetComponent<CharacterController>();
 	}
 	
 	// Update is called once per frame

@@ -59,13 +59,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void StartJump()
+    /*public void StartJump()
     {
         if(!controller.isGrounded) return;
 
         moveDirection.y = jumpSpeed;
         jump = true;
-    }
+    }*/
 
     
 }

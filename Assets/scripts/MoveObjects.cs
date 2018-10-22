@@ -22,6 +22,7 @@ public class MoveObjects : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+
 		if (isInsideTrigger)
 		{
 			if (Input.GetKey(KeyCode.U))
@@ -31,7 +32,7 @@ public class MoveObjects : MonoBehaviour
 			}
 			if (Input.GetKeyDown(KeyCode.O))
 			{
-				player.transform.Translate(0, 4, 0);
+				player.transform.Translate(0, 2, 0);
 				Debug.Log("Up");
 			}
 			if(isHolding)
