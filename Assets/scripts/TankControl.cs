@@ -6,7 +6,7 @@ public class TankControl : MonoBehaviour
 {
 	private CharacterController controller;
 
-	private float speed;
+	public float speed;
 
 	public float iniSpeed;
 	public float rotateSpeed;
