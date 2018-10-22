@@ -24,7 +24,7 @@ public class KeyDoor : MonoBehaviour
 	}
 	void Update()
 	{
-		if (isInsideTrigger && Input.GetKeyDown(KeyCode.C))
+		if (isInsideTrigger && Input.GetKeyDown(KeyCode.U))
 		{
 			if(plBehaviour.Keys >= key)
 			{

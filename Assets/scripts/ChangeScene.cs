@@ -15,7 +15,7 @@ public class ChangeScene : MonoBehaviour
 
 	void Update()
 	{
-		if (isInsideTrigger && Input.GetKeyDown(KeyCode.C))
+		if (isInsideTrigger && Input.GetKeyDown(KeyCode.U))
 		{
 			Debug.Log ("Change Scene");
 			//SceneManager.LoadScene(scene); //linea que hace que funcione

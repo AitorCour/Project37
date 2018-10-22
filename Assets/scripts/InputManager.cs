@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
 	//public Animator shoot2;
     private Gun gun;
 	private PlayerBehaviour plBehaviour;
+	private EnableDisable enDis;
 	//plBehaviour
 	public int damage;
 	//private int key = 1;
@@ -33,6 +34,7 @@ public class InputManager : MonoBehaviour
         //lookRotation = playerController.GetComponent<LookRotation>();
         gun = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+		enDis = GameObject.FindGameObjectWithTag("Player").GetComponent<EnableDisable>();
 
         mouseCursor = new MouseCursor();
         mouseCursor.HideCursor();
@@ -61,12 +63,12 @@ public class InputManager : MonoBehaviour
 		
         else if(Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
 
-		if (Input.GetMouseButton (0)) 
+		if (Input.GetKeyDown(KeyCode.O) && enDis.isPointing) 
 		{
 			
 			gun.Shot ();
 			//shoot2.SetTrigger("shoot2");
-			//Debug.Log("Shoot");
+			Debug.Log("Shoot");
 		}
         if(Input.GetKeyDown(KeyCode.R)) gun.Reload();
 
@@ -102,7 +104,7 @@ public class InputManager : MonoBehaviour
 		}
 
 		//INVENTORY
-		if (Input.GetKeyDown(KeyCode.Z))
+		if (Input.GetKeyDown(KeyCode.I))
 		{
 			if(!isPaused && !isInventoryOpened)
 			{

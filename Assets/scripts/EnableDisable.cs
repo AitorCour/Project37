@@ -11,7 +11,7 @@ public class EnableDisable : MonoBehaviour
 	public GameObject ammoText;
 	private bool isTank;
 	private bool isDragging;
-	private bool isPointing;
+	public bool isPointing;
 	// Use this for initialization
 	void Start () 
 	{

@@ -6,14 +6,17 @@ public class TankControl : MonoBehaviour
 {
 	private CharacterController controller;
 
-	public float speed;
+	private float speed;
+
+	public float iniSpeed;
 	public float rotateSpeed;
 	private float transAmount;
 	private float rotateAmount;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		speed = iniSpeed;
 	}
 	
 	// Update is called once per frame
@@ -38,15 +41,15 @@ public class TankControl : MonoBehaviour
 		{
 			transform.Rotate(0, rotateAmount, 0);
 		}
-		if (Input.GetKey("v")) //Probar a hacer un bool,para cuando corra y cuando no
+		if (Input.GetKey(KeyCode.LeftShift)) //Probar a hacer un bool,para cuando corra y cuando no
 		{
 			//Debug.Log("isRunning");
 			speed = 10;
 			
 		}
-		if (Input.GetKeyUp("v"))
+		if (Input.GetKeyUp(KeyCode.LeftShift))
 		{
-			speed = 5;
+			speed = iniSpeed;
 		}
 	}
 	//solucionar: la velocidad se multiplica cuando el personaje gira y va hacia delante a la vez

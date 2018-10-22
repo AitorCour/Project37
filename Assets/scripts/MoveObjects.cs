@@ -24,12 +24,16 @@ public class MoveObjects : MonoBehaviour
 	{
 		if (isInsideTrigger)
 		{
-			if (Input.GetKey(KeyCode.C))
+			if (Input.GetKey(KeyCode.U))
 			{
 				isHolding = true;
 				//Debug.Log("isHolding");
 			}
-
+			if (Input.GetKeyDown(KeyCode.O))
+			{
+				player.transform.Translate(0, 4, 0);
+				Debug.Log("Up");
+			}
 			if(isHolding)
 			{
 				//Debug.Log("Object Grabed");
@@ -44,7 +48,7 @@ public class MoveObjects : MonoBehaviour
 				enableDisable.SetTank();
 			}
 
-			if (Input.GetKeyUp(KeyCode.C))
+			if (Input.GetKeyUp(KeyCode.U))
 			{
 				isHolding = false;
 			}
