@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour 
 {
 	private InputManager inputManager;
 	public GameObject canvasPause;
 	public GameObject canvasInventory;
+	EventSystem eventSystem;
+	public GameObject pauseButton;
+	public GameObject invButton;
 
 	private void Awake () 
 	{
 		inputManager = GetComponent<InputManager>();
+		eventSystem = EventSystem.current;
 	}
 	
 	public void Pause()
@@ -19,6 +24,7 @@ public class GameManager : MonoBehaviour
 		inputManager.SetPause(true);
 		Time.timeScale = 0;
 		canvasPause.SetActive(true);
+		eventSystem.SetSelectedGameObject(pauseButton);
 	}
 
 	public void Resume()
@@ -33,6 +39,7 @@ public class GameManager : MonoBehaviour
 		inputManager.SetInventory(true);
 		Time.timeScale = 0;
 		canvasInventory.SetActive(true);
+		eventSystem.SetSelectedGameObject(invButton);
 	}
 
 	public void CloseInventory()
