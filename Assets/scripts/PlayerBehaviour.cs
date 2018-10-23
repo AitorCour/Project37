@@ -43,7 +43,7 @@ public class PlayerBehaviour : MonoBehaviour
 		if(Potions >= 1)
 		{
 			PlayerLife += cure;
-			//Debug.Log("Cured +1");
+			Debug.Log("Cured +1");
 
 			if (PlayerLife >= iniLife)
 			{

@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
 	public GameObject pauseButton;
 	public GameObject invButton;
 
+	public GameObject inventory;
+	public GameObject map;
+	public GameObject notes;
+	
 	private void Awake () 
 	{
 		inputManager = GetComponent<InputManager>();
@@ -47,6 +51,9 @@ public class GameManager : MonoBehaviour
 		inputManager.SetInventory(false);
 		Time.timeScale = 1;
 		canvasInventory.SetActive(false);
+		inventory.SetActive(true);
+		map.SetActive(false);
+		notes.SetActive(false);
 	}
 	
 }

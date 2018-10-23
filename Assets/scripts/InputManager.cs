@@ -62,7 +62,7 @@ public class InputManager : MonoBehaviour
 			gun.Shot ();
 			Debug.Log("Shoot");
 		}
-        if(Input.GetKeyDown(KeyCode.R)) gun.Reload();
+        if(Input.GetKeyDown(KeyCode.O) && gun.currentAmmo <= 0) gun.Reload();
 
 
 		//            TEST             //

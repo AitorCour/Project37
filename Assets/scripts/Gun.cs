@@ -44,7 +44,6 @@ public class Gun : MonoBehaviour
     {
         if(isShooting || isReloading) return;
         if(currentAmmo <= 0) return;
-
        // animacion.SetTrigger("shot2");
 
        isShooting = true;
