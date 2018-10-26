@@ -32,7 +32,9 @@ public class MoveObjects : MonoBehaviour
 			}
 			if (Input.GetKeyDown(KeyCode.O))
 			{
-				player.transform.Translate(0, 2, 0);
+				player.transform.position = item.transform.position;
+				
+				player.transform.Translate(0, 5, 0); 
 				Debug.Log("Up");
 			}
 			if(isHolding)

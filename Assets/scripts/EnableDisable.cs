@@ -35,7 +35,7 @@ public class EnableDisable : MonoBehaviour
 			}
 			else
 			{
-				pointState.transform.Rotate(0, 0, 0);
+				pointState.ResetGun();
 				SetTank();
 			}
 		}

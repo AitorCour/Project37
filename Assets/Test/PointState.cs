@@ -18,8 +18,6 @@ public class PointState : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//rotateAmount = rotateSpeed * Time.deltaTime;
-
 		if (Input.GetKeyDown("w")) //Mirar de hacer que no sea tan brusco
 		{
 			transform.Rotate(30, 0, 0);
@@ -36,10 +34,9 @@ public class PointState : MonoBehaviour
 		{
 			transform.Rotate(30, 0, 0);
 		}
-
-		if (Input.GetKeyDown("f"))
-		{
-			//transform.rotation = Quaternion.Slerp(transform.rotation, originalRot, Time.time*rotationSpeed);
-		}
+	}
+	public void ResetGun()
+	{
+		transform.rotation = originalRot;
 	}
 }
