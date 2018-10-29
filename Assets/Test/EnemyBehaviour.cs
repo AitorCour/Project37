@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour 
 {
-	public enum State { Idle, Patrol};
+	public enum State { Idle, Patrol, Chase};
 	public State state;
 	private NavMeshAgent agent;
 
@@ -17,6 +17,13 @@ public class EnemyBehaviour : MonoBehaviour
     public int currentPoint;
     public bool stopAtEachPoint;
     public float reachDistance;//el reach distance no funciona si se pone a 0.1
+
+	[Header("Target properties")]
+    public LayerMask targetMask;
+    public bool targetDetected;
+    public Transform targetTransform;
+    public float radius;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -37,9 +44,23 @@ public class EnemyBehaviour : MonoBehaviour
             case State.Patrol:
                 PatrolUpdate();
                 break;
+			case State.Chase:
+                ChaseUpdate();
+                break;	
 		}
 	}
 
+	private void FixedUpdate()
+    {
+        //!!!
+        targetDetected = false; 
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, targetMask);
+        if(hitColliders.Length != 0)
+        {
+            targetDetected = true;
+            targetTransform = hitColliders[0].transform;
+        }
+    }
 	void IdleUpdate()
     {   
         //IDLE -> PATROL
@@ -50,7 +71,7 @@ public class EnemyBehaviour : MonoBehaviour
         else timeCounter += Time.deltaTime;
 
         //IDLE -> CHASE
-        //if(TargetDetected) SetChase(); 
+        if(targetDetected) SetChase(); 
     }
 
 	void PatrolUpdate()
@@ -63,7 +84,28 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
         //PATROL -> CHASE
-        //if(TargetDetected) SetChase();
+        if(targetDetected) SetChase();
+    }
+
+	void ChaseUpdate()
+    {
+        agent.SetDestination(targetTransform.position);
+
+        //CHASE -> IDLE
+
+        if(!targetDetected)
+        {
+            SetIdle();
+            GoNextPoint();
+            return;
+        }
+
+        //CHASE -> ATTACK
+
+        /*if(Vector3.Distance(transform.position, Targettransform.position) <= attackdistance && !Sleeping && !Attacking)
+        {
+            SetAttack();
+        }*/
     }
 
 	#region Sets
@@ -73,7 +115,7 @@ public class EnemyBehaviour : MonoBehaviour
         timeCounter = 0;
         //anim.SetBool("isMoving", true);
         agent.isStopped = true;
-        //radius = radiusIdle;
+        radius = 5;//Aplica el radio
         //particulas.Stop();
         state = State.Idle;
     }
@@ -83,6 +125,15 @@ public class EnemyBehaviour : MonoBehaviour
         agent.isStopped = false;
         agent.stoppingDistance = 0;
         state = State.Patrol;
+    }
+	void SetChase()
+    {
+        //anim.SetBool("isMoving", false);
+        //anim.SetTrigger("IsChasing");
+        agent.isStopped = false;
+        agent.stoppingDistance = 2.4f;
+        radius = 10;//el radio se hace mas grande
+        state = State.Chase;
     }
 
 	#endregion
@@ -108,5 +159,12 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
         agent.SetDestination(points[currentPoint].position);
+    }
+	private void OnDrawGizmos()
+    {
+        Color color = Color.red;
+        color.a = 0.1f;
+        Gizmos.color = color;
+        Gizmos.DrawSphere(transform.position, radius);
     }
 }

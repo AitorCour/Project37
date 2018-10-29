@@ -58,7 +58,6 @@ public class InputManager : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.O) && enDis.isPointing) 
 		{
-			
 			gun.Shot ();
 			Debug.Log("Shoot");
 		}
@@ -74,6 +73,10 @@ public class InputManager : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.E)) 
 		{
 			plBehaviour.Curation(cure);
+		}
+		if(plBehaviour.isDead)
+		{
+			Debug.Log("ChangeScene");
 		}
 
 		//PAUSE

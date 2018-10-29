@@ -836,6 +836,12 @@ MonoBehaviour:
   currentPoint: 0
   stopAtEachPoint: 1
   reachDistance: 0.2
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 4
+  targetDetected: 0
+  targetTransform: {fileID: 0}
+  radius: 0
 --- !u!195 &1076777154
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1048,8 +1054,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 95676634341033988, guid: 653ac1f8959853442b6397c4b378881c, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 653ac1f8959853442b6397c4b378881c, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1692522481

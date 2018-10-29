@@ -46,7 +46,10 @@ public class ChangeScene : MonoBehaviour
 	public void FadeChangeScene(int num)
 	{
 		StartCoroutine(FadeButton(num));
-		
+	}
+	public void Death()
+	{
+		StartCoroutine(FadeDead());
 	}
 	public void ExitGame()
 	{
@@ -66,5 +69,13 @@ public class ChangeScene : MonoBehaviour
 		animator.SetBool("Fade", true);
 		yield return new WaitUntil(()=>black.color.a==1);
 		SceneManager.LoadScene(num);
+	}
+	IEnumerator FadeDead()
+	{
+		//animator.SetTrigger("FadeOut");
+		//SceneManager.LoadScene(scene);
+		animator.SetBool("Fade", true);
+		yield return new WaitUntil(()=>black.color.a==1);
+		SceneManager.LoadScene(3);
 	}
 }

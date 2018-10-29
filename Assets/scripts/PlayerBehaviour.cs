@@ -12,6 +12,7 @@ public class PlayerBehaviour : MonoBehaviour
 	public int Potions;
 	private int iniPotions = 0;
 	public int cure = 1;
+	private ChangeScene changeScene;
 	// Use this for initialization
 	void Start () 
 	{
@@ -19,6 +20,7 @@ public class PlayerBehaviour : MonoBehaviour
 		PlayerLife = iniLife;
 		iniKeys = Keys;
 		iniPotions = Potions;
+		changeScene =  GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
 	}
 
 	//Recibir Daño
@@ -63,6 +65,7 @@ public class PlayerBehaviour : MonoBehaviour
 		if (isDead == true)
 		{
 			Debug.Log ("isdead");
+			changeScene.Death();
 		}
 	}
 	//Sumar Llaves
