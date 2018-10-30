@@ -21,15 +21,10 @@ public class EnemyBehaviour2 : MonoBehaviour
 	[Header("Target properties")]
     public LayerMask targetMask;
     public bool targetDetected;
-    public Transform targetTransform;
+    //public Transform targetTransform;
     //public float radius;
 
-	/*[Header("Target2 properties")]
-	public float fieldOfViewAngle = 110f;
-	public bool playerInSight;
-
-	private SphereCollider col;
-	private GameObject player;*/
+	
 	public Transform player;
 	public float maxAngle;
 	public float maxRadius;
@@ -60,6 +55,7 @@ public class EnemyBehaviour2 : MonoBehaviour
 		else
 			Gizmos.color = Color.green;
 			//Debug.Log("green");
+            //targetDetected = true;
 		
 		Gizmos.DrawRay(transform.position, (player.position - transform.position).normalized * maxRadius);
 
@@ -90,7 +86,7 @@ public class EnemyBehaviour2 : MonoBehaviour
 						if(Physics.Raycast(ray, out hit, maxRadius))
 						{
 							if (hit.transform == target)
-							{
+							{ 
 								return true;
 							}
 						}
@@ -119,17 +115,17 @@ public class EnemyBehaviour2 : MonoBehaviour
 		}
 	}
 
-	private void FixedUpdate()
+	/*private void FixedUpdate()
     {
         //!!!
         targetDetected = false; 
-        /*Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, targetMask);
+        //Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, targetMask);
         if(hitColliders.Length != 0)
         {
             targetDetected = true;
             targetTransform = hitColliders[0].transform;
-        }*/
-    }
+        }
+    }*/
 	void IdleUpdate()
     {   
         //IDLE -> PATROL
@@ -158,7 +154,7 @@ public class EnemyBehaviour2 : MonoBehaviour
 
 	void ChaseUpdate()
     {
-        agent.SetDestination(targetTransform.position);
+        agent.SetDestination(player.position);
 
         //CHASE -> IDLE
 
@@ -195,30 +191,6 @@ public class EnemyBehaviour2 : MonoBehaviour
         agent.stoppingDistance = 0;
         state = State.Patrol;
     }
-	/*void OnTriggerStay(Collider other)
-    {
-		//NEW
-		if(other.gameObject == player)
-		{
-			targetDetected = false;
-			Vector3 direction = other.transform.position - transform.position;
-			float angle = Vector3.Angle(direction, transform.forward);
-
-			if(angle < fieldOfViewAngle * 0.5f)
-			{
-				RaycastHit hit;
-
-				if(Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius))
-				{
-					if(hit.collider.gameObject == player)
-					{
-						Debug.Log("Seen");
-						targetDetected = true;
-					}
-				}
-			}
-		}	
-    }*/
 	void SetChase()
     {
         //anim.SetBool("isMoving", false);
