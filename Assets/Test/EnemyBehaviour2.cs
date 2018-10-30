@@ -24,26 +24,88 @@ public class EnemyBehaviour2 : MonoBehaviour
     public Transform targetTransform;
     //public float radius;
 
-	[Header("Target2 properties")]
+	/*[Header("Target2 properties")]
 	public float fieldOfViewAngle = 110f;
 	public bool playerInSight;
 
 	private SphereCollider col;
-	private GameObject player;
+	private GameObject player;*/
+	public Transform player;
+	public float maxAngle;
+	public float maxRadius;
+	private bool isInFov = false;
 	// Use this for initialization
 	void Start () 
 	{
-		player = GameObject.FindGameObjectWithTag("Player");
 		agent = GetComponent<NavMeshAgent>();
 
 		GoNearOther();
         SetIdle();
 	}
-	
-	// Update is called once per frame
-	void Update () 
+
+	private void OnDrawGizmos() //Dibujar el campo de visión
 	{
-		 switch(state)
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawWireSphere(transform.position, maxRadius);
+
+		Vector3 fovLine1 = Quaternion.AngleAxis(maxAngle, transform.up) * transform.forward * maxRadius;
+		Vector3 fovLine2 = Quaternion.AngleAxis(-maxAngle, transform.up) * transform.forward * maxRadius;
+
+		Gizmos.color = Color.blue;
+		Gizmos.DrawRay(transform.position, fovLine1);
+		Gizmos.DrawRay(transform.position, fovLine2);
+
+		if (!isInFov)
+			Gizmos.color = Color.red;
+		else
+			Gizmos.color = Color.green;
+			//Debug.Log("green");
+		
+		Gizmos.DrawRay(transform.position, (player.position - transform.position).normalized * maxRadius);
+
+		Gizmos.color = Color.black;
+		Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
+	}
+	public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
+	{
+		Collider[] overlaps = new Collider[10];
+		int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
+
+		for(int i = 0; i < count + 1; i++)
+		{
+			if(overlaps[i] != null)
+			{
+				if(overlaps[i].transform == target)
+				{
+					Vector3 directionBetween = (target.position - checkingObject.position).normalized;
+					directionBetween.y *= 0;
+
+					float angle = Vector3.Angle(checkingObject.forward, directionBetween);
+
+					if(angle <= maxAngle)
+					{
+						Ray ray = new Ray(checkingObject.position, target.position - checkingObject.position);
+						RaycastHit hit;
+
+						if(Physics.Raycast(ray, out hit, maxRadius))
+						{
+							if (hit.transform == target)
+							{
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+	// Update is called once per frame
+	private void Update () 
+	{
+		isInFov = inFOV(transform, player, maxAngle, maxRadius);
+
+		switch(state)
         {
             case State.Idle:
                 IdleUpdate();
@@ -133,12 +195,12 @@ public class EnemyBehaviour2 : MonoBehaviour
         agent.stoppingDistance = 0;
         state = State.Patrol;
     }
-	void OnTriggerStay(Collider other)
+	/*void OnTriggerStay(Collider other)
     {
 		//NEW
 		if(other.gameObject == player)
 		{
-			playerInSight = false;
+			targetDetected = false;
 			Vector3 direction = other.transform.position - transform.position;
 			float angle = Vector3.Angle(direction, transform.forward);
 
@@ -150,14 +212,13 @@ public class EnemyBehaviour2 : MonoBehaviour
 				{
 					if(hit.collider.gameObject == player)
 					{
-						playerInSight = true;
 						Debug.Log("Seen");
 						targetDetected = true;
 					}
 				}
 			}
 		}	
-    }
+    }*/
 	void SetChase()
     {
         //anim.SetBool("isMoving", false);
