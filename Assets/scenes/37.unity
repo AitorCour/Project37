@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -112,7 +112,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 66b8000c98b73e0419fd66d8f62df382, type: 2}
 --- !u!1 &43972895
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,7 +2246,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4689085444407168, guid: 09023a25379dbb5438a919bfdd1926fd, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1931174257630754, guid: 09023a25379dbb5438a919bfdd1926fd, type: 2}
       propertyPath: m_IsActive
@@ -2406,7 +2406,7 @@ Transform:
   - {fileID: 837617135}
   - {fileID: 1251236487}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &636182129
 GameObject:
@@ -2425,7 +2425,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &636182130
 MeshRenderer:
@@ -2495,7 +2495,7 @@ Transform:
   m_GameObject: {fileID: 636182129}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -7.67, y: 0, z: 7.44}
-  m_LocalScale: {x: 0.50000024, y: 1, z: 2}
+  m_LocalScale: {x: 0.50000024, y: 1, z: 2.000001}
   m_Children: []
   m_Father: {fileID: 1365505826}
   m_RootOrder: 1
@@ -2698,7 +2698,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &663846062
 GameObject:
@@ -4622,7 +4622,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4895825427667430, guid: acad661ba9594c647a97e2f5fc4a429a, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114034322519671368, guid: acad661ba9594c647a97e2f5fc4a429a,
         type: 2}
@@ -5731,7 +5731,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1711213027
 MeshRenderer:
@@ -7428,7 +7428,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &2109430501
 MeshRenderer:
