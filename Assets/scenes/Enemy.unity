@@ -266,9 +266,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6425078f3e447084da8abba0b094d32e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  idleTime: 1
+  points:
+  - {fileID: 1692522482}
+  - {fileID: 497085328}
+  currentPoint: 0
+  stopAtEachPoint: 1
+  reachDistance: 0.2
   player: {fileID: 474317319}
-  maxAngle: 45
+  maxAngle: 90
   maxRadius: 10
+  detectRadius: 15
+  normalRadius: 10
   detected: 0
 --- !u!195 &116799247
 NavMeshAgent:
@@ -279,7 +289,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 300
@@ -1286,7 +1296,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4743157997941088, guid: 653ac1f8959853442b6397c4b378881c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.82
+      value: -14.04
       objectReference: {fileID: 0}
     - target: {fileID: 4743157997941088, guid: 653ac1f8959853442b6397c4b378881c, type: 2}
       propertyPath: m_LocalPosition.y

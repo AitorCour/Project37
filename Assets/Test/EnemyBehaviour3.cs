@@ -5,16 +5,32 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour3 : MonoBehaviour 
 {	
+	public enum State { Idle, Patrol, Chase};
+	public State state;
 	private NavMeshAgent agent;
+
+	private float timeCounter;
+    public float idleTime = 1.0f;
+
+	[Header("Path properties")]
+    public Transform[] points;//poner los points en el orden que los seguirá. No para en el mas cercano, si tiene otro orden, preguntar
+    public int currentPoint;
+    public bool stopAtEachPoint;
+    public float reachDistance;//el reach distance no funciona si se pone a 0.1
+
 	public Transform player;
 	public float maxAngle;
 	public float maxRadius;
+	public float detectRadius;
+	public float normalRadius;
 	private bool isInFov = false;
 	public bool detected = false;
 	// Use this for initialization
 	void Start () 
 	{
 		agent = GetComponent<NavMeshAgent>();
+		GoNearOther();
+        SetIdle();
 	}
 	private void OnDrawGizmos() //Dibujar el campo de visión
 	{
@@ -78,12 +94,119 @@ public class EnemyBehaviour3 : MonoBehaviour
 		return false;
 	}
 	// Update is called once per frame
-	private void Update () 
+	void Update () 
+	{
+		 switch(state)
+        {
+            case State.Idle:
+                IdleUpdate();
+                break;
+            case State.Patrol:
+                PatrolUpdate();
+                break;
+			case State.Chase:
+                ChaseUpdate();
+                break;	
+		}
+	}
+	private void FixedUpdate () 
 	{
 		isInFov = inFOV(transform, player, maxAngle, maxRadius);
 		if(detected)
 		{
-			agent.SetDestination(player.position);
+			agent.SetDestination(player.position);//Coje la position del player y va a por él
 		}
 	}
+	void IdleUpdate()
+    {   
+        //IDLE -> PATROL
+        if(timeCounter >= idleTime)
+        {
+            SetPatrol();
+        }
+        else timeCounter += Time.deltaTime;
+
+        //IDLE -> CHASE
+        if(detected) SetChase(); 
+    }
+
+	void PatrolUpdate()
+    {
+        //PATROL -> IDLE
+        if(Vector3.Distance(transform.position, points[currentPoint].position) < reachDistance)
+        {
+            GoNextPoint();
+            if(stopAtEachPoint) SetIdle();
+        }
+
+        //PATROL -> CHASE
+        if(detected) SetChase();
+    }
+
+	void ChaseUpdate()
+    {
+        agent.SetDestination(player.position);
+
+        //CHASE -> IDLE
+
+        if(!detected)
+        {
+            SetIdle();
+            GoNextPoint();
+            return;
+        }
+	}
+
+	#region Sets
+
+	void SetIdle()
+    {
+        timeCounter = 0;
+        //anim.SetBool("isMoving", true);
+        agent.isStopped = true;
+        //particulas.Stop();
+		maxRadius = normalRadius;
+        state = State.Idle;
+    }
+    void SetPatrol()
+    {
+        //anim.SetBool("isMoving", true);
+        agent.isStopped = false;
+        agent.stoppingDistance = 0;
+        state = State.Patrol;
+    }
+	void SetChase()
+    {
+        //anim.SetBool("isMoving", false);
+        //anim.SetTrigger("IsChasing");
+        agent.isStopped = false;
+        agent.stoppingDistance = 2.4f;
+		maxRadius = detectRadius;
+        state = State.Chase;
+    }
+
+	#endregion
+
+	void GoNextPoint()
+    {
+        currentPoint++;
+        if(currentPoint >= points.Length) currentPoint = 0;
+
+        agent.SetDestination(points[currentPoint].position);
+    }
+
+    void GoNearOther()
+    {
+        float minDistance = Mathf.Infinity;
+        for(int i = 0; i < points.Length; i++)
+        {
+            float dist = Vector3.Distance(transform.position, points[i].position);
+            if(dist < minDistance)
+            {
+                minDistance = dist;
+                currentPoint = i;
+            }
+        }
+        agent.SetDestination(points[currentPoint].position);
+    }
 }
