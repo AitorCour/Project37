@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
 	private int variableM;
     public float fireRate;
     public float hitForce;
-    public float hitDamage;
+    public int hitDamage;
 
     public bool isShooting;
     public bool isReloading;
@@ -56,12 +56,16 @@ public class Gun : MonoBehaviour
        {
             Debug.Log(hit.transform.name);
             Debug.DrawRay(transform.position, transform.forward * maxDistance, Color.red, 10.0f);
+			EnemyBehaviour3 enemyHealth = hit.collider.GetComponent<EnemyBehaviour3>();
 
             if(hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce( (transform.forward) * hitForce, ForceMode.Impulse);
-
             }
+			if(enemyHealth != null)
+			{
+				enemyHealth.ReciveDamage(hitDamage, hit.point);
+			}
        }
        StartCoroutine(WaitFireRate());
     }

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4419935975467260}
   - component: {fileID: 33684753765244498}
   - component: {fileID: 23088939239299198}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 33970330680583782}
   - component: {fileID: 23124389023929118}
   - component: {fileID: 65646499877302554}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4717401593946364}
   - component: {fileID: 114934090455802730}
   - component: {fileID: 114710584778535730}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Weapon
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 114130567912811778}
   - component: {fileID: 114248593120607872}
   - component: {fileID: 114573533912260528}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1815231133829290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 5, z: 4.5536385}
+  m_LocalPosition: {x: -14.04, y: 1.18, z: 3.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4419935975467260}
@@ -324,8 +324,8 @@ MonoBehaviour:
   currentAmmo: 6
   Munition: 0
   fireRate: 1
-  hitForce: 20
-  hitDamage: 0
+  hitForce: 50
+  hitDamage: 1
   isShooting: 0
   isReloading: 0
   ReloadTime: 2

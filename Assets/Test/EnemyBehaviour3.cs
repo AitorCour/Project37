@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour3 : MonoBehaviour 
 {	
-	public enum State { Idle, Patrol, Chase};
+	public enum State { Idle, Patrol, Chase, Dead};
 	public State state;
 	private NavMeshAgent agent;
 
@@ -25,12 +25,16 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public float normalRadius;
 	private bool isInFov = false;
 	public bool detected = false;
+
+	public int startingHealth = 1;
+	public int currentHealt;
 	// Use this for initialization
 	void Start () 
 	{
 		agent = GetComponent<NavMeshAgent>();
 		GoNearOther();
         SetIdle();
+		currentHealt = startingHealth;
 	}
 	private void OnDrawGizmos() //Dibujar el campo de visión
 	{
@@ -184,7 +188,11 @@ public class EnemyBehaviour3 : MonoBehaviour
 		maxRadius = detectRadius;
         state = State.Chase;
     }
-
+	void SetDead()
+	{
+		gameObject.SetActive(false);
+		state = State.Dead;
+	}
 	#endregion
 
 	void GoNextPoint()
@@ -209,4 +217,13 @@ public class EnemyBehaviour3 : MonoBehaviour
         }
         agent.SetDestination(points[currentPoint].position);
     }
+
+	public void ReciveDamage(int amount, Vector3 hitPoint)
+	{
+		currentHealt -= amount;
+		if(currentHealt <= 0)
+		{
+			SetDead();
+		}
+	}
 }
