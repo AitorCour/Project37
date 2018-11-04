@@ -5,12 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour3 : MonoBehaviour 
 {	
-	public enum State { Idle, Patrol, Chase, Dead};
+	public enum State { Idle, Patrol, Chase, Attack, Dead};
 	public State state;
 	private NavMeshAgent agent;
 
 	private float timeCounter;
     public float idleTime = 1.0f;
+	private PlayerBehaviour plBehaviour;
 
 	[Header("Path properties")]
     public Transform[] points;//poner los points en el orden que los seguirá. No para en el mas cercano, si tiene otro orden, preguntar
@@ -25,6 +26,10 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public float normalRadius;
 	private bool isInFov = false;
 	public bool detected = false;
+	[Header("Attack Properties")]
+    public float attackDistance;
+    public int EnemyDamage;
+	private Animator animator;
 
 	public int startingHealth = 1;
 	public int currentHealt;
@@ -35,6 +40,8 @@ public class EnemyBehaviour3 : MonoBehaviour
 		GoNearOther();
         SetIdle();
 		currentHealt = startingHealth;
+		animator = GetComponent<Animator>();
+		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 	}
 	private void OnDrawGizmos() //Dibujar el campo de visión
 	{
@@ -111,6 +118,8 @@ public class EnemyBehaviour3 : MonoBehaviour
 			case State.Chase:
                 ChaseUpdate();
                 break;	
+			default:
+				break;
 		}
 	}
 	private void FixedUpdate () 
@@ -159,6 +168,12 @@ public class EnemyBehaviour3 : MonoBehaviour
             GoNextPoint();
             return;
         }
+		//Chase -> Attack
+		else if(Vector3.Distance(transform.position, player.position) <= attackDistance)
+		{
+			SetAttack();
+			return;
+		}
 	}
 
 	#region Sets
@@ -188,6 +203,13 @@ public class EnemyBehaviour3 : MonoBehaviour
 		maxRadius = detectRadius;
         state = State.Chase;
     }
+	void SetAttack()
+	{
+		agent.isStopped = true;
+
+		state = State.Attack;
+		animator.SetBool("Attacking", true);
+	}
 	void SetDead()
 	{
 		gameObject.SetActive(false);
@@ -225,5 +247,10 @@ public class EnemyBehaviour3 : MonoBehaviour
 		{
 			SetDead();
 		}
+	}
+	public void Attack()
+	{
+		plBehaviour.Damage(EnemyDamage);
+		Debug.Log("Harmed");
 	}
 }
