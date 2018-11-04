@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour3 : MonoBehaviour 
 {	
-	public enum State { Idle, Patrol, Chase, Attack, Dead};
+	public enum State { Idle, Patrol, Chase, Attack, Dead };
 	public State state;
 	private NavMeshAgent agent;
 
@@ -40,7 +40,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		GoNearOther();
         SetIdle();
 		currentHealt = startingHealth;
-		animator = GetComponent<Animator>();
+		animator = GetComponentInChildren<Animator>();
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 	}
 	private void OnDrawGizmos() //Dibujar el campo de visión
@@ -118,6 +118,9 @@ public class EnemyBehaviour3 : MonoBehaviour
 			case State.Chase:
                 ChaseUpdate();
                 break;	
+			case State.Attack:
+				AttackUpdate();
+				break;
 			default:
 				break;
 		}
@@ -175,7 +178,15 @@ public class EnemyBehaviour3 : MonoBehaviour
 			return;
 		}
 	}
-
+	void AttackUpdate()
+	{
+		//ATTACK -> Chase
+		if(Vector3.Distance(transform.position, player.position) > attackDistance)
+		{
+			SetChase();
+			return;
+		}
+	}
 	#region Sets
 
 	void SetIdle()
@@ -202,6 +213,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         agent.stoppingDistance = 2.4f;
 		maxRadius = detectRadius;
         state = State.Chase;
+		animator.SetBool("Attacking", false);
     }
 	void SetAttack()
 	{
