@@ -56,4 +56,5 @@ public class GameManager : MonoBehaviour
 		notes.SetActive(false);
 	}
 	
+
 }

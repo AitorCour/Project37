@@ -268,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   idleTime: 1
+  sleepTime: 10
   points:
   - {fileID: 0}
   - {fileID: 0}
@@ -1538,6 +1539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   idleTime: 1
+  sleepTime: 10
   points:
   - {fileID: 1459286455}
   - {fileID: 671280402}
@@ -1654,11 +1656,6 @@ Prefab:
     - target: {fileID: 4743157997941088, guid: 653ac1f8959853442b6397c4b378881c, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114710584778535730, guid: 653ac1f8959853442b6397c4b378881c,
-        type: 2}
-      propertyPath: mask.m_Bits
-      value: 513
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 653ac1f8959853442b6397c4b378881c, type: 2}

@@ -12,6 +12,10 @@ public class EnableDisable : MonoBehaviour
 	private bool isTank;
 	private bool isDragging;
 	public bool isPointing;
+
+	public float timeCounter;
+	public float precisionTime = 2.0f;
+	public bool precisionActive;
 	// Use this for initialization
 	void Start () 
 	{
@@ -20,6 +24,7 @@ public class EnableDisable : MonoBehaviour
 		pointRot = GetComponent<PointRotate>();
 		pointState = GameObject.FindGameObjectWithTag("Weapon").GetComponent<PointState>();
 		pointState.transform.Rotate(0, 0, 0);
+		precisionActive = false;
 	}
 	
 	// Update is called once per frame
@@ -39,8 +44,24 @@ public class EnableDisable : MonoBehaviour
 				SetTank();
 			}
 		}
+		if(isPointing)
+		{
+			UpdatePoint();
+		}
+		else if(!isPointing)
+		{
+			timeCounter = 0;
+			precisionActive = false;
+		}
 	}
-
+	void UpdatePoint()
+	{
+		if(timeCounter >= precisionTime)
+		{
+			precisionActive = true;
+		}
+		else timeCounter += Time.deltaTime;
+	}
 	public void SetDrag()
 	{
 		dragObjects.enabled = true;

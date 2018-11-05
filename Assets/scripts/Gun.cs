@@ -44,16 +44,16 @@ public class Gun : MonoBehaviour
     {
         if(isShooting || isReloading) return;
         if(currentAmmo <= 0) return;
-       // animacion.SetTrigger("shot2");
+        // animacion.SetTrigger("shot2");
 
-       isShooting = true;
-       currentAmmo--;
+        isShooting = true;
+        currentAmmo--;
 		
 
-       //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Coje el punto de la posicion del mouse y lanza un rayo
-       RaycastHit hit = new RaycastHit();
-       if(Physics.Raycast(transform.position,  transform.forward, out hit, maxDistance, mask))
-       {
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Coje el punto de la posicion del mouse y lanza un rayo
+        RaycastHit hit = new RaycastHit();
+        if(Physics.Raycast(transform.position,  transform.forward, out hit, maxDistance, mask))
+        {
             Debug.Log(hit.transform.name);
             Debug.DrawRay(transform.position, transform.forward * maxDistance, Color.red, 10.0f);
 			EnemyBehaviour3 enemyHealth = hit.collider.GetComponent<EnemyBehaviour3>();
@@ -66,8 +66,8 @@ public class Gun : MonoBehaviour
 			{
 				enemyHealth.ReciveDamage(hitDamage, hit.point);
 			}
-       }
-       StartCoroutine(WaitFireRate());
+        }
+        StartCoroutine(WaitFireRate());
     }
 
     private IEnumerator WaitFireRate() //Usar corutinas para contar tiempo
@@ -116,4 +116,34 @@ public class Gun : MonoBehaviour
     {
         Munition += munition;
     }
+
+	public void PrecisionShot()
+	{
+		if(isShooting || isReloading) return;
+        if(currentAmmo <= 0) return;
+
+        isShooting = true;
+        currentAmmo--;
+
+        RaycastHit hit = new RaycastHit();
+        if(Physics.Raycast(transform.position,  transform.forward, out hit, maxDistance, mask))
+        {
+            Debug.Log(hit.transform.name);
+            Debug.DrawRay(transform.position, transform.forward * maxDistance, Color.red, 10.0f);
+			EnemyBehaviour3 enemyHealth = hit.collider.GetComponent<EnemyBehaviour3>();
+
+            if(hit.rigidbody != null)
+            {
+                hit.rigidbody.AddForce( (transform.forward) * hitForce, ForceMode.Impulse);
+            }
+			if(enemyHealth != null)
+			{
+				//Cambiar para llamar a Dead
+				//El fire Rate es mas tiempo
+				//Se activará automaticamente este disparo a los dos segundos de estar en modo apuntado
+				enemyHealth.DeadlyDamage(hit.point);
+			}
+        }
+        StartCoroutine(WaitFireRate());
+	}
 }

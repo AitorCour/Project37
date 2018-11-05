@@ -38,28 +38,22 @@ public class InputManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        //Mover al player
-        //Vector2 inputAxis = Vector2.zero;
-        //inputAxis.x = Input.GetAxis("Horizontal");
-        //inputAxis.y = Input.GetAxis("Vertical");
-        //playerController.SetAxis(inputAxis);
-        //LLamar al salto
-        //if(Input.GetButton("Jump")) playerController.StartJump();
-        //Camara rotación
-        //Vector2 mouseAxis = Vector2.zero;
-        //mouseAxis.x = Input.GetAxis("Mouse X") * sensitivity;
-        //mouseAxis.y = Input.GetAxis("Mouse Y") * sensitivity;
-
-        //lookRotation.SetRotation(mouseAxis);
-
         if(Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
 		
         else if(Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
 
-		if (Input.GetKeyDown(KeyCode.O) && enDis.isPointing) 
+		if (Input.GetKeyDown(KeyCode.O) && enDis.isPointing && enDis.precisionActive == false) 
 		{
 			gun.Shot ();
 			Debug.Log("Shoot");
+			enDis.timeCounter = 0;
+		}
+		else if(Input.GetKeyDown(KeyCode.O) && enDis.isPointing && enDis.precisionActive) 
+		{
+			gun.PrecisionShot ();
+			Debug.Log("SpecialShoot");
+			enDis.timeCounter = 0;
+			enDis.precisionActive = false;
 		}
         if(Input.GetKeyDown(KeyCode.O) && gun.currentAmmo <= 0) gun.Reload();
 
@@ -73,10 +67,6 @@ public class InputManager : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.E)) 
 		{
 			plBehaviour.Curation(cure);
-		}
-		if(plBehaviour.isDead)
-		{
-			Debug.Log("ChangeScene");
 		}
 
 		//PAUSE

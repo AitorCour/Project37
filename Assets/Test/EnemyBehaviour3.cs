@@ -5,12 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour3 : MonoBehaviour 
 {	
-	public enum State { Idle, Patrol, Chase, Attack, Dead };
+	public enum State { Idle, Patrol, Chase, Attack, Sleep, Dead };
 	public State state;
 	private NavMeshAgent agent;
 
 	private float timeCounter;
     public float idleTime = 1.0f;
+	public float sleepTime = 10.0f;
 	private PlayerBehaviour plBehaviour;
 
 	[Header("Path properties")]
@@ -121,6 +122,9 @@ public class EnemyBehaviour3 : MonoBehaviour
 			case State.Attack:
 				AttackUpdate();
 				break;
+			case State.Sleep:
+				SleepUpdate();
+				break;
 			default:
 				break;
 		}
@@ -187,6 +191,16 @@ public class EnemyBehaviour3 : MonoBehaviour
 			return;
 		}
 	}
+	void SleepUpdate()
+	{
+		//SLEEP -> Idle
+		if(timeCounter >= sleepTime)
+        {
+            SetIdle();
+			currentHealt = startingHealth;
+        }
+        else timeCounter += Time.deltaTime;
+	}
 	#region Sets
 
 	void SetIdle()
@@ -227,6 +241,12 @@ public class EnemyBehaviour3 : MonoBehaviour
 		gameObject.SetActive(false);
 		state = State.Dead;
 	}
+	void SetSleep()
+	{
+		agent.isStopped = true;
+
+		state = State.Sleep;
+	}
 	#endregion
 
 	void GoNextPoint()
@@ -257,12 +277,17 @@ public class EnemyBehaviour3 : MonoBehaviour
 		currentHealt -= amount;
 		if(currentHealt <= 0)
 		{
-			SetDead();
+			SetSleep();
 		}
 	}
 	public void Attack()
 	{
 		plBehaviour.Damage(EnemyDamage);
 		Debug.Log("Harmed");
+	}
+	public void DeadlyDamage(Vector3 hitPoint)
+	{
+		//currentHealt = 0;
+		SetDead();
 	}
 }
