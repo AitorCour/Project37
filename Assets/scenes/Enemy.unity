@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -504,6 +504,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 95856837578713164, guid: 09023a25379dbb5438a919bfdd1926fd,
     type: 2}
   m_PrefabInternal: {fileID: 189417850}
+--- !u!1 &231083636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1227229513451968, guid: 653ac1f8959853442b6397c4b378881c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1657280403}
 --- !u!1 &348254091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,6 +1079,11 @@ Prefab:
       propertyPath: m_TagString
       value: Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 114995670779292182, guid: acad661ba9594c647a97e2f5fc4a429a,
+        type: 2}
+      propertyPath: cameraGod
+      value: 
+      objectReference: {fileID: 231083636}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acad661ba9594c647a97e2f5fc4a429a, type: 2}
   m_IsPrefabAsset: 0
@@ -1554,7 +1564,7 @@ MonoBehaviour:
   detected: 0
   attackDistance: 2
   EnemyDamage: 1
-  startingHealth: 1
+  startingHealth: 4
   currentHealt: 0
 --- !u!195 &1420319342
 NavMeshAgent:
@@ -1566,7 +1576,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

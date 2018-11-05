@@ -6,9 +6,11 @@ public class InputManager : MonoBehaviour
 {
     private PlayerController playerController;
 	private GameManager gameManager;
+	public GameObject cameraGod;
 	//public Animator shoot2;
     private Gun gun;
 	private PlayerBehaviour plBehaviour;
+	private TankControl tankControl;
 	private EnableDisable enDis;
 	//plBehaviour
 	public int damage;
@@ -17,7 +19,7 @@ public class InputManager : MonoBehaviour
     private MouseCursor mouseCursor;
 	private bool isPaused = false;
 	private bool isInventoryOpened = false;
-
+	private bool godActive = false;
 	// Use this for initialization
 	void Start ()
     {
@@ -27,6 +29,7 @@ public class InputManager : MonoBehaviour
         //lookRotation = playerController.GetComponent<LookRotation>();
         gun = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+		tankControl = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControl>();
 		enDis = GameObject.FindGameObjectWithTag("Player").GetComponent<EnableDisable>();
 
         mouseCursor = new MouseCursor();
@@ -67,6 +70,17 @@ public class InputManager : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.E)) 
 		{
 			plBehaviour.Curation(cure);
+		}
+		if(Input.GetKeyDown(KeyCode.F10)) 
+		{
+			if(!godActive)
+			{
+				SetGod();
+			}
+			else
+			{
+				SetNormal();
+			}
 		}
 
 		//PAUSE
@@ -115,5 +129,21 @@ public class InputManager : MonoBehaviour
 	public void SetInventory (bool i)
 	{
 		isInventoryOpened = i;
+	}
+	public void SetGod()
+	{
+		plBehaviour.GodMode();
+		gun.GodMode();
+		tankControl.godMode = true;
+		playerController.enabled = false;
+		cameraGod.SetActive(true);
+		godActive = true;
+	}
+	public void SetNormal()
+	{
+		tankControl.godMode = false;
+		playerController.enabled = true;
+		cameraGod.SetActive(false);
+		godActive = false;
 	}
 }

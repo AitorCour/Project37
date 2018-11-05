@@ -146,4 +146,8 @@ public class Gun : MonoBehaviour
         }
         StartCoroutine(WaitFireRate());
 	}
+    public void GodMode()
+    {
+        Munition = 999;
+    }
 }

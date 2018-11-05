@@ -13,6 +13,7 @@ public class MoveObjects : MonoBehaviour
 	private bool isInsideTrigger = false;
 	private bool isHolding = false;
 
+	public Animator subirObj;
 	// Use this for initialization
 	void Start () 
 	{
@@ -22,7 +23,6 @@ public class MoveObjects : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-
 		if (isInsideTrigger)
 		{
 			if (Input.GetKey(KeyCode.U))
@@ -32,9 +32,7 @@ public class MoveObjects : MonoBehaviour
 			}
 			if (Input.GetKeyDown(KeyCode.O))
 			{
-				player.transform.position = item.transform.position;
-				
-				player.transform.Translate(0, 5, 0); 
+				player.transform.Translate(0, 4, 0);
 				Debug.Log("Up");
 			}
 			if(isHolding)

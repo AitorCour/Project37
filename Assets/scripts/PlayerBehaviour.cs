@@ -88,4 +88,11 @@ public class PlayerBehaviour : MonoBehaviour
 		Potions += potion;
 		//Debug.Log ("potion");
 	}
+	public void GodMode()
+	{
+		Keys = 999;
+		Potions = 999;
+		iniLife = 999;
+		PlayerLife = 999;
+	}
 }

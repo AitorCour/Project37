@@ -10,14 +10,16 @@ public class TankControl : MonoBehaviour
 
 	public float iniSpeed;
 	public float rotateSpeed;
-	private float transAmount;
+	public float transAmount;
 	private float rotateAmount;
+	public bool godMode;
 
 	// Use this for initialization
 	void Start () 
 	{
 		speed = iniSpeed;
 		controller = GetComponent<CharacterController>();
+		godMode = false;
 	}
 	
 	// Update is called once per frame
@@ -46,12 +48,22 @@ public class TankControl : MonoBehaviour
 		{
 			//Debug.Log("isRunning");
 			speed = 10;
-			
 		}
 		if (Input.GetKeyUp(KeyCode.LeftShift))
 		{
 			speed = iniSpeed;
 		}
+		if(godMode == true)
+		{
+			if (Input.GetKey("z")) 
+			{
+				transform.Translate(0, transAmount, 0);
+			}
+			if (Input.GetKey("x")) 
+			{
+				transform.Translate(0, -transAmount, 0);
+			}
+		}
+		
 	}
-	//solucionar: la velocidad se multiplica cuando el personaje gira y va hacia delante a la vez
 }

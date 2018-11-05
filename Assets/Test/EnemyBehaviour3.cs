@@ -166,13 +166,14 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void ChaseUpdate()
     {
         agent.SetDestination(player.position);
-
+		agent.speed = 5;//Velocidad aumenta cuando ve al player
         //CHASE -> IDLE
 
         if(!detected)
         {
             SetIdle();
             GoNextPoint();
+			agent.speed = 2;//Velocidad vuelve a la normalidad si no ve al player
             return;
         }
 		//Chase -> Attack
