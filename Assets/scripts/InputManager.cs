@@ -7,12 +7,10 @@ public class InputManager : MonoBehaviour
     private PlayerController playerController;
 	private GameManager gameManager;
 	public GameObject cameraGod;
-	//public Animator shoot2;
     private Gun gun;
 	private PlayerBehaviour plBehaviour;
 	private TankControl tankControl;
 	private EnableDisable enDis;
-	//plBehaviour
 	public int damage;
 	private int cure = 1;
 
@@ -26,7 +24,6 @@ public class InputManager : MonoBehaviour
 		//shoot2 = GetComponent<Animator>();
 		gameManager = GetComponent<GameManager>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        //lookRotation = playerController.GetComponent<LookRotation>();
         gun = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 		tankControl = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControl>();
@@ -34,8 +31,6 @@ public class InputManager : MonoBehaviour
 
         mouseCursor = new MouseCursor();
         mouseCursor.HideCursor();
-
-		//eventSystem = EventSystem.current;
 	}
 	
 	// Update is called once per frame
