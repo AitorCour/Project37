@@ -5,6 +5,8 @@ using UnityEngine;
 public class TankControl : MonoBehaviour 
 {
 	private CharacterController controller;
+	private Vector2 axis;
+	public Vector3 moveDirection;
 
 	public float speed;
 
@@ -14,6 +16,7 @@ public class TankControl : MonoBehaviour
 	private float rotateAmount;
 	public bool godMode;
 
+	//public KeyCode god;
 	// Use this for initialization
 	void Start () 
 	{
@@ -25,10 +28,15 @@ public class TankControl : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		 /*Vector3 transformDirection = axis.x * transform.right + axis.y * transform.forward;
+		 moveDirection.z = transformDirection.z * speed;
+		 controller.Move(moveDirection * Time.deltaTime);
+		 transform.Rotate(0, Input.GetAxis("Horizontal")*rotateSpeed, 0);*/
+		
 		transAmount = speed * Time.deltaTime;
 		rotateAmount = rotateSpeed * Time.deltaTime;
 
-		if (Input.GetKey("w")) 
+		if (Input.GetKey("a")) 
 		{
 			transform.Translate(0, 0, transAmount);
 		}
@@ -64,6 +72,10 @@ public class TankControl : MonoBehaviour
 				transform.Translate(0, -transAmount, 0);
 			}
 		}
-		
 	}
+	
+	public void SetAxis(Vector2 inputAxis)
+    {
+        axis = inputAxis;
+    }
 }
