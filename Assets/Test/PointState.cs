@@ -6,7 +6,7 @@ public class PointState : MonoBehaviour
 {
 	/*private CharacterController controller;
 	public float rotateSpeed;
-	private float rotateAmount;*/
+	private float rotateAmount;
 	public Quaternion originalRot;
 	float rotationSpeed = 1.0f;
 	// Use this for initialization
@@ -38,5 +38,5 @@ public class PointState : MonoBehaviour
 	public void ResetGun()
 	{
 		transform.rotation = originalRot;
-	}
+	}*/
 }

@@ -40,7 +40,7 @@ public class EnableDisable : MonoBehaviour
 			}
 			else
 			{
-				pointState.ResetGun();
+				//pointState.ResetGun();
 				SetTank();
 			}
 		}
@@ -59,6 +59,7 @@ public class EnableDisable : MonoBehaviour
 		if(timeCounter >= precisionTime)
 		{
 			precisionActive = true;
+			Debug.Log("Special Shoot Ready");
 		}
 		else timeCounter += Time.deltaTime;
 	}
