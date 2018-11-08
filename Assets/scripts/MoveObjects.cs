@@ -7,7 +7,7 @@ public class MoveObjects : MonoBehaviour
 	//Este script se le pasa al objeto que vaya a moverse. 
 	//Se complementa con el drag object del player, que controla como se movera.
 	Vector3 objectPos; 
-	public GameObject player;
+	private GameObject player;
 	public GameObject item;
 	private EnableDisable enableDisable;
 	private bool isInsideTrigger = false;
@@ -18,6 +18,7 @@ public class MoveObjects : MonoBehaviour
 	void Start () 
 	{
 		enableDisable = GameObject.FindGameObjectWithTag("Player").GetComponent<EnableDisable>();
+		player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame

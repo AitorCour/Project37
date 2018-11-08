@@ -5,8 +5,8 @@ using UnityEngine;
 public class TankControl : MonoBehaviour 
 {
 	private CharacterController controller;
-	private Vector2 axis;
-	public Vector3 moveDirection;
+	//private Vector2 axis;
+	//public Vector3 moveDirection;
 
 	public float speed;
 
@@ -36,7 +36,7 @@ public class TankControl : MonoBehaviour
 		transAmount = speed * Time.deltaTime;
 		rotateAmount = rotateSpeed * Time.deltaTime;
 
-		if (Input.GetKey("a")) 
+		if (Input.GetKey("w")) 
 		{
 			transform.Translate(0, 0, transAmount);
 		}
@@ -55,7 +55,7 @@ public class TankControl : MonoBehaviour
 		if (Input.GetKey(KeyCode.LeftShift)) //Probar a hacer un bool,para cuando corra y cuando no
 		{
 			//Debug.Log("isRunning");
-			speed = 10;
+			speed = 5;
 		}
 		if (Input.GetKeyUp(KeyCode.LeftShift))
 		{
@@ -74,8 +74,8 @@ public class TankControl : MonoBehaviour
 		}
 	}
 	
-	public void SetAxis(Vector2 inputAxis)
+	/*public void SetAxis(Vector2 inputAxis)
     {
         axis = inputAxis;
-    }
+    }*/
 }
