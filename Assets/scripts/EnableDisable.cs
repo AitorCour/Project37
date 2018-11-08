@@ -16,6 +16,9 @@ public class EnableDisable : MonoBehaviour
 	public float timeCounter;
 	public float precisionTime = 2.0f;
 	public bool precisionActive;
+
+	public Material material;
+	public Color newColor;
 	// Use this for initialization
 	void Start () 
 	{
@@ -25,6 +28,7 @@ public class EnableDisable : MonoBehaviour
 		pointState = GameObject.FindGameObjectWithTag("Weapon").GetComponent<PointState>();
 		pointState.transform.Rotate(0, 0, 0);
 		precisionActive = false;
+		material.color = Color.yellow;
 	}
 	
 	// Update is called once per frame
@@ -42,6 +46,7 @@ public class EnableDisable : MonoBehaviour
 			{
 				//pointState.ResetGun();
 				SetTank();
+				NormalColor();
 			}
 		}
 		if(isPointing)
@@ -60,6 +65,7 @@ public class EnableDisable : MonoBehaviour
 		{
 			precisionActive = true;
 			Debug.Log("Special Shoot Ready");
+			material.color = newColor;
 		}
 		else timeCounter += Time.deltaTime;
 	}
@@ -92,5 +98,9 @@ public class EnableDisable : MonoBehaviour
 		isPointing = true;
 		pointState.transform.Rotate(0, 0, 0);
 		ammoText.SetActive(true);
+	}
+	public void NormalColor()
+	{
+		material.color = Color.yellow;
 	}
 }

@@ -52,6 +52,7 @@ public class InputManager : MonoBehaviour
 			Debug.Log("SpecialShoot");
 			enDis.timeCounter = 0;
 			enDis.precisionActive = false;
+			enDis.NormalColor();
 		}
         if(Input.GetKeyDown(KeyCode.O) && gun.currentAmmo <= 0) gun.Reload();
 
