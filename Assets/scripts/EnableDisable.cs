@@ -64,7 +64,7 @@ public class EnableDisable : MonoBehaviour
 		if(timeCounter >= precisionTime)
 		{
 			precisionActive = true;
-			Debug.Log("Special Shoot Ready");
+			//Debug.Log("Special Shoot Ready");
 			material.color = newColor;
 		}
 		else timeCounter += Time.deltaTime;
