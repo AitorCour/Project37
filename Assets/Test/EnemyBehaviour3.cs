@@ -12,6 +12,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	private float timeCounter;
     public float idleTime = 1.0f;
 	public float sleepTime = 10.0f;
+	public bool sleeping;
 	private PlayerBehaviour plBehaviour;
 
 	[Header("Path properties")]
@@ -43,6 +44,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		currentHealt = startingHealth;
 		animator = GetComponentInChildren<Animator>();
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+		sleeping = false;
 	}
 	private void OnDrawGizmos() //Dibujar el campo de visión
 	{
@@ -73,7 +75,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	}
 	public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
 	{
-		Collider[] overlaps = new Collider[10];
+		Collider[] overlaps = new Collider[100];
 		int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
 
 		for(int i = 0; i < count + 1; i++)
@@ -199,6 +201,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         {
             SetIdle();
 			currentHealt = startingHealth;
+			sleeping = false;
         }
         else timeCounter += Time.deltaTime;
 	}
@@ -245,7 +248,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void SetSleep()
 	{
 		agent.isStopped = true;
-
+		sleeping = true;
 		state = State.Sleep;
 	}
 	#endregion
@@ -279,12 +282,18 @@ public class EnemyBehaviour3 : MonoBehaviour
 		if(currentHealt <= 0)
 		{
 			SetSleep();
+			sleeping = true;
 		}
 	}
 	public void Attack()
 	{
-		plBehaviour.Damage(EnemyDamage);
-		Debug.Log("Harmed");
+		if(sleeping) return;
+		else
+		{
+			plBehaviour.Damage(EnemyDamage);
+			Debug.Log("Harmed");
+		}
+		
 	}
 	public void DeadlyDamage(Vector3 hitPoint)
 	{
