@@ -12,6 +12,3 @@ Controls
     Enter - Confirm selection
     Escape - Exit
 
-Special Thanks
-
-To anime
