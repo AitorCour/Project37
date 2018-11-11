@@ -262,6 +262,7 @@ MonoBehaviour:
   state: 0
   idleTime: 1
   sleepTime: 10
+  sleeping: 0
   points:
   - {fileID: 0}
   - {fileID: 0}
@@ -278,7 +279,7 @@ MonoBehaviour:
   detected: 0
   attackDistance: 2
   EnemyDamage: 1
-  startingHealth: 4
+  startingHealth: 1
   currentHealt: 0
 --- !u!136 &136239874792705634
 CapsuleCollider:
