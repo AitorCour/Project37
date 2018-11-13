@@ -8,6 +8,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public enum State { Idle, Patrol, Chase, Attack, Sleep, Dead };
 	public State state;
 	private NavMeshAgent agent;
+	private SoundPlayer sound;
 
 	private float timeCounter;
     public float idleTime = 1.0f;
@@ -39,11 +40,13 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void Start () 
 	{
 		agent = GetComponent<NavMeshAgent>();
+		sound = GetComponentInChildren<SoundPlayer>();
+		animator = GetComponentInChildren<Animator>();
+		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+
 		GoNearOther();
         SetIdle();
 		currentHealt = startingHealth;
-		animator = GetComponentInChildren<Animator>();
-		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 		sleeping = false;
 	}
 	private void OnDrawGizmos() //Dibujar el campo de visión
@@ -227,6 +230,7 @@ public class EnemyBehaviour3 : MonoBehaviour
     {
         //anim.SetBool("isMoving", false);
         //anim.SetTrigger("IsChasing");
+		sound.Play(1, 2);
         agent.isStopped = false;
         agent.stoppingDistance = 2.4f;
 		maxRadius = detectRadius;
