@@ -7,6 +7,8 @@ public class Gun : MonoBehaviour
 
     public float maxDistance;
     public LayerMask mask;
+	private SoundPlayer sound;
+
 	//public Vector3 direction = Vector3.forward;
     //private Transform transform.forward;
     public int maxAmmo;
@@ -32,6 +34,7 @@ public class Gun : MonoBehaviour
         isReloading = false;
         currentAmmo = maxAmmo;
         Munition = iniMunition;
+		sound = GetComponentInChildren<SoundPlayer>();
 	}
 	
 	// Update is called once per frame
@@ -48,7 +51,6 @@ public class Gun : MonoBehaviour
 
         isShooting = true;
         currentAmmo--;
-		
 
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Coje el punto de la posicion del mouse y lanza un rayo
         RaycastHit hit = new RaycastHit();
@@ -57,7 +59,7 @@ public class Gun : MonoBehaviour
             Debug.Log(hit.transform.name);
             Debug.DrawRay(transform.position, transform.forward * maxDistance, Color.red, 10.0f);
 			EnemyBehaviour3 enemyHealth = hit.collider.GetComponent<EnemyBehaviour3>();
-
+			
             if(hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce( (transform.forward) * hitForce, ForceMode.Impulse);
@@ -68,6 +70,7 @@ public class Gun : MonoBehaviour
 			}
         }
         StartCoroutine(WaitFireRate());
+		//sound.Play(1, 2);
     }
 
     private IEnumerator WaitFireRate() //Usar corutinas para contar tiempo

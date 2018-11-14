@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour 
 {
 	public int PlayerLife;
+	private SoundPlayer sound;
+
 	private int iniLife = 3;
 	public bool isDead;
 	public int Keys;
@@ -21,6 +23,7 @@ public class PlayerBehaviour : MonoBehaviour
 		iniKeys = Keys;
 		iniPotions = Potions;
 		changeScene =  GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
+		sound = GetComponentInChildren<SoundPlayer>();
 	}
 
 	//Recibir Daño
@@ -35,6 +38,7 @@ public class PlayerBehaviour : MonoBehaviour
 			PlayerLife = 0;
 			Dead();
 		}
+		sound.Play(1, 2);
 	}
 
 	//Curarse
