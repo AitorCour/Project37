@@ -51,6 +51,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	}
 	private void OnDrawGizmos() //Dibujar el campo de visión
 	{
+		
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere(transform.position, maxRadius);
 
@@ -64,12 +65,12 @@ public class EnemyBehaviour3 : MonoBehaviour
 		if (!isInFov)
 		{
 			Gizmos.color = Color.red;
-			detected = false;
+			//detected = false;
 		}
 		else
 		{
 			Gizmos.color = Color.green;
-			detected = true;
+			//detected = true;
 		}
 		Gizmos.DrawRay(transform.position, (player.position - transform.position).normalized * maxRadius);
 
@@ -137,6 +138,14 @@ public class EnemyBehaviour3 : MonoBehaviour
 	private void FixedUpdate () 
 	{
 		isInFov = inFOV(transform, player, maxAngle, maxRadius);
+		if (!isInFov)
+		{
+			detected = false;
+		}
+		if (isInFov)
+		{
+			detected = true;
+		}
 		if(detected)
 		{
 			agent.SetDestination(player.position);//Coje la position del player y va a por él
