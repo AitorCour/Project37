@@ -19,6 +19,8 @@ public class EnableDisable : MonoBehaviour
 
 	public Material material;
 	public Color newColor;
+
+	public bool m_isAxisInUse = false;
 	// Use this for initialization
 	void Start () 
 	{
@@ -35,7 +37,7 @@ public class EnableDisable : MonoBehaviour
 	void Update () 
 	{
 		//Test
-		if(Input.GetKeyDown(KeyCode.Space))
+		if(Input.GetButtonDown("Jump"))
 		{
 			if(!isPointing)
 			{
@@ -47,6 +49,35 @@ public class EnableDisable : MonoBehaviour
 				//pointState.ResetGun();
 				SetTank();
 				NormalColor();
+			}
+		}
+		//Mando
+		if(Input.GetAxisRaw("Jump") != 0)
+		{
+			if(m_isAxisInUse == false)
+			{
+				if(!isPointing)
+				{
+					SetPoint();
+					Debug.Log("Mode Changed");
+					m_isAxisInUse = true;
+				}
+				/*else
+				{
+					//pointState.ResetGun();
+					SetTank();
+					NormalColor();
+					m_isAxisInUse = false;
+				}*/
+			}	
+		}
+		if(Input.GetAxisRaw("Jump") == 0)
+		{
+			if(m_isAxisInUse == true)
+			{
+				SetTank();
+				NormalColor();
+				m_isAxisInUse = false;
 			}
 		}
 		if(isPointing)

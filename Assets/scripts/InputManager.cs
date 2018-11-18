@@ -40,13 +40,13 @@ public class InputManager : MonoBehaviour
 		
         else if(Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
 
-		if (Input.GetKeyDown(KeyCode.O) && enDis.isPointing && enDis.precisionActive == false) 
+		if (Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive == false) 
 		{
 			gun.Shot ();
 			Debug.Log("Shoot");
 			enDis.timeCounter = 0;
 		}
-		else if(Input.GetKeyDown(KeyCode.O) && enDis.isPointing && enDis.precisionActive) 
+		else if(Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive) 
 		{
 			gun.PrecisionShot ();
 			Debug.Log("SpecialShoot");
@@ -54,7 +54,7 @@ public class InputManager : MonoBehaviour
 			enDis.precisionActive = false;
 			enDis.NormalColor();
 		}
-        if(Input.GetKeyDown(KeyCode.O) && gun.currentAmmo <= 0) gun.Reload();
+        if(Input.GetButtonDown("Fire") && gun.currentAmmo <= 0) gun.Reload();
 
 
 		//            TEST             //
