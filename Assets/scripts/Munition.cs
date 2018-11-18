@@ -22,7 +22,7 @@ public class Munition : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(isInsideTrigger && Input.GetKeyDown(KeyCode.U))
+		if(isInsideTrigger && Input.GetButtonDown("Action"))
 		{
 			//weapon.GetAmmo(munition);
 			//ammoObject.SetActive(false);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnableDisable : MonoBehaviour 
 {
 	private DragObjects dragObjects;
-	private TankControl tankControl;
+	private TankControls2 tankControl2;
 	private PointRotate pointRot;
 	private PointState pointState;
 	public GameObject ammoText;
@@ -25,7 +25,7 @@ public class EnableDisable : MonoBehaviour
 	void Start () 
 	{
 		dragObjects = GetComponent<DragObjects>();
-		tankControl = GetComponent<TankControl>();
+		tankControl2 = GetComponent<TankControls2>();
 		pointRot = GetComponent<PointRotate>();
 		pointState = GameObject.FindGameObjectWithTag("Weapon").GetComponent<PointState>();
 		pointState.transform.Rotate(0, 0, 0);
@@ -103,7 +103,7 @@ public class EnableDisable : MonoBehaviour
 	public void SetDrag()
 	{
 		dragObjects.enabled = true;
-		tankControl.enabled = false;
+		tankControl2.enabled = false;
 		pointRot.enabled = false;
 		pointState.enabled = false;
 		isPointing = false;
@@ -113,7 +113,7 @@ public class EnableDisable : MonoBehaviour
 	public void SetTank()
 	{
 		dragObjects.enabled = false;
-		tankControl.enabled = true;
+		tankControl2.enabled = true;
 		pointRot.enabled = false;
 		pointState.enabled = false;
 		isPointing = false;
@@ -123,7 +123,7 @@ public class EnableDisable : MonoBehaviour
 	public void SetPoint()//apuntado
 	{
 		dragObjects.enabled = false;
-		tankControl.enabled = false;
+		tankControl2.enabled = false;
 		pointRot.enabled = true;
 		pointState.enabled = true;
 		isPointing = true;

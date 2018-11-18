@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
 	public GameObject cameraGod;
     private Gun gun;
 	private PlayerBehaviour plBehaviour;
-	private TankControl tankControl;
+	private TankControls2 tankControl;
 	private EnableDisable enDis;
 	public int damage;
 	private int cure = 1;
@@ -26,7 +26,7 @@ public class InputManager : MonoBehaviour
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         gun = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-		tankControl = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControl>();
+		tankControl = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControls2>();
 		enDis = GameObject.FindGameObjectWithTag("Player").GetComponent<EnableDisable>();
 
         mouseCursor = new MouseCursor();

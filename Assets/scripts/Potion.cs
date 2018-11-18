@@ -22,7 +22,7 @@ public class Potion : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(isInsideTrigger && Input.GetKeyDown(KeyCode.U))
+		if(isInsideTrigger && Input.GetButtonDown("Action"))
 		{
 			//plBehaviour.GetPotions(potion);//eso está movido a los read, para que 
 			//potionObject.SetActive(false);//no se repita y cojas dos

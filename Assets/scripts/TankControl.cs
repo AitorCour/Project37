@@ -73,9 +73,4 @@ public class TankControl : MonoBehaviour
 			}
 		}
 	}
-	
-	/*public void SetAxis(Vector2 inputAxis)
-    {
-        axis = inputAxis;
-    }*/
 }

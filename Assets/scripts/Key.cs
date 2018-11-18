@@ -22,7 +22,7 @@ public class Key : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(isInsideTrigger && Input.GetKeyDown(KeyCode.U))
+		if(isInsideTrigger && Input.GetButtonDown("Action"))
 		{
 			//plBehaviour.GetKeys(key);
 			//keyObject.SetActive(false);

@@ -24,7 +24,7 @@ public class Notes : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(isInsideTrigger && Input.GetKeyDown(KeyCode.U))
+		if(isInsideTrigger && Input.GetButtonDown("Action"))
 		{
 			if(MessageReaded)
 			{

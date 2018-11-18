@@ -26,18 +26,16 @@ public class MoveObjects : MonoBehaviour
 	{
 		if (isInsideTrigger)
 		{
-			if (Input.GetKey(KeyCode.U))
+			if (Input.GetButton("Action"))
 			{
 				isHolding = true;
 				//Debug.Log("isHolding");
 			}
-			if (Input.GetKeyDown(KeyCode.O))
+			if (Input.GetButtonDown("Run") && !isHolding)
 			{
 				player.transform.position = item.transform.position;
 				player.transform.Translate(0, 4, 0);
 				//player.transform.position = item.transform.position;
-
-				Debug.Log("Up");
 			}
 			if(isHolding)
 			{
@@ -53,7 +51,7 @@ public class MoveObjects : MonoBehaviour
 				enableDisable.SetTank();
 			}
 
-			if (Input.GetKeyUp(KeyCode.U))
+			if (Input.GetButtonUp("Action"))
 			{
 				isHolding = false;
 			}
