@@ -91,6 +91,10 @@ public class InputManager : MonoBehaviour
 			{
 				return;
 			}
+			else if(isMapOpened)
+			{
+				return;
+			}
 			else
 			{
 				gameManager.Resume();
