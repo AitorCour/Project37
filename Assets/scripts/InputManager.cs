@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
     private MouseCursor mouseCursor;
 	private bool isPaused = false;
 	private bool isInventoryOpened = false;
+	private bool isMapOpened = false;
 	private bool godActive = false;
 	// Use this for initialization
 	void Start ()
@@ -80,9 +81,9 @@ public class InputManager : MonoBehaviour
 		}
 
 		//PAUSE
-		if (Input.GetKeyDown(KeyCode.Escape))
+		if (Input.GetButtonDown("Esc"))
 		{
-			if(!isPaused && !isInventoryOpened)
+			if(!isPaused && !isInventoryOpened && !isMapOpened)
 			{
 				gameManager.Pause();
 			}
@@ -97,9 +98,9 @@ public class InputManager : MonoBehaviour
 		}
 
 		//INVENTORY
-		if (Input.GetKeyDown(KeyCode.I))
+		if (Input.GetButtonDown("Inv"))
 		{
-			if(!isPaused && !isInventoryOpened)
+			if(!isPaused && !isInventoryOpened && !isMapOpened)
 			{
 				gameManager.OpenInventory();
 				//Debug.Log ("Z pressed");
@@ -109,9 +110,36 @@ public class InputManager : MonoBehaviour
 			{
 				return;
 			}
+			else if(isMapOpened)
+			{
+				return;
+			}
 			else
 			{
 				gameManager.CloseInventory();
+				//mouseCursor.HideCursor();
+			}
+		}
+		//MAP
+		if (Input.GetButtonDown("Map"))
+		{
+			if(!isPaused && !isInventoryOpened && !isMapOpened)
+			{
+				gameManager.OpenMap();
+				Debug.Log ("map pressed");
+				//mouseCursor.ShowCursor();
+			}
+			else if(isPaused)
+			{
+				return;
+			}
+			else if(isInventoryOpened)
+			{
+				return;
+			}
+			else
+			{
+				gameManager.CloseMap();
 				//mouseCursor.HideCursor();
 			}
 		}
@@ -125,6 +153,11 @@ public class InputManager : MonoBehaviour
 	public void SetInventory (bool i)
 	{
 		isInventoryOpened = i;
+	}
+
+	public void SetMap (bool m)
+	{
+		isMapOpened = m;
 	}
 	public void SetGod()
 	{

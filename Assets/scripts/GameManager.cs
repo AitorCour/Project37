@@ -9,9 +9,13 @@ public class GameManager : MonoBehaviour
 	private InputManager inputManager;
 	public GameObject canvasPause;
 	public GameObject canvasInventory;
+	public GameObject canvasMap;
+	public GameObject canvasInv;
+
 	EventSystem eventSystem;
 	public GameObject pauseButton;
 	public GameObject invButton;
+	public GameObject mapButton;
 
 	public GameObject inventory;
 	public GameObject map;
@@ -41,6 +45,7 @@ public class GameManager : MonoBehaviour
 	public void OpenInventory()
 	{
 		inputManager.SetInventory(true);
+		canvasInv.SetActive(true);
 		Time.timeScale = 0;
 		canvasInventory.SetActive(true);
 		eventSystem.SetSelectedGameObject(invButton);
@@ -49,12 +54,32 @@ public class GameManager : MonoBehaviour
 	public void CloseInventory()
 	{
 		inputManager.SetInventory(false);
+		canvasInv.SetActive(false);
 		Time.timeScale = 1;
-		canvasInventory.SetActive(false);
-		inventory.SetActive(true);
+		//canvasInventory.SetActive(false);
+		//inventory.SetActive(true);
 		map.SetActive(false);
 		notes.SetActive(false);
 	}
 	
+	public void OpenMap()
+	{
+		inputManager.SetMap(true);
+		Time.timeScale = 0;
+		canvasMap.SetActive(true);
+		canvasInv.SetActive(false);
+		canvasInventory.SetActive(true);
+		eventSystem.SetSelectedGameObject(mapButton);
+	}
 
+	public void CloseMap()
+	{
+		inputManager.SetMap(false);
+		Time.timeScale = 1;
+		canvasMap.SetActive(false);
+		//canvasInventory.SetActive(false);
+		//inventory.SetActive(true);
+		map.SetActive(false);
+		notes.SetActive(false);
+	}
 }
