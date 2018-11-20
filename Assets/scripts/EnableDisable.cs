@@ -9,6 +9,7 @@ public class EnableDisable : MonoBehaviour
 	private PointRotate pointRot;
 	private PointState pointState;
 	public GameObject ammoText;
+	private InputManager inputManager;
 	private bool isTank;
 	private bool isDragging;
 	public bool isPointing;
@@ -28,6 +29,7 @@ public class EnableDisable : MonoBehaviour
 		tankControl2 = GetComponent<TankControls2>();
 		pointRot = GetComponent<PointRotate>();
 		pointState = GameObject.FindGameObjectWithTag("Weapon").GetComponent<PointState>();
+		inputManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
 		pointState.transform.Rotate(0, 0, 0);
 		precisionActive = false;
 		material.color = Color.yellow;
@@ -37,7 +39,7 @@ public class EnableDisable : MonoBehaviour
 	void Update () 
 	{
 		//Test
-		if(Input.GetButtonDown("Jump"))
+		if(Input.GetButtonDown("Jump") && !inputManager.isPaused && !inputManager.isInventoryOpened && !inputManager.isMapOpened)
 		{
 			if(!isPointing)
 			{

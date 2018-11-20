@@ -15,9 +15,9 @@ public class InputManager : MonoBehaviour
 	private int cure = 1;
 
     private MouseCursor mouseCursor;
-	private bool isPaused = false;
-	private bool isInventoryOpened = false;
-	private bool isMapOpened = false;
+	public bool isPaused = false;
+	public bool isInventoryOpened = false;
+	public bool isMapOpened = false;
 	private bool godActive = false;
 	// Use this for initialization
 	void Start ()
@@ -44,18 +44,24 @@ public class InputManager : MonoBehaviour
 		if (Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive == false) 
 		{
 			gun.Shot ();
-			Debug.Log("Shoot");
+			//Debug.Log("Shoot");
 			enDis.timeCounter = 0;
 		}
 		else if(Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive) 
 		{
 			gun.PrecisionShot ();
-			Debug.Log("SpecialShoot");
+			//Debug.Log("SpecialShoot");
 			enDis.timeCounter = 0;
 			enDis.precisionActive = false;
 			enDis.NormalColor();
 		}
-        if(Input.GetButtonDown("Fire") && gun.currentAmmo <= 0) gun.Reload();
+        if(Input.GetButtonDown("Run") /*&& gun.currentAmmo <= 0*/ && enDis.isPointing)
+		{
+			gun.Reload();
+			Debug.Log("reload");
+		}
+
+
 
 
 		//            TEST             //
