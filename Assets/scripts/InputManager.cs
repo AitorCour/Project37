@@ -55,6 +55,23 @@ public class InputManager : MonoBehaviour
 			enDis.precisionActive = false;
 			enDis.NormalColor();
 		}
+		if((Input.GetAxisRaw("Fire") != 0))
+		{
+			if(enDis.isPointing && enDis.precisionActive == false)
+			{
+				gun.Shot ();
+				//Debug.Log("Shoot");
+				enDis.timeCounter = 0;
+			}
+			else if(enDis.isPointing && enDis.precisionActive)
+			{
+				gun.PrecisionShot ();
+				//Debug.Log("SpecialShoot");
+				enDis.timeCounter = 0;
+				enDis.precisionActive = false;
+				enDis.NormalColor();
+			}
+		}
         if(Input.GetButtonDown("Run") /*&& gun.currentAmmo <= 0*/ && enDis.isPointing)
 		{
 			gun.Reload();

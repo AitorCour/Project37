@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7612,7 +7612,6 @@ GameObject:
   - component: {fileID: 1726929925}
   - component: {fileID: 1726929924}
   - component: {fileID: 1726929923}
-  - component: {fileID: 1726929922}
   - component: {fileID: 1726929921}
   - component: {fileID: 1726929920}
   - component: {fileID: 1726929919}
@@ -7701,23 +7700,6 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: beec42443dea4a540b44f6a739242573, type: 2}
   newColor: {r: 1, g: 0, b: 0.7202716, a: 0}
   m_isAxisInUse: 0
---- !u!114 &1726929922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114832350127116318, guid: 653ac1f8959853442b6397c4b378881c,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1726929916}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01199264869111140aa4464603d58d0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  iniSpeed: 3
-  rotateSpeed: 150
-  transAmount: 0
-  godMode: 0
 --- !u!114 &1726929923
 MonoBehaviour:
   m_ObjectHideFlags: 0
