@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour 
 {
-	public int PlayerLife;
+	public int playerLife;
 	private SoundPlayer sound;
+
+	HUD hud;
 
 	private int iniLife = 3;
 	public bool isDead;
@@ -18,12 +20,16 @@ public class PlayerBehaviour : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
+
 		isDead = false;
-		PlayerLife = iniLife;
+		playerLife = iniLife;
+		hud.SetLife(playerLife);
 		iniKeys = Keys;
 		iniPotions = Potions;
 		changeScene =  GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
 		sound = GetComponentInChildren<SoundPlayer>();
+
 	}
 
 	//Recibir Daño
@@ -31,31 +37,33 @@ public class PlayerBehaviour : MonoBehaviour
 	{
 		if(isDead) return;
 
-		PlayerLife -= hit;
+		playerLife -= hit;
 
-		if (PlayerLife <= 0)
+		if (playerLife <= 0)
 		{
-			PlayerLife = 0;
+			playerLife = 0;
 			Dead();
 		}
+		hud.SetLife(playerLife);
 		sound.Play(1, 2);
 	}
 
 	//Curarse
 	public void Curation(int cure)
-	{
+	{	
 		if(isDead) return;
-		if(PlayerLife == iniLife) return;
+		if(playerLife == iniLife) return;
 		if(Potions >= 1)
 		{
-			PlayerLife += cure;
+			playerLife += cure;
 			Debug.Log("Cured +1");
 
-			if (PlayerLife >= iniLife)
+			if (playerLife >= iniLife)
 			{
-				PlayerLife = iniLife;
+				playerLife = iniLife;
 			}
 			Potions -= 1;
+			hud.SetLife(playerLife);
 		}
 		else
 		{
@@ -97,6 +105,6 @@ public class PlayerBehaviour : MonoBehaviour
 		Keys = 999;
 		Potions = 999;
 		iniLife = 999;
-		PlayerLife = 999;
+		playerLife = 999;
 	}
 }

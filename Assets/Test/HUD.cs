@@ -23,9 +23,23 @@ public class HUD : MonoBehaviour
 	void Update () 
 	{
 		ammo.text = gun.currentAmmo + " / " + gun.Munition.ToString();
-		bandages.text = "Bandages: " + plBehaviour.Potions.ToString();
-		keys.text = "Keys: " + plBehaviour.Keys.ToString();
-		plLife.text = "Life: " + plBehaviour.PlayerLife.ToString();
+		//bandages.text = "Bandages: " + plBehaviour.Potions.ToString();
+		//keys.text = "Keys: " + plBehaviour.Keys.ToString();
+		//plLife.text = "Life: " + plBehaviour.PlayerLife.ToString();
 		ammoInv.text = gun.currentAmmo + " / " + gun.Munition.ToString();
 	}
+
+	public void SetLife(int newLife)
+	{
+		plLife.text = "Life: " + newLife.ToString();
+	}
+	public void SetKeys(int newKey)
+	{
+		keys.text = "Keys: " + newKey.ToString();
+	}
+	public void SetBandages(int newBand)
+	{
+		bandages.text = "Bandages: " + newBand.ToString();
+	}
+	
 }
