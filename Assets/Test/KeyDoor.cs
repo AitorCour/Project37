@@ -26,7 +26,7 @@ public class KeyDoor : MonoBehaviour
 	{
 		if (isInsideTrigger && Input.GetButtonDown("Action"))
 		{
-			if(plBehaviour.Keys >= key)
+			if(plBehaviour.keys >= key)
 			{
 				//Debug.Log ("Change Scene");
 				//SceneManager.LoadScene(scene); //cambio scene

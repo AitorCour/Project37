@@ -3201,18 +3201,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 902457926}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2059698882}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &902457926
@@ -4072,7 +4061,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -280, y: -195}
-  m_SizeDelta: {x: 174, y: 50}
+  m_SizeDelta: {x: 177.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1055406137
 Prefab:
@@ -4290,7 +4279,7 @@ AudioListener:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1090303079}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1090303082
 Camera:
   m_ObjectHideFlags: 0
@@ -7936,10 +7925,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1893c9f3b94de314fb9a815a672f9755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerLife: 3
+  playerLife: 0
   isDead: 0
-  Keys: 0
-  Potions: 0
+  keys: 0
+  potions: 0
   cure: 1
 --- !u!114 &1726929924
 MonoBehaviour:
@@ -9622,7 +9611,6 @@ GameObject:
   - component: {fileID: 2059698885}
   - component: {fileID: 2059698884}
   - component: {fileID: 2059698883}
-  - component: {fileID: 2059698882}
   m_Layer: 5
   m_Name: CanvasInventory
   m_TagString: Untagged
@@ -9630,19 +9618,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2059698882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114534109110279102, guid: e80b284ace408b4498e85dd8a79f0f08,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2059698881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 679e2b4699c4e01448b4f639c67ef2a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gun: {fileID: 0}
 --- !u!114 &2059698883
 MonoBehaviour:
   m_ObjectHideFlags: 0

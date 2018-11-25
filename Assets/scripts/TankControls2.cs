@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TankControls2 : MonoBehaviour
 {
-	private CharacterController controller;
+	//private CharacterController controller;
 	public float speed;
 	public float iniSpeed;
 	//public float transAmount;
@@ -27,7 +27,7 @@ public class TankControls2 : MonoBehaviour
 	void Start () 
 	{
 		speed = iniSpeed;
-		controller = GetComponent<CharacterController>();
+		//controller = GetComponent<CharacterController>();
 	}
 
 	void Update ()

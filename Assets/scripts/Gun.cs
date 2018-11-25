@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class Gun : MonoBehaviour
 {
 
@@ -51,7 +52,6 @@ public class Gun : MonoBehaviour
 
         isShooting = true;
         currentAmmo--;
-
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Coje el punto de la posicion del mouse y lanza un rayo
         RaycastHit hit = new RaycastHit();
         if(Physics.Raycast(transform.position,  transform.forward, out hit, maxDistance, mask))
@@ -70,6 +70,7 @@ public class Gun : MonoBehaviour
 			}
         }
         StartCoroutine(WaitFireRate());
+		
 		//sound.Play(1, 2);
     }
 
@@ -87,10 +88,9 @@ public class Gun : MonoBehaviour
         if(Munition <= 0 ) return;
 		if(currentAmmo == maxAmmo) return;
         isReloading = true;
-       // animacion.SetTrigger("recharge");
-
-       //reload.SetTrigger ("reload");
-       StartCoroutine(WaitForReload());
+        // animacion.SetTrigger("recharge");
+        //reload.SetTrigger ("reload");
+        StartCoroutine(WaitForReload());
     }
 
     private IEnumerator WaitForReload()

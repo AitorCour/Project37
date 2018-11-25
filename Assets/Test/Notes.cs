@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Notes : MonoBehaviour 
 {
-	private PlayerBehaviour plBehaviour;
+	//private PlayerBehaviour plBehaviour;
 	public GameObject noteObject;
 	private bool isInsideTrigger = false;
 
@@ -13,12 +13,12 @@ public class Notes : MonoBehaviour
 	public string message = "Hello World";
 	public Text eText;
 	private bool MessageReaded = false;
-	private bool noteInv = false;
+	//private bool noteInv = false;
 	public GameObject note1;
 	// Use this for initialization
 	void Start () 
 	{
-		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+		//plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 	}
 	
 	// Update is called once per frame
@@ -63,7 +63,7 @@ public class Notes : MonoBehaviour
 		MessageReaded = false;
 		Time.timeScale = 1;
 		noteObject.SetActive(false);
-		noteInv = true;
+		//noteInv = true;
 		note1.SetActive(true);
 	}
 }

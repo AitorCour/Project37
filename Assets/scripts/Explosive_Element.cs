@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Explosive_Element : MonoBehaviour 
-{
+{/*
 	public int life;
 	public bool isDead;
 	private int iniLife;
@@ -38,5 +38,5 @@ public class Explosive_Element : MonoBehaviour
 	public void Explosion()
 	{
 		Debug.Log("Explosion");
-	}
+	}*/
 }

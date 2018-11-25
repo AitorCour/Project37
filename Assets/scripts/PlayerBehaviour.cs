@@ -11,9 +11,9 @@ public class PlayerBehaviour : MonoBehaviour
 
 	private int iniLife = 3;
 	public bool isDead;
-	public int Keys;
+	public int keys;
 	private int iniKeys = 0;
-	public int Potions;
+	public int potions;
 	private int iniPotions = 0;
 	public int cure = 1;
 	private ChangeScene changeScene;
@@ -25,8 +25,10 @@ public class PlayerBehaviour : MonoBehaviour
 		isDead = false;
 		playerLife = iniLife;
 		hud.SetLife(playerLife);
-		iniKeys = Keys;
-		iniPotions = Potions;
+		hud.SetBandages(potions);
+		hud.SetKeys(keys);
+		iniKeys = keys;
+		iniPotions = potions;
 		changeScene =  GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
 		sound = GetComponentInChildren<SoundPlayer>();
 
@@ -53,17 +55,18 @@ public class PlayerBehaviour : MonoBehaviour
 	{	
 		if(isDead) return;
 		if(playerLife == iniLife) return;
-		if(Potions >= 1)
+		if(potions >= 1)
 		{
 			playerLife += cure;
-			Debug.Log("Cured +1");
+			//Debug.Log("Cured +1");
 
 			if (playerLife >= iniLife)
 			{
 				playerLife = iniLife;
 			}
-			Potions -= 1;
+			potions -= 1;
 			hud.SetLife(playerLife);
+			hud.SetBandages(potions);
 		}
 		else
 		{
@@ -76,7 +79,7 @@ public class PlayerBehaviour : MonoBehaviour
 		isDead = true;
 		if (isDead == true)
 		{
-			Debug.Log ("isdead");
+			//Debug.Log ("isdead");
 			changeScene.Death();
 		}
 	}
@@ -84,27 +87,33 @@ public class PlayerBehaviour : MonoBehaviour
 	public void GetKeys(int key)
 	{
 		if(isDead) return;
-		Keys += key;
+		keys += key;
 		//Debug.Log ("key");
+		hud.SetKeys(keys);
 	}
 	//Perder Llaves
 	public void LoseKeys(int key)
 	{
 		if(isDead) return;
-		Keys -= key;
+		keys -= key;
+		hud.SetKeys(keys);
 	}
 	//Sumar Pociones
 	public void GetPotions(int potion)
 	{
 		if(isDead) return;
-		Potions += potion;
+		potions += potion;
 		//Debug.Log ("potion");
+		hud.SetBandages(potions);
 	}
 	public void GodMode()
 	{
-		Keys = 999;
-		Potions = 999;
+		keys = 999;
+		potions = 999;
 		iniLife = 999;
 		playerLife = 999;
+		hud.SetLife(playerLife);
+		hud.SetBandages(potions);
+		hud.SetKeys(keys);
 	}
 }
