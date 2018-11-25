@@ -3985,6 +3985,16 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 488245507}
+    - target: {fileID: 114286371528777484, guid: 82b1bf7db59e3b94092e74f833782a09,
+        type: 2}
+      propertyPath: radius
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114286371528777484, guid: 82b1bf7db59e3b94092e74f833782a09,
+        type: 2}
+      propertyPath: targetMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b1bf7db59e3b94092e74f833782a09, type: 2}
   m_IsPrefabAsset: 0
@@ -7205,6 +7215,10 @@ MonoBehaviour:
   EnemyDamage: 1
   startingHealth: 1
   currentHealt: 0
+  radius: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!136 &1560431692
 CapsuleCollider:
   m_ObjectHideFlags: 0

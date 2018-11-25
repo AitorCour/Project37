@@ -36,6 +36,9 @@ public class EnemyBehaviour3 : MonoBehaviour
 
 	public int startingHealth = 1;
 	public int currentHealt;
+
+	public float radius;
+	public LayerMask targetMask;
 	// Use this for initialization
 	void Start () 
 	{
@@ -76,6 +79,11 @@ public class EnemyBehaviour3 : MonoBehaviour
 
 		Gizmos.color = Color.black;
 		Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
+
+		Color color = Color.red;
+        color.a = 0.1f;
+        Gizmos.color = color;
+        Gizmos.DrawSphere(transform.position, radius);
 	}
 	public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
 	{
@@ -150,6 +158,12 @@ public class EnemyBehaviour3 : MonoBehaviour
 		{
 			agent.SetDestination(player.position);//Coje la position del player y va a por él
 		}
+		Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, targetMask);
+        if(hitColliders.Length != 0)
+        {
+            detected = true;
+            //targetTransform = hitColliders[0].transform;
+        }
 	}
 	void IdleUpdate()
     {   
@@ -227,6 +241,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         //particulas.Stop();
 		maxRadius = normalRadius;
         state = State.Idle;
+		radius = 2;
     }
     void SetPatrol()
     {
@@ -245,6 +260,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		maxRadius = detectRadius;
         state = State.Chase;
 		animator.SetBool("Attacking", false);
+		radius = 5;
     }
 	void SetAttack()
 	{
