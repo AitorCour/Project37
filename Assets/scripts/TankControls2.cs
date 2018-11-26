@@ -4,63 +4,29 @@ using UnityEngine;
 
 public class TankControls2 : MonoBehaviour
 {
-	//private CharacterController controller;
 	public float speed;
 	public float iniSpeed;
-	//public float transAmount;
-
-	public enum RotationAxes {MouseXAndY = 0, MouseX = 1, MouseY = 2}
-	public RotationAxes axes = RotationAxes.MouseXAndY;
-	public float sensitivityX = 15f;
-	//public float sensitivityY = 15f;
-
-	public float minimumX = -360f;
-	public float maximumX = 360f;
-
-	//public float minimumY = -60f;
-	//public float maximumY = 60f;
-
-	float rotationY = 0f;
-
+	public float rotSpeed;
+	public float runSpeed;
 	public bool godMode;
 	
 	void Start () 
 	{
 		speed = iniSpeed;
-		//controller = GetComponent<CharacterController>();
 	}
 
 	void Update ()
 	{
-		
-		
-		transform.Translate(0f, 0f,speed * Input.GetAxis("Vertical") * Time.deltaTime);
-		
+		var x = Input.GetAxis("Horizontal") * Time.deltaTime * rotSpeed;
+        var z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+ 
+        transform.Rotate(0, x, 0);
+        transform.Translate(0, 0, z);
 
-		if (axes == RotationAxes.MouseXAndY)
-		{
-			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Horizontal") * sensitivityX;
-
-			//rotationY +=  Input.GetAxis("Vertical") * sensitivityY;
-			//rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-
-			transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-		}
-		else if (axes == RotationAxes.MouseX){
-			transform.Rotate(0, Input.GetAxis("Horizontal") * sensitivityX, 0);
-		}
-		else
-		{
-			//rotationY += Input.GetAxis("Vertical") * sensitivityY;
-			//rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-
-			transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
-		}
-
-		if (Input.GetButton("Run")) //Probar a hacer un bool,para cuando corra y cuando no
+		if (Input.GetButton("Run"))
 		{
 			//Debug.Log("isRunning");
-			speed = 5;
+			speed = runSpeed;
 		}
 		if (Input.GetButtonUp("Run"))
 		{
