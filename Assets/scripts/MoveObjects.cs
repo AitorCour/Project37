@@ -12,8 +12,8 @@ public class MoveObjects : MonoBehaviour
 	private EnableDisable enableDisable;
 	private bool isInsideTrigger = false;
 	private bool isHolding = false;
-
-	public Animator subirObj;
+	private bool firstCont = true;
+	//public Animator subirObj;
 	// Use this for initialization
 	void Start () 
 	{
@@ -40,14 +40,17 @@ public class MoveObjects : MonoBehaviour
 			if(isHolding)
 			{
 				//Debug.Log("Object Grabed");
-				item.transform.SetParent(player.transform);
+				//item.transform.SetParent(player.transform);
+				item.transform.position = player.transform.position;
+				firstCont = false;
 				enableDisable.SetDrag();
 			}
 
-			if(!isHolding)
+			if(!isHolding && !firstCont)
 			{
 				objectPos = item.transform.position;
 				item.transform.SetParent(null);
+				player.transform.Translate(0, 0, -1);
 				enableDisable.SetTank();
 			}
 
@@ -73,6 +76,7 @@ public class MoveObjects : MonoBehaviour
 		if (other.tag == "Player")
 		{
 			isInsideTrigger = false;
+			firstCont = true;
 		}
 	}
 }
