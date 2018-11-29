@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3990,16 +3990,6 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 488245507}
-    - target: {fileID: 114286371528777484, guid: 82b1bf7db59e3b94092e74f833782a09,
-        type: 2}
-      propertyPath: radius
-      value: 1.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 114286371528777484, guid: 82b1bf7db59e3b94092e74f833782a09,
-        type: 2}
-      propertyPath: targetMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b1bf7db59e3b94092e74f833782a09, type: 2}
   m_IsPrefabAsset: 0
@@ -7220,10 +7210,10 @@ MonoBehaviour:
   EnemyDamage: 1
   startingHealth: 1
   currentHealt: 0
-  radius: 0
+  radius: 2
   targetMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!136 &1560431692
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7849,6 +7839,7 @@ GameObject:
   - component: {fileID: 1726929919}
   - component: {fileID: 1726929918}
   - component: {fileID: 1726929917}
+  - component: {fileID: 1726929922}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -7927,6 +7918,19 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: beec42443dea4a540b44f6a739242573, type: 2}
   newColor: {r: 1, g: 0, b: 0.7202716, a: 0}
   m_isAxisInUse: 0
+--- !u!136 &1726929922
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1726929916}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.5
+  m_Height: 1.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1726929923
 MonoBehaviour:
   m_ObjectHideFlags: 0

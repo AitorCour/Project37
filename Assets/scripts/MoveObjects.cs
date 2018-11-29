@@ -8,17 +8,21 @@ public class MoveObjects : MonoBehaviour
 	//Se complementa con el drag object del player, que controla como se movera.
 	Vector3 objectPos; 
 	private GameObject player;
+	private CharacterController playerCol;
 	public GameObject item;
+	private BoxCollider itemCol;
 	private EnableDisable enableDisable;
 	private bool isInsideTrigger = false;
 	private bool isHolding = false;
-	private bool firstCont = true;
+	
 	//public Animator subirObj;
 	// Use this for initialization
 	void Start () 
 	{
 		enableDisable = GameObject.FindGameObjectWithTag("Player").GetComponent<EnableDisable>();
 		player = GameObject.FindGameObjectWithTag("Player");
+		itemCol = GetComponentInChildren<BoxCollider>();
+		playerCol = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
 	}
 	
 	// Update is called once per frame
@@ -40,17 +44,17 @@ public class MoveObjects : MonoBehaviour
 			if(isHolding)
 			{
 				//Debug.Log("Object Grabed");
-				//item.transform.SetParent(player.transform);
-				item.transform.position = player.transform.position;
-				firstCont = false;
+				item.transform.SetParent(player.transform);
+				playerCol.center = new Vector3 (0, 0, 2);
+				//item.transform.position = player.transform.position;
 				enableDisable.SetDrag();
 			}
 
-			if(!isHolding && !firstCont)
+			if(!isHolding )
 			{
 				objectPos = item.transform.position;
 				item.transform.SetParent(null);
-				player.transform.Translate(0, 0, -1);
+				playerCol.center = new Vector3 (0, 0, 0);
 				enableDisable.SetTank();
 			}
 
@@ -76,7 +80,6 @@ public class MoveObjects : MonoBehaviour
 		if (other.tag == "Player")
 		{
 			isInsideTrigger = false;
-			firstCont = true;
 		}
 	}
 }
