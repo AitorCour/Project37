@@ -4,35 +4,39 @@ using UnityEngine;
  
 public class LookAtEnemy : MonoBehaviour
 {
-    public GameObject enemy;
-    // This is what the player is looking at. In this example it is the dinosaur's head.
+    public Transform[] enemy;
+	public int currentEnemy;
+
+   //public GameObject enemy;
+   // This is what the player is looking at. In this example it is the dinosaur's head.
  
-    public GameObject fovStartPoint;
-    // We will use the forward direction of whatever GameObject you give it.
+   public GameObject fovStartPoint;
+   // We will use the forward direction of whatever GameObject you give it.
  
-    public float lookSpeed = 200;
-    // How fast the rotation happens.
+   public float lookSpeed = 200;
+   // How fast the rotation happens.
  
-    public float maxAngle = 45;
-    // The maximum fov to trigger looking at the enemy.
+   public float maxAngle = 45;
+   // The maximum fov to trigger looking at the enemy.
  
-    public float maxAngleReset = 90;
-    // The maximum fov to trigger returning to the base state.
+   public float maxAngleReset = 90;
+   // The maximum fov to trigger returning to the base state.
      
-    public bool canLean = false;
-    // This turns on looking up/down depending on the enemy's height.
+   public bool canLean = false;
+   // This turns on looking up/down depending on the enemy's height.
  
-    public bool arms = false;
+   public bool arms = false;
  
-    private Quaternion lookAt;
-    private Quaternion targetRotation;
- 
-    void Update()
-    {
- 
+   private Quaternion lookAt;
+   private Quaternion targetRotation;
+
+   void Update()
+   {
+		FindClosestEnemy();
         if (EnemyInFieldOfView(fovStartPoint))
         {
-            Vector3 direction = enemy.transform.position - transform.position;
+            //Vector3 direction = enemy.transform.position - transform.position;
+			Vector3 direction = enemy[currentEnemy].position - transform.position;
  
             if (!canLean)
             {
@@ -67,12 +71,13 @@ public class LookAtEnemy : MonoBehaviour
                 transform.localRotation, targetRotation, Time.deltaTime * lookSpeed);
             }
         }
-    }
+   }
  
-    bool EnemyInFieldOfView(GameObject looker)
-    {
+   bool EnemyInFieldOfView(GameObject looker)
+   {
  
-        Vector3 targetDir = enemy.transform.position - looker.transform.position;
+        //Vector3 targetDir = enemy.transform.position - looker.transform.position;
+		Vector3 targetDir = enemy[currentEnemy].position - looker.transform.position;
         // gets the direction to the enemy.
  
         float angle = Vector3.Angle(targetDir, looker.transform.forward);
@@ -86,11 +91,12 @@ public class LookAtEnemy : MonoBehaviour
         {
             return false;
         }
-    }
+   }
  
-    bool EnemyInFieldOfViewNoResetPoint(GameObject looker)
-    {
-        Vector3 targetDir = enemy.transform.position - looker.transform.position;
+   bool EnemyInFieldOfViewNoResetPoint(GameObject looker)
+   {
+        //Vector3 targetDir = enemy.transform.position - looker.transform.position;
+		Vector3 targetDir = enemy[currentEnemy].position - looker.transform.position;
         float angle = Vector3.Angle(targetDir, looker.transform.forward);
  
         if (angle < maxAngleReset)
@@ -101,5 +107,6 @@ public class LookAtEnemy : MonoBehaviour
         {
             return false;
         }
-    }
+   }
+   //si el transform del player está mas cerca del transform del otro enemigo, cambio
 }
