@@ -122,8 +122,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 68791451}
-  - component: {fileID: 68791453}
-  - component: {fileID: 68791452}
   m_Layer: 8
   m_Name: Weapon
   m_TagString: Weapon
@@ -146,43 +144,6 @@ Transform:
   m_Father: {fileID: 211220507}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &68791452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114710584778535730, guid: 653ac1f8959853442b6397c4b378881c,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 68791450}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3652c3e2c8b8a6445b540ad80fbdbd18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: Infinity
-  mask:
-    serializedVersion: 2
-    m_Bits: 513
-  maxAmmo: 6
-  currentAmmo: 6
-  Munition: 0
-  fireRate: 1
-  hitForce: 1
-  hitDamage: 1
-  isShooting: 0
-  isReloading: 0
-  ReloadTime: 2
---- !u!114 &68791453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114934090455802730, guid: 653ac1f8959853442b6397c4b378881c,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 68791450}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b96036a5d1d6dc49b0310bc9613719c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &74408311
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +614,10 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 474317319}
+    - target: {fileID: 1382280749957078, guid: 82b1bf7db59e3b94092e74f833782a09, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b1bf7db59e3b94092e74f833782a09, type: 2}
   m_IsPrefabAsset: 0
@@ -812,7 +777,7 @@ GameObject:
   m_Layer: 8
   m_Name: armL_FOV
   m_TagString: Untagged
-  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1792,8 +1757,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 869936684}
-  - component: {fileID: 869936686}
-  - component: {fileID: 869936685}
   m_Layer: 8
   m_Name: Weapon
   m_TagString: Weapon
@@ -1816,43 +1779,6 @@ Transform:
   m_Father: {fileID: 2062428599}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &869936685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114710584778535730, guid: 653ac1f8959853442b6397c4b378881c,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 869936683}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3652c3e2c8b8a6445b540ad80fbdbd18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: Infinity
-  mask:
-    serializedVersion: 2
-    m_Bits: 513
-  maxAmmo: 6
-  currentAmmo: 6
-  Munition: 0
-  fireRate: 1
-  hitForce: 1
-  hitDamage: 1
-  isShooting: 0
-  isReloading: 0
-  ReloadTime: 2
---- !u!114 &869936686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114934090455802730, guid: 653ac1f8959853442b6397c4b378881c,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 869936683}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b96036a5d1d6dc49b0310bc9613719c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &921144957
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,7 +1961,7 @@ GameObject:
   m_Layer: 8
   m_Name: armR
   m_TagString: Untagged
-  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2064,10 +1990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f1ccdeed7a5a64c9207eaca7ba1345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 1087569511}
-  - {fileID: 2028308492}
-  currentEnemy: 0
+  target: {fileID: 0}
   fovStartPoint: {fileID: 2062428598}
   lookSpeed: 200
   maxAngle: 45
@@ -2086,7 +2009,7 @@ GameObject:
   m_Layer: 8
   m_Name: armL
   m_TagString: Untagged
-  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2115,10 +2038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f1ccdeed7a5a64c9207eaca7ba1345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 1087569511}
-  - {fileID: 2028308492}
-  currentEnemy: 0
+  target: {fileID: 0}
   fovStartPoint: {fileID: 211220506}
   lookSpeed: 200
   maxAngle: 45
@@ -2338,7 +2258,7 @@ GameObject:
   - component: {fileID: 1087569508}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: HUD
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3207,7 +3127,7 @@ GameObject:
   - component: {fileID: 2028308489}
   m_Layer: 0
   m_Name: Enemy1
-  m_TagString: HUD
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3273,7 +3193,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2028308488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.33, y: 0.6, z: 14.54}
+  m_LocalPosition: {x: -7.33, y: 0.6, z: 16.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3290,7 +3210,7 @@ GameObject:
   m_Layer: 8
   m_Name: armR_FOV
   m_TagString: Untagged
-  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
