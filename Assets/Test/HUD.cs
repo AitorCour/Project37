@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour 
 {
-	private Gun gun;
+	Gun gun;
 	//private PlayerBehaviour plBehaviour;
 	public Text ammo;
 	public Text ammoInv;
@@ -32,10 +32,10 @@ public class HUD : MonoBehaviour
 	}
 	public void SetKeys(int newKey)
 	{
-		keys.text = "Keys: " + newKey.ToString();
+		keys.text = "x " + newKey.ToString();
 	}
 	public void SetBandages(int newBand)
 	{
-		bandages.text = "Bandages: " + newBand.ToString();
+		bandages.text = "x " + newBand.ToString();
 	}
 }

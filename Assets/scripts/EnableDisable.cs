@@ -7,7 +7,7 @@ public class EnableDisable : MonoBehaviour
 	private DragObjects dragObjects;
 	private TankControls2 tankControl2;
 	private PointRotate pointRot;
-	private PointState pointState;
+
 	public GameObject ammoText;
 	private InputManager inputManager;
 	private bool isTank;
@@ -28,9 +28,7 @@ public class EnableDisable : MonoBehaviour
 		dragObjects = GetComponent<DragObjects>();
 		tankControl2 = GetComponent<TankControls2>();
 		pointRot = GetComponent<PointRotate>();
-		pointState = GameObject.FindGameObjectWithTag("Weapon").GetComponent<PointState>();
 		inputManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
-		pointState.transform.Rotate(0, 0, 0);
 		precisionActive = false;
 		material.color = Color.yellow;
 	}
@@ -107,7 +105,7 @@ public class EnableDisable : MonoBehaviour
 		dragObjects.enabled = true;
 		tankControl2.enabled = false;
 		pointRot.enabled = false;
-		pointState.enabled = false;
+
 		isPointing = false;
 		ammoText.SetActive(false);
 	}
@@ -117,7 +115,7 @@ public class EnableDisable : MonoBehaviour
 		dragObjects.enabled = false;
 		tankControl2.enabled = true;
 		pointRot.enabled = false;
-		pointState.enabled = false;
+
 		isPointing = false;
 		ammoText.SetActive(false);
 	}
@@ -127,9 +125,7 @@ public class EnableDisable : MonoBehaviour
 		dragObjects.enabled = false;
 		tankControl2.enabled = false;
 		pointRot.enabled = true;
-		pointState.enabled = true;
 		isPointing = true;
-		pointState.transform.Rotate(0, 0, 0);
 		ammoText.SetActive(true);
 	}
 	public void NormalColor()
