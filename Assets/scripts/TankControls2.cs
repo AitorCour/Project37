@@ -23,10 +23,15 @@ public class TankControls2 : MonoBehaviour
         transform.Rotate(0, x, 0);
         transform.Translate(0, 0, z);
 
-		if (Input.GetButton("Run"))
+		if (Input.GetButton("Run") && Input.GetAxis("Vertical") > 0)
 		{
 			//Debug.Log("isRunning");
 			speed = runSpeed;
+		}
+		if (Input.GetButton("Run") && Input.GetAxis("Vertical") < 0)
+		{
+			//Debug.Log("isRunning");
+			speed = iniSpeed;
 		}
 		if (Input.GetButtonUp("Run"))
 		{

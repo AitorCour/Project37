@@ -75,7 +75,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 			Gizmos.color = Color.green;
 			//detected = true;
 		}
-		Gizmos.DrawRay(transform.position, (player.position - transform.position).normalized * maxRadius);
+		//Gizmos.DrawRay(transform.position, (player.position - transform.position).normalized * maxRadius);
 
 		Gizmos.color = Color.black;
 		Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
