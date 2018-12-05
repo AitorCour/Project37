@@ -6,7 +6,7 @@ public class CameraSwitch : MonoBehaviour
 {
 	public GameObject CameraOn;
 	public GameObject CameraOff;
-	public GameObject CameraOff2;
+	//public GameObject CameraOff2;
 
 	private void OnTriggerEnter (Collider other)
 	{
@@ -15,7 +15,7 @@ public class CameraSwitch : MonoBehaviour
 			Debug.Log("Entered");
 			CameraOn.SetActive(true);
 			CameraOff.SetActive(false);
-			CameraOff2.SetActive(false);
+			//CameraOff2.SetActive(false);
 		}
 		
 	}
