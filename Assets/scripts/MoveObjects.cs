@@ -31,34 +31,26 @@ public class MoveObjects : MonoBehaviour
 			if (Input.GetButton("Action"))
 			{
 				isHolding = true;
-				//Debug.Log("isHolding");
+				Debug.Log("isHolding");
+				item.transform.SetParent(player.transform);
+				enableDisable.SetDrag();
 			}
 			if (Input.GetButtonDown("Run") && !isHolding)
 			{
+				player.transform.Translate(0, 6, 6);
 				player.transform.position = item.transform.position;
-				player.transform.Translate(0, 4, 0);
+				//player.transform.Translate(0, 6, 0);
 				//player.transform.position = item.transform.position;
-			}
-			if(isHolding)
-			{
-				//Debug.Log("Object Grabed");
-				item.transform.SetParent(player.transform);
-				//playerCol.center = new Vector3 (0, 0, 2);
-				//item.transform.position = player.transform.position;
-				enableDisable.SetDrag();
-			}
-
-			if(!isHolding )
-			{
-				objectPos = item.transform.position;
-				item.transform.SetParent(null);
-				//playerCol.center = new Vector3 (0, 0, 0);
-				enableDisable.SetTank();
+				Debug.Log("Up");
 			}
 
 			if (Input.GetButtonUp("Action"))
 			{
 				isHolding = false;
+				Debug.Log("NOTHolding");
+				objectPos = item.transform.position;
+				item.transform.SetParent(null);
+				enableDisable.SetTank();
 			}
 		}
 		
@@ -69,7 +61,7 @@ public class MoveObjects : MonoBehaviour
 		if (other.tag == "Player")
 		{
 			isInsideTrigger = true; //cambia el bool
-			//Debug.Log ("Enterd 3");
+			Debug.Log ("Enterd 3");
 		}
 	}
 
