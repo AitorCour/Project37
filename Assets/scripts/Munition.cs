@@ -13,10 +13,14 @@ public class Munition : MonoBehaviour
 	public string message = "Hello World";
 	public Text eText;
 	private bool MessageReaded = false;
+
+	private SoundPlayer sound;
+
 	// Use this for initialization
 	void Start () 
 	{
 		weapon = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
+		sound = GetComponentInChildren<SoundPlayer>();
 	}
 	
 	// Update is called once per frame
@@ -30,7 +34,10 @@ public class Munition : MonoBehaviour
 			{
 				ReadEnd();
 			}
-			else Read();
+			else 
+			{
+				Read();
+			}
 		}
 		
 	}
@@ -56,6 +63,7 @@ public class Munition : MonoBehaviour
 		MessageReaded = true;
 		Time.timeScale = 0;
 		weapon.GetAmmo(munition);
+		sound.Play(1, 2);
 	}
 	private void ReadEnd()
 	{

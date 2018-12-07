@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+
 public class EnableDisable : MonoBehaviour 
 {
 	private DragObjects dragObjects;
@@ -21,12 +21,10 @@ public class EnableDisable : MonoBehaviour
 	public Material material;
 	public Color newColor;
 
-	private NavMeshAgent myNavAgent;
-	public bool NavActive = true;
-	public float timeCounter2;
-	public float disTime = 1.0f;
-
 	public bool m_isAxisInUse = false;
+
+	private SoundPlayer sound;
+	private AudioSource sound2;
 	// Use this for initialization
 	void Start () 
 	{
@@ -37,7 +35,8 @@ public class EnableDisable : MonoBehaviour
 		precisionActive = false;
 		material.color = Color.yellow;
 
-		myNavAgent = GetComponent<NavMeshAgent>();
+		sound = GetComponentInChildren<SoundPlayer>();
+		sound2 = GetComponentInChildren<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -95,17 +94,11 @@ public class EnableDisable : MonoBehaviour
 		{
 			timeCounter = 0;
 			precisionActive = false;
-		}
-		//desactivador del navmesh
-		if(!NavActive)
-		{
-			myNavAgent.enabled = false;
-			UpdateTime();
-		}
-		else if(NavActive)
-		{
-			myNavAgent.enabled = true;
-			timeCounter2 = 0;
+			if(sound2.isPlaying)
+			{
+				sound2.Stop();
+			}
+			
 		}
 	}
 	void UpdatePoint()
@@ -115,8 +108,21 @@ public class EnableDisable : MonoBehaviour
 			precisionActive = true;
 			//Debug.Log("Special Shoot Ready");
 			material.color = newColor;
+			if(!sound2.isPlaying)
+			{
+				sound2.Play();
+			}
+			
 		}
-		else timeCounter += Time.deltaTime;
+
+		else 
+		{
+			timeCounter += Time.deltaTime;
+			if(sound2.isPlaying)
+			{
+				sound2.Stop();
+			}
+		}
 	}
 	public void SetDrag()
 	{
@@ -149,14 +155,5 @@ public class EnableDisable : MonoBehaviour
 	public void NormalColor()
 	{
 		material.color = Color.yellow;
-	}
-	//desactivador del navmesh
-	void UpdateTime()
-	{
-		if(timeCounter2 >= disTime)
-		{
-			NavActive = true;
-		}
-		else timeCounter2 += Time.deltaTime;
 	}
 }

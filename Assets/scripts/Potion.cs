@@ -13,10 +13,14 @@ public class Potion : MonoBehaviour
 	public string message = "Hello World";
 	public Text eText;
 	private bool MessageReaded = false;
+
+	private SoundPlayer sound;
+
 	// Use this for initialization
 	void Start () 
 	{
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+		sound = GetComponentInChildren<SoundPlayer>();
 	}
 	
 	// Update is called once per frame
@@ -56,6 +60,7 @@ public class Potion : MonoBehaviour
 		MessageReaded = true;
 		Time.timeScale = 0;
 		plBehaviour.GetPotions(potion);
+		sound.Play(1, 2);
 	}
 	private void ReadEnd()
 	{

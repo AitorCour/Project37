@@ -47,7 +47,11 @@ public class PlayerBehaviour : MonoBehaviour
 			Dead();
 		}
 		hud.SetLife(playerLife);
-		sound.Play(1, 2);
+		if(playerLife >= 1)
+		{
+			sound.Play(1, 2);
+		}
+		
 	}
 
 	//Curarse
@@ -77,6 +81,7 @@ public class PlayerBehaviour : MonoBehaviour
 	private void Dead()
 	{
 		isDead = true;
+		sound.Play(3, 4);
 		if (isDead == true)
 		{
 			//Debug.Log ("isdead");
