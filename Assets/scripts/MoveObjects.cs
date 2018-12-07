@@ -13,6 +13,7 @@ public class MoveObjects : MonoBehaviour
 	private EnableDisable enableDisable;
 	private bool isInsideTrigger = false;
 	private bool isHolding = false;
+
 	
 	//public Animator subirObj;
 	// Use this for initialization
@@ -20,7 +21,6 @@ public class MoveObjects : MonoBehaviour
 	{
 		enableDisable = GameObject.FindGameObjectWithTag("Player").GetComponent<EnableDisable>();
 		player = GameObject.FindGameObjectWithTag("Player");
-
 	}
 	
 	// Update is called once per frame
@@ -39,8 +39,7 @@ public class MoveObjects : MonoBehaviour
 			{
 				player.transform.Translate(0, 6, 6);
 				player.transform.position = item.transform.position;
-				//player.transform.Translate(0, 6, 0);
-				//player.transform.position = item.transform.position;
+
 				Debug.Log("Up");
 			}
 
