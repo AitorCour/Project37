@@ -137,7 +137,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4081537948166826}
-  - component: {fileID: 114568947776025146}
   - component: {fileID: 114789719205799714}
   - component: {fileID: 114073439876031916}
   - component: {fileID: 114187593627506650}
@@ -147,7 +146,6 @@ GameObject:
   - component: {fileID: 54248463845711470}
   - component: {fileID: 195923896480560946}
   - component: {fileID: 136324921935198414}
-  - component: {fileID: 114790029098853570}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -193,8 +191,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1634423729985898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.27, y: 2, z: -4.87}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -0.139, y: 4.87, z: -2.74}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4966669622437810}
   - {fileID: 4974190146153610}
@@ -726,22 +724,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 120
---- !u!114 &114568947776025146
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1634423729985898}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cc20a49318c7704ba05d07c4fd2d069, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  moveDirection: {x: 0, y: 0, z: 0}
-  jumpSpeed: 0
-  jump: 0
-  gravityMag: 5
 --- !u!114 &114634322705431482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -774,20 +756,6 @@ MonoBehaviour:
   keys: 0
   potions: 0
   cure: 1
---- !u!114 &114790029098853570
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1634423729985898}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee536fc73fd551c48a14d83bac2ff9a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 1
-  timeCounter: 0
-  disTime: 1
 --- !u!114 &114832467663868508
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -12,14 +12,13 @@ public class CameraSwitch : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-			Debug.Log("Entered");
+			//Debug.Log("Entered");
 			CameraOn.SetActive(true);
 			CameraOff.SetActive(false);
 			CameraOff2.SetActive(false);
 		}
-		
 	}
-	
+
 	//La camara se pone por defecto a cualquiera. Ahora tengo pocas y puede poner un hueco mas. Solucionar para que por defecto la 1 sea la primera.
 	//solucionar que lo unico que hace que cambie de camara sea el player
 
