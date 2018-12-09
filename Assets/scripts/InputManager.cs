@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class InputManager : MonoBehaviour
 {
-    private PlayerController playerController;
+    private NavMeshAgent myNav;
+	private Rigidbody rigidbody;
+
 	private GameManager gameManager;
 	public GameObject cameraGod;
     private Gun gun;
@@ -24,7 +27,8 @@ public class InputManager : MonoBehaviour
     {
 		//shoot2 = GetComponent<Animator>();
 		gameManager = GetComponent<GameManager>();
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        myNav = GameObject.FindGameObjectWithTag("Player").GetComponent<NavMeshAgent>();
+		rigidbody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
         gun = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 		tankControl = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControls2>();
@@ -191,14 +195,16 @@ public class InputManager : MonoBehaviour
 		plBehaviour.GodMode();
 		gun.GodMode();
 		tankControl.godMode = true;
-		playerController.enabled = false;
+		myNav.enabled = false;
+		rigidbody.useGravity = false;
 		cameraGod.SetActive(true);
 		godActive = true;
 	}
 	public void SetNormal()
 	{
 		tankControl.godMode = false;
-		playerController.enabled = true;
+		myNav.enabled = true;
+		rigidbody.useGravity = true;
 		cameraGod.SetActive(false);
 		godActive = false;
 	}
