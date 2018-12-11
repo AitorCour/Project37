@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ReadPause : MonoBehaviour 
 {
 	public GameObject TextPanel = null;
-	public GameObject player;
+	//public GameObject player;
 
 	private bool isInsideTrigger = false;
 	private bool MessageReaded = false;
@@ -17,7 +17,7 @@ public class ReadPause : MonoBehaviour
 
 	void Start()
 	{
-		player = GameObject.FindGameObjectWithTag("Player");
+		//player = GameObject.FindGameObjectWithTag("Player");
 	}
 
 	// Update is called once per frame

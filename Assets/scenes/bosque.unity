@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3131,11 +3131,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4218742798407060, guid: a5129920a4aff8f4abf94c6c2afcb976, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 2.5
+      value: -5.6
       objectReference: {fileID: 0}
     - target: {fileID: 4218742798407060, guid: a5129920a4aff8f4abf94c6c2afcb976, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -30
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: 4218742798407060, guid: a5129920a4aff8f4abf94c6c2afcb976, type: 2}
       propertyPath: m_LocalScale.z
@@ -3143,7 +3143,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4218742798407060, guid: a5129920a4aff8f4abf94c6c2afcb976, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -14.9
+      value: -5.8
       objectReference: {fileID: 0}
     - target: {fileID: 4218742798407060, guid: a5129920a4aff8f4abf94c6c2afcb976, type: 2}
       propertyPath: m_LocalScale.x
@@ -3152,6 +3152,41 @@ Prefab:
     - target: {fileID: 4218742798407060, guid: a5129920a4aff8f4abf94c6c2afcb976, type: 2}
       propertyPath: m_LocalScale.y
       value: 1.1730229
+      objectReference: {fileID: 0}
+    - target: {fileID: 198267909623534858, guid: a5129920a4aff8f4abf94c6c2afcb976,
+        type: 2}
+      propertyPath: autoRandomSeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198267909623534858, guid: a5129920a4aff8f4abf94c6c2afcb976,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 45296
+      objectReference: {fileID: 0}
+    - target: {fileID: 198267909623534858, guid: a5129920a4aff8f4abf94c6c2afcb976,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 198267909623534858, guid: a5129920a4aff8f4abf94c6c2afcb976,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.ctime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 198267909623534858, guid: a5129920a4aff8f4abf94c6c2afcb976,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.key2.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198267909623534858, guid: a5129920a4aff8f4abf94c6c2afcb976,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198267909623534858, guid: a5129920a4aff8f4abf94c6c2afcb976,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5129920a4aff8f4abf94c6c2afcb976, type: 2}
@@ -4018,14 +4053,6 @@ Prefab:
       propertyPath: m_Name
       value: GroundFog (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4758245410307366, guid: 3aaf17d31d958084592c616fdfed9210, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 7.632253
-      objectReference: {fileID: 0}
-    - target: {fileID: 4758245410307366, guid: 3aaf17d31d958084592c616fdfed9210, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -93.215996
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aaf17d31d958084592c616fdfed9210, type: 2}
   m_IsPrefabAsset: 0
@@ -4432,6 +4459,11 @@ Prefab:
       propertyPath: black
       value: 
       objectReference: {fileID: 1861297107}
+    - target: {fileID: 114025695251574780, guid: 57145e3523b78fb4b9c5e90c4fab3ad6,
+        type: 2}
+      propertyPath: scene
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
   m_IsPrefabAsset: 0

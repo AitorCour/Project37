@@ -76,6 +76,6 @@ public class ChangeScene : MonoBehaviour
 		//SceneManager.LoadScene(scene);
 		animator.SetBool("Fade", true);
 		yield return new WaitUntil(()=>black.color.a==1);
-		SceneManager.LoadScene(3);
+		SceneManager.LoadScene(4);
 	}
 }
