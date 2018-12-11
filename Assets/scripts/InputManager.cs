@@ -22,6 +22,10 @@ public class InputManager : MonoBehaviour
 	public bool isInventoryOpened = false;
 	public bool isMapOpened = false;
 	private bool godActive = false;
+
+	public bool canShoot;
+	private SoundPlayer sound;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -36,44 +40,69 @@ public class InputManager : MonoBehaviour
 
         mouseCursor = new MouseCursor();
         mouseCursor.HideCursor();
+
+		sound = GetComponentInChildren<SoundPlayer>();
 	}
 	
 	// Update is called once per frame
+	void FixedUpdate ()
+	{
+		if(gun.isShooting)
+		{
+			canShoot = false;
+		}
+		if(!gun.isShooting)
+		{
+			canShoot = true;
+		}
+
+		if(gun.currentAmmo <= 0)
+		{
+			canShoot = false;
+		}
+	}
+
 	void Update ()
     {
         if(Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
 		
         else if(Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
 
-		if (Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive == false) 
+		
+
+		if (Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive == false && canShoot == true) 
 		{
 			gun.Shot ();
 			//Debug.Log("Shoot");
 			enDis.timeCounter = 0;
+			sound.Play(1, 2);
 		}
-		else if(Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive) 
+		else if(Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive && canShoot) 
 		{
 			gun.PrecisionShot ();
 			//Debug.Log("SpecialShoot");
 			enDis.timeCounter = 0;
 			enDis.precisionActive = false;
 			enDis.NormalColor();
+			sound.Play(1, 2);
 		}
 		if((Input.GetAxisRaw("Fire") != 0))
 		{
-			if(enDis.isPointing && enDis.precisionActive == false)
+			if(enDis.isPointing && enDis.precisionActive == false && canShoot)
 			{
 				gun.Shot ();
 				//Debug.Log("Shoot");
 				enDis.timeCounter = 0;
+				sound.Play(1, 2);
 			}
-			else if(enDis.isPointing && enDis.precisionActive)
+			else if(enDis.isPointing && enDis.precisionActive && canShoot)
 			{
 				gun.PrecisionShot ();
 				//Debug.Log("SpecialShoot");
 				enDis.timeCounter = 0;
 				enDis.precisionActive = false;
 				enDis.NormalColor();
+				sound.Play(1, 2);
 			}
 		}
         if(Input.GetButtonDown("Run") /*&& gun.currentAmmo <= 0*/ && enDis.isPointing)
