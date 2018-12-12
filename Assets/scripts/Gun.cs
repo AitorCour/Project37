@@ -26,6 +26,9 @@ public class Gun : MonoBehaviour
 
     public float ReloadTime;
 
+	public ParticleSystem particleShoot;
+	public ParticleSystem particleSteam;
+
     //public Animator animacion;
 	
 	// Use this for initialization
@@ -53,6 +56,8 @@ public class Gun : MonoBehaviour
 		
         isShooting = true;
         currentAmmo--;
+		particleShoot.Play();
+		particleSteam.Play();
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Coje el punto de la posicion del mouse y lanza un rayo
         RaycastHit hit = new RaycastHit();
         if(Physics.Raycast(transform.position,  transform.forward, out hit, maxDistance, mask))
@@ -129,6 +134,8 @@ public class Gun : MonoBehaviour
         isShooting = true;
         currentAmmo--;
 
+		particleShoot.Play();
+		particleSteam.Play();
         RaycastHit hit = new RaycastHit();
         if(Physics.Raycast(transform.position,  transform.forward, out hit, maxDistance, mask))
         {
