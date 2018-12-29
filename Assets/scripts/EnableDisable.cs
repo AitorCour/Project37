@@ -18,9 +18,6 @@ public class EnableDisable : MonoBehaviour
 	public float precisionTime = 2.0f;
 	public bool precisionActive;
 
-	public Material material;
-	public Color newColor;
-
 	public bool m_isAxisInUse = false;
 
 	private SoundPlayer sound;
@@ -33,7 +30,6 @@ public class EnableDisable : MonoBehaviour
 		pointRot = GetComponent<PointRotate>();
 		inputManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
 		precisionActive = false;
-		material.color = Color.yellow;
 
 		sound = GetComponentInChildren<SoundPlayer>();
 		sound2 = GetComponentInChildren<AudioSource>();
@@ -54,7 +50,6 @@ public class EnableDisable : MonoBehaviour
 			{
 				//pointState.ResetGun();
 				SetTank();
-				NormalColor();
 			}
 		}
 		//Mando
@@ -82,7 +77,6 @@ public class EnableDisable : MonoBehaviour
 			if(m_isAxisInUse == true)
 			{
 				SetTank();
-				NormalColor();
 				m_isAxisInUse = false;
 			}
 		}
@@ -107,12 +101,10 @@ public class EnableDisable : MonoBehaviour
 		{
 			precisionActive = true;
 			//Debug.Log("Special Shoot Ready");
-			material.color = newColor;
 			if(!sound2.isPlaying)
 			{
 				sound2.Play();
 			}
-			
 		}
 
 		else 
@@ -151,9 +143,5 @@ public class EnableDisable : MonoBehaviour
 		pointRot.enabled = true;
 		isPointing = true;
 		ammoText.SetActive(true);
-	}
-	public void NormalColor()
-	{
-		material.color = Color.yellow;
 	}
 }

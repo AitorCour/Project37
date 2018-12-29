@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class InputManager : MonoBehaviour
 {
-    private NavMeshAgent myNav;
-	private Rigidbody rigidbody;
+    //private NavMeshAgent myNav;
+	//private Rigidbody rigidbody;
+	private PlayerController plController;
 
 	private GameManager gameManager;
 	public GameObject cameraGod;
@@ -31,8 +32,9 @@ public class InputManager : MonoBehaviour
     {
 		//shoot2 = GetComponent<Animator>();
 		gameManager = GetComponent<GameManager>();
-        myNav = GameObject.FindGameObjectWithTag("Player").GetComponent<NavMeshAgent>();
-		rigidbody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
+        //myNav = GameObject.FindGameObjectWithTag("Player").GetComponent<NavMeshAgent>();
+		//rigidbody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
+		plController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         gun = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 		tankControl = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControls2>();
@@ -83,7 +85,6 @@ public class InputManager : MonoBehaviour
 			//Debug.Log("SpecialShoot");
 			enDis.timeCounter = 0;
 			enDis.precisionActive = false;
-			enDis.NormalColor();
 			sound.Play(1, 2);
 		}
 		if((Input.GetAxisRaw("Fire") != 0))
@@ -101,7 +102,6 @@ public class InputManager : MonoBehaviour
 				//Debug.Log("SpecialShoot");
 				enDis.timeCounter = 0;
 				enDis.precisionActive = false;
-				enDis.NormalColor();
 				sound.Play(1, 2);
 			}
 		}
@@ -224,16 +224,18 @@ public class InputManager : MonoBehaviour
 		plBehaviour.GodMode();
 		gun.GodMode();
 		tankControl.godMode = true;
-		myNav.enabled = false;
-		rigidbody.useGravity = false;
+		//myNav.enabled = false;
+		//rigidbody.useGravity = false;
+		plController.enabled = false;
 		cameraGod.SetActive(true);
 		godActive = true;
 	}
 	public void SetNormal()
 	{
 		tankControl.godMode = false;
-		myNav.enabled = true;
-		rigidbody.useGravity = true;
+		//myNav.enabled = true;
+		//rigidbody.useGravity = true;
+		plController.enabled = true;
 		cameraGod.SetActive(false);
 		godActive = false;
 	}
