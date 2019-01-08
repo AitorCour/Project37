@@ -31,28 +31,32 @@ public class MoveObjects : MonoBehaviour
 			if (Input.GetButton("Action"))
 			{
 				isHolding = true;
-				Debug.Log("isHolding");
-				item.transform.SetParent(player.transform);
-				enableDisable.SetDrag();
 			}
 			if (Input.GetButtonDown("Run") && !isHolding)
 			{
-				player.transform.Translate(0, 6, 6);
 				player.transform.position = item.transform.position;
-
+				player.transform.Translate(0, 4, 0);
 				Debug.Log("Up");
 			}
 
 			if (Input.GetButtonUp("Action"))
 			{
 				isHolding = false;
-				Debug.Log("NOTHolding");
+			}
+			if(isHolding)
+			{
+				//Debug.Log("Object Grabed");
+				item.transform.SetParent(player.transform);
+				enableDisable.SetDrag();
+			}
+
+			if(!isHolding)
+			{
 				objectPos = item.transform.position;
 				item.transform.SetParent(null);
 				enableDisable.SetTank();
 			}
-		}
-		
+		}	
 	}
 
 	void OnTriggerEnter(Collider other)
