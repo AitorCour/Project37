@@ -22,6 +22,8 @@ public class EnableDisable : MonoBehaviour
 
 	private SoundPlayer sound;
 	private AudioSource sound2;
+
+	public GameObject gun;
 	// Use this for initialization
 	void Start () 
 	{
@@ -39,12 +41,12 @@ public class EnableDisable : MonoBehaviour
 	void Update () 
 	{
 		//Test
-		if(Input.GetButtonDown("Jump") && !inputManager.isPaused && !inputManager.isInventoryOpened && !inputManager.isMapOpened)
+		if(Input.GetButtonDown("Jump") && !inputManager.isPaused && !inputManager.isInventoryOpened && !inputManager.isMapOpened )
 		{
-			if(!isPointing)
+			if(!isPointing && gun.activeSelf)
 			{
 				SetPoint();
-				Debug.Log("Mode Changed");
+				Debug.Log("Mode Changed");	
 			}
 			else
 			{
@@ -53,11 +55,11 @@ public class EnableDisable : MonoBehaviour
 			}
 		}
 		//Mando
-		if(Input.GetAxisRaw("Jump") != 0)
+		if(Input.GetAxisRaw("Jump2") != 0)
 		{
 			if(m_isAxisInUse == false)
 			{
-				if(!isPointing)
+				if(!isPointing && gun.activeSelf)
 				{
 					SetPoint();
 					Debug.Log("Mode Changed");
@@ -72,7 +74,7 @@ public class EnableDisable : MonoBehaviour
 				}*/
 			}	
 		}
-		if(Input.GetAxisRaw("Jump") == 0)
+		if(Input.GetAxisRaw("Jump2") == 0)
 		{
 			if(m_isAxisInUse == true)
 			{
@@ -91,8 +93,11 @@ public class EnableDisable : MonoBehaviour
 			if(sound2.isPlaying)
 			{
 				sound2.Stop();
-			}
-			
+			}	
+		}
+		else
+		{
+			return;
 		}
 	}
 	void UpdatePoint()
