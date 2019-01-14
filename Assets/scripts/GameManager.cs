@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
 	public GameObject inventory;
 	public GameObject map;
 	public GameObject notes;
+
+    public GameObject equipGun;
+    public GameObject infoGun;
 	
 	private void Awake () 
 	{
@@ -60,6 +63,8 @@ public class GameManager : MonoBehaviour
 		//inventory.SetActive(true);
 		map.SetActive(false);
 		notes.SetActive(false);
+        equipGun.SetActive(false);
+        infoGun.SetActive(false);
 	}
 	
 	public void OpenMap()
