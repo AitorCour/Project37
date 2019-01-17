@@ -23,6 +23,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject equipGun;
     public GameObject infoGun;
+
+	public GameObject exBan;
+	public GameObject infoBan;
+
+	public GameObject exKey;
+	public GameObject infoKey;
+
+	public GameObject exAmmo;
+	public GameObject infoAmmo;
 	
 	private void Awake () 
 	{
@@ -65,6 +74,12 @@ public class GameManager : MonoBehaviour
 		notes.SetActive(false);
         equipGun.SetActive(false);
         infoGun.SetActive(false);
+		exBan.SetActive(false);
+		infoBan.SetActive(false);
+		exKey.SetActive(false);
+		infoKey.SetActive(false);
+		exAmmo.SetActive(false);
+		infoAmmo.SetActive(false);
 	}
 	
 	public void OpenMap()
