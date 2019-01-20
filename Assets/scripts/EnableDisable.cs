@@ -10,6 +10,7 @@ public class EnableDisable : MonoBehaviour
 
 	public GameObject ammoText;
 	private InputManager inputManager;
+	private LookAtEnemy autoAim;
 	private bool isTank;
 	private bool isDragging;
 	public bool isPointing;
@@ -35,6 +36,8 @@ public class EnableDisable : MonoBehaviour
 
 		sound = GetComponentInChildren<SoundPlayer>();
 		sound2 = GetComponentInChildren<AudioSource>();
+		autoAim = GetComponentInChildren<LookAtEnemy>();
+		autoAim.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -129,6 +132,8 @@ public class EnableDisable : MonoBehaviour
 
 		isPointing = false;
 		ammoText.SetActive(false);
+
+		autoAim.enabled = false;
 	}
 
 	public void SetTank()
@@ -139,6 +144,8 @@ public class EnableDisable : MonoBehaviour
 
 		isPointing = false;
 		ammoText.SetActive(false);
+
+		autoAim.enabled = false;
 	}
 
 	public void SetPoint()//apuntado
@@ -148,5 +155,7 @@ public class EnableDisable : MonoBehaviour
 		pointRot.enabled = true;
 		isPointing = true;
 		ammoText.SetActive(true);
+
+		autoAim.enabled = true;
 	}
 }
