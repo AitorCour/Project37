@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         
 
         controller.Move(moveDirection * Time.deltaTime);
-	}
+    }
 
     public void SetAxis(Vector2 inputAxis)
     {
