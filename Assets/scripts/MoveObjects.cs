@@ -48,6 +48,7 @@ public class MoveObjects : MonoBehaviour
 				//Debug.Log("Object Grabed");
 				item.transform.SetParent(player.transform);
 				enableDisable.SetDrag();
+                
 			}
 
 			if(!isHolding)
