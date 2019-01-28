@@ -11,14 +11,17 @@ public class PlayerBehaviour : MonoBehaviour
 
 	private int iniLife = 3;
 	public bool isDead;
-	public int keys;
-	private int iniKeys = 0;
+	//public int keys;
+	//private int iniKeys = 0;
 	public int potions;
 	private int iniPotions = 0;
 	public int cure = 1;
 	private ChangeScene changeScene;
-	// Use this for initialization
-	void Start () 
+
+    public bool key1 = false;
+    public bool key2 = false;
+    // Use this for initialization
+    void Start () 
 	{
 		hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
 
@@ -26,8 +29,8 @@ public class PlayerBehaviour : MonoBehaviour
 		playerLife = iniLife;
 		hud.SetLife(playerLife);
 		hud.SetBandages(potions);
-		hud.SetKeys(keys);
-		iniKeys = keys;
+		//hud.SetKeys(keys);
+		//iniKeys = keys;
 		iniPotions = potions;
 		changeScene =  GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
 		sound = GetComponentInChildren<SoundPlayer>();
@@ -89,22 +92,27 @@ public class PlayerBehaviour : MonoBehaviour
 		}
 	}
 	//Sumar Llaves
-	public void GetKeys(int key)
+	public void GetKey1()
 	{
 		if(isDead) return;
-		keys += key;
+        key1 = true;
 		//Debug.Log ("key");
-		hud.SetKeys(keys);
+        hud.hasKey1 = true;
+		hud.SetKey();
+         
 	}
-	//Perder Llaves
-	public void LoseKeys(int key)
-	{
-		if(isDead) return;
-		keys -= key;
-		hud.SetKeys(keys);
-	}
-	//Sumar Pociones
-	public void GetPotions(int potion)
+    public void GetKey2()
+    {
+        if (isDead) return;
+        key2 = true;
+        //Debug.Log ("key");
+        hud.hasKey2 = true;
+        hud.SetKey();
+
+    }
+    //Perder Llaves
+    //Sumar Pociones
+    public void GetPotions(int potion)
 	{
 		if(isDead) return;
 		potions += potion;
@@ -113,12 +121,10 @@ public class PlayerBehaviour : MonoBehaviour
 	}
 	public void GodMode()
 	{
-		keys = 999;
 		potions = 999;
 		iniLife = 999;
 		playerLife = 999;
 		hud.SetLife(playerLife);
 		hud.SetBandages(potions);
-		hud.SetKeys(keys);
 	}
 }

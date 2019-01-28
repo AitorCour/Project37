@@ -10,7 +10,7 @@ public class KeyDoor : MonoBehaviour
 	public GameObject TextPanel = null;
 	public int scene; //se introduce la scena a la que se quiere ir
 	private bool isInsideTrigger = false;
-	public int key = 1; //Con esto se podrá poner cuantas llaves se necesitará para la puerta
+	//public int key = 1; //Con esto se podrá poner cuantas llaves se necesitará para la puerta
 	private bool isDoorOpen = false;
 	private bool MessageReaded = false;
 	public string message = "Hello World";
@@ -26,12 +26,12 @@ public class KeyDoor : MonoBehaviour
 	{
 		if (isInsideTrigger && Input.GetButtonDown("Action"))
 		{
-			if(plBehaviour.keys >= key)
+			if(plBehaviour.key1 == true)
 			{
 				//Debug.Log ("Change Scene");
 				//SceneManager.LoadScene(scene); //cambio scene
 				StartCoroutine(Fade());
-				plBehaviour.LoseKeys(key); //player pierde una o lo que se necesiten de llaves
+				
 				isDoorOpen = true;
 			}
 			else if(isDoorOpen) // utilizar esto para si vuelve a la habitación o lo que sea, que la puerta ya esté abierta

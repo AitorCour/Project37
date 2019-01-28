@@ -10,8 +10,12 @@ public class HUD : MonoBehaviour
 	public Text ammo;
 	public Text ammoInv;
 	public Text bandages;
-	public Text keys;
 	public Text plLife;
+
+    public GameObject key1;
+    public GameObject key2;
+    public bool hasKey1 = false;
+    public bool hasKey2 = false;
 	// Use this for initialization
 	void Start () 
 	{
@@ -30,9 +34,17 @@ public class HUD : MonoBehaviour
 	{
 		plLife.text = "Life: " + newLife.ToString();
 	}
-	public void SetKeys(int newKey)
+	public void SetKey()
 	{
-		keys.text = "x " + newKey.ToString();
+        if(hasKey1)
+        {
+            key1.SetActive(true);
+        }
+        else if(hasKey2)
+        {
+            key2.SetActive(true);
+        }
+        
 	}
 	public void SetBandages(int newBand)
 	{

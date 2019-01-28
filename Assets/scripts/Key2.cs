@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class Key : MonoBehaviour 
+public class Key2 : MonoBehaviour 
 {
 	private PlayerBehaviour plBehaviour;
 	public GameObject keyObject;
@@ -60,7 +60,7 @@ public class Key : MonoBehaviour
 		Debug.Log("reading");
 		MessageReaded = true;
 		Time.timeScale = 0;
-		plBehaviour.GetKey1();
+		plBehaviour.GetKey2();
 		sound.Play(1, 2);
 	}
 	private void ReadEnd()
