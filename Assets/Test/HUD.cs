@@ -40,7 +40,7 @@ public class HUD : MonoBehaviour
         {
             key1.SetActive(true);
         }
-        else if(hasKey2)
+        if(hasKey2)
         {
             key2.SetActive(true);
         }
