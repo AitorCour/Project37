@@ -27,6 +27,9 @@ public class InputManager : MonoBehaviour
 	public bool canShoot;
 	private SoundPlayer sound;
 
+	private bool ini_menu = true;
+	public GameObject menu;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -139,7 +142,7 @@ public class InputManager : MonoBehaviour
 		//PAUSE
 		if (Input.GetButtonDown("Esc"))
 		{
-			if(!isPaused && !isInventoryOpened && !isMapOpened)
+			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu)
 			{
 				gameManager.Pause();
 			}
@@ -147,7 +150,7 @@ public class InputManager : MonoBehaviour
 			{
 				return;
 			}
-			else if(isMapOpened)
+			else if(isMapOpened || ini_menu)
 			{
 				return;
 			}
@@ -160,7 +163,7 @@ public class InputManager : MonoBehaviour
 		//INVENTORY
 		if (Input.GetButtonDown("Inv"))
 		{
-			if(!isPaused && !isInventoryOpened && !isMapOpened)
+			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu)
 			{
 				gameManager.OpenInventory();
 				//Debug.Log ("Z pressed");
@@ -170,7 +173,7 @@ public class InputManager : MonoBehaviour
 			{
 				return;
 			}
-			else if(isMapOpened)
+			else if(isMapOpened || ini_menu)
 			{
 				return;
 			}
@@ -183,7 +186,7 @@ public class InputManager : MonoBehaviour
 		//MAP
 		if (Input.GetButtonDown("Map"))
 		{
-			if(!isPaused && !isInventoryOpened && !isMapOpened)
+			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu)
 			{
 				gameManager.OpenMap();
 				Debug.Log ("map pressed");
@@ -193,7 +196,7 @@ public class InputManager : MonoBehaviour
 			{
 				return;
 			}
-			else if(isInventoryOpened)
+			else if(isInventoryOpened || ini_menu)
 			{
 				return;
 			}
@@ -202,6 +205,16 @@ public class InputManager : MonoBehaviour
 				gameManager.CloseMap();
 				//mouseCursor.HideCursor();
 			}
+		}
+		if (menu.activeInHierarchy == true)
+		{
+			ini_menu = true;
+			tankControl.canWalk = false;
+		}
+		if (menu.activeInHierarchy == false)
+		{
+			ini_menu = false;
+			tankControl.canWalk = true;
 		}
     }
 
@@ -219,6 +232,10 @@ public class InputManager : MonoBehaviour
 	{
 		isMapOpened = m;
 	}
+	/*public void QuitMenu ()
+	{
+		ini_menu = false;
+	}*/
 	public void SetGod()
 	{
 		plBehaviour.GodMode();

@@ -10,6 +10,8 @@ public class TankControls2 : MonoBehaviour
 	public float runSpeed;
 	public bool godMode;
 	
+	public bool canWalk;
+
 	void Start () 
 	{
 		speed = iniSpeed;
@@ -17,11 +19,16 @@ public class TankControls2 : MonoBehaviour
 
 	void Update ()
 	{
-		var x = Input.GetAxis("Horizontal") * Time.deltaTime * rotSpeed;
-        var z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+		if (canWalk)
+		{
+			var x = Input.GetAxis("Horizontal") * Time.deltaTime * rotSpeed;
+			var z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+			transform.Rotate(0, x, 0);
+			transform.Translate(0, 0, z);
+		}
+		
  
-        transform.Rotate(0, x, 0);
-        transform.Translate(0, 0, z);
+        
 
 		if (Input.GetButton("Run") && Input.GetAxis("Vertical") > 0)
 		{
@@ -48,6 +55,6 @@ public class TankControls2 : MonoBehaviour
 			{
 				transform.Translate(0, -speed * Time.deltaTime, 0);
 			}
-		}
+		}	
 	}
 }

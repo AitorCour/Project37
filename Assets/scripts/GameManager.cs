@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
 	public GameObject exAmmo;
 	public GameObject infoAmmo;
-	
+
 	private void Awake () 
 	{
 		inputManager = GetComponent<InputManager>();
