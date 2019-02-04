@@ -31,7 +31,7 @@ public class SettingsMenu : MonoBehaviour
 		resolutionDropdown.RefreshShownValue();
 	}
 
-	public void SetResolution (int resolutionIndex)
+	/*public void SetResolution (int resolutionIndex)
 	{
 		Resolution resolution = resolutions[resolutionIndex];
 		Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
@@ -40,7 +40,7 @@ public class SettingsMenu : MonoBehaviour
 	public void SetQuality (int qualityIndex)
 	{
 		QualitySettings.SetQualityLevel(qualityIndex);
-	}
+	}*/
 
     public void SetResolution720()
     {
@@ -57,4 +57,20 @@ public class SettingsMenu : MonoBehaviour
         Screen.SetResolution(1920, 1080, Screen.fullScreen);
         //Debug.Log("resolution 1080");
     }
+	public void SetQualityUltra ()
+	{
+		QualitySettings.SetQualityLevel(0);
+	}
+	public void SetQualityHigh ()
+	{
+		QualitySettings.SetQualityLevel(1);
+	}
+	public void SetQualityMedium ()
+	{
+		QualitySettings.SetQualityLevel(2);
+	}
+	public void SetQualityLow ()
+	{
+		QualitySettings.SetQualityLevel(3);
+	}
 }
