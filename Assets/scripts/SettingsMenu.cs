@@ -36,8 +36,25 @@ public class SettingsMenu : MonoBehaviour
 		Resolution resolution = resolutions[resolutionIndex];
 		Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
 	}
+
 	public void SetQuality (int qualityIndex)
 	{
 		QualitySettings.SetQualityLevel(qualityIndex);
 	}
+
+    public void SetResolution720()
+    {
+        Screen.SetResolution(1280, 720, Screen.fullScreen);
+        //Debug.Log("resolution 720");
+    }
+    public void SetResolution1200()
+    {
+        Screen.SetResolution(1600, 1200, Screen.fullScreen);
+        //Debug.Log("resolution 1200");
+    }
+    public void SetResolution1080()
+    {
+        Screen.SetResolution(1920, 1080, Screen.fullScreen);
+        //Debug.Log("resolution 1080");
+    }
 }
