@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class SettingsMenu : MonoBehaviour 
 {
-	public TMP_Dropdown resolutionDropdown;
+	/*public TMP_Dropdown resolutionDropdown;
 	Resolution[] resolutions;
 	void Start ()
 	{
@@ -29,7 +29,7 @@ public class SettingsMenu : MonoBehaviour
 		resolutionDropdown.AddOptions(options);
 		resolutionDropdown.value = currentResolutionIndex;
 		resolutionDropdown.RefreshShownValue();
-	}
+	}*/
 
 	/*public void SetResolution (int resolutionIndex)
 	{
@@ -72,5 +72,9 @@ public class SettingsMenu : MonoBehaviour
 	public void SetQualityLow ()
 	{
 		QualitySettings.SetQualityLevel(3);
+	}
+	public void SetFullscreen (bool isFullscreen)
+	{
+		Screen.fullScreen = isFullscreen;
 	}
 }
