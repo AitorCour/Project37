@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
 	public GameObject exAmmo;
 	public GameObject infoAmmo;
 
+	public GameObject canvasOp;
+	public GameObject screenOp;
+
 	private void Awake () 
 	{
 		inputManager = GetComponent<InputManager>();
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
 		Time.timeScale = 0;
 		canvasPause.SetActive(true);
 		eventSystem.SetSelectedGameObject(pauseButton);
+		//Debug.Log("Paused");
 	}
 
 	public void Resume()
@@ -52,6 +56,9 @@ public class GameManager : MonoBehaviour
 		inputManager.SetPause(false);
 		Time.timeScale = 1;
 		canvasPause.SetActive(false);
+		canvasOp.SetActive(false);
+		screenOp.SetActive(false);
+		//Debug.Log("Not Paused");
 	}
 
 	public void OpenInventory()
