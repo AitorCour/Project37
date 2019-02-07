@@ -56,7 +56,7 @@ public class InputManager : MonoBehaviour
 		{
 			canShoot = false;
 		}
-		if(!gun.isShooting)
+        if (!gun.isShooting && !isInventoryOpened && !isPaused && !isMapOpened)
 		{
 			canShoot = true;
 		}
@@ -65,6 +65,10 @@ public class InputManager : MonoBehaviour
 		{
 			canShoot = false;
 		}
+        if(isInventoryOpened || isPaused || isMapOpened)
+        {
+            canShoot = false;
+        }
 	}
 
 	void Update ()
@@ -75,31 +79,31 @@ public class InputManager : MonoBehaviour
 
 		
 
-		if (Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive == false && canShoot == true) 
+		if (Input.GetButtonDown("Fire") && enDis.isPointing && !enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened) 
 		{
 			gun.Shot ();
-			//Debug.Log("Shoot");
+			Debug.Log("Shoot");
 			enDis.timeCounter = 0;
 			sound.Play(1, 2);
 		}
-		else if(Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive && canShoot) 
+		else if(Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened) 
 		{
 			gun.PrecisionShot ();
-			//Debug.Log("SpecialShoot");
+			Debug.Log("SpecialShoot");
 			enDis.timeCounter = 0;
 			enDis.precisionActive = false;
 			sound.Play(1, 2);
 		}
 		if((Input.GetAxisRaw("Fire") != 0))
 		{
-			if(enDis.isPointing && enDis.precisionActive == false && canShoot)
+			if(enDis.isPointing && enDis.precisionActive == false && canShoot && !isInventoryOpened && !isPaused && !isMapOpened)
 			{
 				gun.Shot ();
 				//Debug.Log("Shoot");
 				enDis.timeCounter = 0;
 				sound.Play(1, 2);
 			}
-			else if(enDis.isPointing && enDis.precisionActive && canShoot)
+			else if(enDis.isPointing && enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened)
 			{
 				gun.PrecisionShot ();
 				//Debug.Log("SpecialShoot");
