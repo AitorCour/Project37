@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
 	public GameObject canvasOp;
 	public GameObject screenOp;
 
+	public GameObject panelOp;
+
+	public GameObject panelSubOp;
+
 	private void Awake () 
 	{
 		inputManager = GetComponent<InputManager>();
@@ -58,6 +62,8 @@ public class GameManager : MonoBehaviour
 		canvasPause.SetActive(false);
 		canvasOp.SetActive(false);
 		screenOp.SetActive(false);
+		panelOp.SetActive(false);
+		panelSubOp.SetActive(false);
 		//Debug.Log("Not Paused");
 	}
 
