@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using UnityEngine.Audio;
+
 public class SettingsMenu : MonoBehaviour 
 {
+	public AudioMixer musicMixer;
+	public AudioMixer efectsMixer;
+
 	/*public TMP_Dropdown resolutionDropdown;
 	Resolution[] resolutions;
 	void Start ()
@@ -42,6 +46,14 @@ public class SettingsMenu : MonoBehaviour
 		QualitySettings.SetQualityLevel(qualityIndex);
 	}*/
 
+	public void SetVolumeEfect (float volume2)
+	{
+		efectsMixer.SetFloat("Efect", volume2);
+	}
+	public void SetVolumeMusic (float volume)
+	{
+		musicMixer.SetFloat("Music", volume);
+	}
     public void SetResolution720()
     {
         Screen.SetResolution(1280, 720, Screen.fullScreen);

@@ -39,6 +39,10 @@ public class EnemyBehaviour3 : MonoBehaviour
 
 	public float radius;
 	public LayerMask targetMask;
+
+	public int patrolSpeed = 1;
+	public int chaseSpeed = 2;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -194,14 +198,14 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void ChaseUpdate()
     {
         agent.SetDestination(player.position);
-		agent.speed = 1;//Velocidad aumenta cuando ve al player
+		agent.speed = chaseSpeed;//Velocidad aumenta cuando ve al player
         //CHASE -> IDLE
 
         if(!detected)
         {
             SetIdle();
             GoNextPoint();
-			agent.speed = 2;//Velocidad vuelve a la normalidad si no ve al player
+			agent.speed = patrolSpeed;//Velocidad vuelve a la normalidad si no ve al player
             return;
         }
 		//Chase -> Attack
@@ -256,7 +260,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         //anim.SetTrigger("IsChasing");
 		sound.Play(1, 2);
         agent.isStopped = false;
-        agent.stoppingDistance = 2.4f;
+        agent.stoppingDistance = 1.5f;//La stopping distance determina la distancia a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
 		maxRadius = detectRadius;
         state = State.Chase;
 		animator.SetBool("Attacking", false);
@@ -319,8 +323,8 @@ public class EnemyBehaviour3 : MonoBehaviour
 		if(sleeping) return;
 		else
 		{
-			plBehaviour.Damage(EnemyDamage);
-			Debug.Log("Harmed");
+			//plBehaviour.Damage(EnemyDamage);
+			//Debug.Log("Harmed");
 		}
 		
 	}

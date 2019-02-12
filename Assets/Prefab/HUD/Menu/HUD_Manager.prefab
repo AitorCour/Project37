@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4752403752882790}
-  - component: {fileID: 114973607996725726}
   - component: {fileID: 114710697412234462}
   - component: {fileID: 114756843752192746}
   m_Layer: 0
@@ -53,29 +52,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3e953897e51244183ed6a4a4bbe0d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolutionDropdown: {fileID: 0}
+  mixMaster: {fileID: 24100000, guid: fcf291b3b37a44a45830954f8bb04f12, type: 2}
 --- !u!114 &114756843752192746
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1345152291166268}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c90f9a9031c5514ebe404a4952ff90f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114973607996725726
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1345152291166268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c667c216de55fd743b8b88c0a5c8dbde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene: 0
-  black: {fileID: 0}
-  animator: {fileID: 0}
