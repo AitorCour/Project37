@@ -43,6 +43,8 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public int patrolSpeed = 1;
 	public int chaseSpeed = 2;
 
+	private CollisionDamage colDamage;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -50,6 +52,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		sound = GetComponentInChildren<SoundPlayer>();
 		animator = GetComponentInChildren<Animator>();
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+		colDamage = GetComponentInChildren<CollisionDamage>();
 
 		GoNearOther();
         SetIdle();
@@ -206,11 +209,13 @@ public class EnemyBehaviour3 : MonoBehaviour
             SetIdle();
             GoNextPoint();
 			agent.speed = patrolSpeed;//Velocidad vuelve a la normalidad si no ve al player
+			colDamage.CanDoDamage = false;
             return;
         }
 		//Chase -> Attack
 		else if(Vector3.Distance(transform.position, player.position) <= attackDistance)
 		{
+			colDamage.CanDoDamage = true;
 			SetAttack();
 			return;
 		}
@@ -220,6 +225,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		//ATTACK -> Chase
 		if(Vector3.Distance(transform.position, player.position) > attackDistance)
 		{
+			colDamage.CanDoDamage = false;
 			SetChase();
 			return;
 		}
@@ -232,6 +238,7 @@ public class EnemyBehaviour3 : MonoBehaviour
             SetIdle();
 			currentHealt = startingHealth;
 			sleeping = false;
+			colDamage.CanDoDamage = false;
         }
         else timeCounter += Time.deltaTime;
 	}
@@ -269,7 +276,6 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void SetAttack()
 	{
 		agent.isStopped = true;
-
 		state = State.Attack;
 		animator.SetBool("Attacking", true);
 	}

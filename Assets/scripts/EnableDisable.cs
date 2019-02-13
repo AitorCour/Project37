@@ -18,13 +18,14 @@ public class EnableDisable : MonoBehaviour
 	public float timeCounter;
 	public float precisionTime = 2.0f;
 	public bool precisionActive;
-
 	public bool m_isAxisInUse = false;
-
 	private SoundPlayer sound;
 	private AudioSource sound2;
-
 	public GameObject gun;
+
+	private PlayerBehaviour plBehaviour;
+	private float timeCounterIN;
+	private float inmuneTime = 2.0f;
 	// Use this for initialization
 	void Start () 
 	{
@@ -38,6 +39,8 @@ public class EnableDisable : MonoBehaviour
 		sound2 = GetComponentInChildren<AudioSource>();
 		autoAim = GetComponentInChildren<LookAtEnemy>();
 		autoAim.enabled = false;
+
+		plBehaviour = GetComponent<PlayerBehaviour>();
 	}
 	
 	// Update is called once per frame
@@ -102,6 +105,20 @@ public class EnableDisable : MonoBehaviour
 		{
 			return;
 		}
+
+		if(plBehaviour.damageRecived)
+		{
+			//Debug.Log("Start inmune");
+			timeCounterIN += Time.deltaTime;
+			if(timeCounterIN >= inmuneTime)
+			{
+				//Debug.Log("End inmune");
+				timeCounterIN = 0;
+				plBehaviour.damageRecived = false;
+			}
+		}
+		
+		//
 	}
 	void UpdatePoint()
 	{

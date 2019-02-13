@@ -5,6 +5,8 @@ using UnityEngine;
 public class CollisionDamage : MonoBehaviour 
 {
 	private PlayerBehaviour plBehaviour;
+	public int damage = 1;
+	public bool CanDoDamage;
 
 	// Use this for initialization
 	void Start ()
@@ -19,10 +21,14 @@ public class CollisionDamage : MonoBehaviour
 	}
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Player")
+		if(CanDoDamage)
 		{
-			plBehaviour.Damage(1);
-			Debug.Log("Harmed");
+			if (other.tag == "Player")
+			{
+				plBehaviour.Damage(damage);
+				//Debug.Log("Harmed");
+			}
 		}
+		
 	}
 }

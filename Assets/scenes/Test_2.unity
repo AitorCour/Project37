@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0036458608, g: 0.002573757, b: 0.0023727885, a: 1}
+  m_IndirectSpecularColor: {r: 0.0036458878, g: 0.0025737085, b: 0.0023728635, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1636,6 +1636,10 @@ Prefab:
         type: 2}
       propertyPath: radius
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870546696197524, guid: 82b1bf7db59e3b94092e74f833782a09, type: 2}
+      propertyPath: m_Name
+      value: Cube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82b1bf7db59e3b94092e74f833782a09, type: 2}
@@ -20314,7 +20318,7 @@ GameObject:
   - component: {fileID: 1194256039}
   - component: {fileID: 1194256038}
   m_Layer: 9
-  m_Name: Cube
+  m_Name: Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20344,6 +20348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23408457d28825b4190e5302e6a184ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  CanDoDamage: 0
 --- !u!65 &1194256039
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27373,6 +27379,7 @@ MonoBehaviour:
   cure: 1
   key1: 0
   key2: 0
+  damageRecived: 0
 --- !u!1 &1988578583
 GameObject:
   m_ObjectHideFlags: 0

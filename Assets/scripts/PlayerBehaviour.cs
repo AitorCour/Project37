@@ -20,6 +20,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool key1 = false;
     public bool key2 = false;
+
+	public bool damageRecived = false;
+
     // Use this for initialization
     void Start () 
 	{
@@ -41,19 +44,24 @@ public class PlayerBehaviour : MonoBehaviour
 	public void Damage(int hit)
 	{
 		if(isDead) return;
-
-		playerLife -= hit;
-
-		if (playerLife <= 0)
+		if (!damageRecived)
 		{
-			playerLife = 0;
-			Dead();
+			playerLife -= hit;
+
+			damageRecived = true;
+
+			if (playerLife <= 0)
+			{
+				playerLife = 0;
+				Dead();
+			}
+			hud.SetLife(playerLife);
+			if(playerLife >= 1)
+			{
+				sound.Play(1, 2);
+			}
 		}
-		hud.SetLife(playerLife);
-		if(playerLife >= 1)
-		{
-			sound.Play(1, 2);
-		}
+		
 		
 	}
 
