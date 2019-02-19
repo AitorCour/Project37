@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3afad2d17ef297a4b888d060582e3f6c
+guid: f3c18b5ef55337148a96e43be328d6bc
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -41,18 +41,18 @@ ModelImporter:
     100070: L_Leg_J
     100072: L_Shoulder_J
     100074: L_Toe_J
-    100076: Neck_2_J
-    100078: Neck_J
-    100080: R_Ankle_J
-    100082: R_Clavicle_J
-    100084: R_Elbow_J
-    100086: R_Foot_J
-    100088: R_Hand_J
-    100090: R_Knee_J
-    100092: R_Leg_J
-    100094: R_Shoulder_J
-    100096: R_Toe_J
-    100098: //RootNode
+    100076: //RootNode
+    100078: Neck_2_J
+    100080: Neck_J
+    100082: R_Ankle_J
+    100084: R_Clavicle_J
+    100086: R_Elbow_J
+    100088: R_Foot_J
+    100090: R_Hand_J
+    100092: R_Knee_J
+    100094: R_Leg_J
+    100096: R_Shoulder_J
+    100098: R_Toe_J
     400000: Belly_J
     400002: Calva_J
     400004: Chest2_J
@@ -91,21 +91,21 @@ ModelImporter:
     400070: L_Leg_J
     400072: L_Shoulder_J
     400074: L_Toe_J
-    400076: Neck_2_J
-    400078: Neck_J
-    400080: R_Ankle_J
-    400082: R_Clavicle_J
-    400084: R_Elbow_J
-    400086: R_Foot_J
-    400088: R_Hand_J
-    400090: R_Knee_J
-    400092: R_Leg_J
-    400094: R_Shoulder_J
-    400096: R_Toe_J
-    400098: //RootNode
+    400076: //RootNode
+    400078: Neck_2_J
+    400080: Neck_J
+    400082: R_Ankle_J
+    400084: R_Clavicle_J
+    400086: R_Elbow_J
+    400088: R_Foot_J
+    400090: R_Hand_J
+    400092: R_Knee_J
+    400094: R_Leg_J
+    400096: R_Shoulder_J
+    400098: R_Toe_J
     2100000: lambert13
     4300000: geo_mannequin
-    7400000: M_TEMBLEQUE
+    7400000: M_DEATH
     9500000: //RootNode
     13700000: geo_mannequin
   externalObjects: {}
@@ -137,10 +137,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: M_TEMBLEQUE
+      name: M_DEATH
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 132
+      lastFrame: 82
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -168,18 +168,18 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 2
+    meshCompression: 0
     addColliders: 0
-    importVisibility: 0
-    importBlendShapes: 0
-    importCameras: 0
-    importLights: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 0
+    optimizeMeshForGPU: 1
     keepQuads: 0
-    weldVertices: 0
+    weldVertices: 1
     preserveHierarchy: 0
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -191,7 +191,7 @@ ModelImporter:
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
