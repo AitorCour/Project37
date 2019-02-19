@@ -26,6 +26,8 @@ public class EnableDisable : MonoBehaviour
 	private PlayerBehaviour plBehaviour;
 	private float timeCounterIN;
 	private float inmuneTime = 2.0f;
+
+    private Animator animator;
 	// Use this for initialization
 	void Start () 
 	{
@@ -41,6 +43,8 @@ public class EnableDisable : MonoBehaviour
 		autoAim.enabled = false;
 
 		plBehaviour = GetComponent<PlayerBehaviour>();
+
+        animator = GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame

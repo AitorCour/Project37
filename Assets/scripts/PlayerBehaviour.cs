@@ -23,6 +23,7 @@ public class PlayerBehaviour : MonoBehaviour
 
 	public bool damageRecived = false;
 
+    private Animator animator;
     // Use this for initialization
     void Start () 
 	{
@@ -38,6 +39,7 @@ public class PlayerBehaviour : MonoBehaviour
 		changeScene =  GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
 		sound = GetComponentInChildren<SoundPlayer>();
 
+        animator = GetComponentInChildren<Animator>();
 	}
 
 	//Recibir Daño
@@ -47,8 +49,8 @@ public class PlayerBehaviour : MonoBehaviour
 		if (!damageRecived)
 		{
 			playerLife -= hit;
-
-			damageRecived = true;
+            animator.SetTrigger("Hit");
+            damageRecived = true;
 
 			if (playerLife <= 0)
 			{
@@ -60,9 +62,7 @@ public class PlayerBehaviour : MonoBehaviour
 			{
 				sound.Play(1, 2);
 			}
-		}
-		
-		
+		}	
 	}
 
 	//Curarse
@@ -93,7 +93,8 @@ public class PlayerBehaviour : MonoBehaviour
 	{
 		isDead = true;
 		sound.Play(3, 4);
-		if (isDead == true)
+        animator.SetBool("Dead", true);
+        if (isDead == true)
 		{
 			//Debug.Log ("isdead");
 			changeScene.Death();
