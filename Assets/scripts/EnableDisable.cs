@@ -167,6 +167,7 @@ public class EnableDisable : MonoBehaviour
 		ammoText.SetActive(false);
 
 		autoAim.enabled = false;
+		animator.SetBool("Pointing", false);
 	}
 
 	public void SetPoint()//apuntado
@@ -178,5 +179,7 @@ public class EnableDisable : MonoBehaviour
 		ammoText.SetActive(true);
 
 		autoAim.enabled = true;
+		animator.SetBool("Pointing", true);
+		animator.SetBool("Walking", false);
 	}
 }

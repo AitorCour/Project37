@@ -31,11 +31,19 @@ public class TankControls2 : MonoBehaviour
                 transform.Rotate(0, x, 0);
                 //animator.SetBool("Walking", true);
             }
-            if(Input.GetAxis("Vertical") != 0)
+            if(Input.GetAxis("Vertical") > 0)
             {
                 var z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
                 transform.Translate(0, 0, z);
-                animator.SetBool("Walking", true);
+				animator.SetBool("Walking", true);
+				//animator.SetBool("WalkingBack", false);
+            }
+			else if(Input.GetAxis("Vertical") < 0)
+            {
+                var z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+                transform.Translate(0, 0, z);
+				animator.SetBool("WalkingBack", true);
+				//animator.SetBool("Walking", false);
             }
 			
 			//transform.Translate(0, 0, z);
@@ -43,22 +51,33 @@ public class TankControls2 : MonoBehaviour
             else
             {
                 animator.SetBool("Walking", false);
+				animator.SetBool("Running", false);
+				animator.SetBool("WalkingBack", false);
             }
             //transform.Rotate(0, x, 0);
         }
-		if (Input.GetButton("Run") && Input.GetAxis("Vertical") > 0)
+		if (Input.GetButton("Run") && Input.GetAxis("Vertical") > 0.1)
 		{
 			//Debug.Log("isRunning");
 			speed = runSpeed;
+			animator.SetBool("Running", true);
+			animator.SetBool("Walking", false);
+			animator.SetBool("WalkingBack", false);
 		}
-		if (Input.GetButton("Run") && Input.GetAxis("Vertical") < 0)
+		if (Input.GetButton("Run") && Input.GetAxis("Vertical") < -0.1) //hacia atras
 		{
 		    speed = iniSpeed;
+			animator.SetBool("Walking", false);
+			animator.SetBool("Running", false);
+			animator.SetBool("WalkingBack", true);
 		}
 
 		if (Input.GetButtonUp("Run"))
 		{
 			speed = iniSpeed;
+			animator.SetBool("Walking", true);
+			animator.SetBool("Running", false);
+			//animator.SetBool("WalkingBack", false);
 		}
 
 		if(godMode == true)

@@ -29,7 +29,7 @@ public class Gun : MonoBehaviour
 	public ParticleSystem particleShoot;
 	public ParticleSystem particleSteam;
 
-    //public Animator animacion;
+    public Animator animator;
 	
 	// Use this for initialization
 	void Start ()
@@ -38,7 +38,6 @@ public class Gun : MonoBehaviour
         isReloading = false;
         currentAmmo = maxAmmo;
         Munition = iniMunition;
-
 		//sound = GetComponentInChildren<AudioSource>();
 	}
 	
@@ -52,7 +51,7 @@ public class Gun : MonoBehaviour
     {
         if(isShooting || isReloading) return;
         if(currentAmmo <= 0) return;
-        // animacion.SetTrigger("shot2");
+        animator.SetTrigger("Shooting");
 		
         isShooting = true;
         currentAmmo--;
@@ -97,6 +96,7 @@ public class Gun : MonoBehaviour
         // animacion.SetTrigger("recharge");
         //reload.SetTrigger ("reload");
         StartCoroutine(WaitForReload());
+		animator.SetTrigger("Reloading");
     }
 
     private IEnumerator WaitForReload()
@@ -105,8 +105,17 @@ public class Gun : MonoBehaviour
 		if (currentAmmo > 0)
 		{
 			variableM = maxAmmo - currentAmmo;
-			Munition -= variableM;
-			currentAmmo += variableM;
+			if(variableM > Munition)
+			{
+				currentAmmo += Munition;
+				Munition = 0;
+			}
+			if(variableM <= Munition)
+			{
+				Munition -= variableM;
+				currentAmmo += variableM;
+			}
+			
 		}
 		else if (Munition >= maxAmmo)
 		{
@@ -130,7 +139,7 @@ public class Gun : MonoBehaviour
 	{
 		if(isShooting || isReloading) return;
         if(currentAmmo <= 0) return;
-
+		animator.SetTrigger("Shooting");
         isShooting = true;
         currentAmmo--;
 
