@@ -12,7 +12,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 
 	private float timeCounter;
     public float idleTime = 1.0f;
-	public float sleepTime = 10.0f;
+	public float sleepTime = 3.0f;
 	public bool sleeping;
 	private PlayerBehaviour plBehaviour;
 
@@ -40,8 +40,8 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public float radius;
 	public LayerMask targetMask;
 
-	public int patrolSpeed = 1;
-	public int chaseSpeed = 2;
+	public float patrolSpeed = 0.6f;
+	public float chaseSpeed = 0.6f;
 
 	private CollisionDamage colDamage;
 
@@ -201,14 +201,14 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void ChaseUpdate()
     {
         agent.SetDestination(player.position);
-		agent.speed = chaseSpeed;//Velocidad aumenta cuando ve al player
+		agent.speed = 0.5f;//Velocidad aumenta cuando ve al player
         //CHASE -> IDLE
 
         if(!detected)
         {
             SetIdle();
             GoNextPoint();
-			agent.speed = patrolSpeed;//Velocidad vuelve a la normalidad si no ve al player
+			agent.speed = 0.5f;//Velocidad vuelve a la normalidad si no ve al player
 			colDamage.CanDoDamage = false;
             return;
         }
@@ -253,6 +253,9 @@ public class EnemyBehaviour3 : MonoBehaviour
 		maxRadius = normalRadius;
         state = State.Idle;
 		radius = 2;
+		animator.SetBool("Walking", false);
+		animator.SetBool("Attacking", false);
+		animator.SetBool("Sleeping", false);
     }
     void SetPatrol()
     {
@@ -260,6 +263,9 @@ public class EnemyBehaviour3 : MonoBehaviour
         agent.isStopped = false;
         agent.stoppingDistance = 0;
         state = State.Patrol;
+		animator.SetBool("Walking", true);
+		animator.SetBool("Attacking", false);
+		animator.SetBool("Sleeping", false);
     }
 	void SetChase()
     {
@@ -267,28 +273,37 @@ public class EnemyBehaviour3 : MonoBehaviour
         //anim.SetTrigger("IsChasing");
 		sound.Play(1, 2);
         agent.isStopped = false;
-        agent.stoppingDistance = 1.5f;//La stopping distance determina la distancia a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
+        agent.stoppingDistance = 0.7f;//La stopping distance determina la distancia a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
 		maxRadius = detectRadius;
         state = State.Chase;
+		animator.SetBool("Walking", true);
 		animator.SetBool("Attacking", false);
-		radius = 5;
+		animator.SetBool("Sleeping", false);
+		radius = 3;
     }
 	void SetAttack()
 	{
 		agent.isStopped = true;
 		state = State.Attack;
 		animator.SetBool("Attacking", true);
+		animator.SetBool("Walking", false);
+		animator.SetBool("Sleeping", false);
 	}
 	void SetDead()
 	{
-		gameObject.SetActive(false);
+		//gameObject.SetActive(false);
 		state = State.Dead;
+		agent.speed = 0.0f;//Parar al enemy cuando esta muerto
+		animator.SetBool("Dead", true);
 	}
 	void SetSleep()
 	{
 		agent.isStopped = true;
 		sleeping = true;
 		state = State.Sleep;
+		animator.SetBool("Sleeping", true);
+		animator.SetBool("Attacking", false);
+		animator.SetBool("Walking", false);
 	}
 	#endregion
 
@@ -318,6 +333,8 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public void ReciveDamage(int amount, Vector3 hitPoint)
 	{
 		currentHealt -= amount;
+		animator.SetTrigger("hit");
+		
 		if(currentHealt <= 0)
 		{
 			SetSleep();
