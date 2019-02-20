@@ -181,5 +181,7 @@ public class EnableDisable : MonoBehaviour
 		autoAim.enabled = true;
 		animator.SetBool("Pointing", true);
 		animator.SetBool("Walking", false);
+		animator.SetBool("Running", false);
+		animator.SetBool("WalkingBack", false);
 	}
 }
