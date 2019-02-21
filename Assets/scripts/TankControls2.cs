@@ -90,6 +90,7 @@ public class TankControls2 : MonoBehaviour
 			{
 				transform.Translate(0, -speed * Time.deltaTime, 0);
 			}
+            speed = 5;
 		}	
 	}
 }

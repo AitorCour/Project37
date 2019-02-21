@@ -44,7 +44,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public float chaseSpeed = 0.6f;
 
 	private CollisionDamage colDamage;
-
+    private CapsuleCollider colliderEnemy;
 	// Use this for initialization
 	void Start () 
 	{
@@ -58,6 +58,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         SetIdle();
 		currentHealt = startingHealth;
 		sleeping = false;
+        colliderEnemy = GetComponent<CapsuleCollider>();
 	}
 	private void OnDrawGizmos() //Dibujar el campo de visión
 	{
@@ -295,6 +296,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		state = State.Dead;
 		agent.speed = 0.0f;//Parar al enemy cuando esta muerto
 		animator.SetBool("Dead", true);
+        colliderEnemy.enabled = false;
 	}
 	void SetSleep()
 	{
