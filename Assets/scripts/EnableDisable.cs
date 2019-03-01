@@ -8,7 +8,7 @@ public class EnableDisable : MonoBehaviour
 	private TankControls2 tankControl2;
 	private PointRotate pointRot;
 
-	public GameObject ammoText;
+	//public GameObject ammoText;
 	private InputManager inputManager;
 	private LookAtEnemy autoAim;
 	private bool isTank;
@@ -16,11 +16,11 @@ public class EnableDisable : MonoBehaviour
 	public bool isPointing;
 
 	public float timeCounter;
-	public float precisionTime = 2.0f;
-	public bool precisionActive;
+	//public float precisionTime = 2.0f;
+	//public bool precisionActive;
 	public bool m_isAxisInUse = false;
 	private SoundPlayer sound;
-	private AudioSource sound2;
+	//private AudioSource sound2;
 	public GameObject gun;
 
 	private PlayerBehaviour plBehaviour;
@@ -35,10 +35,10 @@ public class EnableDisable : MonoBehaviour
 		tankControl2 = GetComponent<TankControls2>();
 		pointRot = GetComponent<PointRotate>();
 		inputManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
-		precisionActive = false;
+		//precisionActive = false;
 
 		sound = GetComponentInChildren<SoundPlayer>();
-		sound2 = GetComponentInChildren<AudioSource>();
+		//sound2 = GetComponentInChildren<AudioSource>();
 		autoAim = GetComponentInChildren<LookAtEnemy>();
 		autoAim.enabled = false;
 
@@ -92,7 +92,7 @@ public class EnableDisable : MonoBehaviour
 				m_isAxisInUse = false;
 			}
 		}
-		if(isPointing)
+		/*if(isPointing)
 		{
 			UpdatePoint();
 		}
@@ -104,7 +104,7 @@ public class EnableDisable : MonoBehaviour
 			{
 				sound2.Stop();
 			}	
-		}
+		}*/
 		else
 		{
 			return;
@@ -124,7 +124,7 @@ public class EnableDisable : MonoBehaviour
 		
 		//
 	}
-	void UpdatePoint()
+	/*void UpdatePoint()
 	{
 		if(timeCounter >= precisionTime)
 		{
@@ -144,7 +144,7 @@ public class EnableDisable : MonoBehaviour
 				sound2.Stop();
 			}
 		}
-	}
+	}*/
 	public void SetDrag()
 	{
 		dragObjects.enabled = true;
@@ -152,7 +152,7 @@ public class EnableDisable : MonoBehaviour
 		pointRot.enabled = false;
 
 		isPointing = false;
-		ammoText.SetActive(false);
+		//ammoText.SetActive(false);
 
 		autoAim.enabled = false;
 	}
@@ -164,7 +164,7 @@ public class EnableDisable : MonoBehaviour
 		pointRot.enabled = false;
 
 		isPointing = false;
-		ammoText.SetActive(false);
+		//ammoText.SetActive(false);
 
 		autoAim.enabled = false;
 		animator.SetBool("Pointing", false);
@@ -176,7 +176,7 @@ public class EnableDisable : MonoBehaviour
 		tankControl2.enabled = false;
 		pointRot.enabled = true;
 		isPointing = true;
-		ammoText.SetActive(true);
+		//ammoText.SetActive(true);
 
 		autoAim.enabled = true;
 		animator.SetBool("Pointing", true);

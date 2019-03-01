@@ -135,7 +135,7 @@ public class Gun : MonoBehaviour
         Munition += munition;
     }
 
-	public void PrecisionShot()
+	/*public void PrecisionShot()
 	{
 		if(isShooting || isReloading) return;
         if(currentAmmo <= 0) return;
@@ -165,7 +165,7 @@ public class Gun : MonoBehaviour
 			}
         }
         StartCoroutine(WaitFireRate());
-	}
+	}*/
     public void GodMode()
     {
         Munition = 999;

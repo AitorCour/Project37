@@ -34,7 +34,7 @@ public class EnemyBehaviour3 : MonoBehaviour
     public int EnemyDamage;
 	private Animator animator;
 
-	public int startingHealth = 1;
+	private int startingHealth = 5;
 	public int currentHealt;
 
 	public float radius;
@@ -45,6 +45,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 
 	private CollisionDamage colDamage;
     private CapsuleCollider colliderEnemy;
+	public bool canReciveDamage;
 	// Use this for initialization
 	void Start () 
 	{
@@ -59,6 +60,8 @@ public class EnemyBehaviour3 : MonoBehaviour
 		currentHealt = startingHealth;
 		sleeping = false;
         colliderEnemy = GetComponent<CapsuleCollider>();
+		
+		canReciveDamage = true;
 	}
 	private void OnDrawGizmos() //Dibujar el campo de visión
 	{
@@ -237,11 +240,13 @@ public class EnemyBehaviour3 : MonoBehaviour
 		if(timeCounter >= sleepTime)
         {
             SetIdle();
-			currentHealt = startingHealth;
+			//currentHealt = startingHealth;
 			sleeping = false;
 			colDamage.CanDoDamage = false;
+			//canReciveDamage = true;
         }
         else timeCounter += Time.deltaTime;
+		canReciveDamage = false;
 	}
 	#region Sets
 
@@ -257,6 +262,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		animator.SetBool("Walking", false);
 		animator.SetBool("Attacking", false);
 		animator.SetBool("Sleeping", false);
+		canReciveDamage = true;
     }
     void SetPatrol()
     {
@@ -267,6 +273,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		animator.SetBool("Walking", true);
 		animator.SetBool("Attacking", false);
 		animator.SetBool("Sleeping", false);
+		canReciveDamage = true;
     }
 	void SetChase()
     {
@@ -281,6 +288,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		animator.SetBool("Attacking", false);
 		animator.SetBool("Sleeping", false);
 		radius = 3;
+		canReciveDamage = true;
     }
 	void SetAttack()
 	{
@@ -289,6 +297,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		animator.SetBool("Attacking", true);
 		animator.SetBool("Walking", false);
 		animator.SetBool("Sleeping", false);
+		canReciveDamage = true;
 	}
 	void SetDead()
 	{
@@ -334,14 +343,26 @@ public class EnemyBehaviour3 : MonoBehaviour
 
 	public void ReciveDamage(int amount, Vector3 hitPoint)
 	{
-		currentHealt -= amount;
-		animator.SetTrigger("hit");
-		
-		if(currentHealt <= 0)
+		if(!canReciveDamage)
 		{
-			SetSleep();
-			sleeping = true;
+			return;
 		}
+		else
+		{
+			currentHealt -= amount;
+			animator.SetTrigger("hit");
+		
+			if(currentHealt == 2)
+			{
+				SetSleep();
+				sleeping = true;
+			}
+			else if(currentHealt <= 0)
+			{
+				SetDead();
+			}
+		}
+		
 	}
 	public void Attack()
 	{
@@ -353,9 +374,9 @@ public class EnemyBehaviour3 : MonoBehaviour
 		}
 		
 	}
-	public void DeadlyDamage(Vector3 hitPoint)
+	/*public void DeadlyDamage(Vector3 hitPoint)
 	{
 		//currentHealt = 0;
 		SetDead();
-	}
+	}*/
 }

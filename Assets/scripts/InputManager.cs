@@ -79,38 +79,38 @@ public class InputManager : MonoBehaviour
 
 		
 
-		if (Input.GetButtonDown("Fire") && enDis.isPointing && !enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened) 
+		if (Input.GetButtonDown("Fire") && enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened) 
 		{
 			gun.Shot ();
 			Debug.Log("Shoot");
 			enDis.timeCounter = 0;
 			sound.Play(1, 2);
 		}
-		else if(Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened) 
+		/*else if(Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened) 
 		{
 			gun.PrecisionShot ();
 			Debug.Log("SpecialShoot");
 			enDis.timeCounter = 0;
-			enDis.precisionActive = false;
+			//enDis.precisionActive = false;
 			sound.Play(1, 2);
-		}
+		}*/
 		if((Input.GetAxisRaw("Fire") != 0))
 		{
-			if(enDis.isPointing && enDis.precisionActive == false && canShoot && !isInventoryOpened && !isPaused && !isMapOpened)
+			if(enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened)
 			{
 				gun.Shot ();
 				//Debug.Log("Shoot");
 				enDis.timeCounter = 0;
 				sound.Play(1, 2);
 			}
-			else if(enDis.isPointing && enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened)
+			/*else if(enDis.isPointing && enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened)
 			{
 				gun.PrecisionShot ();
 				//Debug.Log("SpecialShoot");
 				enDis.timeCounter = 0;
-				enDis.precisionActive = false;
+				//enDis.precisionActive = false;
 				sound.Play(1, 2);
-			}
+			}*/
 		}
         if(Input.GetButtonDown("Run") /*&& gun.currentAmmo <= 0*/ && enDis.isPointing)
 		{
