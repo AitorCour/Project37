@@ -351,7 +351,9 @@ public class EnemyBehaviour3 : MonoBehaviour
 		{
 			currentHealt -= amount;
 			animator.SetTrigger("hit");
-		
+
+			agent.SetDestination(player.position);
+			
 			if(currentHealt == 2)
 			{
 				SetSleep();
