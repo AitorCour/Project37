@@ -5503,9 +5503,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 999753759}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1516770024}
+        m_MethodName: DesequipGun
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12481,11 +12481,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 996094802}
   m_Mesh: {fileID: 4300022, guid: b537c73d063255f4195c208b6181ea14, type: 3}
---- !u!1 &999753759 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1362489861200564, guid: 8e2a7ac001c61c045b7986973a42cb98,
-    type: 2}
-  m_PrefabInternal: {fileID: 946062608}
 --- !u!1 &1004093291
 GameObject:
   m_ObjectHideFlags: 0
@@ -16447,7 +16442,6 @@ MonoBehaviour:
   detected: 0
   attackDistance: 1.2
   EnemyDamage: 0
-  startingHealth: 3
   currentHealt: 0
   radius: 1.5
   targetMask:
@@ -16455,6 +16449,7 @@ MonoBehaviour:
     m_Bits: 256
   patrolSpeed: 1
   chaseSpeed: 2
+  canReciveDamage: 0
 --- !u!136 &1279479920
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19379,9 +19374,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 999753759}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1516770024}
+        m_MethodName: EquipGun
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

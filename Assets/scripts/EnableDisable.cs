@@ -21,7 +21,7 @@ public class EnableDisable : MonoBehaviour
 	public bool m_isAxisInUse = false;
 	private SoundPlayer sound;
 	//private AudioSource sound2;
-	public GameObject gun;
+	public bool canShoot;
 
 	private PlayerBehaviour plBehaviour;
 	private float timeCounterIN;
@@ -53,7 +53,7 @@ public class EnableDisable : MonoBehaviour
 		//Test
 		if(Input.GetButtonDown("Jump") && !inputManager.isPaused && !inputManager.isInventoryOpened && !inputManager.isMapOpened )
 		{
-			if(!isPointing && gun.activeSelf)
+			if(!isPointing && canShoot)
 			{
 				SetPoint();
 				Debug.Log("Mode Changed");	
@@ -69,7 +69,7 @@ public class EnableDisable : MonoBehaviour
 		{
 			if(m_isAxisInUse == false)
 			{
-				if(!isPointing && gun.activeSelf)
+				if(!isPointing && canShoot)
 				{
 					SetPoint();
 					Debug.Log("Mode Changed");
@@ -183,5 +183,14 @@ public class EnableDisable : MonoBehaviour
 		animator.SetBool("Walking", false);
 		animator.SetBool("Running", false);
 		animator.SetBool("WalkingBack", false);
+	}
+
+	public void EquipGun()
+	{
+		canShoot = true;
+	}
+	public void DesequipGun()
+	{
+		canShoot = false;
 	}
 }
