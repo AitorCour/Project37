@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
 
 	public GameObject canvasOp;
 	public GameObject screenOp;
+	public GameObject soundOp;
+	public GameObject controlsOp;
 
 	public GameObject panelOp;
 
@@ -62,6 +64,8 @@ public class GameManager : MonoBehaviour
 		canvasPause.SetActive(false);
 		canvasOp.SetActive(false);
 		screenOp.SetActive(false);
+		soundOp.SetActive(false);
+		controlsOp.SetActive(false);
 		panelOp.SetActive(false);
 		panelSubOp.SetActive(false);
 		//Debug.Log("Not Paused");

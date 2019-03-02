@@ -6076,6 +6076,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7832577, y: 1.5750216, z: 0.7759961}
   m_Center: {x: -0.000000029802322, y: -0.000000059604645, z: -0.0000006109476}
+--- !u!1 &1566329932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1311611474827632, guid: 825656f5d38735748ae346547e302cc3,
+    type: 2}
+  m_PrefabInternal: {fileID: 906749238}
+--- !u!114 &1566329933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1566329932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7709cfc267b512b43a5b2bc79de83b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameras:
+  - {fileID: 2038360366}
+  - {fileID: 1830810755}
+  - {fileID: 782919628}
+  - {fileID: 328928072}
+  - {fileID: 536336951}
+  - {fileID: 1464715680}
+  startCamera: {fileID: 2038360366}
 --- !u!1 &1578416944
 GameObject:
   m_ObjectHideFlags: 0
