@@ -12,8 +12,8 @@ public class EnemyAnimationEvents : MonoBehaviour
 		enemy = GetComponentInParent<EnemyBehaviour3>();
 	}
 	
-	public void EndAttack()
+	/*public void EndAttack()
 	{
 		enemy.Attack();
-	}
+	}*/
 }

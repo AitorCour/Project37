@@ -114,6 +114,7 @@ public class EnableDisable : MonoBehaviour
 		{
 			//Debug.Log("Start inmune");
 			timeCounterIN += Time.deltaTime;
+
 			if(timeCounterIN >= inmuneTime)
 			{
 				//Debug.Log("End inmune");

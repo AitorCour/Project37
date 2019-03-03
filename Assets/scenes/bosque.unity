@@ -3753,7 +3753,7 @@ Prefab:
         type: 2}
       propertyPath: menu
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1867923639}
     - target: {fileID: 114449043260033456, guid: 825656f5d38735748ae346547e302cc3,
         type: 2}
       propertyPath: canvasPause
@@ -8080,6 +8080,31 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114276580606506314, guid: 56e339ffeaf317443ad677bfd0f2db54,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 348673541}
+    - target: {fileID: 114276580606506314, guid: 56e339ffeaf317443ad677bfd0f2db54,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 114276580606506314, guid: 56e339ffeaf317443ad677bfd0f2db54,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114276580606506314, guid: 56e339ffeaf317443ad677bfd0f2db54,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1197192242}
+    - target: {fileID: 114276580606506314, guid: 56e339ffeaf317443ad677bfd0f2db54,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56e339ffeaf317443ad677bfd0f2db54, type: 2}
   m_IsPrefabAsset: 0
@@ -8448,6 +8473,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1867123986}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1867923639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1516115745516724, guid: 56e339ffeaf317443ad677bfd0f2db54,
+    type: 2}
+  m_PrefabInternal: {fileID: 1748949271}
 --- !u!1001 &1868913074
 Prefab:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour3 : MonoBehaviour 
 {	
-	public enum State { Idle, Patrol, Chase, Attack, Sleep, Hit, Dead };
+	public enum State { Idle, Patrol, Chase, Attack, Sleep, Dead };
 	public State state;
 	private NavMeshAgent agent;
 	private SoundPlayer sound;
@@ -156,13 +156,10 @@ public class EnemyBehaviour3 : MonoBehaviour
 			case State.Sleep:
 				SleepUpdate();
 				break;
-			case State.Hit:
-				HitUpdate();
-				break;
 			default:
 				break;
 		}
-	}
+    }
 	private void FixedUpdate () 
 	{
 		isInFov = inFOV(transform, player, maxAngle, maxRadius);
@@ -269,21 +266,6 @@ public class EnemyBehaviour3 : MonoBehaviour
 		agent.speed = finalSpeed;
 		slept = true;
 	}
-	void HitUpdate()
-	{
-		if(timeCounter >= hitTime)
-        {
-            SetIdle();
-			//currentHealt = startingHealth;
-			//sleeping = false;
-			//colDamage.CanDoDamage = false;
-			//canReciveDamage = true;
-        }
-        else timeCounter += Time.deltaTime;
-		canReciveDamage = false;
-		//agent.speed = finalSpeed;
-		//slept = true;
-	}
 	#region Sets
 
 	void SetIdle()
@@ -317,7 +299,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         //anim.SetTrigger("IsChasing");
 		sound.Play(1, 2);
         agent.isStopped = false;
-        agent.stoppingDistance = 0.6f;//La stopping distance determina la distancia a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
+        agent.stoppingDistance = 0.9f;//La stopping distance determina la distancia a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
 		maxRadius = detectRadius;
         state = State.Chase;
 		animator.SetBool("Walking", true);
@@ -389,7 +371,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		{
 			currentHealt -= amount;
 			animator.SetTrigger("hit");
-			agent.isStopped = true;
+			//agent.isStopped = true;
 			agent.SetDestination(player.position);
 			
 			if(currentHealt == 2)
@@ -401,22 +383,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 			{
 				SetDead();
 			}
-			else
-			{
-				state = State.Hit;
-			}
-		}
-		
-	}
-	public void Attack()
-	{
-		if(sleeping) return;
-		else
-		{
-			//plBehaviour.Damage(EnemyDamage);
-			//Debug.Log("Harmed");
-		}
-		
+		}	
 	}
 	/*public void DeadlyDamage(Vector3 hitPoint)
 	{
