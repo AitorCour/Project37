@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour3 : MonoBehaviour 
 {	
-	public enum State { Idle, Patrol, Chase, Attack, Sleep, Dead };
+	public enum State { Idle, Patrol, Chase, Attack, Sleep, Hit, Dead };
 	public State state;
 	private NavMeshAgent agent;
 	private SoundPlayer sound;
@@ -13,7 +13,9 @@ public class EnemyBehaviour3 : MonoBehaviour
 	private float timeCounter;
     public float idleTime = 1.0f;
 	public float sleepTime = 3.0f;
-	public bool sleeping;
+	public float hitTime = 3.0f;
+	private bool sleeping;
+	private bool slept;
 	private PlayerBehaviour plBehaviour;
 
 	[Header("Path properties")]
@@ -31,21 +33,23 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public bool detected = false;
 	[Header("Attack Properties")]
     public float attackDistance;
+	private float attackTime = 3.25f;
     public int EnemyDamage;
 	private Animator animator;
 
 	private int startingHealth = 5;
 	public int currentHealt;
 
-	public float radius;
-	public LayerMask targetMask;
+	/*public float radius;
+	public LayerMask targetMask;*/
 
-	public float patrolSpeed = 0.6f;
-	public float chaseSpeed = 0.6f;
+	private float iniSpeed = 0.6f;
+	private float finalSpeed = 1.0f;
 
 	private CollisionDamage colDamage;
     private CapsuleCollider colliderEnemy;
 	public bool canReciveDamage;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -62,6 +66,8 @@ public class EnemyBehaviour3 : MonoBehaviour
         colliderEnemy = GetComponent<CapsuleCollider>();
 		
 		canReciveDamage = true;
+		slept = false;
+		agent.speed = iniSpeed;
 	}
 	private void OnDrawGizmos() //Dibujar el campo de visión
 	{
@@ -91,10 +97,10 @@ public class EnemyBehaviour3 : MonoBehaviour
 		Gizmos.color = Color.black;
 		Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
 
-		Color color = Color.red;
+		/*Color color = Color.red;
         color.a = 0.1f;
         Gizmos.color = color;
-        Gizmos.DrawSphere(transform.position, radius);
+        Gizmos.DrawSphere(transform.position, radius);*/
 	}
 	public static bool inFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius)
 	{
@@ -150,6 +156,9 @@ public class EnemyBehaviour3 : MonoBehaviour
 			case State.Sleep:
 				SleepUpdate();
 				break;
+			case State.Hit:
+				HitUpdate();
+				break;
 			default:
 				break;
 		}
@@ -169,12 +178,12 @@ public class EnemyBehaviour3 : MonoBehaviour
 		{
 			agent.SetDestination(player.position);//Coje la position del player y va a por él
 		}
-		Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, targetMask);
+		/*Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, targetMask);
         if(hitColliders.Length != 0)
         {
             detected = true;
             //targetTransform = hitColliders[0].transform;
-        }
+        }*/
 	}
 	void IdleUpdate()
     {   
@@ -205,14 +214,22 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void ChaseUpdate()
     {
         agent.SetDestination(player.position);
-		agent.speed = 0.5f;//Velocidad aumenta cuando ve al player
+		if(!slept)
+		{
+			agent.speed = iniSpeed;//Velocidad aumenta cuando ve al player
+		}
+		else if(slept)
+		{
+			agent.speed = finalSpeed;
+		}
+		
         //CHASE -> IDLE
 
         if(!detected)
         {
             SetIdle();
             GoNextPoint();
-			agent.speed = 0.5f;//Velocidad vuelve a la normalidad si no ve al player
+			//agent.speed = 0.5f;//Velocidad vuelve a la normalidad si no ve al player
 			colDamage.CanDoDamage = false;
             return;
         }
@@ -227,12 +244,14 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void AttackUpdate()
 	{
 		//ATTACK -> Chase
-		if(Vector3.Distance(transform.position, player.position) > attackDistance)
+		if(Vector3.Distance(transform.position, player.position) > attackDistance && timeCounter >= attackTime)
 		{
 			colDamage.CanDoDamage = false;
 			SetChase();
 			return;
 		}
+		
+		else timeCounter += Time.deltaTime;
 	}
 	void SleepUpdate()
 	{
@@ -247,6 +266,23 @@ public class EnemyBehaviour3 : MonoBehaviour
         }
         else timeCounter += Time.deltaTime;
 		canReciveDamage = false;
+		agent.speed = finalSpeed;
+		slept = true;
+	}
+	void HitUpdate()
+	{
+		if(timeCounter >= hitTime)
+        {
+            SetIdle();
+			//currentHealt = startingHealth;
+			//sleeping = false;
+			//colDamage.CanDoDamage = false;
+			//canReciveDamage = true;
+        }
+        else timeCounter += Time.deltaTime;
+		canReciveDamage = false;
+		//agent.speed = finalSpeed;
+		//slept = true;
 	}
 	#region Sets
 
@@ -258,7 +294,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         //particulas.Stop();
 		maxRadius = normalRadius;
         state = State.Idle;
-		radius = 2;
+		//radius = 2;
 		animator.SetBool("Walking", false);
 		animator.SetBool("Attacking", false);
 		animator.SetBool("Sleeping", false);
@@ -281,13 +317,13 @@ public class EnemyBehaviour3 : MonoBehaviour
         //anim.SetTrigger("IsChasing");
 		sound.Play(1, 2);
         agent.isStopped = false;
-        agent.stoppingDistance = 0.7f;//La stopping distance determina la distancia a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
+        agent.stoppingDistance = 0.6f;//La stopping distance determina la distancia a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
 		maxRadius = detectRadius;
         state = State.Chase;
 		animator.SetBool("Walking", true);
 		animator.SetBool("Attacking", false);
 		animator.SetBool("Sleeping", false);
-		radius = 3;
+		//radius = 3;
 		canReciveDamage = true;
     }
 	void SetAttack()
@@ -305,7 +341,9 @@ public class EnemyBehaviour3 : MonoBehaviour
 		state = State.Dead;
 		agent.speed = 0.0f;//Parar al enemy cuando esta muerto
 		animator.SetBool("Dead", true);
+		colDamage.CanDoDamage = false;
         colliderEnemy.enabled = false;
+		this.enabled = false;
 	}
 	void SetSleep()
 	{
@@ -351,7 +389,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		{
 			currentHealt -= amount;
 			animator.SetTrigger("hit");
-
+			agent.isStopped = true;
 			agent.SetDestination(player.position);
 			
 			if(currentHealt == 2)
@@ -362,6 +400,10 @@ public class EnemyBehaviour3 : MonoBehaviour
 			else if(currentHealt <= 0)
 			{
 				SetDead();
+			}
+			else
+			{
+				state = State.Hit;
 			}
 		}
 		
