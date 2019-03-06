@@ -27,7 +27,7 @@ public class InputManager : MonoBehaviour
 	public bool canShoot;
 	private SoundPlayer sound;
 
-	private bool ini_menu = true;
+	public bool ini_menu;
 	public GameObject menu;
 
 	// Use this for initialization
@@ -210,7 +210,7 @@ public class InputManager : MonoBehaviour
 				//mouseCursor.HideCursor();
 			}
 		}
-		if (menu.activeInHierarchy == true)
+		/*if (menu.activeInHierarchy == true)
 		{
 			ini_menu = true;
 			tankControl.canWalk = false;
@@ -219,7 +219,7 @@ public class InputManager : MonoBehaviour
 		{
 			ini_menu = false;
 			tankControl.canWalk = true;
-		}
+		}*/
     }
 
 	public void SetPause (bool p)
@@ -259,5 +259,10 @@ public class InputManager : MonoBehaviour
 		plController.enabled = true;
 		cameraGod.SetActive(false);
 		godActive = false;
+	}
+	public void PlayerCanWalk()
+	{
+		tankControl.canWalk = true;
+		ini_menu = false;
 	}
 }

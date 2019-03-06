@@ -24,6 +24,8 @@ public class PlayerBehaviour : MonoBehaviour
 	public bool damageRecived = false;
 
     private Animator animator;
+
+	//private TankControls2 tankControl2;
     // Use this for initialization
     void Start () 
 	{
@@ -40,6 +42,7 @@ public class PlayerBehaviour : MonoBehaviour
 		sound = GetComponentInChildren<SoundPlayer>();
 
         animator = GetComponentInChildren<Animator>();
+		//tankControl2 = GetComponent<TankControls2>();
 	}
 
 	//Recibir Daño
@@ -50,6 +53,7 @@ public class PlayerBehaviour : MonoBehaviour
 		{
 			playerLife -= hit;
             animator.SetTrigger("Hit");
+			
             damageRecived = true;
 
 			if (playerLife <= 0)
