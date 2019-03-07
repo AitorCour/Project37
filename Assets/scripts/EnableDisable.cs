@@ -115,14 +115,14 @@ public class EnableDisable : MonoBehaviour
 			//Debug.Log("Start inmune");
 			timeCounterIN += Time.deltaTime;
 			tankControl2.canWalk = false;
-			inputManager.canShoot = false;
+			//inputManager.canShoot = false;
 			if(timeCounterIN >= inmuneTime)
 			{
 				//Debug.Log("End inmune");
 				timeCounterIN = 0;
 				plBehaviour.damageRecived = false;
 				tankControl2.canWalk = true;
-				inputManager.canShoot = true;
+				//inputManager.canShoot = true;
 			}
 		}
 		

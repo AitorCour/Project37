@@ -97,8 +97,14 @@ public class TankControls2 : MonoBehaviour
 			animator.SetBool("Running", false);
 			//animator.SetBool("WalkingBack", false);
 			}
-			
-			
+
+			//Fast Turn
+            if(Input.GetAxis("Vertical")  < 0 && Input.GetButtonDown("Run"))
+            {
+                transform.Rotate(0, 180, 0);
+                //https://docs.unity3d.com/ScriptReference/Quaternion.Slerp.html
+            }
+
 
         }
 		else if (canWalk == false)

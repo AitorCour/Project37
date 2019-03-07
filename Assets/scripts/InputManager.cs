@@ -77,9 +77,9 @@ public class InputManager : MonoBehaviour
 		
         else if(Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
 
-		
+        Debug.Log(canShoot);
 
-		if (Input.GetButtonDown("Fire") && enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened) 
+		if (Input.GetButtonDown("Fire") && enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived) 
 		{
 			gun.Shot ();
 			Debug.Log("Shoot");
@@ -96,7 +96,7 @@ public class InputManager : MonoBehaviour
 		}*/
 		if((Input.GetAxisRaw("Fire") != 0))
 		{
-			if(enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened)
+			if(enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived)
 			{
 				gun.Shot ();
 				//Debug.Log("Shoot");
