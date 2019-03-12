@@ -7,7 +7,7 @@ public class HUD : MonoBehaviour
 {
 	Gun gun;
 	//private PlayerBehaviour plBehaviour;
-	public Text ammo;
+	//public Text ammo;
 	public Text ammoInv;
 	public Text bandages;
 	public Text plLife;
@@ -26,7 +26,7 @@ public class HUD : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		ammo.text = gun.currentAmmo + " / " + gun.Munition.ToString();
+		//ammo.text = gun.currentAmmo + " / " + gun.Munition.ToString();
 		ammoInv.text = gun.currentAmmo + " / " + gun.Munition.ToString();
 	}
 

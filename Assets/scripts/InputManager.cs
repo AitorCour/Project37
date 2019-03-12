@@ -30,6 +30,7 @@ public class InputManager : MonoBehaviour
 	public bool ini_menu;
 	public GameObject menu;
 
+	private Potion potion;
 	// Use this for initialization
 	void Start ()
     {
@@ -47,6 +48,8 @@ public class InputManager : MonoBehaviour
         mouseCursor.HideCursor();
 
 		sound = GetComponentInChildren<SoundPlayer>();
+
+		potion = GameObject.FindGameObjectWithTag("Misc").GetComponent<Potion>();
 	}
 	
 	// Update is called once per frame
@@ -77,9 +80,9 @@ public class InputManager : MonoBehaviour
 		
         else if(Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
 
-        Debug.Log(canShoot);
+        //Debug.Log(canShoot);
 
-		if (Input.GetButtonDown("Fire") && enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived) 
+		if (Input.GetButtonDown("Fire") && enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived && !potion.MessageReaded) 
 		{
 			gun.Shot ();
 			Debug.Log("Shoot");
@@ -96,7 +99,7 @@ public class InputManager : MonoBehaviour
 		}*/
 		if((Input.GetAxisRaw("Fire") != 0))
 		{
-			if(enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived)
+			if(enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived && !potion.MessageReaded)
 			{
 				gun.Shot ();
 				//Debug.Log("Shoot");
@@ -146,7 +149,7 @@ public class InputManager : MonoBehaviour
 		//PAUSE
 		if (Input.GetButtonDown("Esc"))
 		{
-			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu)
+			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu && !potion.MessageReaded)
 			{
 				gameManager.Pause();
 			}
@@ -154,7 +157,7 @@ public class InputManager : MonoBehaviour
 			{
 				return;
 			}
-			else if(isMapOpened || ini_menu)
+			else if(isMapOpened || ini_menu || potion.MessageReaded)
 			{
 				return;
 			}
@@ -167,7 +170,7 @@ public class InputManager : MonoBehaviour
 		//INVENTORY
 		if (Input.GetButtonDown("Inv"))
 		{
-			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu)
+			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu && !potion.MessageReaded)
 			{
 				gameManager.OpenInventory();
 				//Debug.Log ("Z pressed");
@@ -177,7 +180,7 @@ public class InputManager : MonoBehaviour
 			{
 				return;
 			}
-			else if(isMapOpened || ini_menu)
+			else if(isMapOpened || ini_menu || potion.MessageReaded)
 			{
 				return;
 			}
@@ -190,7 +193,7 @@ public class InputManager : MonoBehaviour
 		//MAP
 		if (Input.GetButtonDown("Map"))
 		{
-			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu)
+			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu && !potion.MessageReaded)
 			{
 				gameManager.OpenMap();
 				Debug.Log ("map pressed");
@@ -200,7 +203,7 @@ public class InputManager : MonoBehaviour
 			{
 				return;
 			}
-			else if(isInventoryOpened || ini_menu)
+			else if(isInventoryOpened || ini_menu || potion.MessageReaded)
 			{
 				return;
 			}

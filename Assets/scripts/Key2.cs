@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Key2 : MonoBehaviour 
 {
 	private PlayerBehaviour plBehaviour;
-	public GameObject keyObject;
+	//public GameObject keyObject;
 	private bool isInsideTrigger = false;
 	//private int key = 1;
 
@@ -69,6 +69,6 @@ public class Key2 : MonoBehaviour
 		Debug.Log("quit");
 		MessageReaded = false;
 		Time.timeScale = 1;
-		keyObject.SetActive(false);
+		gameObject.SetActive(false);
 	}
 }

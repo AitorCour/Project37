@@ -21,7 +21,7 @@ public class EnableDisable : MonoBehaviour
 	public bool m_isAxisInUse = false;
 	private SoundPlayer sound;
 	//private AudioSource sound2;
-	public bool canShoot;
+	private bool canShoot = true;
 
 	private PlayerBehaviour plBehaviour;
 	private float timeCounterIN;
