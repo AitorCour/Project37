@@ -14,28 +14,30 @@ public class ReadPause : MonoBehaviour
 	public string message = "Hello World";
 
 	public Text eText;
-
-	void Start()
+    private InputManager iM;
+    void Start()
 	{
-		//player = GameObject.FindGameObjectWithTag("Player");
-	}
+        //player = GameObject.FindGameObjectWithTag("Player");
+        iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
+    }
 
-	// Update is called once per frame
-	void Update () 
-	{
-		if (isInsideTrigger && Input.GetButtonDown("Action"))
-		{
-			if (MessageReaded)
-			{
-				ReadEnd();
-			}	
-			//Debug.Log("C pressed");
+    // Update is called once per frame
+    void Update()
+    {
+        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
+        {
+            //plBehaviour.GetKeys(key);
+            //keyObject.SetActive(false);
+            if (MessageReaded)
+            {
+                ReadEnd();
+            }
+            else Read();
+        }
+        else return;
+    }
 
-			else Read();
-		}	
-	}
-
-	void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player") //solo funciona con player
 		{
@@ -52,13 +54,13 @@ public class ReadPause : MonoBehaviour
 		}
 	}
 
-	private bool IsTextPanelActive
+	/*private bool IsTextPanelActive
 	{
 		get
 		{
 			return TextPanel.activeInHierarchy;
 		}
-	}
+	}*/
 
 	private void Read()
 	{
@@ -67,7 +69,8 @@ public class ReadPause : MonoBehaviour
 		Debug.Log("reading");
 		MessageReaded = true;
 		Time.timeScale = 0;
-	}
+        iM.canPause = false;
+    }
 
 	private void ReadEnd()
 	{
@@ -75,5 +78,6 @@ public class ReadPause : MonoBehaviour
 		Debug.Log("quit");
 		MessageReaded = false;
 		Time.timeScale = 1;
-	}
+        iM.canPause = true;
+    }
 }

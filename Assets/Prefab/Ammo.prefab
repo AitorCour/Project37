@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 114910391985997178}
   m_Layer: 0
   m_Name: Ammo
-  m_TagString: Untagged
+  m_TagString: Misc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1339856545533198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.15, y: 0.55, z: -1.7}
+  m_LocalPosition: {x: 1.0675161, y: 0.103, z: 1.6550367}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4778823408425568}
@@ -117,7 +117,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 8ec623ee3c983774297b2b9fd7f3a0ad, type: 2}
+  - {fileID: 2100000, guid: 960ac1d1405fb464d9c5b06cc0513280, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,7 +143,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067104939227126}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: 3fd7f7a300e4693428f319a4345d81ba, type: 3}
 --- !u!65 &65241709782773120
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -181,8 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72a945ccc1cd1d44a24998f1fea3e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoObject: {fileID: 1339856545533198}
+  isInsideTrigger: 0
   munition: 8
   TextPanel: {fileID: 0}
   message: You get Ammo
   eText: {fileID: 0}
+  MessageReaded: 0

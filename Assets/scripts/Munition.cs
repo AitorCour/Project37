@@ -5,43 +5,39 @@ using UnityEngine.UI;
 public class Munition : MonoBehaviour 
 {
 	private Gun weapon;
-	public GameObject ammoObject;
-	private bool isInsideTrigger = false;
+	//public GameObject ammoObject;
+	public bool isInsideTrigger = false;
 	public int munition;
 
 	public GameObject TextPanel = null;
 	public string message = "Hello World";
 	public Text eText;
-	private bool MessageReaded = false;
+	public bool MessageReaded = false;
 
 	private SoundPlayer sound;
-
-	// Use this for initialization
-	void Start () 
+    private InputManager iM;
+    // Use this for initialization
+    void Start () 
 	{
 		weapon = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
 		sound = GetComponentInChildren<SoundPlayer>();
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		if(isInsideTrigger && Input.GetButtonDown("Action"))
-		{
-			//weapon.GetAmmo(munition);
-			//ammoObject.SetActive(false);
-			if(MessageReaded)
-			{
-				ReadEnd();
-			}
-			else 
-			{
-				Read();
-			}
-		}
-		
-	}
-	void OnTriggerEnter(Collider other)
+        iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
+    }
+    void Update()
+    {
+        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
+        {
+            //plBehaviour.GetKeys(key);
+            //keyObject.SetActive(false);
+            if (MessageReaded)
+            {
+                ReadEnd();
+            }
+            else Read();
+        }
+        else return;
+    }
+    void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player") //solo funciona con player
 		{
@@ -64,13 +60,16 @@ public class Munition : MonoBehaviour
 		Time.timeScale = 0;
 		weapon.GetAmmo(munition);
 		sound.Play(1, 2);
-	}
+        iM.canPause = false;
+    }
 	private void ReadEnd()
 	{
 		TextPanel.SetActive(false);
 		Debug.Log("quit");
 		MessageReaded = false;
 		Time.timeScale = 1;
-		ammoObject.SetActive(false);
-	}
+        isInsideTrigger = false;
+        gameObject.SetActive(false);
+        iM.canPause = true;
+    }
 }

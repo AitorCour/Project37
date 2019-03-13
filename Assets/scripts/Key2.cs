@@ -15,30 +15,31 @@ public class Key2 : MonoBehaviour
 	private bool MessageReaded = false;
 
 	private SoundPlayer sound;
-
-	// Use this for initialization
-	void Start () 
+    private InputManager iM;
+    // Use this for initialization
+    void Start () 
 	{
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 		sound = GetComponentInChildren<SoundPlayer>();
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		if(isInsideTrigger && Input.GetButtonDown("Action"))
-		{
-			//plBehaviour.GetKeys(key);
-			//keyObject.SetActive(false);
-			if(MessageReaded)
-			{
-				ReadEnd();
-			}
-			else Read();
-		}
-		
-	}
-	void OnTriggerEnter(Collider other)
+        iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
+        {
+            //plBehaviour.GetKeys(key);
+            //keyObject.SetActive(false);
+            if (MessageReaded)
+            {
+                ReadEnd();
+            }
+            else Read();
+        }
+        else return;
+    }
+    void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player") //solo funciona con player
 		{
@@ -62,7 +63,8 @@ public class Key2 : MonoBehaviour
 		Time.timeScale = 0;
 		plBehaviour.GetKey2();
 		sound.Play(1, 2);
-	}
+        iM.canPause = false;
+    }
 	private void ReadEnd()
 	{
 		TextPanel.SetActive(false);
@@ -70,5 +72,6 @@ public class Key2 : MonoBehaviour
 		MessageReaded = false;
 		Time.timeScale = 1;
 		gameObject.SetActive(false);
-	}
+        iM.canPause = true;
+    }
 }

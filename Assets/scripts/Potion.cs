@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class Potion : MonoBehaviour 
 {
 	private PlayerBehaviour plBehaviour;
-	public GameObject potionObject;
-	private bool isInsideTrigger = false;
+	//public GameObject potionObject;
+	public bool isInsideTrigger = false;
 	private int potion = 1;
 
 	public GameObject TextPanel = null;
@@ -15,32 +15,31 @@ public class Potion : MonoBehaviour
 	public bool MessageReaded = false;
 
 	private SoundPlayer sound;
-	//private InputManager inputManager;
+
+    private InputManager iM;
 
 	// Use this for initialization
 	void Start () 
 	{
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 		sound = GetComponentInChildren<SoundPlayer>();
-		//inputManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
+		iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		if(isInsideTrigger && Input.GetButtonDown("Action"))
-		{
-			//plBehaviour.GetPotions(potion);//eso está movido a los read, para que 
-			//potionObject.SetActive(false);//no se repita y cojas dos
-			if(MessageReaded)
-			{
-				ReadEnd();
-			}
-			else Read();
-		}
-		
-	}
-	void OnTriggerEnter(Collider other)
+    void Update()
+    {
+        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
+        {
+            //plBehaviour.GetKeys(key);
+            //keyObject.SetActive(false);
+            if (MessageReaded)
+            {
+                ReadEnd();
+            }
+            else Read();
+        }
+        else return;
+    }
+    void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player") //solo funciona con player
 		{
@@ -54,7 +53,7 @@ public class Potion : MonoBehaviour
 			isInsideTrigger = false;
 		}
 	}
-	private void Read()
+	public void Read()
 	{
 		TextPanel.SetActive(true);
 		eText.text = message;
@@ -63,17 +62,16 @@ public class Potion : MonoBehaviour
 		Time.timeScale = 0;
 		plBehaviour.GetPotions(potion);
 		sound.Play(1, 2);
-		/*if (Input.GetButtonDown("Esc") || Input.GetButtonDown("Inv") || Input.GetButtonDown("Map"))
-		{
-			return;
-		}*/
-	}
-	private void ReadEnd()
+        iM.canPause = false;
+    }
+	public void ReadEnd()
 	{
 		TextPanel.SetActive(false);
 		//Debug.Log("quit");
 		MessageReaded = false;
 		Time.timeScale = 1;
-		potionObject.SetActive(false);
-	}
+		gameObject.SetActive(false);
+        isInsideTrigger = false;
+        iM.canPause = true;
+    }
 }

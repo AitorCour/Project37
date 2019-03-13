@@ -30,9 +30,13 @@ public class InputManager : MonoBehaviour
 	public bool ini_menu;
 	public GameObject menu;
 
-	private Potion potion;
-	// Use this for initialization
-	void Start ()
+    //private Potion potion;
+    //private Munition munition;
+    [Header("Misc Conditions")]
+    public bool canPause = true;
+
+    // Use this for initialization
+    void Start ()
     {
 		//shoot2 = GetComponent<Animator>();
 		gameManager = GetComponent<GameManager>();
@@ -49,8 +53,9 @@ public class InputManager : MonoBehaviour
 
 		sound = GetComponentInChildren<SoundPlayer>();
 
-		potion = GameObject.FindGameObjectWithTag("Misc").GetComponent<Potion>();
-	}
+		//potion = GameObject.FindGameObjectsWithTag("Misc").GetComponent<Potion>();
+        //munition = GameObject.FindGameObjectWithTag("Misc").GetComponent<Munition>();
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate ()
@@ -82,7 +87,7 @@ public class InputManager : MonoBehaviour
 
         //Debug.Log(canShoot);
 
-		if (Input.GetButtonDown("Fire") && enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived && !potion.MessageReaded) 
+		if (Input.GetButtonDown("Fire") && enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived) 
 		{
 			gun.Shot ();
 			Debug.Log("Shoot");
@@ -99,7 +104,7 @@ public class InputManager : MonoBehaviour
 		}*/
 		if((Input.GetAxisRaw("Fire") != 0))
 		{
-			if(enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived && !potion.MessageReaded)
+			if(enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived)
 			{
 				gun.Shot ();
 				//Debug.Log("Shoot");
@@ -149,7 +154,7 @@ public class InputManager : MonoBehaviour
 		//PAUSE
 		if (Input.GetButtonDown("Esc"))
 		{
-			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu && !potion.MessageReaded)
+			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu && canPause)
 			{
 				gameManager.Pause();
 			}
@@ -157,7 +162,7 @@ public class InputManager : MonoBehaviour
 			{
 				return;
 			}
-			else if(isMapOpened || ini_menu || potion.MessageReaded)
+			else if(isMapOpened || ini_menu || !canPause)
 			{
 				return;
 			}
@@ -170,7 +175,7 @@ public class InputManager : MonoBehaviour
 		//INVENTORY
 		if (Input.GetButtonDown("Inv"))
 		{
-			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu && !potion.MessageReaded)
+			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu && canPause)
 			{
 				gameManager.OpenInventory();
 				//Debug.Log ("Z pressed");
@@ -180,7 +185,7 @@ public class InputManager : MonoBehaviour
 			{
 				return;
 			}
-			else if(isMapOpened || ini_menu || potion.MessageReaded)
+			else if(isMapOpened || ini_menu || !canPause)
 			{
 				return;
 			}
@@ -193,7 +198,7 @@ public class InputManager : MonoBehaviour
 		//MAP
 		if (Input.GetButtonDown("Map"))
 		{
-			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu && !potion.MessageReaded)
+			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu && canPause)
 			{
 				gameManager.OpenMap();
 				Debug.Log ("map pressed");
@@ -203,7 +208,7 @@ public class InputManager : MonoBehaviour
 			{
 				return;
 			}
-			else if(isInventoryOpened || ini_menu || potion.MessageReaded)
+			else if(isInventoryOpened || ini_menu || !canPause)
 			{
 				return;
 			}
@@ -213,6 +218,25 @@ public class InputManager : MonoBehaviour
 				//mouseCursor.HideCursor();
 			}
 		}
+        //Potion
+        /*if (potion.isInsideTrigger)
+        {
+            if (Input.GetButtonDown("Action"))
+            {
+                if (!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu)
+                {
+                    if (potion.MessageReaded)
+                    {
+                        potion.ReadEnd();
+                    }
+                    else potion.Read();
+                }
+                else if (isInventoryOpened || ini_menu || potion.MessageReaded || isPaused)
+                {
+                    return;
+                }
+            }
+        }*/
 		/*if (menu.activeInHierarchy == true)
 		{
 			ini_menu = true;
