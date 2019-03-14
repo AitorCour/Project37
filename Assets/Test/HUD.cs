@@ -16,6 +16,15 @@ public class HUD : MonoBehaviour
     public GameObject key2;
     public bool hasKey1 = false;
     public bool hasKey2 = false;
+
+    public GameObject Busto1;
+    public GameObject Busto2;
+    public GameObject Busto3;
+
+
+    public RectTransform[] slotPos;
+    public bool[] slot;
+    public GameObject[] objectsInv;
 	// Use this for initialization
 	void Start () 
 	{
@@ -28,6 +37,32 @@ public class HUD : MonoBehaviour
 	{
 		//ammo.text = gun.currentAmmo + " / " + gun.Munition.ToString();
 		ammoInv.text = gun.currentAmmo + " / " + gun.Munition.ToString();
+        if(Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            PickObject(Busto1);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            PickObject(Busto2);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            PickObject(Busto3);
+        }
+
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            UseSlot(1);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UseSlot(2);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            UseSlot(3);
+        }
 	}
 
 	public void SetLife(int newLife)
@@ -50,4 +85,24 @@ public class HUD : MonoBehaviour
 	{
 		bandages.text = "x " + newBand.ToString();
 	}
+
+    public void PickObject(GameObject pickObject)
+    {
+        for(int i = 0; i < slot.Length; i++)
+        {
+            if(!slot[i])
+            {
+                slot[i] = true;
+                pickObject.transform.position = slotPos[i].transform.position;
+                objectsInv[i] = pickObject;
+                objectsInv[i].SetActive(true);
+                break;
+            }
+        }
+    }
+    public void UseSlot(int i)
+    {
+        slot[i - 1] = false;
+        objectsInv[i - 1].SetActive(false);
+    }
 }
