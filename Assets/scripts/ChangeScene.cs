@@ -13,15 +13,38 @@ public class ChangeScene : MonoBehaviour
 	public Image black;
 	public Animator animator;
 
+    private PlayerBehaviour plBehaviour;
+
+    private GameObject player;
+
+    public float pX;
+    public float pZ;
+
+    public float plGoingX;
+    public float plGoingZ;
+    void Start()
+    {
+        plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        pX = PlayerPrefs.GetFloat("p_x");
+        pZ = PlayerPrefs.GetFloat("p_z");
+        player.transform.position = new Vector3 (pX, 1, pZ);
+    }
+
 	void Update()
 	{
 		if (isInsideTrigger && Input.GetButtonDown("Action"))
 		{
 			Debug.Log ("Change Scene");
-			//SceneManager.LoadScene(scene); //linea que hace que funcione
-			//Fade();
+            //SceneManager.LoadScene(scene); //linea que hace que funcione
+            //Fade();
+            plBehaviour.SaveGame();
 			StartCoroutine(Fade());
+            pX = plGoingX;
+            pZ = plGoingZ;
+            SavePosition();
 		}
+        Debug.Log(pX);
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -78,4 +101,10 @@ public class ChangeScene : MonoBehaviour
 		yield return new WaitUntil(()=>black.color.a==1);
 		SceneManager.LoadScene(7);
 	}
+
+    void SavePosition()
+    {
+        PlayerPrefs.SetFloat("p_x", pX);
+        PlayerPrefs.SetFloat("p_z", pZ);
+    }
 }
