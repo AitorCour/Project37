@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -114,64 +115,98 @@ public class HUD : MonoBehaviour
             }
         }
     }
+
     public void UseSlot(int i)
     {
         slot[i - 1] = false;
         objectsInv[i - 1].SetActive(false);
-    }
-    /*void GetBust()
-    {
-        hasBust = true;
-        Busto.SetActive(true);
-        if(hasBall && !hasBox)
-        {
-            Busto.transform.position = slotPos[1].transform.position;
-        }
-        else if (!hasBall && hasBox)
-        {
-            Busto.transform.position = slotPos[1].transform.position;
-        }
-        else if (!hasBall && !hasBox)
-        {
-            Busto.transform.position = slotPos[0].transform.position;
-        }
-        else Busto.transform.position = slotPos[2].transform.position;
+        
     }
 
-    void GetBall()
+    private void SearchObject(string tag)
     {
-        hasBall = true;
-        Ball.SetActive(true);
-        if (hasBust && !hasBox)
-        {
-            Ball.transform.position = slotPos[1].transform.position;
+        for(int i = 0; i < objectsInv.Length; i++){
+            if(slot[i])
+            {
+                if(tag == objectsInv[i].tag)
+                {
+                objectsInv[i].SetActive(false);
+                slot[i] = false;
+                }
+            }
         }
-        else if (!hasBust && hasBox)
-        {
-            Ball.transform.position = slotPos[1].transform.position;
-        }
-        else if (!hasBust && !hasBox)
-        {
-            Ball.transform.position = slotPos[0].transform.position;
-        }
-        else Ball.transform.position = slotPos[2].transform.position;
     }
-    void GetBox()
+
+    public void UseBusto()
     {
-        hasBox = true;
-        Box.SetActive(true);
-        if (hasBust && !hasBall)
-        {
-            Box.transform.position = slotPos[1].transform.position;
-        }
-        else if (!hasBust && hasBall)
-        {
-            Box.transform.position = slotPos[1].transform.position;
-        }
-        else if (!hasBust && !hasBall)
-        {
-            Box.transform.position = slotPos[0].transform.position;
-        }
-        else Box.transform.position = slotPos[2].transform.position;
-    }*/
+        SearchObject("Busto");
+        Debug.Log("useBust");
+    }
+
+    public void UseKey()
+    {
+        SearchObject("Key");
+        Debug.Log("useBall");
+    }
+
+    public void UseBox()
+    {
+        SearchObject("Box");
+        Debug.Log("useBox");
+    }
+    /*void GetBust()
+{
+   hasBust = true;
+   Busto.SetActive(true);
+   if(hasBall && !hasBox)
+   {
+       Busto.transform.position = slotPos[1].transform.position;
+   }
+   else if (!hasBall && hasBox)
+   {
+       Busto.transform.position = slotPos[1].transform.position;
+   }
+   else if (!hasBall && !hasBox)
+   {
+       Busto.transform.position = slotPos[0].transform.position;
+   }
+   else Busto.transform.position = slotPos[2].transform.position;
+}
+
+void GetBall()
+{
+   hasBall = true;
+   Ball.SetActive(true);
+   if (hasBust && !hasBox)
+   {
+       Ball.transform.position = slotPos[1].transform.position;
+   }
+   else if (!hasBust && hasBox)
+   {
+       Ball.transform.position = slotPos[1].transform.position;
+   }
+   else if (!hasBust && !hasBox)
+   {
+       Ball.transform.position = slotPos[0].transform.position;
+   }
+   else Ball.transform.position = slotPos[2].transform.position;
+}
+void GetBox()
+{
+   hasBox = true;
+   Box.SetActive(true);
+   if (hasBust && !hasBall)
+   {
+       Box.transform.position = slotPos[1].transform.position;
+   }
+   else if (!hasBust && hasBall)
+   {
+       Box.transform.position = slotPos[1].transform.position;
+   }
+   else if (!hasBust && !hasBall)
+   {
+       Box.transform.position = slotPos[0].transform.position;
+   }
+   else Box.transform.position = slotPos[2].transform.position;
+}*/
 }

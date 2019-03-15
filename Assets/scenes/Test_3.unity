@@ -11528,6 +11528,16 @@ Prefab:
       propertyPath: m_Name
       value: Puerta (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114025695251574780, guid: 57145e3523b78fb4b9c5e90c4fab3ad6,
+        type: 2}
+      propertyPath: plGoingX
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114025695251574780, guid: 57145e3523b78fb4b9c5e90c4fab3ad6,
+        type: 2}
+      propertyPath: plGoingZ
+      value: -2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
   m_IsPrefabAsset: 0
@@ -17558,6 +17568,16 @@ Prefab:
       propertyPath: black
       value: 
       objectReference: {fileID: 1861297107}
+    - target: {fileID: 114025695251574780, guid: 57145e3523b78fb4b9c5e90c4fab3ad6,
+        type: 2}
+      propertyPath: plGoingX
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114025695251574780, guid: 57145e3523b78fb4b9c5e90c4fab3ad6,
+        type: 2}
+      propertyPath: plGoingZ
+      value: -2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
   m_IsPrefabAsset: 0
@@ -22794,9 +22814,10 @@ MonoBehaviour:
   scene: 0
   black: {fileID: 1861297107}
   animator: {fileID: 2002365311}
-  player: {fileID: 0}
   pX: 0
   pZ: 0
+  plGoingX: 0
+  plGoingZ: 0
 --- !u!1 &2060861732
 GameObject:
   m_ObjectHideFlags: 0

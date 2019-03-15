@@ -38,13 +38,12 @@ public class ChangeScene : MonoBehaviour
 			Debug.Log ("Change Scene");
             //SceneManager.LoadScene(scene); //linea que hace que funcione
             //Fade();
-            plBehaviour.SaveGame();
 			StartCoroutine(Fade());
             pX = plGoingX;
             pZ = plGoingZ;
             SavePosition();
 		}
-        Debug.Log(pX);
+        //Debug.Log(pX);
 	}
 
 	void OnTriggerEnter(Collider other)
