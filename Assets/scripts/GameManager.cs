@@ -30,8 +30,20 @@ public class GameManager : MonoBehaviour
 	public GameObject exKey;
 	public GameObject infoKey;
 
-	public GameObject exAmmo;
+    public GameObject exKey2;
+    public GameObject infoKey2;
+
+    public GameObject exAmmo;
 	public GameObject infoAmmo;
+
+    public GameObject exBust;
+    public GameObject infoBust;
+
+    public GameObject exBox;
+    public GameObject infoBox;
+
+    public GameObject exBall;
+    public GameObject infoBall;
 
 	public GameObject canvasOp;
 	public GameObject screenOp;
@@ -95,9 +107,17 @@ public class GameManager : MonoBehaviour
 		infoBan.SetActive(false);
 		exKey.SetActive(false);
 		infoKey.SetActive(false);
-		exAmmo.SetActive(false);
+        exKey2.SetActive(false);
+        infoKey2.SetActive(false);
+        exAmmo.SetActive(false);
 		infoAmmo.SetActive(false);
-	}
+        exBust.SetActive(false);
+        infoBust.SetActive(false);
+        exBox.SetActive(false);
+        infoBox.SetActive(false);
+        exBall.SetActive(false);
+        infoBall.SetActive(false);
+    }
 	
 	public void OpenMap()
 	{
