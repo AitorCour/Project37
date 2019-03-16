@@ -12,6 +12,7 @@ public class TankControls2 : MonoBehaviour
 	
 	private bool isRunning;
 	public bool canWalk;
+    public bool pointing;
 
     private Animator animator;
     void Start () 
@@ -23,7 +24,7 @@ public class TankControls2 : MonoBehaviour
 
 	void Update ()
 	{
-		if (canWalk == true)
+		if (canWalk == true && !pointing)
 		{
 			//var x = Input.GetAxis("Horizontal") * Time.deltaTime * rotSpeed;
 			//var z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
@@ -107,38 +108,29 @@ public class TankControls2 : MonoBehaviour
 
 
         }
-		else if (canWalk == false)
+		/*else if (canWalk == false)
 		{
 			//speed = 0;
-			Debug.Log("Cant Walk");
+			//Debug.Log("Cant Walk");
 			//return;
-		}
-		//Debug.Log(canWalk);
-		/*if (Input.GetButton("Run") && Input.GetAxisRaw("Vertical") > 0)
-		{
-			//Debug.Log("isRunning");
-			speed = runSpeed;
-			isRunning = true;
-			/*animator.SetBool("Running", true);
-			animator.SetBool("Walking", false);
-			animator.SetBool("WalkingBack", false);*//* 
-		}
-		if (Input.GetButton("Run") && Input.GetAxisRaw("Vertical") < 0) //hacia atras
-		{
-		    speed = iniSpeed;
-			animator.SetBool("Walking", false);
-			animator.SetBool("Running", false);
-			animator.SetBool("WalkingBack", true);
-		}
-
-		if (Input.GetButtonUp("Run"))
-		{
-			speed = iniSpeed;
-			isRunning = false;
-			animator.SetBool("Walking", true);
-			animator.SetBool("Running", false);
-			//animator.SetBool("WalkingBack", false);
 		}*/
+
+        if (pointing && canWalk)
+        {
+            //Debug.Log("Pointing");
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                var x = 1 * Time.deltaTime * rotSpeed;
+                transform.Rotate(0, x, 0);
+                //animator.SetBool("Walking", true);
+            }
+            if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                var x = -1 * Time.deltaTime * rotSpeed;
+                transform.Rotate(0, x, 0);
+                //animator.SetBool("Walking", true);
+            }
+        }
 
 		if(godMode == true)
 		{

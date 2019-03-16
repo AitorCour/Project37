@@ -13,8 +13,6 @@ public class ChangeScene : MonoBehaviour
 	public Image black;
 	public Animator animator;
 
-    private PlayerBehaviour plBehaviour;
-
     private GameObject player;
 
     public float pX;
@@ -24,7 +22,6 @@ public class ChangeScene : MonoBehaviour
     public float plGoingZ;
     void Start()
     {
-        plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         player = GameObject.FindGameObjectWithTag("Player");
         pX = PlayerPrefs.GetFloat("p_x");
         pZ = PlayerPrefs.GetFloat("p_z");

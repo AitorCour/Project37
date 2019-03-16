@@ -91,7 +91,7 @@ public class InputManager : MonoBehaviour
 		{
 			gun.Shot ();
 			Debug.Log("Shoot");
-			enDis.timeCounter = 0;
+			//enDis.timeCounter = 0;
 			sound.Play(1, 2);
 		}
 		/*else if(Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened) 
@@ -108,7 +108,7 @@ public class InputManager : MonoBehaviour
 			{
 				gun.Shot ();
 				//Debug.Log("Shoot");
-				enDis.timeCounter = 0;
+				//enDis.timeCounter = 0;
 				sound.Play(1, 2);
 			}
 			/*else if(enDis.isPointing && enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened)

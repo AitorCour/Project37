@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour 
 {
-	public int playerLife = 3;
+	public int playerLife;
 	private SoundPlayer sound;
 
 	HUD hud;
@@ -30,7 +30,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Start () 
 	{
 		hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
-        playerLife = PlayerPrefs.GetInt("Life");
+        playerLife = iniLife;
 		isDead = false;
 		//playerLife = iniLife;
 		hud.SetLife(playerLife);
@@ -140,8 +140,4 @@ public class PlayerBehaviour : MonoBehaviour
 		hud.SetLife(playerLife);
 		hud.SetBandages(potions);
 	}
-    public void SaveGame()
-    {
-        PlayerPrefs.SetInt("Life", playerLife);
-    }
 }

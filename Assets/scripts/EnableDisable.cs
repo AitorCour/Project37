@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EnableDisable : MonoBehaviour 
 {
-	private DragObjects dragObjects;
 	private TankControls2 tankControl2;
-	private PointRotate pointRot;
 
 	//public GameObject ammoText;
 	private InputManager inputManager;
@@ -15,30 +13,28 @@ public class EnableDisable : MonoBehaviour
 	private bool isDragging;
 	public bool isPointing;
 
-	public float timeCounter;
+	//public float timeCounter;
 	//public float precisionTime = 2.0f;
 	//public bool precisionActive;
 	public bool m_isAxisInUse = false;
-	private SoundPlayer sound;
-	//private AudioSource sound2;
 	private bool canShoot = true;
 
 	private PlayerBehaviour plBehaviour;
+
+    //Time Counters
 	private float timeCounterIN;
 	private float inmuneTime = 2.0f;
+    private float timeCounterNoShoot;
+    private float noShootTime = 0.5f;
+    private bool shootState = false;
 
     private Animator animator;
 	// Use this for initialization
 	void Start () 
 	{
-		dragObjects = GetComponent<DragObjects>();
 		tankControl2 = GetComponent<TankControls2>();
-		pointRot = GetComponent<PointRotate>();
 		inputManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
 		//precisionActive = false;
-
-		sound = GetComponentInChildren<SoundPlayer>();
-		//sound2 = GetComponentInChildren<AudioSource>();
 		autoAim = GetComponentInChildren<LookAtEnemy>();
 		autoAim.enabled = false;
 
@@ -54,14 +50,16 @@ public class EnableDisable : MonoBehaviour
 		if(Input.GetButtonDown("Jump") && !inputManager.isPaused && !inputManager.isInventoryOpened && !inputManager.isMapOpened )
 		{
 			if(!isPointing && canShoot)
-			{
-				SetPoint();
-				Debug.Log("Mode Changed");	
+			{   
+                SetPoint();
+				Debug.Log("Mode Changed");
+                shootState = true;
 			}
 			else
 			{
 				//pointState.ResetGun();
 				SetTank();
+                shootState = false;
 			}
 		}
 		//Mando
@@ -75,13 +73,6 @@ public class EnableDisable : MonoBehaviour
 					Debug.Log("Mode Changed");
 					m_isAxisInUse = true;
 				}
-				/*else
-				{
-					//pointState.ResetGun();
-					SetTank();
-					NormalColor();
-					m_isAxisInUse = false;
-				}*/
 			}	
 		}
 		if(Input.GetAxisRaw("Jump2") == 0)
@@ -92,19 +83,6 @@ public class EnableDisable : MonoBehaviour
 				m_isAxisInUse = false;
 			}
 		}
-		/*if(isPointing)
-		{
-			UpdatePoint();
-		}
-		else if(!isPointing)
-		{
-			timeCounter = 0;
-			precisionActive = false;
-			if(sound2.isPlaying)
-			{
-				sound2.Stop();
-			}	
-		}*/
 		else
 		{
 			return;
@@ -125,47 +103,24 @@ public class EnableDisable : MonoBehaviour
 				//inputManager.canShoot = true;
 			}
 		}
-		
-		//
-	}
-	/*void UpdatePoint()
-	{
-		if(timeCounter >= precisionTime)
-		{
-			precisionActive = true;
-			//Debug.Log("Special Shoot Ready");
-			if(!sound2.isPlaying)
-			{
-				sound2.Play();
-			}
-		}
-
-		else 
-		{
-			timeCounter += Time.deltaTime;
-			if(sound2.isPlaying)
-			{
-				sound2.Stop();
-			}
-		}
-	}*/
-	public void SetDrag()
-	{
-		dragObjects.enabled = true;
-		tankControl2.enabled = false;
-		pointRot.enabled = false;
-
-		isPointing = false;
-		//ammoText.SetActive(false);
-
-		autoAim.enabled = false;
+        if(shootState)
+        {
+            timeCounterNoShoot += Time.deltaTime;
+            if (timeCounterNoShoot >= noShootTime)
+            {
+                timeCounterNoShoot = 0;
+                isPointing = true;
+                shootState = false;
+            }
+        }
 	}
 
 	public void SetTank()
 	{
-		dragObjects.enabled = false;
+		//dragObjects.enabled = false;
 		tankControl2.enabled = true;
-		pointRot.enabled = false;
+		//pointRot.enabled = false;
+        tankControl2.pointing = false;
 
 		isPointing = false;
 		//ammoText.SetActive(false);
@@ -176,10 +131,8 @@ public class EnableDisable : MonoBehaviour
 
 	public void SetPoint()//apuntado
 	{
-		dragObjects.enabled = false;
-		tankControl2.enabled = false;
-		pointRot.enabled = true;
-		isPointing = true;
+        tankControl2.pointing = true;
+        //isPointing = true;
 		//ammoText.SetActive(true);
 
 		autoAim.enabled = true;
