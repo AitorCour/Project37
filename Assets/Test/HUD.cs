@@ -108,7 +108,6 @@ public class HUD : MonoBehaviour
                 pickObject.transform.position = slotPos[i].transform.position;
                 objectsInv[i] = pickObject;
                 objectsInv[i].SetActive(true);
-                Debug.Log("number is " + i);
                 break;
             }
         }
@@ -128,8 +127,8 @@ public class HUD : MonoBehaviour
             {
                 if(tag == objectsInv[i].tag)
                 {
-                objectsInv[i].SetActive(false);
-                slot[i] = false;
+                    objectsInv[i].SetActive(false);
+                    slot[i] = false;
                 }
             }
         }

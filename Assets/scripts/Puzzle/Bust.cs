@@ -16,7 +16,7 @@ public class Bust : MonoBehaviour
 
     //private SoundPlayer sound;
     private InputManager iM;
-
+    private UseObject useObj;
     // Use this for initialization
     void Start()
     {
@@ -24,6 +24,7 @@ public class Bust : MonoBehaviour
         //sound = GetComponentInChildren<SoundPlayer>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
         hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
+        useObj = GameObject.FindGameObjectWithTag("ObjectPosition").GetComponent<UseObject>();
     }
 
     // Update is called once per frame
@@ -73,8 +74,8 @@ public class Bust : MonoBehaviour
         Debug.Log("quit");
         MessageReaded = false;
         Time.timeScale = 1;
-        //gameObject.SetActive(false);
-        gameObject.transform.position = new Vector3(0, 0, 0);
         iM.canPause = true;
+        useObj.PickBusto();
+        useObj.bustPlaced = false;
     }
 }

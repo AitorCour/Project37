@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Box : MonoBehaviour
 {
     //private PlayerBehaviour plBehaviour;
-    private HUD hud;
     private bool isInsideTrigger = false;
 
     public GameObject TextPanel = null;
@@ -16,6 +15,8 @@ public class Box : MonoBehaviour
 
     //private SoundPlayer sound;
     private InputManager iM;
+    private HUD hud;
+    private ObjectPos1 oP1;
     // Use this for initialization
     void Start()
     {
@@ -23,7 +24,7 @@ public class Box : MonoBehaviour
         //sound = GetComponentInChildren<SoundPlayer>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
         hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
-
+        oP1 = GameObject.FindGameObjectWithTag("ObjectPosition").GetComponent<ObjectPos1>();
     }
 
     // Update is called once per frame
@@ -76,5 +77,6 @@ public class Box : MonoBehaviour
         //gameObject.SetActive(false);
         gameObject.transform.position = new Vector3(0, 0, 0);
         iM.canPause = true;
+        oP1.boxPlaced = false;
     }
 }
