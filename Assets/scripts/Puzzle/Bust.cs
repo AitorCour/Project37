@@ -47,7 +47,6 @@ public class Bust : MonoBehaviour
         if (other.tag == "Player") //solo funciona con player
         {
             isInsideTrigger = true; //cambia el bool
-                                    //Debug.Log ("Enterd 2");
         }
     }
     void OnTriggerExit(Collider other)

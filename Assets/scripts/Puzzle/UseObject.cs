@@ -16,6 +16,12 @@ public class UseObject : MonoBehaviour
     private ObjectPos1 oP2;
     private ObjectPos1 oP3;
 
+    private bool pos1;
+    private bool pos2;
+    private bool pos3;
+    private bool pos1free;
+    private bool pos2free;
+    private bool pos3free;
     public GameObject busto;
     public GameObject box;
     public GameObject ball;
@@ -35,7 +41,9 @@ public class UseObject : MonoBehaviour
 		if(oP1.isInsideTrigger)
         {
             positions.transform.position = oP1.transform.position;
-
+            pos1 = true;
+            pos2 = false;
+            pos3 = false;
             for (int i = 0; i < useButtons.Length; i++)
             {
                 useButtons[i].SetActive(true);
@@ -44,7 +52,9 @@ public class UseObject : MonoBehaviour
         if (oP2.isInsideTrigger)
         {
             positions.transform.position = oP2.transform.position;
-
+            pos1 = false;
+            pos2 = true;
+            pos3 = false;
             for (int i = 0; i < useButtons.Length; i++)
             {
                 useButtons[i].SetActive(true);
@@ -53,7 +63,9 @@ public class UseObject : MonoBehaviour
         if (oP3.isInsideTrigger)
         {
             positions.transform.position = oP3.transform.position;
-
+            pos1 = false;
+            pos2 = false;
+            pos3 = true;
             for (int i = 0; i < useButtons.Length; i++)
             {
                 useButtons[i].SetActive(true);
@@ -70,31 +82,112 @@ public class UseObject : MonoBehaviour
 
     public void PlaceBust()
     {
-        if (!boxPlaced && !ballPlaced)
+        
+        if(pos1)
         {
-            busto.transform.position = positions.transform.position;
-            bustPlaced = true;
-            hud.UseBusto();
+            Debug.Log("position is 1");
+            if(!pos1free)
+            {
+                busto.transform.position = positions.transform.position;
+                pos1free = false;
+                hud.UseBusto();
+            }
+            else return;
         }
-        else return;
+        if(pos2)
+        {
+            Debug.Log("position is 2");
+            if(!pos2free)
+            {
+            busto.transform.position = positions.transform.position;
+            pos2free = false;
+            hud.UseBusto();
+            }
+            else return;
+        }
+        if(pos3)
+        {
+            Debug.Log("position is 3");
+            if(!pos3free)
+            {
+                busto.transform.position = positions.transform.position;
+                pos3free = false;
+                hud.UseBusto();
+            }
+            else return;
+        }
     }
     public void PlaceMusicBox()
     {
-        if (!bustPlaced && !ballPlaced)
+        if(pos1)
         {
-            boxPlaced = true;
-            hud.UseBox();
+            Debug.Log("position is 1");
+            if(!pos1free)
+            {
+                box.transform.position = positions.transform.position;
+                pos1free = false;
+                hud.UseBox();
+            }
+            else return;
         }
-        else return;
+        if(pos2)
+        {
+            Debug.Log("position is 2");
+            if(!pos2free)
+            {
+                box.transform.position = positions.transform.position;
+                pos2free = false;
+                hud.UseBox();
+            }
+            else return;
+        }
+        if(pos3)
+        {
+            Debug.Log("position is 3");
+            if(!pos3free)
+            {
+                box.transform.position = positions.transform.position;
+                pos3free = false;
+                hud.UseBox();
+            }
+            else return;
+        }
     }
     public void PlaceBall()
     {
-        if (!bustPlaced && !boxPlaced)
+        if(pos1)
         {
-            ballPlaced = true;
-            hud.UseKey();
+            Debug.Log("position is 1");
+            if(!pos1free)
+            {
+                ball.transform.position = positions.transform.position;
+                pos1free = false;
+                hud.UseKey();
+            }
+            else return;
         }
-        else return;
+        if(pos2)
+        {
+            Debug.Log("position is 2");
+            if(!pos2free)
+            {
+                ball.transform.position = positions.transform.position;
+                pos2free = false;
+                hud.UseKey();
+            }
+            else return;
+        }
+        if(pos3)
+        {
+            Debug.Log("position is 3");
+            if(!pos3free)
+            {
+                ball.transform.position = positions.transform.position;
+                pos3free = false;
+                hud.UseKey();
+            }
+            else return;
+        }
     }
     public void PickBusto()
     {
