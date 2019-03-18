@@ -75,9 +75,9 @@ public class Ball : MonoBehaviour
         MessageReaded = false;
         Time.timeScale = 1;
         //gameObject.SetActive(false);
-        gameObject.transform.position = new Vector3(0, 0, 0);
+      //gameObject.transform.position = new Vector3(0, 0, 0);
         iM.canPause = true;
         useObj.PickBall();
-        useObj.ballPlaced = false;
+        //useObj.ballPlaced = false;
     }
 }

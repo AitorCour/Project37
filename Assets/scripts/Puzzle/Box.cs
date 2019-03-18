@@ -75,9 +75,9 @@ public class Box : MonoBehaviour
         MessageReaded = false;
         Time.timeScale = 1;
         //gameObject.SetActive(false);
-        gameObject.transform.position = new Vector3(0, 0, 0);
+      //gameObject.transform.position = new Vector3(0, 0, 0);
         iM.canPause = true;
         useObj.PickBox();
-        useObj.boxPlaced = false;
+        //useObj.boxPlaced = false;
     }
 }

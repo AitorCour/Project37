@@ -5,9 +5,9 @@ using UnityEngine;
 public class UseObject : MonoBehaviour
 {
     public GameObject[] useButtons;
-    public bool bustPlaced;
+    /*public bool bustPlaced;
     public bool boxPlaced;
-    public bool ballPlaced;
+    public bool ballPlaced;*/
 
     private HUD hud;
 
@@ -19,9 +19,9 @@ public class UseObject : MonoBehaviour
     private bool pos1;
     private bool pos2;
     private bool pos3;
-    private bool pos1free;
-    private bool pos2free;
-    private bool pos3free;
+    public bool pos1free;
+    public bool pos2free;
+    public bool pos3free;
     public GameObject busto;
     public GameObject box;
     public GameObject ball;
@@ -74,7 +74,7 @@ public class UseObject : MonoBehaviour
 
     }
 
-    public void PickObject(GameObject pickObj)
+    private void PickObject(GameObject pickObj)
     {
         pickObj.transform.position = new Vector3(0, 0, 0);//el obj recogido va al 000
     }
@@ -86,29 +86,30 @@ public class UseObject : MonoBehaviour
         if(pos1)
         {
             Debug.Log("position is 1");
-            if(!pos1free)
+            if(pos1free)
             {
                 busto.transform.position = positions.transform.position;
                 pos1free = false;
                 hud.UseBusto();
+                Debug.Log("Position Correct");
             }
             else return;
         }
         if(pos2)
         {
             Debug.Log("position is 2");
-            if(!pos2free)
+            if(pos2free)
             {
-            busto.transform.position = positions.transform.position;
-            pos2free = false;
-            hud.UseBusto();
+                busto.transform.position = positions.transform.position;
+                pos2free = false;
+                hud.UseBusto();
             }
             else return;
         }
         if(pos3)
         {
             Debug.Log("position is 3");
-            if(!pos3free)
+            if(pos3free)
             {
                 busto.transform.position = positions.transform.position;
                 pos3free = false;
@@ -122,7 +123,7 @@ public class UseObject : MonoBehaviour
         if(pos1)
         {
             Debug.Log("position is 1");
-            if(!pos1free)
+            if(pos1free)
             {
                 box.transform.position = positions.transform.position;
                 pos1free = false;
@@ -133,18 +134,19 @@ public class UseObject : MonoBehaviour
         if(pos2)
         {
             Debug.Log("position is 2");
-            if(!pos2free)
+            if(pos2free)
             {
                 box.transform.position = positions.transform.position;
                 pos2free = false;
                 hud.UseBox();
+                Debug.Log("Position Correct");
             }
             else return;
         }
         if(pos3)
         {
             Debug.Log("position is 3");
-            if(!pos3free)
+            if(pos3free)
             {
                 box.transform.position = positions.transform.position;
                 pos3free = false;
@@ -158,7 +160,7 @@ public class UseObject : MonoBehaviour
         if(pos1)
         {
             Debug.Log("position is 1");
-            if(!pos1free)
+            if(pos1free)
             {
                 ball.transform.position = positions.transform.position;
                 pos1free = false;
@@ -169,7 +171,7 @@ public class UseObject : MonoBehaviour
         if(pos2)
         {
             Debug.Log("position is 2");
-            if(!pos2free)
+            if(pos2free)
             {
                 ball.transform.position = positions.transform.position;
                 pos2free = false;
@@ -180,25 +182,72 @@ public class UseObject : MonoBehaviour
         if(pos3)
         {
             Debug.Log("position is 3");
-            if(!pos3free)
+            if(pos3free)
             {
                 ball.transform.position = positions.transform.position;
                 pos3free = false;
                 hud.UseKey();
+                Debug.Log("Position Correct");
             }
             else return;
         }
     }
     public void PickBusto()
     {
-        PickObject(busto);
+        //PickObject(busto);
+        if (busto.transform.position == oP1.transform.position)
+        {
+            pos1free = true;
+            PickObject(busto);
+        }
+        else if (busto.transform.position == oP2.transform.position)
+        {
+            pos2free = true;
+            PickObject(busto);
+        }
+        else if (busto.transform.position == oP3.transform.position)
+        {
+            pos3free = true;
+            PickObject(busto);
+        }
+      else PickObject(busto);
     }
     public void PickBox()
     {
-        PickObject(box);
+        if (box.transform.position == oP1.transform.position)
+        {
+            pos1free = true;
+            PickObject(box);
+        }
+        else if (box.transform.position == oP2.transform.position)
+        {
+            pos2free = true;
+            PickObject(box);
+        }
+        else if (box.transform.position == oP3.transform.position)
+        {
+            pos3free = true;
+            PickObject(box);
+        }
+      else PickObject(box);
     }
     public void PickBall()
     {
-        PickObject(ball);
+        if (ball.transform.position == oP1.transform.position)
+        {
+            pos1free = true;
+            PickObject(ball);
+        }
+        else if (ball.transform.position == oP2.transform.position)
+        {
+            pos2free = true;
+            PickObject(ball);
+        }
+        else if (ball.transform.position == oP3.transform.position)
+        {
+            pos3free = true;
+            PickObject(ball);
+        }
+      else PickObject(ball);
     }
 }

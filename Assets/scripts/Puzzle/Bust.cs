@@ -75,6 +75,6 @@ public class Bust : MonoBehaviour
         Time.timeScale = 1;
         iM.canPause = true;
         useObj.PickBusto();
-        useObj.bustPlaced = false;
+        //useObj.bustPlaced = false;
     }
 }
