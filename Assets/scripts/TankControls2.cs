@@ -39,6 +39,7 @@ public class TankControls2 : MonoBehaviour
                 var x = -1 * Time.deltaTime * rotSpeed;
                 transform.Rotate(0, x, 0);
                 //animator.SetBool("Walking", true);
+                //hacer una condicion para saber si solo gira en el sitio, sin movimiento. desde allí podría ir al run directamente
             }
             if(Input.GetAxisRaw("Vertical") > 0)
             {
@@ -47,11 +48,13 @@ public class TankControls2 : MonoBehaviour
 				if(!isRunning)
 				{
 					animator.SetBool("Walking", true);
-				}
+                    animator.SetBool("Running", false);
+                }
 				else if(isRunning)
 				{
 					animator.SetBool("Running", true);
-				}
+                    animator.SetBool("Walking", false);
+                }
 				
 				//animator.SetBool("WalkingBack", false);
             }
@@ -94,19 +97,17 @@ public class TankControls2 : MonoBehaviour
 			{
 			speed = iniSpeed;
 			isRunning = false;
-			animator.SetBool("Walking", true);
-			animator.SetBool("Running", false);
+			//animator.SetBool("Walking", true);
+			//animator.SetBool("Running", false);
 			//animator.SetBool("WalkingBack", false);
 			}
 
-			//Fast Turn
+			/*Fast Turn
             if(Input.GetAxis("Vertical")  < 0 && Input.GetButtonDown("Run"))
             {
                 transform.Rotate(0, 180, 0);
                 //https://docs.unity3d.com/ScriptReference/Quaternion.Slerp.html
-            }
-
-
+            }*/
         }
 		/*else if (canWalk == false)
 		{

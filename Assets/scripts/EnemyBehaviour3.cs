@@ -246,8 +246,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 			colDamage.CanDoDamage = false;
 			SetChase();
 			return;
-		}
-		
+		}	
 		else timeCounter += Time.deltaTime;
 	}
 	void SleepUpdate()
@@ -278,8 +277,8 @@ public class EnemyBehaviour3 : MonoBehaviour
         state = State.Idle;
 		//radius = 2;
 		animator.SetBool("Walking", false);
-		animator.SetBool("Attacking", false);
-		animator.SetBool("Sleeping", false);
+		//animator.SetBool("Attacking", false);
+		//animator.SetBool("Sleeping", false);
 		canReciveDamage = true;
     }
     void SetPatrol()
@@ -289,8 +288,8 @@ public class EnemyBehaviour3 : MonoBehaviour
         agent.stoppingDistance = 0;
         state = State.Patrol;
 		animator.SetBool("Walking", true);
-		animator.SetBool("Attacking", false);
-		animator.SetBool("Sleeping", false);
+		//animator.SetBool("Attacking", false);
+		//animator.SetBool("Sleeping", false);
 		canReciveDamage = true;
     }
 	void SetChase()
@@ -303,8 +302,8 @@ public class EnemyBehaviour3 : MonoBehaviour
 		maxRadius = detectRadius;
         state = State.Chase;
 		animator.SetBool("Walking", true);
-		animator.SetBool("Attacking", false);
-		animator.SetBool("Sleeping", false);
+		//animator.SetBool("Attacking", false);
+		//animator.SetBool("Sleeping", false);
 		//radius = 3;
 		canReciveDamage = true;
     }
@@ -312,9 +311,9 @@ public class EnemyBehaviour3 : MonoBehaviour
 	{
 		agent.isStopped = true;
 		state = State.Attack;
-		animator.SetBool("Attacking", true);
-		animator.SetBool("Walking", false);
-		animator.SetBool("Sleeping", false);
+        animator.SetTrigger("attack");
+		//animator.SetBool("Walking", false);
+		//animator.SetBool("Sleeping", false);
 		canReciveDamage = true;
 	}
 	void SetDead()
@@ -322,7 +321,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		//gameObject.SetActive(false);
 		state = State.Dead;
 		agent.speed = 0.0f;//Parar al enemy cuando esta muerto
-		animator.SetBool("Dead", true);
+        animator.SetTrigger("dead");
 		colDamage.CanDoDamage = false;
         colliderEnemy.enabled = false;
 		this.enabled = false;
@@ -332,9 +331,9 @@ public class EnemyBehaviour3 : MonoBehaviour
 		agent.isStopped = true;
 		sleeping = true;
 		state = State.Sleep;
-		animator.SetBool("Sleeping", true);
-		animator.SetBool("Attacking", false);
-		animator.SetBool("Walking", false);
+        animator.SetTrigger("sleep");
+		//animator.SetBool("Attacking", false);
+		//animator.SetBool("Walking", false);
 	}
 	#endregion
 
@@ -371,6 +370,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		{
 			currentHealt -= amount;
 			animator.SetTrigger("hit");
+            animator.SetBool("Walking", false);
 			//agent.isStopped = true;
 			agent.SetDestination(player.position);
 			
