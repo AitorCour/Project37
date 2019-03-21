@@ -14630,9 +14630,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  timeCounter: 0
+  timeCounterHit: 0
   idleTime: 1
-  sleepTime: 3
-  hitTime: 1.5
+  sleepTime: 4
+  hitTime: 0.5
   points:
   - {fileID: 1291106984}
   - {fileID: 1781771393}
@@ -14646,6 +14648,7 @@ MonoBehaviour:
   normalRadius: 5
   detected: 0
   attackDistance: 1.05
+  attackTime: 3.25
   EnemyDamage: 0
   currentHealt: 0
   canReciveDamage: 0

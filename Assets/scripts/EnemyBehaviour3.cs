@@ -5,16 +5,16 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour3 : MonoBehaviour 
 {	
-	public enum State { Idle, Patrol, Chase, Attack, Sleep, Dead };
+	public enum State { Idle, Patrol, Chase, Attack, Sleep, Hit, Dead };
 	public State state;
 	private NavMeshAgent agent;
 	private SoundPlayer sound;
 
-	private float timeCounter;
+	public float timeCounter;
+    public float timeCounterHit;
     public float idleTime = 1.0f;
 	public float sleepTime = 3.0f;
 	public float hitTime = 3.0f;
-	private bool sleeping;
 	private bool slept;
 	private PlayerBehaviour plBehaviour;
 
@@ -33,7 +33,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public bool detected = false;
 	[Header("Attack Properties")]
     public float attackDistance;
-	private float attackTime = 3.25f;
+	public float attackTime;
     public int EnemyDamage;
 	private Animator animator;
 
@@ -62,7 +62,6 @@ public class EnemyBehaviour3 : MonoBehaviour
 		GoNearOther();
         SetIdle();
 		currentHealt = startingHealth;
-		sleeping = false;
         colliderEnemy = GetComponent<CapsuleCollider>();
 		
 		canReciveDamage = true;
@@ -140,7 +139,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void Update () 
 	{
 		 switch(state)
-        {
+         {
             case State.Idle:
                 IdleUpdate();
                 break;
@@ -156,9 +155,12 @@ public class EnemyBehaviour3 : MonoBehaviour
 			case State.Sleep:
 				SleepUpdate();
 				break;
+            case State.Hit:
+                HitUpdate();
+                break;
 			default:
 				break;
-		}
+		 }
     }
 	private void FixedUpdate () 
 	{
@@ -188,6 +190,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         if(timeCounter >= idleTime)
         {
             SetPatrol();
+            timeCounter = 0;
         }
         else timeCounter += Time.deltaTime;
 
@@ -245,7 +248,8 @@ public class EnemyBehaviour3 : MonoBehaviour
 		{
 			colDamage.CanDoDamage = false;
 			SetChase();
-			return;
+            timeCounter = 0;
+            return;
 		}	
 		else timeCounter += Time.deltaTime;
 	}
@@ -255,16 +259,25 @@ public class EnemyBehaviour3 : MonoBehaviour
 		if(timeCounter >= sleepTime)
         {
             SetIdle();
-			//currentHealt = startingHealth;
-			sleeping = false;
 			colDamage.CanDoDamage = false;
-			//canReciveDamage = true;
+            timeCounter = 0;
+            slept = true;
         }
         else timeCounter += Time.deltaTime;
 		canReciveDamage = false;
-		agent.speed = finalSpeed;
-		slept = true;
+		agent.speed = 0;
 	}
+    void HitUpdate()
+    {
+        //HIT -> IDLE
+        if (timeCounterHit >= hitTime)
+        {
+            SetIdle();
+            timeCounterHit = 0;
+            //return;
+        }
+        else timeCounterHit += Time.deltaTime;
+    }
 	#region Sets
 
 	void SetIdle()
@@ -277,8 +290,6 @@ public class EnemyBehaviour3 : MonoBehaviour
         state = State.Idle;
 		//radius = 2;
 		animator.SetBool("Walking", false);
-		//animator.SetBool("Attacking", false);
-		//animator.SetBool("Sleeping", false);
 		canReciveDamage = true;
     }
     void SetPatrol()
@@ -291,6 +302,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		//animator.SetBool("Attacking", false);
 		//animator.SetBool("Sleeping", false);
 		canReciveDamage = true;
+        timeCounter = 0;
     }
 	void SetChase()
     {
@@ -298,7 +310,8 @@ public class EnemyBehaviour3 : MonoBehaviour
         //anim.SetTrigger("IsChasing");
 		sound.Play(1, 2);
         agent.isStopped = false;
-        agent.stoppingDistance = 0.9f;//La stopping distance determina la distancia a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
+        agent.stoppingDistance = 0.9f;//La stopping distance determina la distancia 
+        //a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
 		maxRadius = detectRadius;
         state = State.Chase;
 		animator.SetBool("Walking", true);
@@ -306,16 +319,16 @@ public class EnemyBehaviour3 : MonoBehaviour
 		//animator.SetBool("Sleeping", false);
 		//radius = 3;
 		canReciveDamage = true;
+        timeCounter = 0;
     }
 	void SetAttack()
 	{
 		agent.isStopped = true;
 		state = State.Attack;
         animator.SetTrigger("attack");
-		//animator.SetBool("Walking", false);
-		//animator.SetBool("Sleeping", false);
 		canReciveDamage = true;
-	}
+        timeCounter = 0;
+    }
 	void SetDead()
 	{
 		//gameObject.SetActive(false);
@@ -329,12 +342,18 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void SetSleep()
 	{
 		agent.isStopped = true;
-		sleeping = true;
 		state = State.Sleep;
         animator.SetTrigger("sleep");
 		//animator.SetBool("Attacking", false);
 		//animator.SetBool("Walking", false);
 	}
+    void SetHit()
+    {
+        agent.isStopped = true;
+        state = State.Hit;
+        agent.SetDestination(player.position);
+        animator.SetTrigger("hit");
+    }
 	#endregion
 
 	void GoNextPoint()
@@ -369,25 +388,29 @@ public class EnemyBehaviour3 : MonoBehaviour
 		else
 		{
 			currentHealt -= amount;
-			animator.SetTrigger("hit");
-            animator.SetBool("Walking", false);
-			//agent.isStopped = true;
-			agent.SetDestination(player.position);
-			
-			if(currentHealt == 2)
+
+            if (currentHealt != 2 && currentHealt != 0)
+            {
+                SetHit();
+            }
+            else if (currentHealt == 2)
+            {
+                SetSleep();
+            }
+            else if (currentHealt <= 0)
+            {
+                SetDead();
+            }
+            //SetHit();
+
+            /*if(currentHealt == 2)
 			{
 				SetSleep();
-				sleeping = true;
 			}
 			else if(currentHealt <= 0)
 			{
 				SetDead();
-			}
-		}	
+			}*/
+        }	
 	}
-	/*public void DeadlyDamage(Vector3 hitPoint)
-	{
-		//currentHealt = 0;
-		SetDead();
-	}*/
 }
