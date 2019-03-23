@@ -16,6 +16,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public float sleepTime = 3.0f;
 	public float hitTime = 3.0f;
 	private bool slept;
+    private bool trembled;
 	private PlayerBehaviour plBehaviour;
 
 	[Header("Path properties")]
@@ -203,8 +204,25 @@ public class EnemyBehaviour3 : MonoBehaviour
         //PATROL -> IDLE
         if(Vector3.Distance(transform.position, points[currentPoint].position) < reachDistance)
         {
-            GoNextPoint();
-            if(stopAtEachPoint) SetIdle();
+            //GoNextPoint();
+            if(!trembled)
+            {
+                SetTembleques();
+                trembled = true;
+            }
+            
+            //SetIdle();
+            if (/*stopAtEachPoint &&*/ timeCounter >= 5)
+            {
+                //animator.SetBool("trembling", false);
+                SetIdle();
+                GoNextPoint();
+                timeCounter = 0;
+                trembled = false;
+                return;
+            }
+
+            else timeCounter += Time.deltaTime;
         }
 
         //PATROL -> CHASE
@@ -360,7 +378,6 @@ public class EnemyBehaviour3 : MonoBehaviour
     {
         currentPoint++;
         if(currentPoint >= points.Length) currentPoint = 0;
-
         agent.SetDestination(points[currentPoint].position);
     }
 
@@ -401,16 +418,12 @@ public class EnemyBehaviour3 : MonoBehaviour
             {
                 SetDead();
             }
-            //SetHit();
-
-            /*if(currentHealt == 2)
-			{
-				SetSleep();
-			}
-			else if(currentHealt <= 0)
-			{
-				SetDead();
-			}*/
         }	
 	}
+    void SetTembleques()
+    {
+        //animator.SetBool("trembling", true);
+        animator.SetTrigger("trembling");
+        animator.SetBool("Walking", false);
+    }
 }
