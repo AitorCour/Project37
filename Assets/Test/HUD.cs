@@ -15,13 +15,14 @@ public class HUD : MonoBehaviour
 
     public GameObject key1;
     public GameObject key2;
-    public bool hasKey1 = false;
-    public bool hasKey2 = false;
+    public GameObject lader;
+    public bool hasKey1;
+    public bool hasKey2;
+    public bool hasLader;
 
     public GameObject Busto;
     public GameObject Box;
     public GameObject Ball;
-
 
     public RectTransform[] slotPos;
     public bool[] slot;
@@ -91,7 +92,14 @@ public class HUD : MonoBehaviour
         {
             key2.SetActive(true);
         }
-        
+        if(hasLader)
+        {
+            lader.SetActive(true);
+        }
+        if(!hasLader)
+        {
+            lader.SetActive(false);
+        }
 	}
 	public void SetBandages(int newBand)
 	{

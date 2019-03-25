@@ -18,9 +18,9 @@ public class PlayerBehaviour : MonoBehaviour
 	public int cure = 1;
 	private ChangeScene changeScene;
 
-    public bool key1 = false;
-    public bool key2 = false;
-
+    public bool key1;
+    public bool key2;
+	public bool lader;
 	public bool damageRecived = false;
 
     private Animator animator;
@@ -112,7 +112,6 @@ public class PlayerBehaviour : MonoBehaviour
 		//Debug.Log ("key");
         hud.hasKey1 = true;
 		hud.SetKey();
-         
 	}
     public void GetKey2()
     {
@@ -121,8 +120,21 @@ public class PlayerBehaviour : MonoBehaviour
         //Debug.Log ("key");
         hud.hasKey2 = true;
         hud.SetKey();
-
     }
+	public void GetLader()
+	{
+		if (isDead) return;
+		lader = true;
+		hud.hasLader = true;
+		hud.SetKey();
+	}
+	public void LoseLader()
+	{
+		if (isDead) return;
+		lader = false;
+		hud.hasLader = false;
+		hud.SetKey();
+	}
     //Perder Llaves
     //Sumar Pociones
     public void GetPotions(int potion)
