@@ -20,12 +20,16 @@ public class ChangeScene : MonoBehaviour
 
     public float plGoingX;
     public float plGoingZ;
+
+    private SettingsMenu settings;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         pX = PlayerPrefs.GetFloat("p_x");
         pZ = PlayerPrefs.GetFloat("p_z");
         player.transform.position = new Vector3 (pX, 1, pZ);
+        settings = GetComponent<SettingsMenu>();
     }
 
 	void Update()
@@ -81,13 +85,15 @@ public class ChangeScene : MonoBehaviour
 		//SceneManager.LoadScene(scene);
 		animator.SetBool("Fade", true);
 		yield return new WaitUntil(()=>black.color.a==1);
-		SceneManager.LoadScene(scene);
+        settings.SaveVolume();
+        SceneManager.LoadScene(scene);
 	}
 	IEnumerator FadeButton(int num)
 	{
 		animator.SetBool("Fade", true);
 		yield return new WaitUntil(()=>black.color.a==1);
-		SceneManager.LoadScene(num);
+        settings.SaveVolume();
+        SceneManager.LoadScene(num);
 	}
 	IEnumerator FadeDead()
 	{
@@ -95,7 +101,8 @@ public class ChangeScene : MonoBehaviour
 		//SceneManager.LoadScene(scene);
 		animator.SetBool("Fade", true);
 		yield return new WaitUntil(()=>black.color.a==1);
-		SceneManager.LoadScene(7);
+        settings.SaveVolume();
+        SceneManager.LoadScene(7);
 	}
 
     void SavePosition()

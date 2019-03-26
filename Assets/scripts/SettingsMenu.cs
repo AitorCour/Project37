@@ -6,53 +6,34 @@ using UnityEngine.Audio;
 
 public class SettingsMenu : MonoBehaviour 
 {
-	public AudioMixer musicMixer;
-	public AudioMixer efectsMixer;
+    public AudioMixer masterVol;
+    private float vol_1;
+    private float vol_2;
+    private float vol_3;
+    public Slider master;
+    private void Start()
+    {
+        vol_1 = PlayerPrefs.GetFloat("Master_Vol");
+        //volume_2 = PlayerPrefs.GetFloat("p_z");
+        //vol_1 = -40.0f;
+        master.value = vol_1;
+        masterVol.SetFloat("Master", vol_1);   
+    }
 
-	/*public TMP_Dropdown resolutionDropdown;
-	Resolution[] resolutions;
-	void Start ()
+    public void SetVolumeMaster(float volume_1)
+    {
+        vol_1 = volume_1;
+        masterVol.SetFloat("Master", volume_1);
+    }
+    public void SetVolumeEfect (float volume_2)
 	{
-		resolutions = Screen.resolutions;
-
-		resolutionDropdown.ClearOptions(); //limpia las resoluciones en el dropdown
-
-		List<string> options = new List<string>(); //Lista de strings, que serán nuestras opciones
-
-		int currentResolutionIndex = 0;
-		for (int i = 0; i < resolutions.Length; i++)
-		{
-			string option = resolutions[i].width + " x " + resolutions[i].height;
-			options.Add(option);
-
-			if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)//Probar a comparar con Screen.height/.width, por el tema de comparar solo la ventana
-			{
-				currentResolutionIndex = i;
-			}
-		}
-		resolutionDropdown.AddOptions(options);
-		resolutionDropdown.value = currentResolutionIndex;
-		resolutionDropdown.RefreshShownValue();
-	}*/
-
-	/*public void SetResolution (int resolutionIndex)
-	{
-		Resolution resolution = resolutions[resolutionIndex];
-		Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        volume_2 = vol_2;
+        masterVol.SetFloat("Effects", volume_2);
 	}
-
-	public void SetQuality (int qualityIndex)
+	public void SetVolumeMusic (float volume_3)
 	{
-		QualitySettings.SetQualityLevel(qualityIndex);
-	}*/
-
-	public void SetVolumeEfect (float volume2)
-	{
-		efectsMixer.SetFloat("Efect", volume2);
-	}
-	public void SetVolumeMusic (float volume)
-	{
-		musicMixer.SetFloat("Music", volume);
+        volume_3 = vol_3;
+        masterVol.SetFloat("Music", volume_3);
 	}
     public void SetResolution720()
     {
@@ -89,4 +70,9 @@ public class SettingsMenu : MonoBehaviour
 	{
 		Screen.fullScreen = isFullscreen;
 	}
+    public void SaveVolume()
+    {
+        PlayerPrefs.SetFloat("Master_vol", vol_1);
+        Debug.Log("MusicSaved");
+    }
 }
