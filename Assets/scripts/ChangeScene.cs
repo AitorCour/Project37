@@ -26,10 +26,10 @@ public class ChangeScene : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        settings = GameObject.FindGameObjectWithTag("HUD").GetComponent<SettingsMenu>();
         pX = PlayerPrefs.GetFloat("p_x");
         pZ = PlayerPrefs.GetFloat("p_z");
         player.transform.position = new Vector3 (pX, 1, pZ);
-        settings = GetComponent<SettingsMenu>();
     }
 
 	void Update()
@@ -39,9 +39,11 @@ public class ChangeScene : MonoBehaviour
 			Debug.Log ("Change Scene");
             //SceneManager.LoadScene(scene); //linea que hace que funcione
             //Fade();
-			StartCoroutine(Fade());
+            //settings.SaveVolume();
+            StartCoroutine(Fade());
             pX = plGoingX;
             pZ = plGoingZ;
+
             SavePosition();
 		}
         //Debug.Log(pX);
@@ -85,14 +87,13 @@ public class ChangeScene : MonoBehaviour
 		//SceneManager.LoadScene(scene);
 		animator.SetBool("Fade", true);
 		yield return new WaitUntil(()=>black.color.a==1);
-        settings.SaveVolume();
         SceneManager.LoadScene(scene);
 	}
 	IEnumerator FadeButton(int num)
 	{
 		animator.SetBool("Fade", true);
 		yield return new WaitUntil(()=>black.color.a==1);
-        settings.SaveVolume();
+        //settings.SaveVolume();
         SceneManager.LoadScene(num);
 	}
 	IEnumerator FadeDead()
@@ -101,7 +102,7 @@ public class ChangeScene : MonoBehaviour
 		//SceneManager.LoadScene(scene);
 		animator.SetBool("Fade", true);
 		yield return new WaitUntil(()=>black.color.a==1);
-        settings.SaveVolume();
+        //settings.SaveVolume();
         SceneManager.LoadScene(7);
 	}
 

@@ -7,23 +7,36 @@ using UnityEngine.Audio;
 public class SettingsMenu : MonoBehaviour 
 {
     public AudioMixer masterVol;
-    private float vol_1;
+    public float vol_1;
     private float vol_2;
     private float vol_3;
     public Slider master;
-    private void Start()
+    void Start()
     {
-        vol_1 = PlayerPrefs.GetFloat("Master_Vol");
-        //volume_2 = PlayerPrefs.GetFloat("p_z");
-        //vol_1 = -40.0f;
-        master.value = vol_1;
-        masterVol.SetFloat("Master", vol_1);   
+        
     }
+    void Update()
+    {
+        //Debug.Log(vol_1);
 
+        /*if(Input.GetKeyDown("m"))
+        {
+            vol_1 = PlayerPrefs.GetFloat("Master_Vol");
+            master.value = vol_1;
+            masterVol.SetFloat("Master", vol_1);
+            Debug.Log("Load");
+        }
+        if (Input.GetKeyDown("n"))
+        {
+            PlayerPrefs.SetFloat("Master_Vol", vol_1);
+            Debug.Log("Saved");
+        }*/
+    }
     public void SetVolumeMaster(float volume_1)
     {
         vol_1 = volume_1;
         masterVol.SetFloat("Master", volume_1);
+        SaveVolume();
     }
     public void SetVolumeEfect (float volume_2)
 	{
@@ -70,9 +83,9 @@ public class SettingsMenu : MonoBehaviour
 	{
 		Screen.fullScreen = isFullscreen;
 	}
-    public void SaveVolume()
+    void SaveVolume()
     {
         PlayerPrefs.SetFloat("Master_vol", vol_1);
-        Debug.Log("MusicSaved");
+        //PlayerPrefs.Save();
     }
 }
