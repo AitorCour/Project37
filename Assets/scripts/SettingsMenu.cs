@@ -13,7 +13,10 @@ public class SettingsMenu : MonoBehaviour
     public Slider master;
     void Start()
     {
-        
+        vol_1 = PlayerPrefs.GetFloat("Master_Vol");
+        master.value = vol_1;
+        Debug.Log(master.value);
+        masterVol.SetFloat("Master", vol_1);
     }
     void Update()
     {
@@ -86,6 +89,7 @@ public class SettingsMenu : MonoBehaviour
     void SaveVolume()
     {
         PlayerPrefs.SetFloat("Master_vol", vol_1);
+        Debug.Log(vol_1);
         //PlayerPrefs.Save();
     }
 }
