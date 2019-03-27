@@ -88,7 +88,7 @@ public class SettingsMenu : MonoBehaviour
 	}
     void SaveVolume()
     {
-        PlayerPrefs.SetFloat("Master_vol", vol_1);
+        PlayerPrefs.SetFloat("Master_Vol", vol_1);
         Debug.Log(vol_1);
         //PlayerPrefs.Save();
     }
