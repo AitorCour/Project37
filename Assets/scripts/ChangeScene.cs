@@ -12,7 +12,6 @@ public class ChangeScene : MonoBehaviour
 
 	public Image black;
 	public Animator animator;
-
     private GameObject player;
 
     public float pX;

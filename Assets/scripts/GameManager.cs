@@ -54,10 +54,13 @@ public class GameManager : MonoBehaviour
 
 	public GameObject panelSubOp;
 
+    public GameObject fadeObj;
+
 	private void Awake () 
 	{
 		inputManager = GetComponent<InputManager>();
 		eventSystem = EventSystem.current;
+        fadeObj.SetActive(true);
 	}
 	
 	public void Pause()
