@@ -13,6 +13,12 @@ public class SettingsMenu : MonoBehaviour
     public Slider master;
     public Slider effects;
     public Slider music;
+
+    public RectTransform selectedRes;
+    public RectTransform selectedQual;
+    private float resPos;
+    private float qualPos;
+
     void Start()
     {
         vol_1 = PlayerPrefs.GetFloat("Master_Vol");
@@ -27,6 +33,12 @@ public class SettingsMenu : MonoBehaviour
         vol_3 = PlayerPrefs.GetFloat("Music_Vol");
         music.value = vol_3;
         masterVol.SetFloat("Music", vol_3);
+
+        resPos = PlayerPrefs.GetFloat("Pos_Res");
+        selectedRes.localPosition = new Vector3(-450, resPos, 0);
+
+        qualPos = PlayerPrefs.GetFloat("Pos_Qual");
+        selectedQual.localPosition = new Vector3(-205, qualPos, 0);
     }
     public void SetVolumeMaster(float volume_1)
     {
@@ -49,34 +61,55 @@ public class SettingsMenu : MonoBehaviour
     public void SetResolution720()
     {
         Screen.SetResolution(1280, 720, Screen.fullScreen);
+        selectedRes.localPosition = new Vector3(-450, 85, 0);
+        resPos = 85f;
+        SavePositionRes();
         //Debug.Log("resolution 720");
     }
     public void SetResolution1200()
     {
         Screen.SetResolution(1600, 1200, Screen.fullScreen);
+        selectedRes.localPosition = new Vector3(-450, 30, 0);
+        resPos = 30f;
+        SavePositionRes();
         //Debug.Log("resolution 1200");
     }
     public void SetResolution1080()
     {
         Screen.SetResolution(1920, 1080, Screen.fullScreen);
+        selectedRes.localPosition = new Vector3(-450, -25, 0);
+        resPos = -25f;
+        SavePositionRes();
         //Debug.Log("resolution 1080");
     }
 	public void SetQualityUltra ()
 	{
 		QualitySettings.SetQualityLevel(0);
-	}
+        selectedQual.localPosition = new Vector3(-205, 85, 0);
+        qualPos = 85;
+        SavePositionQual();
+    }
 	public void SetQualityHigh ()
 	{
 		QualitySettings.SetQualityLevel(1);
-	}
+        selectedQual.localPosition = new Vector3(-205, 25, 0);
+        qualPos = 25;
+        SavePositionQual();
+    }
 	public void SetQualityMedium ()
 	{
 		QualitySettings.SetQualityLevel(2);
-	}
+        selectedQual.localPosition = new Vector3(-205, -25, 0);
+        qualPos = -25;
+        SavePositionQual();
+    }
 	public void SetQualityLow ()
 	{
 		QualitySettings.SetQualityLevel(3);
-	}
+        selectedQual.localPosition = new Vector3(-205, -85, 0);
+        qualPos = -85;
+        SavePositionQual();
+    }
 	public void SetFullscreen (bool isFullscreen)
 	{
 		Screen.fullScreen = isFullscreen;
@@ -94,5 +127,13 @@ public class SettingsMenu : MonoBehaviour
     void SaveVolume_Music()
     {
         PlayerPrefs.SetFloat("Music_Vol", vol_3);
+    }
+    void SavePositionRes()
+    {
+        PlayerPrefs.SetFloat("Pos_Res", resPos);
+    }
+    void SavePositionQual()
+    {
+        PlayerPrefs.SetFloat("Pos_Qual", qualPos);
     }
 }
