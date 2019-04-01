@@ -64,7 +64,7 @@ public class PlayerBehaviour : MonoBehaviour
 			hud.SetLife(playerLife);
 			if(playerLife >= 1)
 			{
-				sound.Play(1, 2);
+				sound.Play(0);
 			}
 		}	
 	}
@@ -96,7 +96,7 @@ public class PlayerBehaviour : MonoBehaviour
 	private void Dead()
 	{
 		isDead = true;
-		sound.Play(3, 4);
+		sound.Play(1);
         animator.SetBool("Dead", true);
         if (isDead == true)
 		{
@@ -104,6 +104,10 @@ public class PlayerBehaviour : MonoBehaviour
 			changeScene.Death();
 		}
 	}
+    public void ShootSound()
+    {
+        sound.Play(2);
+    }
 	//Sumar Llaves
 	public void GetKey1()
 	{

@@ -30,7 +30,9 @@ public class Gun : MonoBehaviour
 	public ParticleSystem particleSteam;
 
     public Animator animator;
-	
+
+    private PlayerBehaviour plBehaviour;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -38,27 +40,22 @@ public class Gun : MonoBehaviour
         isReloading = false;
         currentAmmo = maxAmmo;
         Munition = iniMunition;
+        plBehaviour = GetComponentInParent<PlayerBehaviour>();
 		//sound = GetComponentInChildren<AudioSource>();
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
-
     public void Shot()
     {
         if(isShooting || isReloading) return;
         if(currentAmmo <= 0) return;
         animator.SetTrigger("Shooting");
-		
+        plBehaviour.ShootSound();
         isShooting = true;
         currentAmmo--;
 		particleShoot.Play();
 		particleSteam.Play();
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Coje el punto de la posicion del mouse y lanza un rayo
         RaycastHit hit = new RaycastHit();
+
         if(Physics.Raycast(transform.position,  transform.forward, out hit, maxDistance, mask))
         {
             Debug.Log(hit.transform.name);
@@ -75,8 +72,6 @@ public class Gun : MonoBehaviour
 			}
         }
         StartCoroutine(WaitFireRate());
-		
-		//sound.Play();
     }
 
     private IEnumerator WaitFireRate() //Usar corutinas para contar tiempo

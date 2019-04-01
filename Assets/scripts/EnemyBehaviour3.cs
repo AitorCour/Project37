@@ -326,7 +326,7 @@ public class EnemyBehaviour3 : MonoBehaviour
     {
         //anim.SetBool("isMoving", false);
         //anim.SetTrigger("IsChasing");
-		sound.Play(1, 2);
+		sound.Play(0);
         agent.isStopped = false;
         agent.stoppingDistance = 0.9f;//La stopping distance determina la distancia 
         //a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
@@ -370,6 +370,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         agent.isStopped = true;
         state = State.Hit;
         agent.SetDestination(player.position);
+        sound.Play(1);
         animator.SetTrigger("hit");
     }
 	#endregion

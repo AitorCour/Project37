@@ -25,7 +25,6 @@ public class InputManager : MonoBehaviour
 	private bool godActive = false;
 
 	public bool canShoot;
-	private SoundPlayer sound;
 
 	public bool ini_menu;
 	public GameObject menu;
@@ -50,11 +49,6 @@ public class InputManager : MonoBehaviour
 
         mouseCursor = new MouseCursor();
         mouseCursor.HideCursor();
-
-		sound = GetComponentInChildren<SoundPlayer>();
-
-		//potion = GameObject.FindGameObjectsWithTag("Misc").GetComponent<Potion>();
-        //munition = GameObject.FindGameObjectWithTag("Misc").GetComponent<Munition>();
     }
 	
 	// Update is called once per frame
@@ -92,7 +86,6 @@ public class InputManager : MonoBehaviour
 			gun.Shot ();
 			Debug.Log("Shoot");
 			//enDis.timeCounter = 0;
-			sound.Play(1, 2);
 		}
 		/*else if(Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened) 
 		{
@@ -100,7 +93,6 @@ public class InputManager : MonoBehaviour
 			Debug.Log("SpecialShoot");
 			enDis.timeCounter = 0;
 			//enDis.precisionActive = false;
-			sound.Play(1, 2);
 		}*/
 		if((Input.GetAxisRaw("Fire") != 0))
 		{
@@ -109,7 +101,6 @@ public class InputManager : MonoBehaviour
 				gun.Shot ();
 				//Debug.Log("Shoot");
 				//enDis.timeCounter = 0;
-				sound.Play(1, 2);
 			}
 			/*else if(enDis.isPointing && enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened)
 			{
@@ -218,35 +209,6 @@ public class InputManager : MonoBehaviour
 				//mouseCursor.HideCursor();
 			}
 		}
-        //Potion
-        /*if (potion.isInsideTrigger)
-        {
-            if (Input.GetButtonDown("Action"))
-            {
-                if (!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu)
-                {
-                    if (potion.MessageReaded)
-                    {
-                        potion.ReadEnd();
-                    }
-                    else potion.Read();
-                }
-                else if (isInventoryOpened || ini_menu || potion.MessageReaded || isPaused)
-                {
-                    return;
-                }
-            }
-        }*/
-		/*if (menu.activeInHierarchy == true)
-		{
-			ini_menu = true;
-			tankControl.canWalk = false;
-		}
-		if (menu.activeInHierarchy == false)
-		{
-			ini_menu = false;
-			tankControl.canWalk = true;
-		}*/
     }
 
 	public void SetPause (bool p)
