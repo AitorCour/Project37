@@ -23,7 +23,7 @@ public class EnableDisable : MonoBehaviour
 
     //Time Counters
 	private float timeCounterIN;
-	private float inmuneTime = 2.0f;
+	private float inmuneTime = 2.5f;
     private float timeCounterNoShoot;
     private float noShootTime = 0.5f;
     private bool shootState = false;

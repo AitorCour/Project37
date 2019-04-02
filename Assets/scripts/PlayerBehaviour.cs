@@ -53,7 +53,15 @@ public class PlayerBehaviour : MonoBehaviour
 		{
 			playerLife -= hit;
             animator.SetTrigger("Hit");
-			
+
+            animator.SetBool("Walking", false);
+            animator.SetBool("Walking2", false);
+            animator.SetBool("Walking3", false);
+
+            animator.SetBool("Running", false);
+            animator.SetBool("Running2", false);
+            animator.SetBool("WalkingBack", false);
+
             damageRecived = true;
 
 			if (playerLife <= 0)

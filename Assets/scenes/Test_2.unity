@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0036458608, g: 0.002573757, b: 0.0023727885, a: 1}
+  m_IndirectSpecularColor: {r: 0.0036458878, g: 0.0025737085, b: 0.0023728635, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21942,6 +21942,11 @@ MonoBehaviour:
   godMode: 0
   canWalk: 1
   pointing: 0
+  walkSpeed_1: 1
+  walkSpeed_2: 0.8
+  walkSpeed_3: 0.6
+  runSpeed_1: 1.5
+  runSpeed_2: 1.3
 --- !u!81 &969869476
 AudioListener:
   m_ObjectHideFlags: 0
@@ -26651,7 +26656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1279479919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37049,8 +37054,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 1ce2897815978e84387c92f45cee3bb9, type: 3}
-  - {fileID: 8300000, guid: 0631a11a3f937c74eabb3eb6438636a1, type: 3}
+  - {fileID: 8300000, guid: e4a44a322ee97294e8dc7cdeab477b30, type: 3}
+  - {fileID: 8300000, guid: e4a44a322ee97294e8dc7cdeab477b30, type: 3}
   source: {fileID: 1945412687}
 --- !u!82 &1945412687
 AudioSource:
