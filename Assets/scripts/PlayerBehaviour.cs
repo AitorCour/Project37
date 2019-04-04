@@ -164,4 +164,9 @@ public class PlayerBehaviour : MonoBehaviour
 		hud.SetLife(playerLife);
 		hud.SetBandages(potions);
 	}
+    public void PlayFootstep()
+    {
+        //sound.Play();
+        Debug.Log("Footstep");
+    }
 }

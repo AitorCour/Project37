@@ -27,10 +27,11 @@ public class TankControls2 : MonoBehaviour
 
     void Start () 
 	{
-		speed = iniSpeed;
+		//speed = iniSpeed;
         animator = GetComponentInChildren<Animator>();
-		isRunning = false;
+		//isRunning = false;
         plBehaviour = GetComponent<PlayerBehaviour>();
+        SetSpeed();
     }
 
 	void Update ()
@@ -54,8 +55,9 @@ public class TankControls2 : MonoBehaviour
             }
             if(Input.GetAxisRaw("Vertical") > 0)
             {
-                /*var z = 1 * Time.deltaTime * speed;
-                transform.Translate(0, 0, z);*/
+                float z = 1 * Time.deltaTime * speed;
+                transform.Translate(0, 0, z);
+
 				if(!isRunning)
 				{
 					//animator.SetBool("Walking", true);
@@ -64,24 +66,21 @@ public class TankControls2 : MonoBehaviour
                         animator.SetBool("Walking", true);
                         animator.SetBool("Walking2", false);
                         animator.SetBool("Walking3", false);
-                        float z = 1 * Time.deltaTime * walkSpeed_1;
-                        transform.Translate(0, 0, z);
+                        SetSpeed();
                     }
                     else if(plBehaviour.playerLife == 2)
                     {
                         animator.SetBool("Walking2", true);
                         animator.SetBool("Walking", false);
                         animator.SetBool("Walking3", false);
-                        float z = 1 * Time.deltaTime * walkSpeed_2;
-                        transform.Translate(0, 0, z);
+                        SetSpeed();
                     }
                     else if(plBehaviour.playerLife == 1)
                     {
                         animator.SetBool("Walking3", true);
                         animator.SetBool("Walking", false);
                         animator.SetBool("Walking2", false);
-                        float z = 1 * Time.deltaTime * walkSpeed_3;
-                        transform.Translate(0, 0, z);
+                        SetSpeed();
                     }
                     animator.SetBool("Running", false);
                     animator.SetBool("Running2", false);
@@ -89,7 +88,6 @@ public class TankControls2 : MonoBehaviour
 				else if(isRunning)
 				{
                     //animator.SetBool("Running", true);
-                    float z = 1 * Time.deltaTime * speed;
                     if (plBehaviour.playerLife == 3)
                     {
                         animator.SetBool("Running", true);
@@ -126,21 +124,16 @@ public class TankControls2 : MonoBehaviour
 
 			if (Input.GetButton("Run") && Input.GetAxisRaw("Vertical") > 0 && plBehaviour.playerLife >= 2)
 			{
-                //Debug.Log("isRunning");
-                //speed = runSpeed;
-			    isRunning = true;
-                if(plBehaviour.playerLife == 3)
-                {
-                    speed = runSpeed_1;
-                }
-                else if(plBehaviour.playerLife == 2)
-                {
-                    speed = runSpeed_2;
-                }
+                isRunning = true;
+                SetSpeed();
 			}
+            if (isRunning && plBehaviour.playerLife <= 1)
+            {
+                isRunning = false;
+            }
 			if (Input.GetButton("Run") && Input.GetAxisRaw("Vertical") < 0) //hacia atras
 			{
-		        speed = iniSpeed;
+                SetSpeed();
 			    animator.SetBool("Walking", false);
                 animator.SetBool("Walking2", false);
                 animator.SetBool("Walking3", false);
@@ -151,7 +144,7 @@ public class TankControls2 : MonoBehaviour
 
 			if (Input.GetButtonUp("Run"))
 			{
-			    speed = iniSpeed;
+			    //speed = iniSpeed;
 			    isRunning = false;
 			}
 
@@ -193,4 +186,34 @@ public class TankControls2 : MonoBehaviour
             speed = 5;
 		}	
 	}
+    public void SetSpeed()
+    {
+        if(isRunning)
+        {
+            if (plBehaviour.playerLife == 3)
+            {
+                speed = runSpeed_1;
+            }
+            else if (plBehaviour.playerLife == 2)
+            {
+                speed = runSpeed_2;
+            }
+        }
+        else if (!isRunning)
+        {
+            if (plBehaviour.playerLife == 3)
+            {
+                speed = walkSpeed_1;
+            }
+            else if (plBehaviour.playerLife == 2)
+            {
+                speed = walkSpeed_2;
+            }
+            else if (plBehaviour.playerLife == 1)
+            {
+                speed = walkSpeed_3;
+            }
+        }
+        
+    }
 }
