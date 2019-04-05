@@ -6,7 +6,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
 	public int playerLife;
 	private SoundPlayer sound;
-
+	private SoundPlayer_Random soundRand;
 	HUD hud;
 
 	private int iniLife = 3;
@@ -39,7 +39,9 @@ public class PlayerBehaviour : MonoBehaviour
 		//iniKeys = keys;
 		iniPotions = potions;
 		changeScene =  GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
+
 		sound = GetComponentInChildren<SoundPlayer>();
+		soundRand = GetComponentInChildren<SoundPlayer_Random>();
 
         animator = GetComponentInChildren<Animator>();
 		//tankControl2 = GetComponent<TankControls2>();
@@ -166,7 +168,8 @@ public class PlayerBehaviour : MonoBehaviour
 	}
     public void PlayFootstep()
     {
-        //sound.Play();
-        Debug.Log("Footstep");
+        //sound.Play(3);
+        //Debug.Log("Footstep");
+		sound.PlayCarpet();
     }
 }
