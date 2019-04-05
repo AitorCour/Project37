@@ -8,7 +8,6 @@ public class PlayerBehaviour : MonoBehaviour
 	private SoundPlayer sound;
 	private SoundPlayer_Random soundRand;
 	HUD hud;
-
 	private int iniLife = 3;
 	public bool isDead;
 	//public int keys;
@@ -24,6 +23,9 @@ public class PlayerBehaviour : MonoBehaviour
 	public bool damageRecived = false;
 
     private Animator animator;
+
+	[Header("Terrains")]
+	public LayerMask layerMask;
 
 	//private TankControls2 tankControl2;
     // Use this for initialization
@@ -170,6 +172,27 @@ public class PlayerBehaviour : MonoBehaviour
     {
         //sound.Play(3);
         //Debug.Log("Footstep");
-		sound.PlayCarpet();
+		sound.PlayF();
+    }
+	void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.layer == LayerMask.NameToLayer("Carpet"))
+        {
+			sound.PlayCarpet();
+        }
+
+        if (hit.gameObject.layer == LayerMask.NameToLayer("Wood"))
+        {
+            sound.PlayWood();
+        }
+
+        if (hit.gameObject.layer == LayerMask.NameToLayer("Dirt"))
+        {
+            sound.PlayDirt();
+        }
+		if (hit.gameObject.layer == LayerMask.NameToLayer("Hall"))
+        {
+            sound.PlayHall();
+        }
     }
 }

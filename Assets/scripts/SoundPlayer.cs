@@ -12,13 +12,9 @@ public class SoundPlayer : MonoBehaviour
     public AudioClip[] clipCarpets;
     public AudioClip[] clipWoods;
     public AudioClip[] clipDirts;
-    public enum Footsteps
-    {
-        Carpet,
-        Dirt,
-        Wood
-    }
-    Footsteps footSteps = new Footsteps();
+    public AudioClip[] clipHall;
+    public enum Footsteps{Carpet,Dirt,Wood,Hall}
+    public Footsteps footSteps = new Footsteps();
 
     void Start()
     {
@@ -42,9 +38,9 @@ public class SoundPlayer : MonoBehaviour
     }
 
     
-    private void PlayF()
+    public void PlayF()
     {
-		int numClip = Random.Range(0, clipCarpets.Length);
+		int numClip = 0;
 
         GameObject obj = new GameObject();
         obj.transform.position = transform.position;
@@ -52,13 +48,20 @@ public class SoundPlayer : MonoBehaviour
 
         switch(footSteps){
             case Footsteps.Carpet:
+                numClip = Random.Range(0, clipCarpets.Length);
                 source.clip = clipCarpets[numClip];
                 break;
             case Footsteps.Wood:
+                numClip = Random.Range(0, clipWoods.Length);
                 source.clip = clipWoods[numClip];
                 break;
             case Footsteps.Dirt:
+                numClip = Random.Range(0, clipDirts.Length);
                 source.clip = clipDirts[numClip];
+                break;
+            case Footsteps.Hall:
+                numClip = Random.Range(0, clipHall.Length);
+                source.clip = clipHall[numClip];
                 break;
 
         }
@@ -78,6 +81,17 @@ public class SoundPlayer : MonoBehaviour
     public void PlayCarpet()
 	{
         footSteps = Footsteps.Carpet;
-		PlayF();
+	}
+    public void PlayWood()
+	{
+        footSteps = Footsteps.Wood;
+	}
+    public void PlayDirt()
+	{
+        footSteps = Footsteps.Dirt;
+	}
+    public void PlayHall()
+	{
+        footSteps = Footsteps.Hall;
 	}
 }
