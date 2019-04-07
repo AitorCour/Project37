@@ -74,6 +74,7 @@ public class PlayerBehaviour : MonoBehaviour
 			hud.SetLife(playerLife);
 			if(playerLife >= 1)
 			{
+                sound.Stop();
 				sound.Play(0);
 			}
 		}	
@@ -170,7 +171,10 @@ public class PlayerBehaviour : MonoBehaviour
     {
         //sound.Play(3);
         //Debug.Log("Footstep");
-		sound.PlayF();
+        if(!damageRecived)
+        {
+            sound.PlayF();
+        }
     }
 	void OnControllerColliderHit(ControllerColliderHit hit)
     {

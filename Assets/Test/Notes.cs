@@ -15,16 +15,20 @@ public class Notes : MonoBehaviour
 	private bool MessageReaded = false;
 	//private bool noteInv = false;
 	public GameObject note1;
-	// Use this for initialization
-	void Start () 
+
+    private SoundObj sound;
+    private InputManager iM;
+    // Use this for initialization
+    void Start () 
 	{
-		//plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-	}
+        sound = GetComponentInChildren<SoundObj>();
+        iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
+    }
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(isInsideTrigger && Input.GetButtonDown("Action"))
+		if(isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
 		{
 			if(MessageReaded)
 			{
@@ -55,7 +59,9 @@ public class Notes : MonoBehaviour
 		Debug.Log("reading");
 		MessageReaded = true;
 		Time.timeScale = 0;
-	}
+        sound.Play(0);
+        iM.canPause = false;
+    }
 	private void ReadEnd()
 	{
 		TextPanel.SetActive(false);
@@ -65,5 +71,6 @@ public class Notes : MonoBehaviour
 		noteObject.SetActive(false);
 		//noteInv = true;
 		note1.SetActive(true);
-	}
+        iM.canPause = true;
+    }
 }

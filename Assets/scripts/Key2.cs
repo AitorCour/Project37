@@ -14,13 +14,13 @@ public class Key2 : MonoBehaviour
 	public Text eText;
 	private bool MessageReaded = false;
 
-	private SoundPlayer sound;
+	private SoundObj sound;
     private InputManager iM;
     // Use this for initialization
     void Start () 
 	{
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-		sound = GetComponentInChildren<SoundPlayer>();
+		sound = GetComponentInChildren<SoundObj>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
     }
 
@@ -62,7 +62,7 @@ public class Key2 : MonoBehaviour
 		MessageReaded = true;
 		Time.timeScale = 0;
 		plBehaviour.GetKey2();
-		sound.Play(1);
+		sound.Play(0);
         iM.canPause = false;
     }
 	private void ReadEnd()

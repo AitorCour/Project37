@@ -26,8 +26,6 @@ public class ReadPause : MonoBehaviour
     {
         if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
         {
-            //plBehaviour.GetKeys(key);
-            //keyObject.SetActive(false);
             if (MessageReaded)
             {
                 ReadEnd();
@@ -53,14 +51,6 @@ public class ReadPause : MonoBehaviour
 			isInsideTrigger = false;
 		}
 	}
-
-	/*private bool IsTextPanelActive
-	{
-		get
-		{
-			return TextPanel.activeInHierarchy;
-		}
-	}*/
 
 	private void Read()
 	{

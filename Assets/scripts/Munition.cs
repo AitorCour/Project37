@@ -14,13 +14,13 @@ public class Munition : MonoBehaviour
 	public Text eText;
 	public bool MessageReaded = false;
 
-	private SoundPlayer sound;
+	private SoundObj sound;
     private InputManager iM;
     // Use this for initialization
     void Start () 
 	{
 		weapon = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
-		sound = GetComponentInChildren<SoundPlayer>();
+		sound = GetComponentInChildren<SoundObj>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
     }
     void Update()
@@ -59,7 +59,7 @@ public class Munition : MonoBehaviour
 		MessageReaded = true;
 		Time.timeScale = 0;
 		weapon.GetAmmo(munition);
-		sound.Play(1);
+		sound.Play(0);
         iM.canPause = false;
     }
 	private void ReadEnd()

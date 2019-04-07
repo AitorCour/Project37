@@ -36,7 +36,7 @@ public class TankControls2 : MonoBehaviour
 
 	void Update ()
 	{
-		if (canWalk == true && !pointing)
+		if (canWalk == true && !pointing && !plBehaviour.damageRecived)
 		{
 			//var x = Input.GetAxis("Horizontal") * Time.deltaTime * rotSpeed;
 			//var z = Input.GetAxis("Vertical") * Time.deltaTime * speed;

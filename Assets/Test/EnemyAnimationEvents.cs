@@ -11,9 +11,12 @@ public class EnemyAnimationEvents : MonoBehaviour
 	{
 		enemy = GetComponentInParent<EnemyBehaviour3>();
 	}
-	
-	/*public void EndAttack()
-	{
-		enemy.Attack();
-	}*/
+    public void Footstep()
+    {
+        enemy.PlayFootstepEnemy();
+    }
+    public void DeadFall()
+    {
+        enemy.PlayDeadFall();
+    }
 }

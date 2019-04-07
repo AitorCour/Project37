@@ -33,14 +33,13 @@ public class SoundPlayer : MonoBehaviour
         //vol
         source.spatialBlend = 1; // 1 --> 3D  0--> 2D
         source.Play();
-
         Destroy(obj.gameObject, clips[numClip].length); 
     }
 
     
     public void PlayF()
     {
-		int numClip = 0;
+		int numClipF = 0;
 
         GameObject obj = new GameObject();
         obj.transform.position = transform.position;
@@ -48,20 +47,20 @@ public class SoundPlayer : MonoBehaviour
 
         switch(footSteps){
             case Footsteps.Carpet:
-                numClip = Random.Range(0, clipCarpets.Length);
-                source.clip = clipCarpets[numClip];
+                numClipF = Random.Range(0, clipCarpets.Length);
+                source.clip = clipCarpets[numClipF];
                 break;
             case Footsteps.Wood:
-                numClip = Random.Range(0, clipWoods.Length);
-                source.clip = clipWoods[numClip];
+                numClipF = Random.Range(0, clipWoods.Length);
+                source.clip = clipWoods[numClipF];
                 break;
             case Footsteps.Dirt:
-                numClip = Random.Range(0, clipDirts.Length);
-                source.clip = clipDirts[numClip];
+                numClipF = Random.Range(0, clipDirts.Length);
+                source.clip = clipDirts[numClipF];
                 break;
             case Footsteps.Hall:
-                numClip = Random.Range(0, clipHall.Length);
-                source.clip = clipHall[numClip];
+                numClipF = Random.Range(0, clipHall.Length);
+                source.clip = clipHall[numClipF];
                 break;
 
         }
@@ -77,6 +76,7 @@ public class SoundPlayer : MonoBehaviour
     public void Stop()
     {
         source.Stop();
+        source.clip = null;
     }
     public void PlayCarpet()
 	{

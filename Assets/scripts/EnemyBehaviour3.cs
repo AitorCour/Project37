@@ -8,7 +8,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public enum State { Idle, Patrol, Chase, Attack, Sleep, Hit, Dead };
 	public State state;
 	private NavMeshAgent agent;
-	private SoundPlayer sound;
+	private SoundEnemy sound;
 
 	public float timeCounter;
     public float timeCounterHit;
@@ -17,7 +17,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public float hitTime = 3.0f;
 	private bool slept;
     private bool trembled;
-	private PlayerBehaviour plBehaviour;
+	//private PlayerBehaviour plBehaviour;
 
 	[Header("Path properties")]
     public Transform[] points;//poner los points en el orden que los seguirá. No para en el mas cercano, si tiene otro orden, preguntar
@@ -55,9 +55,9 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void Start () 
 	{
 		agent = GetComponent<NavMeshAgent>();
-		sound = GetComponentInChildren<SoundPlayer>();
+		sound = GetComponentInChildren<SoundEnemy>();
 		animator = GetComponentInChildren<Animator>();
-		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+		//plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 		colDamage = GetComponentInChildren<CollisionDamage>();
 
 		GoNearOther();
@@ -269,6 +269,14 @@ public class EnemyBehaviour3 : MonoBehaviour
             timeCounter = 0;
             return;
 		}	
+        //ATTACK -> ATTACK
+        else if(Vector3.Distance(transform.position, player.position) <= attackDistance && timeCounter >= attackTime)
+        {
+            colDamage.CanDoDamage = true;
+            SetAttack();
+            timeCounter = 0;
+            return;
+        }
 		else timeCounter += Time.deltaTime;
 	}
 	void SleepUpdate()
@@ -326,7 +334,7 @@ public class EnemyBehaviour3 : MonoBehaviour
     {
         //anim.SetBool("isMoving", false);
         //anim.SetTrigger("IsChasing");
-		sound.Play(0);
+		sound.Play(5);
         agent.isStopped = false;
         agent.stoppingDistance = 0.9f;//La stopping distance determina la distancia 
         //a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
@@ -345,6 +353,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		state = State.Attack;
         animator.SetTrigger("attack");
 		canReciveDamage = true;
+        sound.Play(1);
         timeCounter = 0;
     }
 	void SetDead()
@@ -355,6 +364,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         animator.SetTrigger("dead");
 		colDamage.CanDoDamage = false;
         colliderEnemy.enabled = false;
+        sound.Play(3);
 		this.enabled = false;
 	}
 	void SetSleep()
@@ -362,6 +372,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		agent.isStopped = true;
 		state = State.Sleep;
         animator.SetTrigger("sleep");
+        sound.Play(2);
 		//animator.SetBool("Attacking", false);
 		//animator.SetBool("Walking", false);
 	}
@@ -370,7 +381,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         agent.isStopped = true;
         state = State.Hit;
         agent.SetDestination(player.position);
-        sound.Play(1);
+        sound.Play(0);
         animator.SetTrigger("hit");
     }
 	#endregion
@@ -426,5 +437,13 @@ public class EnemyBehaviour3 : MonoBehaviour
         //animator.SetBool("trembling", true);
         animator.SetTrigger("trembling");
         animator.SetBool("Walking", false);
+    }
+    public void PlayFootstepEnemy()
+    {
+        sound.PlayF();
+    }
+    public void PlayDeadFall()
+    {
+        sound.Play(4);
     }
 }
