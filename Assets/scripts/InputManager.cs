@@ -34,6 +34,8 @@ public class InputManager : MonoBehaviour
     [Header("Misc Conditions")]
     public bool canPause = true;
 
+    private SoundObj sound;
+
     // Use this for initialization
     void Start ()
     {
@@ -46,6 +48,8 @@ public class InputManager : MonoBehaviour
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 		tankControl = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControls2>();
 		enDis = GameObject.FindGameObjectWithTag("Player").GetComponent<EnableDisable>();
+        sound = GameObject.FindGameObjectWithTag("HUD").GetComponent<SoundObj>();
+
 
         mouseCursor = new MouseCursor();
         mouseCursor.HideCursor();
@@ -169,6 +173,7 @@ public class InputManager : MonoBehaviour
 			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu && canPause)
 			{
 				gameManager.OpenInventory();
+                sound.Play(4);
 				//Debug.Log ("Z pressed");
 				//mouseCursor.ShowCursor();
 			}
