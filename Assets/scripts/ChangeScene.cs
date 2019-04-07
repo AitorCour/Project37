@@ -20,12 +20,13 @@ public class ChangeScene : MonoBehaviour
     public float plGoingX;
     public float plGoingZ;
 
-    private SettingsMenu settings;
-
+    //private SettingsMenu settings;
+    private AudioSource audioSource;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        settings = GameObject.FindGameObjectWithTag("HUD").GetComponent<SettingsMenu>();
+        audioSource = GetComponent<AudioSource>();
+        //settings = GameObject.FindGameObjectWithTag("HUD").GetComponent<SettingsMenu>();
         pX = PlayerPrefs.GetFloat("p_x");
         pZ = PlayerPrefs.GetFloat("p_z");
         player.transform.position = new Vector3 (pX, 1, pZ);
@@ -36,6 +37,7 @@ public class ChangeScene : MonoBehaviour
 		if (isInsideTrigger && Input.GetButtonDown("Action"))
 		{
 			Debug.Log ("Change Scene");
+            audioSource.Play();
             //SceneManager.LoadScene(scene); //linea que hace que funcione
             //Fade();
             //settings.SaveVolume();
@@ -91,7 +93,7 @@ public class ChangeScene : MonoBehaviour
 	IEnumerator FadeButton(int num)
 	{
 		animator.SetBool("Fade", true);
-		yield return new WaitUntil(()=>black.color.a==1);
+		yield return new WaitUntil(() => black.color.a == 1);
         //settings.SaveVolume();
         SceneManager.LoadScene(num);
 	}

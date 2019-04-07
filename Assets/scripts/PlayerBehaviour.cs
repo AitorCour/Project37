@@ -6,7 +6,6 @@ public class PlayerBehaviour : MonoBehaviour
 {
 	public int playerLife;
 	private SoundPlayer sound;
-	private SoundPlayer_Random soundRand;
 	HUD hud;
 	private int iniLife = 3;
 	public bool isDead;
@@ -43,7 +42,6 @@ public class PlayerBehaviour : MonoBehaviour
 		changeScene =  GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
 
 		sound = GetComponentInChildren<SoundPlayer>();
-		soundRand = GetComponentInChildren<SoundPlayer_Random>();
 
         animator = GetComponentInChildren<Animator>();
 		//tankControl2 = GetComponent<TankControls2>();

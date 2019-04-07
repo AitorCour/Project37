@@ -14,29 +14,32 @@ public class KeyDoor : MonoBehaviour
 	private bool isDoorOpen = false;
 	private bool MessageReaded = false;
 	public string message = "Hello World";
+    public string message_2;
 	public Text eText;
 
 	public Animator animator;
 	public Image black;
+    private SoundObj soundObj;
 	void Start()
 	{
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        soundObj = GetComponentInChildren<SoundObj>();
 	}
 	void Update()
 	{
 		if (isInsideTrigger && Input.GetButtonDown("Action"))
 		{
-			if(plBehaviour.key1 == true)
+			if(plBehaviour.key1 == true && !MessageReaded && !isDoorOpen)
 			{
-				//Debug.Log ("Change Scene");
-				//SceneManager.LoadScene(scene); //cambio scene
-				StartCoroutine(Fade());
+				//StartCoroutine(Fade());
 				
 				isDoorOpen = true;
-			}
-			else if(isDoorOpen) // utilizar esto para si vuelve a la habitación o lo que sea, que la puerta ya esté abierta
+                Read();
+            }
+			else if(isDoorOpen && !MessageReaded) // utilizar esto para si vuelve a la habitación o lo que sea, que la puerta ya esté abierta
 			{
-				//SceneManager.LoadScene(scene);
+                //SceneManager.LoadScene(scene);
+                soundObj.Play(2);
 				StartCoroutine(Fade());
 			}
 			else if (MessageReaded)
@@ -64,11 +67,20 @@ public class KeyDoor : MonoBehaviour
 	private void Read()
 	{
 		TextPanel.SetActive(true);
-		eText.text = message;
 		Debug.Log("reading");
 		MessageReaded = true;
 		Time.timeScale = 0;
-	}
+        if (!isDoorOpen)
+        {
+            eText.text = message;
+            soundObj.Play(0);
+        }
+        else
+        {
+            eText.text = message_2;
+            soundObj.Play(1);
+        }
+    }
 	private void ReadEnd()
 	{
 		TextPanel.SetActive(false);
@@ -77,9 +89,9 @@ public class KeyDoor : MonoBehaviour
 		Time.timeScale = 1;
 	}
 	 IEnumerator Fade()
-	{
+	 {
 		animator.SetBool("Fade", true);
 		yield return new WaitUntil(()=>black.color.a==1);
 		SceneManager.LoadScene(scene);
-	}
+	 }
 }
