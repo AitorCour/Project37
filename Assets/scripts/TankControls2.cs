@@ -107,8 +107,16 @@ public class TankControls2 : MonoBehaviour
             {
                 var z = -1 * Time.deltaTime * speed;
                 transform.Translate(0, 0, z);
-				animator.SetBool("WalkingBack", true);
-				//animator.SetBool("Walking", false);
+				if(plBehaviour.playerLife == 3)
+                {
+                    animator.SetBool("WalkingBack", true);
+                }
+                else animator.SetBool("WalkingBack", false);
+                if(plBehaviour.playerLife == 2)
+                {
+                    animator.SetBool("Back2", true);
+                }
+                else animator.SetBool("Back2", false);
             }
             else
             {
@@ -119,6 +127,7 @@ public class TankControls2 : MonoBehaviour
                 animator.SetBool("Running", false);
                 animator.SetBool("Running2", false);
                 animator.SetBool("WalkingBack", false);
+                animator.SetBool("Back2", false);
             }
             //transform.Rotate(0, x, 0);
 
@@ -139,7 +148,17 @@ public class TankControls2 : MonoBehaviour
                 animator.SetBool("Walking3", false);
             
                 animator.SetBool("Running", false);
-			    animator.SetBool("WalkingBack", true);
+                if(plBehaviour.playerLife == 3)
+                {
+                    animator.SetBool("WalkingBack", true);
+                }
+                else animator.SetBool("WalkingBack", false);
+                if(plBehaviour.playerLife == 2)
+                {
+                    animator.SetBool("Back2", true);
+                }
+                else animator.SetBool("Back2", false);
+			    
 			}
 
 			if (Input.GetButtonUp("Run"))

@@ -113,6 +113,19 @@ public class EnableDisable : MonoBehaviour
                 shootState = false;
             }
         }
+
+		//IDLEs
+		if(plBehaviour.playerLife == 2)
+		{
+			animator.SetBool("Injured", true);
+		}
+		else animator.SetBool("Injured", false);
+		
+		if(plBehaviour.playerLife == 1)
+		{
+			animator.SetBool("SuperInjured", true);
+		}
+		else animator.SetBool("SuperInjured", false);
 	}
 
 	public void SetTank()
