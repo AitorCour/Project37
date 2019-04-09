@@ -44,8 +44,13 @@ public class PlayerBehaviour : MonoBehaviour
 		sound = GetComponentInChildren<SoundPlayer>();
 
         animator = GetComponentInChildren<Animator>();
-		//tankControl2 = GetComponent<TankControls2>();
-	}
+        
+        if (Data.IsKeyUnlock(1) == true)
+        {
+            key1 = true;
+        }
+        //tankControl2 = GetComponent<TankControls2>();
+    }
 
 	//Recibir Daño
 	public void Damage(int hit)
@@ -54,6 +59,7 @@ public class PlayerBehaviour : MonoBehaviour
 		if (!damageRecived)
 		{
 			playerLife -= hit;
+            Data.LoseLife(playerLife);
             animator.SetTrigger("Hit");
 
             animator.SetBool("Walking", false);
@@ -124,6 +130,7 @@ public class PlayerBehaviour : MonoBehaviour
 	{
 		if(isDead) return;
         key1 = true;
+        Data.UnlockKey(1);
 		//Debug.Log ("key");
         hud.hasKey1 = true;
 		hud.SetKey();

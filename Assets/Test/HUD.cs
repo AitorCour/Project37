@@ -35,47 +35,19 @@ public class HUD : MonoBehaviour
 	void Start () 
 	{
 		gun = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
-		//plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-	}
+        //plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        if (Data.IsKeyUnlock(1) == true)
+        {
+            hasKey1 = true;
+            SetKey();
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () 
 	{
 		//ammo.text = gun.currentAmmo + " / " + gun.Munition.ToString();
 		ammoInv.text = gun.currentAmmo + " / " + gun.Munition.ToString();
-        /*if(Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            PickObject(Busto);
-            //GetBust();
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            PickObject(Box);
-            //GetBall();
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            PickObject(Ball);
-            //GetBox();
-        }
-
-
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            UseSlot(1);
-            //hasBust = false;
-            //Busto.SetActive(false);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            UseSlot(2);
-            /hasBall = false;
-            //Ball.SetActive(false);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            UseSlot(3);
-        }*/
 	}
 
 	public void SetLife(int newLife)
