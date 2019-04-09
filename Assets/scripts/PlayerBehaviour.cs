@@ -31,7 +31,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Start () 
 	{
 		hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
-        playerLife = iniLife;
+        //playerLife = iniLife;
 		isDead = false;
 		//playerLife = iniLife;
 		hud.SetLife(playerLife);
@@ -49,6 +49,16 @@ public class PlayerBehaviour : MonoBehaviour
         {
             key1 = true;
         }
+        if (Data.IsKeyUnlock(2) == true)
+        {
+            key2 = true;
+        }
+        if (Data.lifeSet)
+        {
+            playerLife = Data.life;
+            hud.SetLife(playerLife);
+        }
+        else playerLife = iniLife;
         //tankControl2 = GetComponent<TankControls2>();
     }
 
@@ -59,7 +69,7 @@ public class PlayerBehaviour : MonoBehaviour
 		if (!damageRecived)
 		{
 			playerLife -= hit;
-            Data.LoseLife(playerLife);
+            Data.SetLife(playerLife);
             animator.SetTrigger("Hit");
 
             animator.SetBool("Walking", false);
@@ -94,9 +104,10 @@ public class PlayerBehaviour : MonoBehaviour
 		if(potions >= 1)
 		{
 			playerLife += cure;
-			//Debug.Log("Cured +1");
+            Data.SetLife(playerLife);
+            //Debug.Log("Cured +1");
 
-			if (playerLife >= iniLife)
+            if (playerLife >= iniLife)
 			{
 				playerLife = iniLife;
 			}
@@ -139,6 +150,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (isDead) return;
         key2 = true;
+        Data.UnlockKey(2);
         //Debug.Log ("key");
         hud.hasKey2 = true;
         hud.SetKey();

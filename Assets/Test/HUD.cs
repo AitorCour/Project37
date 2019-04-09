@@ -41,6 +41,11 @@ public class HUD : MonoBehaviour
             hasKey1 = true;
             SetKey();
         }
+        if (Data.IsKeyUnlock(2) == true)
+        {
+            hasKey2 = true;
+            SetKey();
+        }
     }
 	
 	// Update is called once per frame

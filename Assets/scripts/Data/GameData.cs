@@ -8,7 +8,7 @@ using System;//para try y catch
 [System.Serializable] //Utilizar esto para que se muestre en el inspector
 public class GameData //Datos permanentes entre partida y partida
 {
-    
+    //Player
     public bool[] hasKey;
     public int plLife;
     //public Scene1Data scene1;
@@ -28,6 +28,8 @@ public class GameData //Datos permanentes entre partida y partida
 public static class Data
 {
     public static GameData gameData;
+    public static int life;
+    public static bool lifeSet;
     // Load/save persistent data
     public static void Save(string fileName)
     {
@@ -103,8 +105,10 @@ public static class Data
             return false;
         }
     }
-    public static void LoseLife(int i)
+    public static void SetLife(int i)
     {
         gameData.plLife = i;
+        life = gameData.plLife;
+        lifeSet = true;
     }
 }
