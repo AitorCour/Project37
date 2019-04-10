@@ -49,10 +49,12 @@ public class PlayerBehaviour : MonoBehaviour
         {
             key1 = true;
         }
+		else key1 = false;
         if (Data.IsKeyUnlock(2) == true)
         {
             key2 = true;
         }
+		else key2 = false;
         if (Data.lifeSet)
         {
             playerLife = Data.life;
@@ -136,6 +138,10 @@ public class PlayerBehaviour : MonoBehaviour
     {
         sound.Play(2);
     }
+	public void NoShootSound()
+	{
+		
+	}
 	//Sumar Llaves
 	public void GetKey1()
 	{

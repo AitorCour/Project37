@@ -11,6 +11,8 @@ public class GameData //Datos permanentes entre partida y partida
     //Player
     public bool[] hasKey;
     public int plLife;
+    public int plAmmo;
+    public int plMunition;
     //public Scene1Data scene1;
    
     public GameData()
@@ -29,7 +31,11 @@ public static class Data
 {
     public static GameData gameData;
     public static int life;
+    public static int ammo;
+    public static int munition;
     public static bool lifeSet;
+    public static bool ammoSet;
+    public static bool munitionSet;
     // Load/save persistent data
     public static void Save(string fileName)
     {
@@ -110,5 +116,17 @@ public static class Data
         gameData.plLife = i;
         life = gameData.plLife;
         lifeSet = true;
+    }
+    public static void SetAmmo(int i)
+    {
+        gameData.plAmmo = i;
+        ammo = gameData.plAmmo;
+        ammoSet = true;
+    }
+    public static void SetMunition(int i)
+    {
+        gameData.plMunition = i;
+        munition = gameData.plMunition;
+        munitionSet = true;
     }
 }

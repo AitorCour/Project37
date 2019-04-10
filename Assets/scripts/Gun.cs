@@ -12,7 +12,7 @@ public class Gun : MonoBehaviour
 
 	//public Vector3 direction = Vector3.forward;
     //private Transform transform.forward;
-    public int maxAmmo;
+    private int maxAmmo = 7;
     public int currentAmmo;
     public int Munition;
     private int iniMunition = 0;
@@ -38,21 +38,40 @@ public class Gun : MonoBehaviour
     {
         isShooting = false;
         isReloading = false;
-        currentAmmo = maxAmmo;
-        Munition = iniMunition;
+        //currentAmmo = maxAmmo;
+        //Munition = iniMunition;
         plBehaviour = GetComponentInParent<PlayerBehaviour>();
+
+        if (Data.ammoSet)
+        {
+            currentAmmo = Data.ammo;
+            //hud.SetLife(playerLife);
+        }
+        else currentAmmo = maxAmmo;
+        if (Data.munitionSet)
+        {
+            Munition = Data.munition;
+            //hud.SetLife(playerLife);
+        }
+        else Munition = iniMunition;
 		//sound = GetComponentInChildren<AudioSource>();
 	}
     public void Shot()
     {
         if(isShooting || isReloading) return;
-        if(currentAmmo <= 0) return;
+        if(currentAmmo <= 0)
+        {
+            plBehaviour.NoShootSound();
+        }
         animator.SetTrigger("Shooting");
         plBehaviour.ShootSound();
         isShooting = true;
         currentAmmo--;
+        Data.SetAmmo(currentAmmo);
+
 		particleShoot.Play();
 		particleSteam.Play();
+
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Coje el punto de la posicion del mouse y lanza un rayo
         RaycastHit hit = new RaycastHit();
 
@@ -92,6 +111,7 @@ public class Gun : MonoBehaviour
         //reload.SetTrigger ("reload");
         StartCoroutine(WaitForReload());
 		animator.SetTrigger("Reloading");
+        //Data.SetAmmo(currentAmmo);
     }
 
     private IEnumerator WaitForReload()
@@ -110,7 +130,6 @@ public class Gun : MonoBehaviour
 				Munition -= variableM;
 				currentAmmo += variableM;
 			}
-			
 		}
 		else if (Munition >= maxAmmo)
 		{
@@ -123,11 +142,14 @@ public class Gun : MonoBehaviour
 			Munition = 0;
 		}
         isReloading = false;
+        Data.SetAmmo(currentAmmo);
+        Data.SetMunition(Munition);
     }
 
-    public void GetAmmo(int munition)
+    public void GetAmmo(int m)
     {
-        Munition += munition;
+        Munition += m;
+        Data.SetMunition(Munition);
     }
 
 	/*public void PrecisionShot()

@@ -117,6 +117,11 @@ public class TankControls2 : MonoBehaviour
                     animator.SetBool("Back2", true);
                 }
                 else animator.SetBool("Back2", false);
+                if(plBehaviour.playerLife == 1)
+                {
+                    animator.SetBool("Back3", true);
+                }
+                else animator.SetBool("Back3", false);
             }
             else
             {
@@ -128,6 +133,7 @@ public class TankControls2 : MonoBehaviour
                 animator.SetBool("Running2", false);
                 animator.SetBool("WalkingBack", false);
                 animator.SetBool("Back2", false);
+                animator.SetBool("Back3", false);
             }
             //transform.Rotate(0, x, 0);
 
