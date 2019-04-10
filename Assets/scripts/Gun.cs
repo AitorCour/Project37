@@ -42,18 +42,8 @@ public class Gun : MonoBehaviour
         //Munition = iniMunition;
         plBehaviour = GetComponentInParent<PlayerBehaviour>();
 
-        if (Data.ammoSet)
-        {
-            currentAmmo = Data.ammo;
-            //hud.SetLife(playerLife);
-        }
-        else currentAmmo = maxAmmo;
-        if (Data.munitionSet)
-        {
-            Munition = Data.munition;
-            //hud.SetLife(playerLife);
-        }
-        else Munition = iniMunition;
+        currentAmmo = Data.GetAmmo();
+        Munition = Data.GetMunition();
 		//sound = GetComponentInChildren<AudioSource>();
 	}
     public void Shot()

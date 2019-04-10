@@ -16,9 +16,16 @@ public class HUD : MonoBehaviour
     public GameObject key1;
     public GameObject key2;
     public GameObject lader;
+    public GameObject note_1;
+    public GameObject note_2;
+    public GameObject noteFrag_1;
+    public GameObject noteFrag_2;
     public bool hasKey1;
     public bool hasKey2;
     public bool hasLader;
+    private bool hasFragNote_1;
+    private bool hasFragNote_2;
+    private bool hasNote_2;
 
     public GameObject Busto;
     public GameObject Box;
@@ -36,16 +43,16 @@ public class HUD : MonoBehaviour
 	{
 		gun = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
         //plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-        if (Data.IsKeyUnlock(1) == true)
+        /*if (Data.IsKeyUnlock(0) == true)
         {
             hasKey1 = true;
             SetKey();
         }
-        if (Data.IsKeyUnlock(2) == true)
+        if (Data.IsKeyUnlock(1) == true)
         {
             hasKey2 = true;
             SetKey();
-        }
+        }*/
     }
 	
 	// Update is called once per frame
@@ -76,6 +83,12 @@ public class HUD : MonoBehaviour
         if(!hasLader)
         {
             lader.SetActive(false);
+        }
+        if(hasFragNote_1 || hasFragNote_2)
+        {
+            note_1.SetActive(true);//Activa el obj vacio
+            if (hasFragNote_1) noteFrag_1.SetActive(true);//activa uno de los frag
+            if (hasFragNote_2) noteFrag_2.SetActive(true);
         }
 	}
 	public void SetBandages(int newBand)

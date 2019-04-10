@@ -5,24 +5,41 @@ using System;//para try y catch
 //Utilizar struct cuando se usan para crear datos efimeros, datos que se usaran durante poco tiempo.
 //Para datos que tengan que durar mucho en el tiempo, utilizar class. Basicamente tema de optimización.
 
-[System.Serializable] //Utilizar esto para que se muestre en el inspector
-public class GameData //Datos permanentes entre partida y partida
+public class Playerdata
 {
-    //Player
     public bool[] hasKey;
     public int plLife;
     public int plAmmo;
     public int plMunition;
-    //public Scene1Data scene1;
-   
-    public GameData()
+    public int plBandages;
+
+    public Playerdata()
     {
         hasKey = new bool[2];
         for (int i = 0; i < hasKey.Length; i++)
         {
             hasKey[i] = false;
         }
+        //Valores al inicio de la partida
+        plLife = 3;
+        plAmmo = 7;
+        plMunition = 0;
+        plBandages = 0;
     }
+}
+
+[System.Serializable] //Utilizar esto para que se muestre en el inspector
+public class GameData //Datos permanentes entre partida y partida
+{
+    public Playerdata pData;
+    //public Scene1Data scene1;
+   
+    public GameData()
+    {
+        pData = new Playerdata();
+    }
+
+
 }
 
 //string path = Application.persistentDataPath + "/Data";
@@ -30,12 +47,7 @@ public class GameData //Datos permanentes entre partida y partida
 public static class Data
 {
     public static GameData gameData;
-    public static int life;
-    public static int ammo;
-    public static int munition;
-    public static bool lifeSet;
-    public static bool ammoSet;
-    public static bool munitionSet;
+
     // Load/save persistent data
     public static void Save(string fileName)
     {
@@ -93,17 +105,17 @@ public static class Data
 
     public static void UnlockKey(int key)
     {
-        if (gameData.hasKey.Length - 1 >= key)
+        if (gameData.pData.hasKey.Length - 1 >= key)
         {
-            gameData.hasKey[key] = true;
+            gameData.pData.hasKey[key] = true;
         }
         else Debug.LogError("Key doesn't exist");
     }
     public static bool IsKeyUnlock(int key)
     {
-        if (gameData.hasKey.Length - 1 >= key)
+        if (gameData.pData.hasKey.Length - 1 >= key)
         {
-            return gameData.hasKey[key];
+            return gameData.pData.hasKey[key];
         }
         else
         {
@@ -113,20 +125,26 @@ public static class Data
     }
     public static void SetLife(int i)
     {
-        gameData.plLife = i;
-        life = gameData.plLife;
-        lifeSet = true;
+        gameData.pData.plLife = i;
     }
     public static void SetAmmo(int i)
     {
-        gameData.plAmmo = i;
-        ammo = gameData.plAmmo;
-        ammoSet = true;
+        gameData.pData.plAmmo = i;
     }
     public static void SetMunition(int i)
     {
-        gameData.plMunition = i;
-        munition = gameData.plMunition;
-        munitionSet = true;
+        gameData.pData.plMunition = i;
     }
+    public static void SetBandages(int i)
+    {
+        gameData.pData.plBandages = i;
+    }
+    public static int GetLife()
+    { return gameData.pData.plLife; }
+    public static int GetAmmo()
+    { return gameData.pData.plAmmo; }
+    public static int GetMunition()
+    { return gameData.pData.plMunition; }
+    public static int GetBandages()
+    { return gameData.pData.plBandages; }
 }

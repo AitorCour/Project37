@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
 		inputManager = GetComponent<InputManager>();
 		eventSystem = EventSystem.current;
         fadeObj.SetActive(true);
-        if (Data.gameData == null) Data.gameData = new GameData();
+        Data.InitGameData();
     }
 	
 	public void Pause()

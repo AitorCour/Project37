@@ -12,8 +12,7 @@ public class PlayerBehaviour : MonoBehaviour
 	//public int keys;
 	//private int iniKeys = 0;
 	public int potions;
-	private int iniPotions = 0;
-	public int cure = 1;
+    
 	private ChangeScene changeScene;
 
     public bool key1;
@@ -22,6 +21,11 @@ public class PlayerBehaviour : MonoBehaviour
 	public bool damageRecived = false;
 
     private Animator animator;
+
+    //Notes
+    private bool hasNote1;//how yo use tlf.
+    private bool hasNote2;//call Matt
+    private bool hasNote3;//nota Lumpo
 
 	[Header("Terrains")]
 	public LayerMask layerMask;
@@ -33,34 +37,31 @@ public class PlayerBehaviour : MonoBehaviour
 		hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
         //playerLife = iniLife;
 		isDead = false;
-		//playerLife = iniLife;
-		hud.SetLife(playerLife);
-		hud.SetBandages(potions);
-		//hud.SetKeys(keys);
-		//iniKeys = keys;
-		iniPotions = potions;
 		changeScene =  GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
 
 		sound = GetComponentInChildren<SoundPlayer>();
 
         animator = GetComponentInChildren<Animator>();
         
-        if (Data.IsKeyUnlock(1) == true)
+        if (Data.IsKeyUnlock(0) == true)
         {
             key1 = true;
+            hud.hasKey1 = true;
         }
 		else key1 = false;
-        if (Data.IsKeyUnlock(2) == true)
+        if (Data.IsKeyUnlock(1) == true)
         {
             key2 = true;
+            hud.hasKey2 = true;
         }
 		else key2 = false;
-        if (Data.lifeSet)
-        {
-            playerLife = Data.life;
-            hud.SetLife(playerLife);
-        }
-        else playerLife = iniLife;
+
+        playerLife = Data.GetLife();
+        potions = Data.GetBandages();
+        hud.SetBandages(potions);
+        hud.SetLife(playerLife);
+        hud.SetKey();
+
         //tankControl2 = GetComponent<TankControls2>();
     }
 
@@ -114,6 +115,7 @@ public class PlayerBehaviour : MonoBehaviour
 				playerLife = iniLife;
 			}
 			potions -= 1;
+            Data.SetBandages(potions);
 			hud.SetLife(playerLife);
 			hud.SetBandages(potions);
 		}
@@ -140,14 +142,14 @@ public class PlayerBehaviour : MonoBehaviour
     }
 	public void NoShootSound()
 	{
-		
+        sound.Play(3);
 	}
 	//Sumar Llaves
 	public void GetKey1()
 	{
 		if(isDead) return;
         key1 = true;
-        Data.UnlockKey(1);
+        Data.UnlockKey(0);
 		//Debug.Log ("key");
         hud.hasKey1 = true;
 		hud.SetKey();
@@ -156,10 +158,14 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (isDead) return;
         key2 = true;
-        Data.UnlockKey(2);
+        Data.UnlockKey(1);
         //Debug.Log ("key");
         hud.hasKey2 = true;
         hud.SetKey();
+    }
+    public void GetNotes_1()
+    {
+        hasNote1 = true;
     }
 	public void GetLader()
 	{
@@ -181,7 +187,7 @@ public class PlayerBehaviour : MonoBehaviour
 	{
 		if(isDead) return;
 		potions += potion;
-		//Debug.Log ("potion");
+        Data.SetBandages(potions);
 		hud.SetBandages(potions);
 	}
 	public void GodMode()
