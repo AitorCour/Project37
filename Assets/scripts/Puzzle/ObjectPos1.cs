@@ -6,12 +6,12 @@ public class ObjectPos1 : MonoBehaviour
 {
     public bool isInsideTrigger = false;
     public bool occuped;
-
+    private AudioSource sound;
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-        
-	}
+        sound = GetComponentInChildren<AudioSource>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -26,5 +26,9 @@ public class ObjectPos1 : MonoBehaviour
         {
             isInsideTrigger = false;
         }
+    }
+    public void PutSound()
+    {
+        sound.Play();
     }
 }

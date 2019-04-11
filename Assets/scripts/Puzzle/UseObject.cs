@@ -26,6 +26,10 @@ public class UseObject : MonoBehaviour
     public GameObject box;
     public GameObject ball;
 
+    private bool ballCorrect;
+    private bool boxCorrect;
+    private bool bustCorrect;
+
     // Use this for initialization
     void Start ()
     {
@@ -71,7 +75,10 @@ public class UseObject : MonoBehaviour
                 useButtons[i].SetActive(true);
             }
         }
-
+        if(ballCorrect && boxCorrect && bustCorrect)
+        {
+            Debug.Log("Unlock Key");
+        }
     }
 
     private void PickObject(GameObject pickObj)
@@ -85,35 +92,41 @@ public class UseObject : MonoBehaviour
         
         if(pos1)
         {
-            Debug.Log("position is 1");
+            //Debug.Log("position is 1");
             if(pos1free)
             {
                 busto.transform.position = positions.transform.position;
                 pos1free = false;
                 hud.UseBusto();
+                bustCorrect = true;
                 Debug.Log("Position Correct");
+                oP1.PutSound();
             }
             else return;
         }
         if(pos2)
         {
-            Debug.Log("position is 2");
+            //Debug.Log("position is 2");
             if(pos2free)
             {
                 busto.transform.position = positions.transform.position;
                 pos2free = false;
                 hud.UseBusto();
+                bustCorrect = false;
+                oP2.PutSound();
             }
             else return;
         }
-        if(pos3)
+        if (pos3)
         {
-            Debug.Log("position is 3");
-            if(pos3free)
+            //Debug.Log("position is 3");
+            if (pos3free)
             {
                 busto.transform.position = positions.transform.position;
                 pos3free = false;
                 hud.UseBusto();
+                bustCorrect = false;
+                oP3.PutSound();
             }
             else return;
         }
@@ -122,35 +135,41 @@ public class UseObject : MonoBehaviour
     {
         if(pos1)
         {
-            Debug.Log("position is 1");
+            //Debug.Log("position is 1");
             if(pos1free)
             {
                 box.transform.position = positions.transform.position;
                 pos1free = false;
                 hud.UseBox();
+                boxCorrect = false;
+                oP1.PutSound();
             }
             else return;
         }
         if(pos2)
         {
-            Debug.Log("position is 2");
+            //Debug.Log("position is 2");
             if(pos2free)
             {
                 box.transform.position = positions.transform.position;
                 pos2free = false;
                 hud.UseBox();
+                boxCorrect = true;
                 Debug.Log("Position Correct");
+                oP2.PutSound();
             }
             else return;
         }
-        if(pos3)
+        if (pos3)
         {
-            Debug.Log("position is 3");
-            if(pos3free)
+            //Debug.Log("position is 3");
+            if (pos3free)
             {
                 box.transform.position = positions.transform.position;
                 pos3free = false;
                 hud.UseBox();
+                boxCorrect = false;
+                oP3.PutSound();
             }
             else return;
         }
@@ -159,35 +178,41 @@ public class UseObject : MonoBehaviour
     {
         if(pos1)
         {
-            Debug.Log("position is 1");
+            //Debug.Log("position is 1");
             if(pos1free)
             {
                 ball.transform.position = positions.transform.position;
                 pos1free = false;
                 hud.UseKey();
+                ballCorrect = false;
+                oP1.PutSound();
             }
             else return;
         }
         if(pos2)
         {
-            Debug.Log("position is 2");
+            //Debug.Log("position is 2");
             if(pos2free)
             {
                 ball.transform.position = positions.transform.position;
                 pos2free = false;
                 hud.UseKey();
+                ballCorrect = false;
+                oP2.PutSound();
             }
             else return;
         }
-        if(pos3)
+        if (pos3)
         {
-            Debug.Log("position is 3");
-            if(pos3free)
+            //Debug.Log("position is 3");
+            if (pos3free)
             {
                 ball.transform.position = positions.transform.position;
                 pos3free = false;
                 hud.UseKey();
+                ballCorrect = true;
                 Debug.Log("Position Correct");
+                oP3.PutSound();
             }
             else return;
         }

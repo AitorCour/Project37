@@ -14,14 +14,14 @@ public class Bust : MonoBehaviour
     public Text eText;
     private bool MessageReaded = false;
 
-    //private SoundPlayer sound;
+    private AudioSource sound;
     private InputManager iM;
     private UseObject useObj;
     // Use this for initialization
     void Start()
     {
         //plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-        //sound = GetComponentInChildren<SoundPlayer>();
+        sound = GetComponentInChildren<AudioSource>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
         hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
         useObj = GameObject.FindGameObjectWithTag("ObjectPosition").GetComponent<UseObject>();
@@ -64,7 +64,7 @@ public class Bust : MonoBehaviour
         MessageReaded = true;
         Time.timeScale = 0;
         hud.PickBusto();
-        //sound.Play(1, 2);
+        sound.Play();
         iM.canPause = false;
     }
     private void ReadEnd()

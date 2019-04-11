@@ -23,9 +23,9 @@ public class HUD : MonoBehaviour
     public bool hasKey1;
     public bool hasKey2;
     public bool hasLader;
-    private bool hasFragNote_1;
-    private bool hasFragNote_2;
-    private bool hasNote_2;
+    public bool hasFragNote_1;
+    public bool hasFragNote_2;
+    public bool hasNote_2;
 
     public GameObject Busto;
     public GameObject Box;
@@ -89,6 +89,10 @@ public class HUD : MonoBehaviour
             note_1.SetActive(true);//Activa el obj vacio
             if (hasFragNote_1) noteFrag_1.SetActive(true);//activa uno de los frag
             if (hasFragNote_2) noteFrag_2.SetActive(true);
+        }
+        if(hasNote_2)
+        {
+            note_2.SetActive(true);
         }
 	}
 	public void SetBandages(int newBand)

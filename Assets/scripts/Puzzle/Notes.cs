@@ -5,24 +5,22 @@ using UnityEngine.UI;
 
 public class Notes : MonoBehaviour 
 {
-	//private PlayerBehaviour plBehaviour;
-	public GameObject noteObject;
 	private bool isInsideTrigger = false;
 
 	public GameObject TextPanel = null;
 	public string message = "Hello World";
 	public Text eText;
 	private bool MessageReaded = false;
-	//private bool noteInv = false;
-	public GameObject note1;
 
     private SoundObj sound;
     private InputManager iM;
+    private HUD hud;
     // Use this for initialization
     void Start () 
 	{
         sound = GetComponentInChildren<SoundObj>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
+        hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
     }
 	
 	// Update is called once per frame
@@ -60,6 +58,8 @@ public class Notes : MonoBehaviour
 		MessageReaded = true;
 		Time.timeScale = 0;
         sound.Play(0);
+        hud.hasFragNote_1 = true;
+        hud.SetKey();
         iM.canPause = false;
     }
 	private void ReadEnd()
@@ -68,9 +68,7 @@ public class Notes : MonoBehaviour
 		Debug.Log("quit");
 		MessageReaded = false;
 		Time.timeScale = 1;
-		noteObject.SetActive(false);
-		//noteInv = true;
-		note1.SetActive(true);
+		gameObject.SetActive(false);
         iM.canPause = true;
     }
 }

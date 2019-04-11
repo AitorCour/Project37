@@ -22,11 +22,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     private Animator animator;
 
-    //Notes
-    private bool hasNote1;//how yo use tlf.
-    private bool hasNote2;//call Matt
-    private bool hasNote3;//nota Lumpo
-
 	[Header("Terrains")]
 	public LayerMask layerMask;
 
@@ -162,10 +157,6 @@ public class PlayerBehaviour : MonoBehaviour
         //Debug.Log ("key");
         hud.hasKey2 = true;
         hud.SetKey();
-    }
-    public void GetNotes_1()
-    {
-        hasNote1 = true;
     }
 	public void GetLader()
 	{

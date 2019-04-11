@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Ball : MonoBehaviour
+public class Nota_2 : MonoBehaviour
 {
-    //private PlayerBehaviour plBehaviour;
-    private HUD hud;
     private bool isInsideTrigger = false;
 
     public GameObject TextPanel = null;
@@ -14,17 +12,15 @@ public class Ball : MonoBehaviour
     public Text eText;
     private bool MessageReaded = false;
 
-    private AudioSource sound;
+    private SoundObj sound;
     private InputManager iM;
-    private UseObject useObj;
+    private HUD hud;
     // Use this for initialization
     void Start()
     {
-        //plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-        sound = GetComponentInChildren<AudioSource>();
+        sound = GetComponentInChildren<SoundObj>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
         hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
-        useObj = GameObject.FindGameObjectWithTag("ObjectPosition").GetComponent<UseObject>();
     }
 
     // Update is called once per frame
@@ -32,22 +28,19 @@ public class Ball : MonoBehaviour
     {
         if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
         {
-            //plBehaviour.GetKeys(key);
-            //keyObject.SetActive(false);
             if (MessageReaded)
             {
                 ReadEnd();
             }
             else Read();
         }
-        else return;
+
     }
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player") //solo funciona con player
         {
             isInsideTrigger = true; //cambia el bool
-                                    //Debug.Log ("Enterd 2");
         }
     }
     void OnTriggerExit(Collider other)
@@ -64,8 +57,9 @@ public class Ball : MonoBehaviour
         Debug.Log("reading");
         MessageReaded = true;
         Time.timeScale = 0;
-        hud.PickBall();
-        sound.Play();
+        sound.Play(0);
+        hud.hasFragNote_2 = true;
+        hud.SetKey();
         iM.canPause = false;
     }
     private void ReadEnd()
@@ -74,10 +68,7 @@ public class Ball : MonoBehaviour
         Debug.Log("quit");
         MessageReaded = false;
         Time.timeScale = 1;
-        //gameObject.SetActive(false);
-      //gameObject.transform.position = new Vector3(0, 0, 0);
+        gameObject.SetActive(false);
         iM.canPause = true;
-        useObj.PickBall();
-        //useObj.ballPlaced = false;
     }
 }

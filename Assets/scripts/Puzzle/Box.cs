@@ -13,7 +13,7 @@ public class Box : MonoBehaviour
     public Text eText;
     private bool MessageReaded = false;
 
-    //private SoundPlayer sound;
+    private AudioSource sound;
     private InputManager iM;
     private HUD hud;
     private UseObject useObj;
@@ -21,7 +21,7 @@ public class Box : MonoBehaviour
     void Start()
     {
         //plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-        //sound = GetComponentInChildren<SoundPlayer>();
+        sound = GetComponentInChildren<AudioSource>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
         hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
         useObj = GameObject.FindGameObjectWithTag("ObjectPosition").GetComponent<UseObject>();
@@ -65,7 +65,7 @@ public class Box : MonoBehaviour
         MessageReaded = true;
         Time.timeScale = 0;
         hud.PickBox();
-        //sound.Play(1, 2);
+        sound.Play();
         iM.canPause = false;
     }
     private void ReadEnd()
