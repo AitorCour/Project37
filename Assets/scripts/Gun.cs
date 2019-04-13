@@ -32,7 +32,7 @@ public class Gun : MonoBehaviour
     public Animator animator;
 
     private PlayerBehaviour plBehaviour;
-
+    private HUD hud;
 	// Use this for initialization
 	void Start ()
     {
@@ -41,9 +41,10 @@ public class Gun : MonoBehaviour
         //currentAmmo = maxAmmo;
         //Munition = iniMunition;
         plBehaviour = GetComponentInParent<PlayerBehaviour>();
-
+        hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
         currentAmmo = Data.GetAmmo();
         Munition = Data.GetMunition();
+        hud.SetAmmo(currentAmmo, Munition);
 		//sound = GetComponentInChildren<AudioSource>();
 	}
     public void Shot()
@@ -58,7 +59,7 @@ public class Gun : MonoBehaviour
         isShooting = true;
         currentAmmo--;
         Data.SetAmmo(currentAmmo);
-
+        hud.SetAmmo(currentAmmo, Munition);
 		particleShoot.Play();
 		particleSteam.Play();
 
@@ -133,6 +134,7 @@ public class Gun : MonoBehaviour
 		}
         isReloading = false;
         Data.SetAmmo(currentAmmo);
+        hud.SetAmmo(currentAmmo, Munition);
         Data.SetMunition(Munition);
     }
 

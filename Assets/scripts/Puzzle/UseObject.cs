@@ -77,7 +77,7 @@ public class UseObject : MonoBehaviour
         }
         if(ballCorrect && boxCorrect && bustCorrect)
         {
-            Debug.Log("Unlock Key");
+            UnlockKey();
         }
     }
 
@@ -274,5 +274,13 @@ public class UseObject : MonoBehaviour
             PickObject(ball);
         }
       else PickObject(ball);
+    }
+    void UnlockKey()
+    {
+        //Se activan Barras cinematica.
+        //William no puede moverse -Pause, canWalk?-
+        //Ruido LLave
+        //Text - Se ha escuchado algo
+        //Llave activa
     }
 }

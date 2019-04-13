@@ -45,6 +45,12 @@ public class GameManager : MonoBehaviour
     public GameObject exBall;
     public GameObject infoBall;
 
+    public GameObject exLader;
+    public GameObject infoLader;
+
+    public GameObject note1;
+    public GameObject note2;
+
 	public GameObject canvasOp;
 	public GameObject screenOp;
 	public GameObject soundOp;
@@ -101,8 +107,6 @@ public class GameManager : MonoBehaviour
 		inputManager.SetInventory(false);
 		canvasInv.SetActive(false);
 		Time.timeScale = 1;
-		//canvasInventory.SetActive(false);
-		//inventory.SetActive(true);
 		map.SetActive(false);
 		notes.SetActive(false);
         equipGun.SetActive(false);
@@ -121,6 +125,10 @@ public class GameManager : MonoBehaviour
         infoBox.SetActive(false);
         exBall.SetActive(false);
         infoBall.SetActive(false);
+        exLader.SetActive(false);
+        infoLader.SetActive(false);
+        note1.SetActive(false);
+        note2.SetActive(false);
     }
 	
 	public void OpenMap()
