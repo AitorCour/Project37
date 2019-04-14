@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UseObject : MonoBehaviour
 {
@@ -30,6 +31,18 @@ public class UseObject : MonoBehaviour
     private bool boxCorrect;
     private bool bustCorrect;
 
+    //On complete
+    private bool puzzleComplete = false;
+    public GameObject barrasCine;//Barras de cinematica
+    public GameObject key;//Object to Unlock
+    private GameManager gameManager;
+    public GameObject TextPanel = null;
+    public string message = "Hello World";
+    public Text eText;
+    private AudioSource sound;
+    private TankControls2 tank;
+    public float timeCounter;
+    private float messageTime = 6f;
     // Use this for initialization
     void Start ()
     {
@@ -37,6 +50,9 @@ public class UseObject : MonoBehaviour
         oP1 = GameObject.FindGameObjectWithTag("Position_1").GetComponent<ObjectPos1>();
         oP2 = GameObject.FindGameObjectWithTag("Position_2").GetComponent<ObjectPos1>();
         oP3 = GameObject.FindGameObjectWithTag("Position_3").GetComponent<ObjectPos1>();
+        sound = GetComponentInChildren<AudioSource>();
+        tank = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControls2>();
+        gameManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
     }
 	
 	// Update is called once per frame
@@ -75,9 +91,32 @@ public class UseObject : MonoBehaviour
                 useButtons[i].SetActive(true);
             }
         }
-        if(ballCorrect && boxCorrect && bustCorrect)
+        if(ballCorrect && boxCorrect && bustCorrect && !puzzleComplete)
         {
             UnlockKey();
+            timeCounter += Time.deltaTime;
+            if (timeCounter >= messageTime)
+            {
+                //Desactive barras, player canWalk
+                PuzzleDone();
+                timeCounter = 0;
+                puzzleComplete = true;
+            }
+            //Poner que los obj ya no puedan recojerse
+        }
+        if(timeCounter >= 2f)
+        {
+            //Ruido LLave
+            sound.Play();
+            //Text - Se ha escuchado algo
+            TextPanel.SetActive(true);
+            eText.text = message;
+        }
+        else if(timeCounter >= messageTime)
+        {
+            //Desactive barras, player canWalk
+            PuzzleDone();
+            timeCounter = 0;
         }
     }
 
@@ -278,9 +317,22 @@ public class UseObject : MonoBehaviour
     void UnlockKey()
     {
         //Se activan Barras cinematica.
+        gameManager.CloseInventory();
+        barrasCine.SetActive(true);
         //William no puede moverse -Pause, canWalk?-
+        tank.canWalk = false;
         //Ruido LLave
+        /*sound.Play();
         //Text - Se ha escuchado algo
+        TextPanel.SetActive(true);
+        eText.text = message;*/
         //Llave activa
+        key.SetActive(true);
+    }
+    void PuzzleDone()
+    {
+        barrasCine.SetActive(false);
+        tank.canWalk = true;
+        TextPanel.SetActive(false);
     }
 }
