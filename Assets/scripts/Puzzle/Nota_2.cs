@@ -60,6 +60,7 @@ public class Nota_2 : MonoBehaviour
         sound.Play(0);
         hud.hasFragNote_2 = true;
         hud.SetKey();
+        Data.SetNoteFrag_2();
         iM.canPause = false;
     }
     private void ReadEnd()

@@ -8,6 +8,9 @@ using System;//para try y catch
 public class Playerdata
 {
     public bool[] hasKey;
+    public bool hasFragNote_1;
+    public bool hasFragNote_2;
+    public bool hasNote_2;
     public int plLife;
     public int plAmmo;
     public int plMunition;
@@ -25,6 +28,9 @@ public class Playerdata
         plAmmo = 7;
         plMunition = 0;
         plBandages = 0;
+        hasFragNote_1 = false;
+        hasFragNote_2 = false;
+        hasNote_2 = false;
     }
 }
 
@@ -139,6 +145,18 @@ public static class Data
     {
         gameData.pData.plBandages = i;
     }
+    public static void SetNoteFrag_1()
+    {
+        gameData.pData.hasFragNote_1 = true;
+    }
+    public static void SetNoteFrag_2()
+    {
+        gameData.pData.hasFragNote_2 = true;
+    }
+    public static void SetNote_2()
+    {
+        gameData.pData.hasNote_2 = true;
+    }
     public static int GetLife()
     { return gameData.pData.plLife; }
     public static int GetAmmo()
@@ -147,4 +165,10 @@ public static class Data
     { return gameData.pData.plMunition; }
     public static int GetBandages()
     { return gameData.pData.plBandages; }
+    public static bool GetNoteFrag_1()
+    { return gameData.pData.hasFragNote_1; }
+    public static bool GetNoteFrag_2()
+    { return gameData.pData.hasFragNote_2; }
+    public static bool GetNote_2()
+    { return gameData.pData.hasNote_2; }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0036458878, g: 0.0025737085, b: 0.0023728635, a: 1}
+  m_IndirectSpecularColor: {r: 0.0036458608, g: 0.002573757, b: 0.0023727885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1728,7 +1728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &111808211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7216,6 +7216,12 @@ MonoBehaviour:
   busto: {fileID: 1619792502}
   box: {fileID: 328629008}
   ball: {fileID: 2119843448}
+  barrasCine: {fileID: 0}
+  key: {fileID: 0}
+  TextPanel: {fileID: 0}
+  message: Hello World
+  eText: {fileID: 0}
+  timeCounter: 0
 --- !u!65 &176691393
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7500,7 +7506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &188806671
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9051,7 +9057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &299941387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23980,7 +23986,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 513
-  maxAmmo: 7
   currentAmmo: 7
   Munition: 7
   fireRate: 1
@@ -38526,9 +38531,16 @@ MonoBehaviour:
   key1: {fileID: 981047999}
   key2: {fileID: 296901321}
   lader: {fileID: 51704185}
+  note_1: {fileID: 559876331}
+  note_2: {fileID: 417630286}
+  noteFrag_1: {fileID: 1729865243}
+  noteFrag_2: {fileID: 1729865243}
   hasKey1: 0
   hasKey2: 0
   hasLader: 0
+  hasFragNote_1: 0
+  hasFragNote_2: 0
+  hasNote_2: 0
   Busto: {fileID: 474441779}
   Box: {fileID: 1212942291}
   Ball: {fileID: 342109372}
@@ -38814,7 +38826,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1903799324
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40674,7 +40686,6 @@ MonoBehaviour:
   playerLife: 3
   isDead: 0
   potions: 2
-  cure: 1
   key1: 0
   key2: 0
   lader: 0
@@ -41757,6 +41768,10 @@ MonoBehaviour:
   infoBox: {fileID: 1453517886}
   exBall: {fileID: 1222458933}
   infoBall: {fileID: 890912426}
+  exLader: {fileID: 0}
+  infoLader: {fileID: 0}
+  note1: {fileID: 0}
+  note2: {fileID: 0}
   canvasOp: {fileID: 869059755}
   screenOp: {fileID: 1226297778}
   soundOp: {fileID: 1540670911}

@@ -27,6 +27,7 @@ public class HUD : MonoBehaviour
     public bool hasFragNote_2;
     public bool hasNote_2;
 
+    //
     public GameObject Busto;
     public GameObject Box;
     public GameObject Ball;
@@ -35,32 +36,24 @@ public class HUD : MonoBehaviour
     public bool[] slot;
     public GameObject[] objectsInv;
 
-    /*public bool hasBust = false;
-    public bool hasBox = false;
-    public bool hasBall = false;*/
-	// Use this for initialization
 	void Start () 
 	{
-		//gun = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
-        //plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-        /*if (Data.IsKeyUnlock(0) == true)
+		if(Data.GetNoteFrag_1() == true)
         {
-            hasKey1 = true;
+            hasFragNote_1 = true;
             SetKey();
         }
-        if (Data.IsKeyUnlock(1) == true)
+        else if(Data.GetNoteFrag_2() == true)
         {
-            hasKey2 = true;
+            hasFragNote_2 = true;
             SetKey();
-        }*/
+        }
+        else if(Data.GetNote_2() == true)
+        {
+            hasNote_2 = true;
+            SetKey();
+        }
     }
-	
-	// Update is called once per frame
-	/*void Update () 
-	{
-		//ammo.text = gun.currentAmmo + " / " + gun.Munition.ToString();
-		//ammoInv.text = gun.currentAmmo + " / " + gun.Munition.ToString();
-	}*/
     public void SetAmmo(int cA, int mun)
     {
         ammoInv.text = cA + " / " + mun.ToString();
@@ -103,6 +96,7 @@ public class HUD : MonoBehaviour
 		bandages.text = "x " + newBand.ToString();
 	}
 
+    //
     public void PickObject(GameObject pickObject)
     {
         for(int i = 0; i < slot.Length; i++)
