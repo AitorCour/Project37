@@ -35,7 +35,8 @@ public class HUD : MonoBehaviour
     public RectTransform[] slotPos;
     public bool[] slot;
     public GameObject[] objectsInv;
-
+    public Sprite[] sprites;
+    public Image image;
 	void Start () 
 	{
 		if(Data.GetNoteFrag_1() == true)
@@ -61,7 +62,10 @@ public class HUD : MonoBehaviour
 	public void SetLife(int newLife)
 	{
 		plLife.text = "Life: " + newLife.ToString();
-	}
+        if (newLife == 3) image.sprite = sprites[0];
+        if (newLife == 2) image.sprite = sprites[1];
+        if (newLife == 1) image.sprite = sprites[2];
+    }
 	public void SetKey()
 	{
         if(hasKey1)

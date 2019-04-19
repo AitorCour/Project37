@@ -1400,8 +1400,8 @@ GameObject:
   - component: {fileID: 76134430}
   - component: {fileID: 76134429}
   m_Layer: 5
-  m_Name: Image (1)
-  m_TagString: Untagged
+  m_Name: ClockGraphic
+  m_TagString: Clock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1422,8 +1422,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -704, y: 97}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: -704, y: 236}
+  m_SizeDelta: {x: 486, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &76134429
 MonoBehaviour:
@@ -1439,13 +1439,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 853ff5faa9b9c8a4c9a7bef626199acf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3879db01d82498d4eb5016b4f4981e05, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -41006,6 +41006,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  sprites:
+  - {fileID: 21300000, guid: 3879db01d82498d4eb5016b4f4981e05, type: 3}
+  - {fileID: 21300000, guid: 8e724f36e0551134ab66f33c41b1b7a9, type: 3}
+  - {fileID: 21300000, guid: 9d797e27857f40d42a7f75f8c10ca0aa, type: 3}
+  image: {fileID: 76134429}
 --- !u!114 &1883958468
 MonoBehaviour:
   m_ObjectHideFlags: 0
