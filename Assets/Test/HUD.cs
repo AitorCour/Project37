@@ -11,7 +11,6 @@ public class HUD : MonoBehaviour
 	//public Text ammo;
 	public Text ammoInv;
 	public Text bandages;
-	public Text plLife;
 
     public GameObject key1;
     public GameObject key2;
@@ -61,7 +60,6 @@ public class HUD : MonoBehaviour
     }
 	public void SetLife(int newLife)
 	{
-		plLife.text = "Life: " + newLife.ToString();
         if (newLife == 3) image.sprite = sprites[0];
         if (newLife == 2) image.sprite = sprites[1];
         if (newLife == 1) image.sprite = sprites[2];
