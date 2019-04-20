@@ -11,6 +11,7 @@ public class Playerdata
     public bool hasFragNote_1;
     public bool hasFragNote_2;
     public bool hasNote_2;
+    public bool hasLader;
     public int plLife;
     public int plAmmo;
     public int plMunition;
@@ -31,6 +32,7 @@ public class Playerdata
         hasFragNote_1 = false;
         hasFragNote_2 = false;
         hasNote_2 = false;
+        hasLader = false;
     }
 }
 
@@ -157,6 +159,10 @@ public static class Data
     {
         gameData.pData.hasNote_2 = true;
     }
+    public static void SetLader()
+    {
+        gameData.pData.hasLader = true;
+    }
     public static int GetLife()
     { return gameData.pData.plLife; }
     public static int GetAmmo()
@@ -171,4 +177,6 @@ public static class Data
     { return gameData.pData.hasFragNote_2; }
     public static bool GetNote_2()
     { return gameData.pData.hasNote_2; }
+    public static bool GetLader()
+    { return gameData.pData.hasLader; }
 }

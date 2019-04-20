@@ -50,6 +50,12 @@ public class PlayerBehaviour : MonoBehaviour
             hud.hasKey2 = true;
         }
 		else key2 = false;
+        if (Data.GetLader() == true)
+        {
+            lader = true;
+            hud.hasLader = true;
+        }
+        else lader = false;
 
         playerLife = Data.GetLife();
         potions = Data.GetBandages();

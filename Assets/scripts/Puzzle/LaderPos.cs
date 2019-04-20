@@ -4,28 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 public class LaderPos : MonoBehaviour
 {
-    private bool isInsideTrigger;
     private InputManager iM;
     private PlayerBehaviour plBehaviour;
-    public GameObject laderObj;
-
+    private ChangeScene changeSc;
+    public GameObject lader;
     public GameObject laderButton;
 
+    public int scene;
     public GameObject TextPanel = null;
 	public string message = "Hello World";
 	public Text eText;
 	private bool MessageReaded = false;
+    private bool laderActive;
+    private bool isInsideTrigger;
 
+    public float xPos;
+    public float zPos;
     // Use this for initialization
     void Start ()
     {
         plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
-	}
+        changeSc = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
+    }
 
     void Update ()
     {
-        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
+        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened && !laderActive)
         {
             if (MessageReaded)
             {
@@ -33,13 +38,17 @@ public class LaderPos : MonoBehaviour
             }
             else Read();
         }
-        if(plBehaviour.lader)
+        if(plBehaviour.lader == true)
         {
             if(isInsideTrigger)
             {
                 laderButton.SetActive(true);
             }
             else laderButton.SetActive(false);
+        }
+        if(laderActive && isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
+        {
+            ChangeScene();
         }
     }
     void OnTriggerEnter(Collider other)
@@ -71,9 +80,17 @@ public class LaderPos : MonoBehaviour
 		Time.timeScale = 1;
         iM.canPause = true;
     }
-    public void UseLader()
+    public void ActiveLader()
     {
-        laderObj.transform.position = this.transform.position;
-        plBehaviour.LoseLader();
+        lader.SetActive(true);//se activa el obj de lader
+        laderActive = true;
+        
+    }
+    void ChangeScene()
+    {
+        changeSc.FadeChangeScene(scene);
+        changeSc.pX = xPos;
+        changeSc.pZ = zPos;
+        changeSc.SavePosition();
     }
 }
