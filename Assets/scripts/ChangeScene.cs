@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ChangeScene : MonoBehaviour 
 {
 	public int scene; //se introduce la scena a la que se quiere ir
-	private bool isInsideTrigger = false;
+	//private bool isInsideTrigger = false;
 
 	public Image black;
 	public Animator animator;
@@ -17,22 +17,22 @@ public class ChangeScene : MonoBehaviour
     public float pX;
     public float pZ;
 
-    public float plGoingX;
-    public float plGoingZ;
+    //public float plGoingX;
+    //public float plGoingZ;
 
     //private SettingsMenu settings;
-    private AudioSource audioSource;
+    //private AudioSource audioSource;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
         //settings = GameObject.FindGameObjectWithTag("HUD").GetComponent<SettingsMenu>();
         pX = PlayerPrefs.GetFloat("p_x");
         pZ = PlayerPrefs.GetFloat("p_z");
         player.transform.position = new Vector3 (pX, 1, pZ);
     }
 
-	void Update()
+	/*void Update()
 	{
 		if (isInsideTrigger && Input.GetButtonDown("Action"))
 		{
@@ -48,9 +48,9 @@ public class ChangeScene : MonoBehaviour
             SavePosition();
 		}
         //Debug.Log(pX);
-	}
+	}*/
 
-	void OnTriggerEnter(Collider other)
+	/*void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player")
 		{
@@ -63,7 +63,7 @@ public class ChangeScene : MonoBehaviour
 		{
 			isInsideTrigger = false;
 		}
-	}
+	}*/
 	//Change Scene In Menu
 	/*public void ChangeToScene (int num)
 	{
@@ -107,7 +107,7 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene(7);
 	}
 
-    void SavePosition()
+    public void SavePosition()
     {
         PlayerPrefs.SetFloat("p_x", pX);
         PlayerPrefs.SetFloat("p_z", pZ);

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class KeyDoor : MonoBehaviour 
@@ -17,14 +17,19 @@ public class KeyDoor : MonoBehaviour
     public string message_2;
 	public Text eText;
 
-	public Animator animator;
-	public Image black;
+	//public Animator animator;
+	//public Image black;
     private SoundObj soundObj;
+    private ChangeScene changeSc;
+    //Donde irá
+    public float xPos;
+    public float zPos;
 	void Start()
 	{
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         soundObj = GetComponentInChildren<SoundObj>();
-	}
+        changeSc = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
+    }
 	void Update()
 	{
 		if (isInsideTrigger && Input.GetButtonDown("Action"))
@@ -40,7 +45,11 @@ public class KeyDoor : MonoBehaviour
 			{
                 //SceneManager.LoadScene(scene);
                 soundObj.Play(2);
-				StartCoroutine(Fade());
+				//StartCoroutine(Fade());
+                changeSc.FadeChangeScene(scene);
+                changeSc.pX = xPos;
+                changeSc.pZ = zPos;
+                changeSc.SavePosition();
 			}
 			else if (MessageReaded)
 			{
@@ -88,10 +97,10 @@ public class KeyDoor : MonoBehaviour
 		MessageReaded = false;
 		Time.timeScale = 1;
 	}
-	 IEnumerator Fade()
+	 /*IEnumerator Fade()
 	 {
 		animator.SetBool("Fade", true);
 		yield return new WaitUntil(()=>black.color.a==1);
 		SceneManager.LoadScene(scene);
-	 }
+	 }*/
 }
