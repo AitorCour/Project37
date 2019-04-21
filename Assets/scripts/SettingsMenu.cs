@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-
 public class SettingsMenu : MonoBehaviour 
 {
     public AudioMixer masterVol;
     public float vol_1;
     private float vol_2;
     private float vol_3;
+    private float lightInt;
     public Slider master;
     public Slider effects;
     public Slider music;
+    public Slider lightSl;
 
     public RectTransform selectedRes;
     public RectTransform selectedQual;
@@ -33,6 +34,10 @@ public class SettingsMenu : MonoBehaviour
         vol_3 = PlayerPrefs.GetFloat("Music_Vol");
         music.value = vol_3;
         masterVol.SetFloat("Music", vol_3);
+
+        lightInt = PlayerPrefs.GetFloat("Light_Intensity");
+        lightSl.value = lightInt;
+        SetLight(lightInt);
 
         resPos = PlayerPrefs.GetFloat("Pos_Res");
         selectedRes.localPosition = new Vector3(-450, resPos, 0);
@@ -58,6 +63,12 @@ public class SettingsMenu : MonoBehaviour
         masterVol.SetFloat("Music", volume_3);
         SaveVolume_Music();
 	}
+    public void SetLight(float light)
+    {
+        lightInt = light;
+        RenderSettings.ambientIntensity = light;
+        SaveLight();
+    }
     public void SetResolution720()
     {
         Screen.SetResolution(1280, 720, Screen.fullScreen);
@@ -127,6 +138,10 @@ public class SettingsMenu : MonoBehaviour
     void SaveVolume_Music()
     {
         PlayerPrefs.SetFloat("Music_Vol", vol_3);
+    }
+    void SaveLight()
+    {
+        PlayerPrefs.SetFloat("Light_Intensity", lightInt);
     }
     void SavePositionRes()
     {
