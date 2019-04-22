@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraTrigger : MonoBehaviour {
+public class CameraTrigger : MonoBehaviour
+{
 	public GameObject myCamera;
 	private CameraManager myCameraManager;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		myCameraManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<CameraManager>();
 	}
 	

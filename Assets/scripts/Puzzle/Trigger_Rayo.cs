@@ -5,6 +5,7 @@ using UnityEngine;
 public class Trigger_Rayo : MonoBehaviour 
 {
 	private Animator animRayo;
+    private bool activated;
 	void Start()
 	{
 		animRayo = GetComponentInChildren<Animator>();
@@ -13,7 +14,12 @@ public class Trigger_Rayo : MonoBehaviour
     {
         if (other.tag == "Player") //solo funciona con player
         {
-            animRayo.SetTrigger("rayo");
+            if (!activated)
+            {
+                animRayo.SetTrigger("rayo");
+                activated = true;
+            }
+            else return;
 			
         }
     }
