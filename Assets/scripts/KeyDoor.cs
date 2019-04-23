@@ -97,10 +97,4 @@ public class KeyDoor : MonoBehaviour
 		MessageReaded = false;
 		Time.timeScale = 1;
 	}
-	 /*IEnumerator Fade()
-	 {
-		animator.SetBool("Fade", true);
-		yield return new WaitUntil(()=>black.color.a==1);
-		SceneManager.LoadScene(scene);
-	 }*/
 }
