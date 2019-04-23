@@ -15,7 +15,7 @@ public class Gun : MonoBehaviour
     private int maxAmmo = 7;
     public int currentAmmo;
     public int Munition;
-    private int iniMunition = 0;
+    //private int iniMunition = 0;
 	private int variableM;
     public float fireRate;
     public float hitForce;
