@@ -16,7 +16,7 @@ public class ChangeScene : MonoBehaviour
 
     public float pX;
     public float pZ;
-
+    public float pY;
     //public float plGoingX;
     //public float plGoingZ;
 
@@ -29,46 +29,9 @@ public class ChangeScene : MonoBehaviour
         //settings = GameObject.FindGameObjectWithTag("HUD").GetComponent<SettingsMenu>();
         pX = PlayerPrefs.GetFloat("p_x");
         pZ = PlayerPrefs.GetFloat("p_z");
-        player.transform.position = new Vector3(pX, 1, pZ);
+        pY = PlayerPrefs.GetFloat("p_y");
+        player.transform.position = new Vector3(pX, pY, pZ);
     }
-
-    /*void Update()
-    {
-        if (isInsideTrigger && Input.GetButtonDown("Action"))
-        {
-            Debug.Log ("Change Scene");
-            audioSource.Play();
-            //SceneManager.LoadScene(scene); //linea que hace que funcione
-            //Fade();
-            //settings.SaveVolume();
-            StartCoroutine(Fade());
-            pX = plGoingX;
-            pZ = plGoingZ;
-
-            SavePosition();
-        }
-        //Debug.Log(pX);
-    }*/
-
-    /*void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            isInsideTrigger = true;
-        }
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            isInsideTrigger = false;
-        }
-    }*/
-    //Change Scene In Menu
-    /*public void ChangeToScene (int num)
-    {
-        SceneManager.LoadScene(num);
-    }*/
     public void FadeChangeScene(int num)
     {
         StartCoroutine(FadeButton(num));
@@ -112,6 +75,7 @@ public class ChangeScene : MonoBehaviour
     {
         PlayerPrefs.SetFloat("p_x", pX);
         PlayerPrefs.SetFloat("p_z", pZ);
+        PlayerPrefs.SetFloat("p_y", pY);
     }
 }
 

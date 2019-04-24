@@ -36,6 +36,11 @@ public class TankControls2 : MonoBehaviour
 
 	void Update ()
 	{
+        //Get a PlayerPOs
+        if(Input.GetKey("h"))
+        {
+            transform.Translate(-8, 1, 1);
+        }
 		if (canWalk == true && !pointing && !plBehaviour.damageRecived)
 		{
 			//var x = Input.GetAxis("Horizontal") * Time.deltaTime * rotSpeed;

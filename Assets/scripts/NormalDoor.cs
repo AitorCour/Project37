@@ -14,6 +14,7 @@ public class NormalDoor : MonoBehaviour
     //Donde irá
     public float xPos;
     public float zPos;
+    public float yPos = 1;
 
     // Use this for initialization
     void Start ()
@@ -32,6 +33,7 @@ public class NormalDoor : MonoBehaviour
             changeSc.FadeChangeScene(scene);
             changeSc.pX = xPos;
             changeSc.pZ = zPos;
+            changeSc.pY = yPos;
             changeSc.SavePosition();
         }
     }
