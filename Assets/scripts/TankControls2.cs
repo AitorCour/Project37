@@ -215,6 +215,17 @@ public class TankControls2 : MonoBehaviour
 			}
             speed = 5;
 		}	
+        if(!canWalk)
+        {
+            animator.SetBool("Walking", false);
+            animator.SetBool("Walking2", false);
+            animator.SetBool("Walking3", false);
+            animator.SetBool("Running", false);
+            animator.SetBool("Running2", false);
+            animator.SetBool("WalkingBack", false);
+            animator.SetBool("Back2", false);
+            animator.SetBool("Back3", false);
+        }
 	}
     public void SetSpeed()
     {

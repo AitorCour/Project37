@@ -17,6 +17,11 @@ public class Playerdata
     public int plMunition;
     public int plBandages;
 
+    //PLAYER POSITION
+    public float pX;
+    public float pZ;
+    public float pY;
+
     public Playerdata()
     {
         hasKey = new bool[2];
@@ -33,6 +38,9 @@ public class Playerdata
         hasFragNote_2 = false;
         hasNote_2 = false;
         hasLader = false;
+        pX = -8;
+        pZ = 1;
+        pY = 1;
     }
 }
 
@@ -147,6 +155,13 @@ public static class Data
     {
         gameData.pData.plBandages = i;
     }
+    //Posiciones Player
+    public static void SetPosition(float x, float y, float z)
+    {
+        gameData.pData.pX = x;
+        gameData.pData.pY = y;
+        gameData.pData.pZ = z;
+    }
     public static void SetNoteFrag_1()
     {
         gameData.pData.hasFragNote_1 = true;
@@ -179,4 +194,16 @@ public static class Data
     { return gameData.pData.hasNote_2; }
     public static bool GetLader()
     { return gameData.pData.hasLader; }
+    public static float GetPositionX()
+    {
+        return gameData.pData.pX;
+    }
+    public static float GetPositionY()
+    {
+        return gameData.pData.pY;
+    }
+    public static float GetPositionZ()
+    {
+        return gameData.pData.pZ;
+    }
 }

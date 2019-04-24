@@ -27,9 +27,14 @@ public class ChangeScene : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         //audioSource = GetComponent<AudioSource>();
         //settings = GameObject.FindGameObjectWithTag("HUD").GetComponent<SettingsMenu>();
-        pX = PlayerPrefs.GetFloat("p_x");
-        pZ = PlayerPrefs.GetFloat("p_z");
-        pY = PlayerPrefs.GetFloat("p_y");
+
+        //pX = PlayerPrefs.GetFloat("p_x");
+        //pZ = PlayerPrefs.GetFloat("p_z");
+        //pY = PlayerPrefs.GetFloat("p_y");
+
+        pX = Data.GetPositionX();
+        pZ = Data.GetPositionZ();
+        pY = Data.GetPositionY();
         player.transform.position = new Vector3(pX, pY, pZ);
     }
     public void FadeChangeScene(int num)
@@ -73,9 +78,10 @@ public class ChangeScene : MonoBehaviour
 
     public void SavePosition()
     {
-        PlayerPrefs.SetFloat("p_x", pX);
-        PlayerPrefs.SetFloat("p_z", pZ);
-        PlayerPrefs.SetFloat("p_y", pY);
+        //PlayerPrefs.SetFloat("p_x", pX);
+        //PlayerPrefs.SetFloat("p_z", pZ);
+        //PlayerPrefs.SetFloat("p_y", pY);
+        Data.SetPosition(pX, pY, pZ);
     }
 }
 
