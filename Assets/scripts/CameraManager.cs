@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraManager : MonoBehaviour {
+public class CameraManager : MonoBehaviour 
+{
 	public GameObject[] cameras;
 	public GameObject startCamera;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		cameras = GameObject.FindGameObjectsWithTag("Camera");
 		for(int i = 0; i < cameras.Length; i++)
 		{

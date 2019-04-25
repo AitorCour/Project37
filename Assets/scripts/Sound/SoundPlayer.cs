@@ -65,7 +65,8 @@ public class SoundPlayer : MonoBehaviour
 
         }
         //AudioSource source = obj.AddComponent<AudioSource>();
-        source.volume = 1;
+        source.volume = Random.Range(0.95f, 1.05f);
+        source.pitch = Random.Range(0.95f, 1.05f);
         //vol
         source.spatialBlend = 1; // 1 --> 3D  0--> 2D
         source.Play();
