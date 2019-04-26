@@ -141,6 +141,7 @@ public class Gun : MonoBehaviour
     public void GetAmmo(int m)
     {
         Munition += m;
+        hud.SetAmmo(currentAmmo, Munition);
         Data.SetMunition(Munition);
     }
 
