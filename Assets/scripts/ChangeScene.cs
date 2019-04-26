@@ -73,7 +73,7 @@ public class ChangeScene : MonoBehaviour
         animator.SetBool("Fade", true);
         yield return new WaitUntil(() => black.color.a == 1);
         //settings.SaveVolume();
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(14);
     }
 
     public void SavePosition()

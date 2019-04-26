@@ -62,6 +62,7 @@ public class Lader : MonoBehaviour
 		MessageReaded = true;
 		Time.timeScale = 0;
 		plBehaviour.GetLader();
+        Data.SetLader();
 		//sound.Play(1, 2);
         iM.canPause = false;
     }
@@ -71,7 +72,7 @@ public class Lader : MonoBehaviour
 		//Debug.Log("quit");
 		MessageReaded = false;
 		Time.timeScale = 1;
-		this.transform.position = new Vector3(0,0,0);
+		this.transform.position = new Vector3(0,-10,0);
         iM.canPause = true;
     }
 }

@@ -178,6 +178,10 @@ public static class Data
     {
         gameData.pData.hasLader = true;
     }
+    public static void LoseLader()
+    {
+        gameData.pData.hasLader = false;
+    }
     public static int GetLife()
     { return gameData.pData.plLife; }
     public static int GetAmmo()
@@ -192,8 +196,10 @@ public static class Data
     { return gameData.pData.hasFragNote_2; }
     public static bool GetNote_2()
     { return gameData.pData.hasNote_2; }
-    public static bool GetLader()
-    { return gameData.pData.hasLader; }
+    public static bool IsLaderUnlock()
+    {
+        return gameData.pData.hasLader;
+    }
     public static float GetPositionX()
     {
         return gameData.pData.pX;

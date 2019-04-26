@@ -24,6 +24,7 @@ public class KeyDoor : MonoBehaviour
     //Donde irá
     public float xPos;
     public float zPos;
+    public float yPos = 1;
 	void Start()
 	{
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
@@ -49,6 +50,7 @@ public class KeyDoor : MonoBehaviour
                 changeSc.FadeChangeScene(scene);
                 changeSc.pX = xPos;
                 changeSc.pZ = zPos;
+                changeSc.pY = yPos;
                 changeSc.SavePosition();
 			}
 			else if (MessageReaded)

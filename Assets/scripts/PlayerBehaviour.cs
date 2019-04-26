@@ -50,7 +50,7 @@ public class PlayerBehaviour : MonoBehaviour
             hud.hasKey2 = true;
         }
 		else key2 = false;
-        if (Data.GetLader() == true)
+        if (Data.IsLaderUnlock() == true)
         {
             lader = true;
             hud.hasLader = true;
@@ -177,6 +177,7 @@ public class PlayerBehaviour : MonoBehaviour
 		lader = false;
 		hud.hasLader = false;
 		hud.SetKey();
+        Data.LoseLader();
 	}
     //Perder Llaves
     //Sumar Pociones
