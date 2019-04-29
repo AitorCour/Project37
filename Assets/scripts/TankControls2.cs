@@ -226,7 +226,18 @@ public class TankControls2 : MonoBehaviour
             animator.SetBool("Back2", false);
             animator.SetBool("Back3", false);
         }
-	}
+        if (plBehaviour.playerLife == 2)
+        {
+            animator.SetBool("Injured", true);
+        }
+        else animator.SetBool("Injured", false);
+
+        if (plBehaviour.playerLife == 1)
+        {
+            animator.SetBool("SuperInjured", true);
+        }
+        else animator.SetBool("SuperInjured", false);
+    }
     public void SetSpeed()
     {
         if(isRunning)

@@ -62,8 +62,6 @@ public class PlayerBehaviour : MonoBehaviour
         hud.SetBandages(potions);
         hud.SetLife(playerLife);
         hud.SetKey();
-
-        //tankControl2 = GetComponent<TankControls2>();
     }
 
 	//Recibir Daño
@@ -122,7 +120,7 @@ public class PlayerBehaviour : MonoBehaviour
 		}
 		else
 		{
-			//Debug.Log("GetPotions");
+            return;
 		}
 	}
 	//Morir
@@ -130,7 +128,7 @@ public class PlayerBehaviour : MonoBehaviour
 	{
 		isDead = true;
 		sound.Play(1);
-        animator.SetBool("Dead", true);
+        animator.SetTrigger("Dead");
         if (isDead == true)
 		{
 			//Debug.Log ("isdead");

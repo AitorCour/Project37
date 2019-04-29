@@ -19,23 +19,23 @@ public class InputManager : MonoBehaviour
 	private int cure = 1;
 
     private MouseCursor mouseCursor;
+
 	public bool isPaused = false;
 	public bool isInventoryOpened = false;
 	public bool isMapOpened = false;
 	private bool godActive = false;
-
-	public bool canShoot;
-
+	private bool canShoot;
 	public bool ini_menu;
-	public GameObject menu;
-
-    //private Potion potion;
-    //private Munition munition;
-    [Header("Misc Conditions")]
     public bool canPause = true;
-
+    private bool m_isAxisInUse;
+    private bool shootState;
+    public GameObject menu;
     private SoundObj sound;
 
+    private float timeCounterNoShoot;
+    private float noShootTime = 0.5f;
+    private float timeCounterIN;
+    private float inmuneTime = 2.5f;
     // Use this for initialization
     void Start ()
     {
@@ -54,29 +54,6 @@ public class InputManager : MonoBehaviour
         mouseCursor = new MouseCursor();
         mouseCursor.HideCursor();
     }
-	
-	// Update is called once per frame
-	void FixedUpdate ()
-	{
-		if(gun.isShooting)
-		{
-			canShoot = false;
-		}
-        if (!gun.isShooting && !isInventoryOpened && !isPaused && !isMapOpened)
-		{
-			canShoot = true;
-		}
-
-		if(gun.currentAmmo <= 0)
-		{
-			canShoot = false;
-		}
-        if(isInventoryOpened || isPaused || isMapOpened)
-        {
-            canShoot = false;
-        }
-	}
-
 	void Update ()
     {
         if(Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
@@ -91,16 +68,8 @@ public class InputManager : MonoBehaviour
 			Debug.Log("Shoot");
 			//enDis.timeCounter = 0;
 		}
-		/*else if(Input.GetButtonDown("Fire") && enDis.isPointing && enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened) 
-		{
-			gun.PrecisionShot ();
-			Debug.Log("SpecialShoot");
-			enDis.timeCounter = 0;
-			//enDis.precisionActive = false;
-		}*/
 		if((Input.GetAxisRaw("Fire") != 0))
 		{
-			Debug.Log(enDis.isPointing);
 			if(enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived)
 			{
 				gun.Shot ();
@@ -207,6 +176,55 @@ public class InputManager : MonoBehaviour
 				//mouseCursor.HideCursor();
 			}
 		}
+        //Enable Disable
+        if (Input.GetButtonDown("Jump") && !isPaused && !isInventoryOpened && !isMapOpened)
+        {
+            enDis.SetPoint();
+            shootState = true;
+            canShoot = false;
+            timeCounterNoShoot = 0;
+        }
+        //Mando
+        if (Input.GetAxis("Jump2") == 1 && m_isAxisInUse == false && !isPaused && !isInventoryOpened && !isMapOpened)
+        {
+            enDis.SetPoint();
+            m_isAxisInUse = true;
+            shootState = true;
+            canShoot = false;
+            timeCounterNoShoot = 0;
+        }
+        else if (Input.GetAxis("Jump2") == 0 && m_isAxisInUse == true && !isPaused && !isInventoryOpened && !isMapOpened)
+        {
+            enDis.SetTank();
+            m_isAxisInUse = false;
+        }
+
+        if(shootState)
+        {
+            timeCounterNoShoot += Time.deltaTime;
+            if (timeCounterNoShoot >= noShootTime)
+            {
+                timeCounterNoShoot = 0;
+                canShoot = true;
+                shootState = false;
+            }
+        }
+        //Estado Daño
+        if (plBehaviour.damageRecived)
+        {
+            //Debug.Log("Start inmune");
+            timeCounterIN += Time.deltaTime;
+            tankControl.canWalk = false;
+            //inputManager.canShoot = false;
+            if (timeCounterIN >= inmuneTime)
+            {
+                //Debug.Log("End inmune");
+                timeCounterIN = 0;
+                plBehaviour.damageRecived = false;
+                tankControl.canWalk = true;
+                //inputManager.canShoot = true;
+            }
+        }
     }
 
 	public void SetPause (bool p)
