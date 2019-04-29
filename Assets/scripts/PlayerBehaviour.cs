@@ -177,7 +177,6 @@ public class PlayerBehaviour : MonoBehaviour
 		lader = false;
 		hud.hasLader = false;
 		hud.SetKey();
-        Data.LoseLader();
 	}
     //Perder Llaves
     //Sumar Pociones
@@ -188,11 +187,6 @@ public class PlayerBehaviour : MonoBehaviour
         Data.SetBandages(potions);
 		hud.SetBandages(potions);
 	}
-    public void StartLife()
-    {
-        playerLife = iniLife;
-        Data.SetLife(playerLife);
-    }
 	public void GodMode()
 	{
 		potions = 999;

@@ -100,20 +100,13 @@ public class InputManager : MonoBehaviour
 		}*/
 		if((Input.GetAxisRaw("Fire") != 0))
 		{
+			Debug.Log(enDis.isPointing);
 			if(enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived)
 			{
 				gun.Shot ();
-				//Debug.Log("Shoot");
+				Debug.Log("Shoot");
 				//enDis.timeCounter = 0;
 			}
-			/*else if(enDis.isPointing && enDis.precisionActive && canShoot && !isInventoryOpened && !isPaused && !isMapOpened)
-			{
-				gun.PrecisionShot ();
-				//Debug.Log("SpecialShoot");
-				enDis.timeCounter = 0;
-				//enDis.precisionActive = false;
-				sound.Play(1, 2);
-			}*/
 		}
         if(Input.GetButtonDown("Run") /*&& gun.currentAmmo <= 0*/ && enDis.isPointing)
 		{

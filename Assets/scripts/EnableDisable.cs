@@ -10,7 +10,7 @@ public class EnableDisable : MonoBehaviour
 	private InputManager inputManager;
 	private LookAtEnemy autoAim;
 	private bool isTank;
-	private bool isDragging;
+	//private bool isDragging;
 	public bool isPointing;
 
 	//public float timeCounter;
@@ -24,9 +24,9 @@ public class EnableDisable : MonoBehaviour
     //Time Counters
 	private float timeCounterIN;
 	private float inmuneTime = 2.5f;
-    private float timeCounterNoShoot;
+    public float timeCounterNoShoot;
     private float noShootTime = 0.5f;
-    private bool shootState = false;
+    public bool shootState;
 
     private Animator animator;
 	// Use this for initialization
@@ -70,6 +70,7 @@ public class EnableDisable : MonoBehaviour
 				if(!isPointing && canShoot)
 				{
 					SetPoint();
+					shootState = true;
 					Debug.Log("Mode Changed");
 					m_isAxisInUse = true;
 				}
@@ -80,6 +81,7 @@ public class EnableDisable : MonoBehaviour
 			if(m_isAxisInUse == true)
 			{
 				SetTank();
+				shootState = false;
 				m_isAxisInUse = false;
 			}
 		}

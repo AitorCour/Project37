@@ -40,7 +40,7 @@ public class ReadPause : MonoBehaviour
 		if (other.tag == "Player") //solo funciona con player
 		{
 			isInsideTrigger = true; //cambia el bool
-			Debug.Log ("Enterd 2");
+			//Debug.Log ("Enterd 2");
 		}
 	}
 
@@ -56,7 +56,7 @@ public class ReadPause : MonoBehaviour
 	{
 		TextPanel.SetActive(true);
 		eText.text = message;
-		Debug.Log("reading");
+		//Debug.Log("reading");
 		MessageReaded = true;
 		Time.timeScale = 0;
         iM.canPause = false;
@@ -65,7 +65,7 @@ public class ReadPause : MonoBehaviour
 	private void ReadEnd()
 	{
 		TextPanel.SetActive(false);
-		Debug.Log("quit");
+		//Debug.Log("quit");
 		MessageReaded = false;
 		Time.timeScale = 1;
         iM.canPause = true;
