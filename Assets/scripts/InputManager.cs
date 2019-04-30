@@ -65,7 +65,7 @@ public class InputManager : MonoBehaviour
 		if (Input.GetButtonDown("Fire") && enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived) 
 		{
 			gun.Shot ();
-			Debug.Log("Shoot");
+			//Debug.Log("Shoot");
 			//enDis.timeCounter = 0;
 		}
 		if((Input.GetAxisRaw("Fire") != 0))
@@ -73,11 +73,11 @@ public class InputManager : MonoBehaviour
 			if(enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived)
 			{
 				gun.Shot ();
-				Debug.Log("Shoot");
+				//Debug.Log("Shoot");
 				//enDis.timeCounter = 0;
 			}
 		}
-        if(Input.GetButtonDown("Run") /*&& gun.currentAmmo <= 0*/ && enDis.isPointing)
+        if(Input.GetButtonDown("Reload") /*&& gun.currentAmmo <= 0*/ && enDis.isPointing)
 		{
 			gun.Reload();
 			Debug.Log("reload");

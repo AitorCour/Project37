@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ActiveSafe : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class ActiveSafe : MonoBehaviour
     public GameObject safeBox;
     public GameObject cameraSafe;
     public GameObject cameraOther;
+    public Text eText;
+    public GameObject textPanel = null;
+    public string message = "Hello World";
     // Use this for initialization
     void Start ()
     {
@@ -21,17 +25,11 @@ public class ActiveSafe : MonoBehaviour
     {
 		if(Input.GetButton("Action") && isInsideTrigger)
         {
-            safeBox.GetComponent<SafeBox>().enabled = true;
-            tank.canWalk = false;
-            cameraSafe.SetActive(true);
-            cameraOther.SetActive(false);
+            ActiveBox();
         }
         else if(Input.GetButton("Fire") && isInsideTrigger)
         {
-            safeBox.GetComponent<SafeBox>().enabled = false;
-            tank.canWalk = true;
-            cameraSafe.SetActive(false);
-            cameraOther.SetActive(true);
+            DesactiveBox();
         }
 	}
     void OnTriggerEnter(Collider other)
@@ -48,5 +46,31 @@ public class ActiveSafe : MonoBehaviour
         {
             isInsideTrigger = false;
         }
+    }
+    void ActiveBox()
+    {
+        safeBox.GetComponent<SafeBox>().enabled = true;
+        tank.canWalk = false;
+        cameraSafe.SetActive(true);
+        cameraOther.SetActive(false);
+        textPanel.SetActive(true);
+        eText.text = message;
+    }
+    void DesactiveBox()
+    {
+        safeBox.GetComponent<SafeBox>().enabled = false;
+        tank.canWalk = true;
+        cameraSafe.SetActive(false);
+        cameraOther.SetActive(true);
+        textPanel.SetActive(false);
+    }
+    public void PuzzleEnd()
+    {
+        safeBox.GetComponent<SafeBox>().enabled = false;
+        tank.canWalk = true;
+        cameraSafe.SetActive(false);
+        cameraOther.SetActive(true);
+        textPanel.SetActive(false);
+        this.enabled = false;
     }
 }

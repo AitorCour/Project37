@@ -54,15 +54,17 @@ public class Gun : MonoBehaviour
         {
             plBehaviour.NoShootSound();
         }
-        animator.SetTrigger("Shooting");
-        plBehaviour.ShootSound();
-        isShooting = true;
-        currentAmmo--;
-        Data.SetAmmo(currentAmmo);
-        hud.SetAmmo(currentAmmo, Munition);
-		particleShoot.Play();
-		particleSteam.Play();
-
+        else if(currentAmmo > 0)
+        {
+            animator.SetTrigger("Shooting");
+            plBehaviour.ShootSound();
+            isShooting = true;
+            currentAmmo--;
+            Data.SetAmmo(currentAmmo);
+            hud.SetAmmo(currentAmmo, Munition);
+            particleShoot.Play();
+            particleSteam.Play();
+        }
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Coje el punto de la posicion del mouse y lanza un rayo
         RaycastHit hit = new RaycastHit();
 

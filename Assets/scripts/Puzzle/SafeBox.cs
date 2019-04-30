@@ -5,7 +5,7 @@ using UnityEngine;
 public class SafeBox : MonoBehaviour 
 {
 	public Transform cylinder;
-	private float rotSpeed = 30;
+	private float rotSpeed = 60;
     public GameObject key2;
 	//Bools
 	public bool firstActive = false;
@@ -13,11 +13,13 @@ public class SafeBox : MonoBehaviour
 	public bool thirdActive = false;
 	public bool fourthActive = false;
     private SoundObj sound;
+    private ActiveSafe acSafe;
 	// Use this for initialization
 	void Start () 
 	{
         sound = GetComponentInChildren<SoundObj>();
         key2.SetActive(false);
+        acSafe = GetComponentInChildren<ActiveSafe>();
 	}
 	
 	// Update is called once per frame
@@ -36,34 +38,38 @@ public class SafeBox : MonoBehaviour
             //sound.Play(0);
         }
 		//Primero
-		if(cylinder.eulerAngles.z >= 170 && cylinder.eulerAngles.z <= 190 && Input.GetButton("Action"))
+		if(cylinder.eulerAngles.z >= 170 && cylinder.eulerAngles.z <= 190 && Input.GetButtonDown("Action"))
 		{
 			Debug.Log("Click 1");
-			firstActive = true;
+            sound.Play(0);
+            firstActive = true;
 		}
 		//Segundo
-		else if(cylinder.eulerAngles.z >= 30 && cylinder.eulerAngles.z <= 50 && Input.GetButton("Action") && firstActive == true)
+		else if(cylinder.eulerAngles.z >= 30 && cylinder.eulerAngles.z <= 50 && Input.GetButtonDown("Action") && firstActive == true)
 		{
 			Debug.Log("Click 2");
-			secondActive = true;
+            sound.Play(0);
+            secondActive = true;
 		}
 		//Tercero
-		else if(cylinder.eulerAngles.z >= 245 && cylinder.eulerAngles.z <= 265 && Input.GetButton("Action") && secondActive == true && thirdActive == false)
+		else if(cylinder.eulerAngles.z >= 245 && cylinder.eulerAngles.z <= 265 && Input.GetButtonDown("Action") && secondActive == true && thirdActive == false)
 		{
 			Debug.Log("Click 3");
-			thirdActive = true;
+            sound.Play(0);
+            thirdActive = true;
 		}
 		//Quarto
-		else if(cylinder.eulerAngles.z >= 245 && cylinder.eulerAngles.z <= 265 && Input.GetButton("Action") && thirdActive == true)
+		else if(cylinder.eulerAngles.z >= 245 && cylinder.eulerAngles.z <= 265 && Input.GetButtonDown("Action") && thirdActive == true)
 		{
 			Debug.Log("Click 4");
 			fourthActive = true;
 			Debug.Log("OPEN");
             sound.Play(2);
             key2.SetActive(true);
+            acSafe.PuzzleEnd();
         }
 		//Fallo
-		else if(Input.GetButton("Action"))
+		else if(Input.GetButtonDown("Action"))
 		{
 			Debug.Log("NO");
             sound.Play(1);
