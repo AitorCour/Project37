@@ -17,8 +17,7 @@ public class HUD : MonoBehaviour
     public GameObject lader;
     public GameObject note_1;
     public GameObject note_2;
-    public GameObject noteFrag_1;
-    public GameObject noteFrag_2;
+    public GameObject note_3;
     public bool hasKey1;
     public bool hasKey2;
     public bool hasLader;
@@ -43,12 +42,12 @@ public class HUD : MonoBehaviour
             hasFragNote_1 = true;
             SetKey();
         }
-        else if(Data.GetNoteFrag_2() == true)
+        if(Data.GetNoteFrag_2() == true)
         {
             hasFragNote_2 = true;
             SetKey();
         }
-        else if(Data.GetNote_2() == true)
+        if(Data.GetNote_2() == true)
         {
             hasNote_2 = true;
             SetKey();
@@ -82,11 +81,13 @@ public class HUD : MonoBehaviour
         {
             lader.SetActive(false);
         }
-        if(hasFragNote_1 || hasFragNote_2)
+        if(hasFragNote_1)
         {
-            note_1.SetActive(true);//Activa el obj vacio
-            if (hasFragNote_1) noteFrag_1.SetActive(true);//activa uno de los frag
-            if (hasFragNote_2) noteFrag_2.SetActive(true);
+            note_1.SetActive(true);
+        }
+        if(hasFragNote_2)
+        {
+            note_3.SetActive(true);
         }
         if(hasNote_2)
         {
@@ -97,8 +98,6 @@ public class HUD : MonoBehaviour
 	{
 		bandages.text = "x " + newBand.ToString();
 	}
-
-    //
     public void PickObject(GameObject pickObject)
     {
         for(int i = 0; i < slot.Length; i++)
@@ -120,7 +119,6 @@ public class HUD : MonoBehaviour
         objectsInv[i - 1].SetActive(false);
         
     }
-
     private void SearchObject(string tag)
     {
         for(int i = 0; i < objectsInv.Length; i++){
@@ -147,19 +145,16 @@ public class HUD : MonoBehaviour
     {
         PickObject(Ball);
     }
-
     public void UseBusto()
     {
         SearchObject("Busto");
         //Debug.Log("useBust");
     }
-
     public void UseKey()
     {
         SearchObject("Key");
         //Debug.Log("useBall");
     }
-
     public void UseBox()
     {
         SearchObject("Box");

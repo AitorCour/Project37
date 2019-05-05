@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour
 	public GameObject invButton;
 	public GameObject mapButton;
 
-	public GameObject inventory;
-	public GameObject map;
 	public GameObject notes;
 
     public GameObject equipGun;
@@ -62,7 +60,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject fadeObj;
 
-	private void Awake () 
+    GameObject[] inventoryStuff;
+
+    private void Awake () 
 	{
 		inputManager = GetComponent<InputManager>();
 		eventSystem = EventSystem.current;
@@ -90,7 +90,6 @@ public class GameManager : MonoBehaviour
 		controlsOp.SetActive(false);
 		panelOp.SetActive(false);
 		panelSubOp.SetActive(false);
-		//Debug.Log("Not Paused");
 	}
 
 	public void OpenInventory()
@@ -104,9 +103,14 @@ public class GameManager : MonoBehaviour
 
 	public void CloseInventory()
 	{
-		inputManager.SetInventory(false);
-		canvasInv.SetActive(false);
-		Time.timeScale = 1;
+        Time.timeScale = 1;
+        inventoryStuff = GameObject.FindGameObjectsWithTag("Inv");
+        foreach (GameObject go in inventoryStuff)
+        {
+            go.SetActive(false);
+        }
+        inputManager.SetInventory(false);
+		/*canvasInv.SetActive(false);
 		map.SetActive(false);
 		notes.SetActive(false);
         equipGun.SetActive(false);
@@ -128,7 +132,7 @@ public class GameManager : MonoBehaviour
         exLader.SetActive(false);
         infoLader.SetActive(false);
         note1.SetActive(false);
-        note2.SetActive(false);
+        note2.SetActive(false);*/
     }
 	
 	public void OpenMap()
@@ -146,9 +150,6 @@ public class GameManager : MonoBehaviour
 		inputManager.SetMap(false);
 		Time.timeScale = 1;
 		canvasMap.SetActive(false);
-		//canvasInventory.SetActive(false);
-		//inventory.SetActive(true);
-		map.SetActive(false);
 		notes.SetActive(false);
 	}
 }
