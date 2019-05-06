@@ -51,8 +51,7 @@ public class EnemyBehaviour3 : MonoBehaviour
     private CapsuleCollider colliderEnemy;
 	public bool canReciveDamage;
 
-    public AudioSource musicaTension;
-    public AudioSource horrorLoop;
+    public GameObject musicaTension;
 	// Use this for initialization
 	void Start () 
 	{
@@ -234,8 +233,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void ChaseUpdate()
     {
         agent.SetDestination(player.position);
-        musicaTension.Play();
-        horrorLoop.Play();
+        musicaTension.SetActive(true);
 		if(!slept)
 		{
 			agent.speed = iniSpeed;//Velocidad aumenta cuando ve al player
@@ -363,8 +361,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void SetDead()
 	{
         //gameObject.SetActive(false);
-        musicaTension.Stop();
-        horrorLoop.Stop();
+        musicaTension.SetActive(false);
         state = State.Dead;
 		agent.speed = 0.0f;//Parar al enemy cuando esta muerto
         animator.SetTrigger("dead");
