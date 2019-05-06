@@ -61,19 +61,26 @@ public class GameManager : MonoBehaviour
     public GameObject fadeObj;
 
     GameObject[] inventoryStuff;
+    private SettingsMenu settings;
 
     private void Awake () 
 	{
-		inputManager = GetComponent<InputManager>();
+		//inputManager = GetComponent<InputManager>();
 		eventSystem = EventSystem.current;
-        fadeObj.SetActive(true);
+        //fadeObj.SetActive(true);
         Data.InitGameData();
     }
-	
+	void Start()
+    {
+        inputManager = GetComponent<InputManager>();
+        settings = GameObject.FindGameObjectWithTag("HUD").GetComponent<SettingsMenu>();
+        fadeObj.SetActive(true);
+    }
 	public void Pause()
 	{
 		inputManager.SetPause(true);
-		Time.timeScale = 0;
+        settings.masterVol.SetFloat("Master", -20);
+        Time.timeScale = 0;
 		canvasPause.SetActive(true);
 		eventSystem.SetSelectedGameObject(pauseButton);
 		//Debug.Log("Paused");
@@ -82,7 +89,8 @@ public class GameManager : MonoBehaviour
 	public void Resume()
 	{
 		inputManager.SetPause(false);
-		Time.timeScale = 1;
+        settings.masterVol.SetFloat("Master", settings.vol_1);
+        Time.timeScale = 1;
 		canvasPause.SetActive(false);
 		canvasOp.SetActive(false);
 		screenOp.SetActive(false);
@@ -96,13 +104,15 @@ public class GameManager : MonoBehaviour
 	{
 		inputManager.SetInventory(true);
 		canvasInv.SetActive(true);
-		Time.timeScale = 0;
+        settings.masterVol.SetFloat("Master", -20);
+        Time.timeScale = 0;
 		canvasInventory.SetActive(true);
 		eventSystem.SetSelectedGameObject(invButton);
 	}
 
 	public void CloseInventory()
 	{
+        settings.masterVol.SetFloat("Master", settings.vol_1);
         Time.timeScale = 1;
         inventoryStuff = GameObject.FindGameObjectsWithTag("Inv");
         foreach (GameObject go in inventoryStuff)
@@ -138,7 +148,8 @@ public class GameManager : MonoBehaviour
 	public void OpenMap()
 	{
 		inputManager.SetMap(true);
-		Time.timeScale = 0;
+        settings.masterVol.SetFloat("Master", -20);
+        Time.timeScale = 0;
 		canvasMap.SetActive(true);
 		canvasInv.SetActive(false);
 		canvasInventory.SetActive(true);
@@ -148,7 +159,8 @@ public class GameManager : MonoBehaviour
 	public void CloseMap()
 	{
 		inputManager.SetMap(false);
-		Time.timeScale = 1;
+        settings.masterVol.SetFloat("Master", settings.vol_1);
+        Time.timeScale = 1;
 		canvasMap.SetActive(false);
 		notes.SetActive(false);
 	}

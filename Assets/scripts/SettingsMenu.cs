@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using DG.Tweening;
+
 public class SettingsMenu : MonoBehaviour 
 {
     public AudioMixer masterVol;
@@ -44,11 +46,14 @@ public class SettingsMenu : MonoBehaviour
 
         qualPos = PlayerPrefs.GetFloat("Pos_Qual");
         selectedQual.localPosition = new Vector3(-205, qualPos, 0);
+
+        masterVol.DOSetFloat("Master", -80, 0.1f);
+        masterVol.DOSetFloat("Master", vol_1, 3f);
     }
     public void SetVolumeMaster(float volume_1)
     {
         vol_1 = volume_1;
-        masterVol.SetFloat("Master", volume_1);
+        //masterVol.SetFloat("Master", volume_1);
         SaveVolume_Master();
     }
     public void SetVolumeEfect (float volume_2)
