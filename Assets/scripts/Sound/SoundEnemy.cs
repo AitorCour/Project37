@@ -26,7 +26,7 @@ public class SoundEnemy : MonoBehaviour
         source.spatialBlend = 1; // 1 --> 3D  0--> 2D
         source.Play();
 
-        Destroy(obj.gameObject, clips[numClip].length);
+        //Destroy(obj.gameObject, clips[numClip].length);
     }
 
 

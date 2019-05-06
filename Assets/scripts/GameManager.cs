@@ -14,12 +14,12 @@ public class GameManager : MonoBehaviour
 
 	EventSystem eventSystem;
 	public GameObject pauseButton;
+    public GameObject pauseLayout;
 	public GameObject invButton;
 	public GameObject mapButton;
-
 	public GameObject notes;
 
-    public GameObject equipGun;
+    /*public GameObject equipGun;
     public GameObject infoGun;
 
 	public GameObject exBan;
@@ -47,16 +47,16 @@ public class GameManager : MonoBehaviour
     public GameObject infoLader;
 
     public GameObject note1;
-    public GameObject note2;
+    public GameObject note2;*/
 
 	public GameObject canvasOp;
-	public GameObject screenOp;
+	/*public GameObject screenOp;
 	public GameObject soundOp;
 	public GameObject controlsOp;
 
 	public GameObject panelOp;
 
-	public GameObject panelSubOp;
+	public GameObject panelSubOp;*/
 
     public GameObject fadeObj;
 
@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
         settings.masterVol.SetFloat("Master", -20);
         Time.timeScale = 0;
 		canvasPause.SetActive(true);
+        pauseLayout.SetActive(true);
 		eventSystem.SetSelectedGameObject(pauseButton);
 		//Debug.Log("Paused");
 	}
@@ -91,13 +92,18 @@ public class GameManager : MonoBehaviour
 		inputManager.SetPause(false);
         settings.masterVol.SetFloat("Master", settings.vol_1);
         Time.timeScale = 1;
-		canvasPause.SetActive(false);
+        inventoryStuff = GameObject.FindGameObjectsWithTag("Inv");
+        foreach (GameObject go in inventoryStuff)
+        {
+            go.SetActive(false);
+        }
+        canvasPause.SetActive(false);
 		canvasOp.SetActive(false);
-		screenOp.SetActive(false);
+		/*screenOp.SetActive(false);
 		soundOp.SetActive(false);
 		controlsOp.SetActive(false);
 		panelOp.SetActive(false);
-		panelSubOp.SetActive(false);
+		panelSubOp.SetActive(false);*/
 	}
 
 	public void OpenInventory()
