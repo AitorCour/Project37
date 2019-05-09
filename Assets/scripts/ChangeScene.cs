@@ -19,11 +19,13 @@ public class ChangeScene : MonoBehaviour
     public float pY;
     //public float plGoingX;
     //public float plGoingZ;
+    private LevelManager levelManager;
 
     //private SettingsMenu settings;
     //private AudioSource audioSource;
     void Start()
     {
+        levelManager = GetComponent<LevelManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         //audioSource = GetComponent<AudioSource>();
         //settings = GameObject.FindGameObjectWithTag("HUD").GetComponent<SettingsMenu>();
@@ -61,9 +63,12 @@ public class ChangeScene : MonoBehaviour
     }
     IEnumerator FadeButton(int num)
     {
+        levelManager.SaveLevelData();
+
         animator.SetBool("Fade", true);
         yield return new WaitUntil(() => black.color.a == 1);
         //settings.SaveVolume();
+
         SceneManager.LoadScene(num);
     }
     IEnumerator FadeDead()
