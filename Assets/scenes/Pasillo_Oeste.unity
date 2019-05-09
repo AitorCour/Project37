@@ -6463,7 +6463,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4998543762165614, guid: bbe22346edfd092439f746b684464454, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114386274386411872, guid: bbe22346edfd092439f746b684464454,
         type: 2}
@@ -6484,12 +6484,12 @@ Prefab:
         type: 2}
       propertyPath: TextPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 539200618}
     - target: {fileID: 114386274386411872, guid: bbe22346edfd092439f746b684464454,
         type: 2}
       propertyPath: eText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 922684728}
     - target: {fileID: 23055716894252642, guid: bbe22346edfd092439f746b684464454,
         type: 2}
       propertyPath: m_Enabled
@@ -19869,75 +19869,6 @@ Transform:
   m_Father: {fileID: 1409951785}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -2.146829, y: 1.9526111, z: -33.88136}
---- !u!1001 &1664321610
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2143126603}
-    m_Modifications:
-    - target: {fileID: 4166824618271208, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 5.1583476
-      objectReference: {fileID: 0}
-    - target: {fileID: 4166824618271208, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.90315855
-      objectReference: {fileID: 0}
-    - target: {fileID: 4166824618271208, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -2.0149713
-      objectReference: {fileID: 0}
-    - target: {fileID: 4166824618271208, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4166824618271208, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4166824618271208, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4166824618271208, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4166824618271208, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 23583735055666204, guid: 57145e3523b78fb4b9c5e90c4fab3ad6,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1774389466612538, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
-      propertyPath: m_Name
-      value: Puerta_SalaNinia
-      objectReference: {fileID: 0}
-    - target: {fileID: 4166824618271208, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.2136878
-      objectReference: {fileID: 0}
-    - target: {fileID: 114826034952480818, guid: 57145e3523b78fb4b9c5e90c4fab3ad6,
-        type: 2}
-      propertyPath: scene
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1774389466612538, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
-  m_IsPrefabAsset: 0
---- !u!4 &1664321611 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4166824618271208, guid: 57145e3523b78fb4b9c5e90c4fab3ad6,
-    type: 2}
-  m_PrefabInternal: {fileID: 1664321610}
 --- !u!1 &1678558068
 GameObject:
   m_ObjectHideFlags: 0
@@ -23167,7 +23098,6 @@ Transform:
   m_Children:
   - {fileID: 585312367}
   - {fileID: 161965729}
-  - {fileID: 1664321611}
   - {fileID: 251315564}
   m_Father: {fileID: 0}
   m_RootOrder: 9
