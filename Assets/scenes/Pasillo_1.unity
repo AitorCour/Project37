@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.023254292, g: 0.01641606, b: 0.0151345385, a: 1}
+  m_IndirectSpecularColor: {r: 0.02325446, g: 0.016415743, b: 0.015135017, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11245,14 +11245,14 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 244517753}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.263, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 122826579}
   m_Father: {fileID: 400851467}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &248343322
 GameObject:
   m_ObjectHideFlags: 0
@@ -12500,11 +12500,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lader: {fileID: 244517753}
-  laderButton: {fileID: 0}
+  laderButton: {fileID: 2126745779}
   scene: 7
-  TextPanel: {fileID: 0}
+  TextPanel: {fileID: 454365977}
   message: Pon una escalera
-  eText: {fileID: 0}
+  eText: {fileID: 451489231}
   xPos: -8.6
   zPos: 8.5
 --- !u!65 &400851466
@@ -13105,6 +13105,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 443486318}
   m_Mesh: {fileID: 4300022, guid: b537c73d063255f4195c208b6181ea14, type: 3}
+--- !u!114 &451489231 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114087704785379396, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 817987443}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &454365977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1153998712267244, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 817987443}
 --- !u!1 &456011950
 GameObject:
   m_ObjectHideFlags: 0
@@ -19928,6 +19939,35 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Curation
       objectReference: {fileID: 0}
+    - target: {fileID: 114656478826416156, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 400851465}
+    - target: {fileID: 114656478826416156, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: ActiveLader
+      objectReference: {fileID: 0}
+    - target: {fileID: 114656478826416156, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 400851464}
+    - target: {fileID: 114656478826416156, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114656478826416156, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632407237941044, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
   m_IsPrefabAsset: 0
@@ -20483,6 +20523,10 @@ Prefab:
       propertyPath: points.Array.data[2]
       value: 
       objectReference: {fileID: 949132490}
+    - target: {fileID: 1560611778380036, guid: 867f2efa7aa42d1489432795b0e91422, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 867f2efa7aa42d1489432795b0e91422, type: 2}
   m_IsPrefabAsset: 0
@@ -30220,6 +30264,11 @@ Transform:
   m_Father: {fileID: 120199818}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.77735126, y: 1.0166398, z: 15.727737}
+--- !u!1 &2126745779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1783997077844780, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 817987443}
 --- !u!1001 &2127708307
 Prefab:
   m_ObjectHideFlags: 0
