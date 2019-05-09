@@ -5881,12 +5881,12 @@ Prefab:
         type: 2}
       propertyPath: TextPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1934129920}
     - target: {fileID: 114721962686534430, guid: d4fbcca8ea0ad5449af13865a5293bff,
         type: 2}
       propertyPath: eText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1934129919}
     - target: {fileID: 114721962686534430, guid: d4fbcca8ea0ad5449af13865a5293bff,
         type: 2}
       propertyPath: message
@@ -17118,8 +17118,8 @@ MonoBehaviour:
   safeBox: {fileID: 1851112777}
   cameraSafe: {fileID: 916836950}
   cameraOther: {fileID: 267288644}
-  eText: {fileID: 0}
-  textPanel: {fileID: 0}
+  eText: {fileID: 1934129919}
+  textPanel: {fileID: 1934129920}
   message: U/A introduce number. O/B for back
 --- !u!4 &1841048138
 Transform:
@@ -17444,6 +17444,17 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1934129919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114087704785379396, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1934129918}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &1934129920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1153998712267244, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1934129918}
 --- !u!1 &1958746494
 GameObject:
   m_ObjectHideFlags: 0

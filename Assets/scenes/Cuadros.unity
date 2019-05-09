@@ -15319,6 +15319,16 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.31
       objectReference: {fileID: 0}
+    - target: {fileID: 114115505503244332, guid: 267feb6f28fa4d54ca6cbcaf2b2c92fa,
+        type: 2}
+      propertyPath: TextPanel
+      value: 
+      objectReference: {fileID: 1516559763}
+    - target: {fileID: 114115505503244332, guid: 267feb6f28fa4d54ca6cbcaf2b2c92fa,
+        type: 2}
+      propertyPath: eText
+      value: 
+      objectReference: {fileID: 1516559762}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 267feb6f28fa4d54ca6cbcaf2b2c92fa, type: 2}
   m_IsPrefabAsset: 0
@@ -17480,6 +17490,17 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1516559762 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114087704785379396, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1516559761}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &1516559763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1153998712267244, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1516559761}
 --- !u!1 &1518850165
 GameObject:
   m_ObjectHideFlags: 0
