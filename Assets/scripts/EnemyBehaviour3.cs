@@ -50,7 +50,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	private CollisionDamage colDamage;
     private CapsuleCollider colliderEnemy;
 	public bool canReciveDamage;
-
+    public bool enemyIsDead;
     public GameObject musicaTension;
 	// Use this for initialization
 	void Start () 
@@ -368,7 +368,8 @@ public class EnemyBehaviour3 : MonoBehaviour
 		colDamage.CanDoDamage = false;
         colliderEnemy.enabled = false;
         sound.Play(3);
-		this.enabled = false;
+        //this.enabled = false;
+        enemyIsDead = true;
 	}
 	void SetSleep()
 	{

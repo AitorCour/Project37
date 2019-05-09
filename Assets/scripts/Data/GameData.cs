@@ -54,8 +54,6 @@ public class GameData //Datos permanentes entre partida y partida
     {
         pData = new Playerdata();
     }
-
-
 }
 
 //string path = Application.persistentDataPath + "/Data";

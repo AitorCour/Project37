@@ -41,6 +41,7 @@ public class ChangeScene : MonoBehaviour
     }
     public void FadeChangeScene(int num)
     {
+        levelManager.SaveLevelData();
         StartCoroutine(FadeButton(num));
     }
     public void Death()
@@ -63,7 +64,7 @@ public class ChangeScene : MonoBehaviour
     }
     IEnumerator FadeButton(int num)
     {
-        levelManager.SaveLevelData();
+        
 
         animator.SetBool("Fade", true);
         yield return new WaitUntil(() => black.color.a == 1);

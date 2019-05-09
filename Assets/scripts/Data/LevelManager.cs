@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour {
-
+public class LevelManager : MonoBehaviour
+{
     protected virtual void Awake()
     {
         // Cargar si existe datos de Pasillo1

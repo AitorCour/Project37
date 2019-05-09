@@ -5348,6 +5348,25 @@ Transform:
   m_Father: {fileID: 1376464220}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &274044212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1900095524190090, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1067594179}
+--- !u!114 &274044214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 274044212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891cd5cddb7d2bb4a963eee55807fe07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    potion: 1
+  potionObj: {fileID: 1868921219}
 --- !u!1 &328547545
 GameObject:
   m_ObjectHideFlags: 0
@@ -14136,6 +14155,11 @@ Transform:
   m_Father: {fileID: 328547546}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1868921219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1107750041230164, guid: 08793ea6f828d7349933dd4733d10225,
+    type: 2}
+  m_PrefabInternal: {fileID: 56500976}
 --- !u!1 &1882717564
 GameObject:
   m_ObjectHideFlags: 0
