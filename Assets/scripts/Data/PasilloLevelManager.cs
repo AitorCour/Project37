@@ -4,11 +4,11 @@ using UnityEngine;
 using System;
 
 [System.Serializable]
-public class Pasillo_1_Data
+public class Pasillo1_Data
 {
     public bool enemyDead;
 
-    public Pasillo_1_Data()
+    public Pasillo1_Data()
     {
         enemyDead = false;
     }
@@ -16,7 +16,7 @@ public class Pasillo_1_Data
 
 public class PasilloLevelManager : LevelManager
 {
-    public Pasillo_1_Data data;
+    public Pasillo1_Data data;
     private EnemyBehaviour3 enemy;
     public GameObject enemyObj;
     
@@ -25,7 +25,7 @@ public class PasilloLevelManager : LevelManager
         // Cargar si existe datos de Pasillo1
         try//nueva funcion, lo usaremos para comprobar si ha fallado
         {
-            data = (Pasillo_1_Data)DataManager.LoadFromText<Pasillo_1_Data>("Pasillo1Data", Application.persistentDataPath + "/Levels");
+            data = (Pasillo1_Data)DataManager.LoadFromText<Pasillo1_Data>("Pasillo1Data", Application.persistentDataPath + "/Levels");
             Debug.Log("[GDM] Load succeed!");
         }
         catch (Exception e) //guarda el motivo de fallo en exception
@@ -35,29 +35,42 @@ public class PasilloLevelManager : LevelManager
         }
         // fileName = "Pasillo1Data"
         // Si existen, inicializar cambios dependiendo de los datos
+        if(data.enemyDead)
+        {
+            enemyObj.SetActive(false);
+            enemy = null;
+        }
     }
     public void NewGame()
     {
-        data = new Pasillo_1_Data();
+        data = new Pasillo1_Data();
     }
     void Start()
     {
-        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
+        if(enemy != null)
+        {
+            enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
+        }
+        
+        
+        //else enemy = null;
     }
 
     public override void SaveLevelData()
     {
-        //Debug.Log(enemy.enemyIsDead);
+
         // Actualizar datos
-        if (enemy.enemyIsDead)
+        if(enemy != null)
         {
-            //data.enemyDead = true;
-            Debug.Log("Save");
+            if (enemy.enemyIsDead)
+            {
+                data.enemyDead = true;
+            }
         }
         // Guardarlos
         try
         {
-            DataManager.SaveToText<Pasillo_1_Data>(data, "Pasillo1Data", Application.persistentDataPath + "/Levels");
+            DataManager.SaveToText<Pasillo1_Data>(data, "Pasillo1Data", Application.persistentDataPath + "/Levels");
             Debug.Log("[GDM] Save succeed!");
         }
         catch (Exception e)
