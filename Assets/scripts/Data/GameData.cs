@@ -104,6 +104,14 @@ public static class Data
 
         DataManager.DeleteFile(filePath);
     }
+    //PRUEBA
+    public static void DeleteFolder()
+    {
+        string folderPath = Application.persistentDataPath + "/Levels";
+
+        DataManager.DeleteFolder(folderPath);
+        Debug.Log("Deleting");
+    }
     public static bool DataExists(string fileName)
     {
         string filePath = Application.persistentDataPath + "/Data/" + fileName;

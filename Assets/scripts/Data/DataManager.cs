@@ -188,6 +188,14 @@ public static class DataManager //la hacemos estatica para no declararla
             File.Delete(filePath);
         }
     }
+    public static void DeleteFolder(string folderPath)
+    {
+        if(Directory.Exists(folderPath))
+        {
+            Directory.Delete(folderPath, true);
+            Debug.Log("Exist and Deleted");
+        }
+    }
 
     public static bool FileExists(string filePath)
     {

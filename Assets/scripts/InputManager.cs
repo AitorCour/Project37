@@ -36,6 +36,9 @@ public class InputManager : MonoBehaviour
     private float noShootTime = 0.5f;
     private float timeCounterIN;
     private float inmuneTime = 2.5f;
+
+	public string FolderName = "/Levels";
+    public GameData gameData;
     // Use this for initialization
     void Start ()
     {
@@ -107,6 +110,14 @@ public class InputManager : MonoBehaviour
 				SetNormal();
 			}
 		}
+		if(Input.GetKey(KeyCode.AltGr))
+        {
+            if (Input.GetKeyDown(KeyCode.D)) 
+			{
+				Data.DeleteFolder();
+				Debug.Log("Click to Delete");
+			}
+        }
 
 		//PAUSE
 		if (Input.GetButtonDown("Esc"))

@@ -19,4 +19,5 @@ public class LevelManager : MonoBehaviour
 
         // Cambiar de escenas
     }
+    
 }

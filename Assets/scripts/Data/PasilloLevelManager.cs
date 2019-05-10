@@ -47,13 +47,10 @@ public class PasilloLevelManager : LevelManager
     }
     void Start()
     {
-        if(enemy != null)
+        if(!data.enemyDead)
         {
             enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
         }
-        
-        
-        //else enemy = null;
     }
 
     public override void SaveLevelData()
@@ -67,6 +64,8 @@ public class PasilloLevelManager : LevelManager
                 data.enemyDead = true;
             }
         }
+        else return;
+        
         // Guardarlos
         try
         {
