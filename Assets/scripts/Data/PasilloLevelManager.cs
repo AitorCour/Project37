@@ -55,7 +55,6 @@ public class PasilloLevelManager : LevelManager
 
     public override void SaveLevelData()
     {
-
         // Actualizar datos
         if(enemy != null)
         {

@@ -8,22 +8,24 @@ public class Potion : MonoBehaviour
 	//public GameObject potionObject;
 	public bool isInsideTrigger = false;
 	private int potion = 1;
-
 	public GameObject TextPanel = null;
 	public string message = "Hello World";
 	public Text eText;
-	public bool MessageReaded = false;
-
+	public bool messageReaded = false;
 	private SoundObj sound;
-
     private InputManager iM;
 
+    public bool getObj;
+    private BoxCollider box;
+    private MeshRenderer cureMat;
 	// Use this for initialization
 	void Start () 
 	{
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 		sound = GetComponentInChildren<SoundObj>();
 		iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
+        box = GetComponent<BoxCollider>();
+        cureMat = GetComponentInChildren<MeshRenderer>();
 	}
     void Update()
     {
@@ -31,7 +33,7 @@ public class Potion : MonoBehaviour
         {
             //plBehaviour.GetKeys(key);
             //keyObject.SetActive(false);
-            if (MessageReaded)
+            if (messageReaded)
             {
                 ReadEnd();
             }
@@ -58,7 +60,7 @@ public class Potion : MonoBehaviour
 		TextPanel.SetActive(true);
 		eText.text = message;
 		//Debug.Log("reading");
-		MessageReaded = true;
+		messageReaded = true;
 		Time.timeScale = 0;
 		plBehaviour.GetPotions(potion);
 		sound.Play(0);
@@ -68,9 +70,12 @@ public class Potion : MonoBehaviour
 	{
 		TextPanel.SetActive(false);
 		//Debug.Log("quit");
-		MessageReaded = false;
+		messageReaded = false;
 		Time.timeScale = 1;
-		gameObject.SetActive(false);
+        getObj = true;
+        //gameObject.SetActive(false);
+        box.enabled = false;
+        cureMat.enabled = false;
         isInsideTrigger = false;
         iM.canPause = true;
     }

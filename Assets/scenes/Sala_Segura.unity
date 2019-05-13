@@ -224,6 +224,10 @@ Prefab:
       propertyPath: eText
       value: 
       objectReference: {fileID: 1067594180}
+    - target: {fileID: 1107750041230164, guid: 08793ea6f828d7349933dd4733d10225, type: 2}
+      propertyPath: m_TagString
+      value: Misc
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08793ea6f828d7349933dd4733d10225, type: 2}
   m_IsPrefabAsset: 0
@@ -5366,7 +5370,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     potion: 1
+    ammo: 1
   potionObj: {fileID: 1868921219}
+  ammoObj: {fileID: 1295435952}
 --- !u!1 &328547545
 GameObject:
   m_ObjectHideFlags: 0
@@ -5965,6 +5971,10 @@ Prefab:
     - target: {fileID: 4157045770524096, guid: dd4a3b3c38d41a9418cc725099de856b, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909653114155138, guid: dd4a3b3c38d41a9418cc725099de856b, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd4a3b3c38d41a9418cc725099de856b, type: 2}
@@ -12630,6 +12640,11 @@ Transform:
   m_Father: {fileID: 1898970811}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -10.095468, y: 30.453455, z: 28.922895}
+--- !u!1 &1295435952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1909653114155138, guid: dd4a3b3c38d41a9418cc725099de856b,
+    type: 2}
+  m_PrefabInternal: {fileID: 458670288}
 --- !u!1 &1295700389
 GameObject:
   m_ObjectHideFlags: 0

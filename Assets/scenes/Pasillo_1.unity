@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.023254292, g: 0.01641606, b: 0.0151345385, a: 1}
+  m_IndirectSpecularColor: {r: 0.02325446, g: 0.016415743, b: 0.015135017, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14654,7 +14654,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4159380662268342, guid: 0e8abc5c408966a46ba0c611d3810778, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.71
+      value: -8.07
       objectReference: {fileID: 0}
     - target: {fileID: 4159380662268342, guid: 0e8abc5c408966a46ba0c611d3810778, type: 2}
       propertyPath: m_LocalPosition.y
@@ -14686,15 +14686,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4690378135941054, guid: 0e8abc5c408966a46ba0c611d3810778, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.04
+      value: -0.52
       objectReference: {fileID: 0}
     - target: {fileID: 4957401901737486, guid: 0e8abc5c408966a46ba0c611d3810778, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.61
+      value: -6.84
       objectReference: {fileID: 0}
     - target: {fileID: 4957401901737486, guid: 0e8abc5c408966a46ba0c611d3810778, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.48
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4957401901737486, guid: 0e8abc5c408966a46ba0c611d3810778, type: 2}
       propertyPath: m_LocalPosition.y
@@ -20057,6 +20057,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ca61337c1122242adbdf3751ebe765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data:
+    enemyDead: 0
   enemyObj: {fileID: 940997880}
 --- !u!1 &819217724
 GameObject:
@@ -20533,11 +20535,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114649184008700830, guid: 867f2efa7aa42d1489432795b0e91422,
-        type: 2}
-      propertyPath: points.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4942780088119140, guid: 867f2efa7aa42d1489432795b0e91422, type: 2}
       propertyPath: m_LocalPosition.x
       value: -17.03
@@ -20572,11 +20569,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114649184008700830, guid: 867f2efa7aa42d1489432795b0e91422,
         type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 994784357}
-    - target: {fileID: 114649184008700830, guid: 867f2efa7aa42d1489432795b0e91422,
-        type: 2}
       propertyPath: points.Array.data[0]
       value: 
       objectReference: {fileID: 1876424696}
@@ -20590,9 +20582,30 @@ Prefab:
       propertyPath: points.Array.data[2]
       value: 
       objectReference: {fileID: 949132490}
-    - target: {fileID: 1560611778380036, guid: 867f2efa7aa42d1489432795b0e91422, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 114649184008700830, guid: 867f2efa7aa42d1489432795b0e91422,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 994784357}
+    - target: {fileID: 114649184008700830, guid: 867f2efa7aa42d1489432795b0e91422,
+        type: 2}
+      propertyPath: maxRadius
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114649184008700830, guid: 867f2efa7aa42d1489432795b0e91422,
+        type: 2}
+      propertyPath: detectRadius
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114649184008700830, guid: 867f2efa7aa42d1489432795b0e91422,
+        type: 2}
+      propertyPath: normalRadius
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114649184008700830, guid: 867f2efa7aa42d1489432795b0e91422,
+        type: 2}
+      propertyPath: maxAngle
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 867f2efa7aa42d1489432795b0e91422, type: 2}
@@ -21417,7 +21430,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 949132489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.53, y: 0.85, z: -9.15}
+  m_LocalPosition: {x: -0.06, y: 0.85, z: -12.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1203654966}
@@ -21959,7 +21972,7 @@ GameObject:
   - component: {fileID: 993562807}
   - component: {fileID: 993562809}
   - component: {fileID: 993562808}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spot Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23312,7 +23325,7 @@ GameObject:
   - component: {fileID: 1157650039}
   - component: {fileID: 1157650038}
   - component: {fileID: 1157650040}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TriggerRayo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

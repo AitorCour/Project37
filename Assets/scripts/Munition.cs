@@ -12,7 +12,7 @@ public class Munition : MonoBehaviour
 	public GameObject TextPanel = null;
 	public string message = "Hello World";
 	public Text eText;
-	public bool MessageReaded = false;
+	public bool messageReaded = false;
 
 	private SoundObj sound;
     private InputManager iM;
@@ -29,7 +29,7 @@ public class Munition : MonoBehaviour
         {
             //plBehaviour.GetKeys(key);
             //keyObject.SetActive(false);
-            if (MessageReaded)
+            if (messageReaded)
             {
                 ReadEnd();
             }
@@ -56,7 +56,7 @@ public class Munition : MonoBehaviour
 		TextPanel.SetActive(true);
 		eText.text = message;
 		Debug.Log("reading");
-		MessageReaded = true;
+		messageReaded = true;
 		Time.timeScale = 0;
 		weapon.GetAmmo(munition);
 		sound.Play(0);
@@ -66,7 +66,7 @@ public class Munition : MonoBehaviour
 	{
 		TextPanel.SetActive(false);
 		Debug.Log("quit");
-		MessageReaded = false;
+		messageReaded = false;
 		Time.timeScale = 1;
         isInsideTrigger = false;
         gameObject.SetActive(false);

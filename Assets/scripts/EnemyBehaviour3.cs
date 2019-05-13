@@ -28,10 +28,10 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public Transform player;
 	public float maxAngle;
 	public float maxRadius;
-	public float detectRadius;
-	public float normalRadius;
-	private bool isInFov = false;
-	public bool detected = false;
+	//public float detectRadius;
+	//public float normalRadius;
+	public bool isInFov;
+	public bool detected;
 	[Header("Attack Properties")]
     public float attackDistance;
 	public float attackTime;
@@ -314,7 +314,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         //anim.SetBool("isMoving", true);
         agent.isStopped = true;
         //particulas.Stop();
-		maxRadius = normalRadius;
+		//maxRadius = normalRadius;
         state = State.Idle;
 		//radius = 2;
 		animator.SetBool("Walking", false);
@@ -340,7 +340,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         agent.isStopped = false;
         agent.stoppingDistance = 0.9f;//La stopping distance determina la distancia 
         //a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
-		maxRadius = detectRadius;
+		//maxRadius = detectRadius;
         state = State.Chase;
 		animator.SetBool("Walking", true);
 		//animator.SetBool("Attacking", false);

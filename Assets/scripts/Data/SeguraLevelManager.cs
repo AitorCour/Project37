@@ -7,10 +7,12 @@ using System;
 public class Segura_Data
 {
     public bool potion;
+    public bool ammo;
 
     public Segura_Data()
     {
         potion = true;
+        ammo = true;
     }
 }
 
@@ -19,6 +21,9 @@ public class SeguraLevelManager : LevelManager
     public Segura_Data data;
     //private EnemyBehaviour3 enemy;
     public GameObject potionObj;
+    public GameObject ammoObj;
+    private Potion pot;
+    private Munition munition;
 
     protected override void Awake()
     {
@@ -36,9 +41,16 @@ public class SeguraLevelManager : LevelManager
         }
         // fileName = "Pasillo1Data"
         // Si existen, inicializar cambios dependiendo de los datos
-        if(!data.potion)
+        if(data.potion == false)
         {
             potionObj.SetActive(false);
+            pot = null;
+            Debug.Log("Desactived");
+        }
+        if(data.ammo == false)
+        {
+            ammoObj.SetActive(false);
+            munition = null;
         }
     }
     public void NewGame()
@@ -47,12 +59,37 @@ public class SeguraLevelManager : LevelManager
     }
     void Start()
     {
-        //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
+        
+            pot = GameObject.FindGameObjectWithTag("Misc").GetComponent<Potion>();
+        
+        /*if (!data.ammo)
+        {
+            munition = GameObject.FindGameObjectWithTag("Misc").GetComponent<Munition>();
+        }   */
     }
 
     public override void SaveLevelData()
     {
-        data.potion = false;
+        
+            if (pot.getObj == true)
+            {
+                data.potion = false;
+                Debug.Log("Getted");
+            }
+        
+        if (pot == null)
+        {
+            Debug.Log("NULL");
+        }
+        /*if (munition != null)
+        {
+            if (munition.messageReaded)
+            {
+                data.ammo = false;
+            }
+        }*/
+        //else return;
+
         try
         {
             DataManager.SaveToText<Segura_Data>(data, "SeguraData", Application.persistentDataPath + "/Levels");

@@ -1570,7 +1570,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1560611778380036}
   m_LocalRotation: {x: -0, y: 0.9135589, z: -0, w: 0.4067064}
-  m_LocalPosition: {x: -8.69, y: 0.997, z: -8.65}
+  m_LocalPosition: {x: -17.03, y: -0.29999977, z: 14.987438}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4240744625259192}
@@ -1906,7 +1906,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4052efc25bb364840b18cf890017c1de, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2064,20 +2064,22 @@ MonoBehaviour:
   points:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   currentPoint: 0
   stopAtEachPoint: 1
   reachDistance: 0.2
   player: {fileID: 0}
   maxAngle: 90
-  maxRadius: 5
+  maxRadius: 10
   detectRadius: 10
-  normalRadius: 5
+  normalRadius: 10
   detected: 0
   attackDistance: 1.05
   attackTime: 3.25
   EnemyDamage: 0
   currentHealt: 0
   canReciveDamage: 0
+  enemyIsDead: 0
   musicaTension: {fileID: 1878965544063038}
 --- !u!114 &114759285323105720
 MonoBehaviour:
