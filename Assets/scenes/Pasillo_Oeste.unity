@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.02325446, g: 0.016415743, b: 0.015135017, a: 1}
+  m_IndirectSpecularColor: {r: 0.023254292, g: 0.01641606, b: 0.0151345385, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17984,6 +17984,20 @@ MonoBehaviour:
   - {fileID: 413103045}
   - {fileID: 82168211}
   startCamera: {fileID: 714389009}
+--- !u!114 &1321694241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1321694238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5c64a67319e37468aa0b123dadd6ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    lader: 1
+  laderObj: {fileID: 1598377460}
 --- !u!1 &1322567801
 GameObject:
   m_ObjectHideFlags: 0
@@ -19835,7 +19849,7 @@ GameObject:
   - component: {fileID: 1598377461}
   m_Layer: 0
   m_Name: LaderObj
-  m_TagString: Untagged
+  m_TagString: Misc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19855,6 +19869,7 @@ MonoBehaviour:
   TextPanel: {fileID: 539200618}
   message: You get a lader
   eText: {fileID: 922684728}
+  getObj: 0
 --- !u!65 &1598377462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20410,8 +20425,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12.9115925, y: 4.10966, z: 0.15931702}
-  m_Center: {x: -1.8142767, y: 0, z: -0.055541992}
+  m_Size: {x: 11.089676, y: 4.10966, z: 0.15931702}
+  m_Center: {x: -0.90331817, y: 0, z: -0.055541992}
 --- !u!23 &1684163881
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ActiveSafe : MonoBehaviour
 {
     private bool isInsideTrigger;
+    public bool puzzleActive;
     private TankControls2 tank;
     public GameObject safeBox;
     public GameObject cameraSafe;
@@ -71,6 +72,7 @@ public class ActiveSafe : MonoBehaviour
         cameraSafe.SetActive(false);
         cameraOther.SetActive(true);
         textPanel.SetActive(false);
+        puzzleActive = false;
         this.enabled = false;
     }
 }

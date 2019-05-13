@@ -16,6 +16,7 @@ public class Lader : MonoBehaviour
 
 	private SoundPlayer sound;
     private InputManager iM;
+    public bool getObj;
     // Use this for initialization
     void Start () 
 	{
@@ -71,6 +72,7 @@ public class Lader : MonoBehaviour
 		TextPanel.SetActive(false);
 		//Debug.Log("quit");
 		MessageReaded = false;
+        getObj = true;
 		Time.timeScale = 1;
 		this.transform.position = new Vector3(0,-10,0);
         iM.canPause = true;
