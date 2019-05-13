@@ -15,6 +15,7 @@ public class Notes : MonoBehaviour
     private SoundObj sound;
     private InputManager iM;
     private HUD hud;
+	public bool getObj;
     // Use this for initialization
     void Start () 
 	{
@@ -69,6 +70,7 @@ public class Notes : MonoBehaviour
 		Debug.Log("quit");
 		MessageReaded = false;
 		Time.timeScale = 1;
+		getObj = true;
 		gameObject.SetActive(false);
         iM.canPause = true;
     }

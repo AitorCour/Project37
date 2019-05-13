@@ -19,7 +19,6 @@ public class Segura_Data
 public class SeguraLevelManager : LevelManager
 {
     public Segura_Data data;
-    //private EnemyBehaviour3 enemy;
     public GameObject potionObj;
     public GameObject ammoObj;
     private Potion pot;
@@ -44,13 +43,10 @@ public class SeguraLevelManager : LevelManager
         if(data.potion == false)
         {
             potionObj.SetActive(false);
-            pot = null;
-            Debug.Log("Desactived");
         }
         if(data.ammo == false)
         {
             ammoObj.SetActive(false);
-            munition = null;
         }
     }
     public void NewGame()
@@ -59,36 +55,33 @@ public class SeguraLevelManager : LevelManager
     }
     void Start()
     {
-        
-            pot = GameObject.FindGameObjectWithTag("Misc").GetComponent<Potion>();
-        
-        /*if (!data.ammo)
+        if(data.potion == true)
         {
-            munition = GameObject.FindGameObjectWithTag("Misc").GetComponent<Munition>();
-        }   */
+            pot = GameObject.FindGameObjectWithTag("cure").GetComponent<Potion>();
+        }
+        if (data.ammo == true)
+        {
+            munition = GameObject.FindGameObjectWithTag("ammo").GetComponent<Munition>();
+        }
     }
 
     public override void SaveLevelData()
     {
-        
+        if(data.potion == true)
+        {
             if (pot.getObj == true)
             {
                 data.potion = false;
-                Debug.Log("Getted");
             }
-        
-        if (pot == null)
-        {
-            Debug.Log("NULL");
         }
-        /*if (munition != null)
+        
+        if (data.ammo == true)
         {
-            if (munition.messageReaded)
+            if (munition.getObj == true)
             {
                 data.ammo = false;
             }
-        }*/
-        //else return;
+        }
 
         try
         {

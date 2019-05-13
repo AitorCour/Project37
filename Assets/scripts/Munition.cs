@@ -16,12 +16,19 @@ public class Munition : MonoBehaviour
 
 	private SoundObj sound;
     private InputManager iM;
+	public bool getObj;
+    private BoxCollider box;
+    private MeshRenderer cureMat;
+	private ParticleSystem brillo;
     // Use this for initialization
     void Start () 
 	{
 		weapon = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Gun>();
 		sound = GetComponentInChildren<SoundObj>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
+		box = GetComponent<BoxCollider>();
+        cureMat = GetComponentInChildren<MeshRenderer>();
+		brillo = GetComponentInChildren<ParticleSystem>();
     }
     void Update()
     {
@@ -69,7 +76,11 @@ public class Munition : MonoBehaviour
 		messageReaded = false;
 		Time.timeScale = 1;
         isInsideTrigger = false;
-        gameObject.SetActive(false);
+        getObj = true;
+		brillo.Stop();
+        //gameObject.SetActive(false);
+        box.enabled = false;
+        cureMat.enabled = false;
         iM.canPause = true;
     }
 }

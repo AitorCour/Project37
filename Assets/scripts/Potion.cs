@@ -14,10 +14,10 @@ public class Potion : MonoBehaviour
 	public bool messageReaded = false;
 	private SoundObj sound;
     private InputManager iM;
-
     public bool getObj;
     private BoxCollider box;
     private MeshRenderer cureMat;
+	private ParticleSystem brillo;
 	// Use this for initialization
 	void Start () 
 	{
@@ -26,6 +26,7 @@ public class Potion : MonoBehaviour
 		iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
         box = GetComponent<BoxCollider>();
         cureMat = GetComponentInChildren<MeshRenderer>();
+		brillo = GetComponentInChildren<ParticleSystem>();
 	}
     void Update()
     {
@@ -73,6 +74,7 @@ public class Potion : MonoBehaviour
 		messageReaded = false;
 		Time.timeScale = 1;
         getObj = true;
+		brillo.Stop();
         //gameObject.SetActive(false);
         box.enabled = false;
         cureMat.enabled = false;
