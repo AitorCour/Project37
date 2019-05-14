@@ -20232,6 +20232,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1153998712267244, guid: 4a995961023b3f94dbefaf5267e2e8ff,
     type: 2}
   m_PrefabInternal: {fileID: 288198666}
+--- !u!114 &288198672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 288198667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47557321d986bc4d90fb9247f92cc11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    nota_1: 1
+    nota_2: 1
+  noteObj_1: {fileID: 1759840823}
+  noteObj_2: {fileID: 778676480}
 --- !u!1 &288826763
 GameObject:
   m_ObjectHideFlags: 0
@@ -53195,6 +53211,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 776832961}
   m_Mesh: {fileID: 4300006, guid: d23ea6ee112b53e44b4039c3d82193f2, type: 3}
+--- !u!1 &778676480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1474555207498486, guid: 670151b9b1d361f4bb33e083abefcfca,
+    type: 2}
+  m_PrefabInternal: {fileID: 1721026308}
 --- !u!1 &779174934
 GameObject:
   m_ObjectHideFlags: 0
@@ -106481,6 +106502,10 @@ Prefab:
       propertyPath: message
       value: You get a note
       objectReference: {fileID: 0}
+    - target: {fileID: 1474555207498486, guid: 670151b9b1d361f4bb33e083abefcfca, type: 2}
+      propertyPath: m_TagString
+      value: Misc
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 670151b9b1d361f4bb33e083abefcfca, type: 2}
   m_IsPrefabAsset: 0
@@ -108785,6 +108810,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1758761003}
   m_Mesh: {fileID: 4300012, guid: d23ea6ee112b53e44b4039c3d82193f2, type: 3}
+--- !u!1 &1759840823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1745234523025960, guid: 24e62e8ec3af19c40901816b96ea612a,
+    type: 2}
+  m_PrefabInternal: {fileID: 881004144}
 --- !u!1 &1761133287
 GameObject:
   m_ObjectHideFlags: 0

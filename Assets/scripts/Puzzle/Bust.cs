@@ -30,7 +30,7 @@ public class Bust : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
+        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened && !useObj.puzzleComplete)
         {
             //plBehaviour.GetKeys(key);
             //keyObject.SetActive(false);

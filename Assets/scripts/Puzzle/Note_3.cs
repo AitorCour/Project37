@@ -11,7 +11,7 @@ public class Note_3 : MonoBehaviour
     public string message = "Hello World";
     public Text eText;
     private bool MessageReaded = false;
-
+    public bool getObj;
     private SoundObj sound;
     private InputManager iM;
     private HUD hud;
@@ -68,6 +68,7 @@ public class Note_3 : MonoBehaviour
         TextPanel.SetActive(false);
         Debug.Log("quit");
         MessageReaded = false;
+        getObj = true;
         Time.timeScale = 1;
         gameObject.SetActive(false);
         iM.canPause = true;
