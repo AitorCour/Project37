@@ -30,9 +30,12 @@ public class UseObject : MonoBehaviour
     private bool ballCorrect;
     private bool boxCorrect;
     private bool bustCorrect;
-
+    //Triggers
+    public GameObject trigger1;
+    public GameObject trigger2;
+    public GameObject trigger3;
     //On complete
-    private bool puzzleComplete = false;
+    public bool puzzleComplete;
     public GameObject barrasCine;//Barras de cinematica
     public GameObject key;//Object to Unlock
     private GameManager gameManager;
@@ -259,17 +262,17 @@ public class UseObject : MonoBehaviour
     public void PickBusto()
     {
         //PickObject(busto);
-        if (busto.transform.position == oP1.transform.position)
+        if (busto.transform.position == oP1.transform.position && !puzzleComplete)
         {
             pos1free = true;
             PickObject(busto);
         }
-        else if (busto.transform.position == oP2.transform.position)
+        else if (busto.transform.position == oP2.transform.position && !puzzleComplete)
         {
             pos2free = true;
             PickObject(busto);
         }
-        else if (busto.transform.position == oP3.transform.position)
+        else if (busto.transform.position == oP3.transform.position && !puzzleComplete)
         {
             pos3free = true;
             PickObject(busto);
@@ -278,17 +281,17 @@ public class UseObject : MonoBehaviour
     }
     public void PickBox()
     {
-        if (box.transform.position == oP1.transform.position)
+        if (box.transform.position == oP1.transform.position && !puzzleComplete)
         {
             pos1free = true;
             PickObject(box);
         }
-        else if (box.transform.position == oP2.transform.position)
+        else if (box.transform.position == oP2.transform.position && !puzzleComplete)
         {
             pos2free = true;
             PickObject(box);
         }
-        else if (box.transform.position == oP3.transform.position)
+        else if (box.transform.position == oP3.transform.position && !puzzleComplete)
         {
             pos3free = true;
             PickObject(box);
@@ -297,17 +300,17 @@ public class UseObject : MonoBehaviour
     }
     public void PickBall()
     {
-        if (ball.transform.position == oP1.transform.position)
+        if (ball.transform.position == oP1.transform.position && !puzzleComplete)
         {
             pos1free = true;
             PickObject(ball);
         }
-        else if (ball.transform.position == oP2.transform.position)
+        else if (ball.transform.position == oP2.transform.position && !puzzleComplete)
         {
             pos2free = true;
             PickObject(ball);
         }
-        else if (ball.transform.position == oP3.transform.position)
+        else if (ball.transform.position == oP3.transform.position && !puzzleComplete)
         {
             pos3free = true;
             PickObject(ball);
@@ -329,10 +332,14 @@ public class UseObject : MonoBehaviour
         //Llave activa
         key.SetActive(true);
     }
-    void PuzzleDone()
+    public void PuzzleDone()
     {
         barrasCine.SetActive(false);
         tank.canWalk = true;
+        puzzleComplete = true;
         TextPanel.SetActive(false);
+        trigger1.SetActive(false);
+        trigger2.SetActive(false);
+        trigger3.SetActive(false);
     }
 }
