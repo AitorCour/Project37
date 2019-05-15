@@ -15,7 +15,7 @@ public class LaderPos : MonoBehaviour
 	public string message = "Hello World";
 	public Text eText;
 	private bool MessageReaded = false;
-    private bool laderActive;
+    public bool laderActive;
     private bool isInsideTrigger;
 
     public float xPos;

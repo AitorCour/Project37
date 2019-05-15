@@ -21,6 +21,12 @@ public class PuzzleLevelManager : LevelManager
     public GameObject trigger1;
     public GameObject trigger2;
     public GameObject trigger3;
+    public GameObject bust;
+    public GameObject ball;
+    public GameObject box;
+    public Transform bustObj;
+    public Transform ballObj;
+    public Transform boxObj;
     private UseObject puzzle;
 
     protected override void Awake()
@@ -44,6 +50,12 @@ public class PuzzleLevelManager : LevelManager
             trigger1.SetActive(false);
             trigger2.SetActive(false);
             trigger3.SetActive(false);
+            bust.SetActive(false);
+            box.SetActive(false);
+            ball.SetActive(false);
+            bustObj.transform.Translate(-9.4f, 0.6f, 3.4f);
+            boxObj.transform.Translate(-7f, 0.55f, 3f);
+            ballObj.transform.Translate(-9.5f, 0.42f, 6f);
         }
     }
     public void NewGame()

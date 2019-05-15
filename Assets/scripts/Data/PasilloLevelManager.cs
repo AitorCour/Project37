@@ -7,10 +7,11 @@ using System;
 public class Pasillo1_Data
 {
     public bool enemyDead;
-
+    public bool lader;
     public Pasillo1_Data()
     {
         enemyDead = false;
+        lader = false;
     }
 }
 
@@ -19,7 +20,9 @@ public class PasilloLevelManager : LevelManager
     public Pasillo1_Data data;
     private EnemyBehaviour3 enemy;
     public GameObject enemyObj;
-    
+    private LaderPos lader;
+    public GameObject laderObj;
+
     protected override void Awake()
     {
         // Cargar si existe datos de Pasillo1
@@ -40,6 +43,10 @@ public class PasilloLevelManager : LevelManager
             enemyObj.SetActive(false);
             enemy = null;
         }
+        if(data.lader)
+        {
+            laderObj.SetActive(true);
+        }
     }
     public void NewGame()
     {
@@ -50,6 +57,11 @@ public class PasilloLevelManager : LevelManager
         if(!data.enemyDead)
         {
             enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
+        }
+        lader = GameObject.FindGameObjectWithTag("Misc").GetComponent<LaderPos>();
+        if(data.lader)
+        {
+            lader.laderActive = true;
         }
     }
 
@@ -63,8 +75,14 @@ public class PasilloLevelManager : LevelManager
                 data.enemyDead = true;
             }
         }
-        else return;
-        
+
+        if(!data.lader)
+        {
+            if(lader.laderActive)
+            {
+                data.lader = true;
+            }
+        }
         // Guardarlos
         try
         {

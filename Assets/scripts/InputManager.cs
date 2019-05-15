@@ -115,7 +115,6 @@ public class InputManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D)) 
 			{
 				Data.DeleteFolder();
-				Debug.Log("Click to Delete");
 			}
         }
 
@@ -280,5 +279,10 @@ public class InputManager : MonoBehaviour
 	{
 		tankControl.canWalk = true;
 		ini_menu = false;
+        canPause = true;
 	}
+    public void DeleteData()
+    {
+        Data.DeleteFolder();
+    }
 }

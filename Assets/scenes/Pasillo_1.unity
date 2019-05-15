@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.02325446, g: 0.016415743, b: 0.015135017, a: 1}
+  m_IndirectSpecularColor: {r: 0.023254292, g: 0.01641606, b: 0.0151345385, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12529,7 +12529,7 @@ GameObject:
   - component: {fileID: 400851465}
   m_Layer: 0
   m_Name: Lader_Point
-  m_TagString: Untagged
+  m_TagString: Misc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12552,6 +12552,7 @@ MonoBehaviour:
   TextPanel: {fileID: 454365977}
   message: Pon una escalera
   eText: {fileID: 451489231}
+  laderActive: 0
   xPos: -8.6
   zPos: 8.5
 --- !u!65 &400851466
@@ -20059,7 +20060,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     enemyDead: 0
+    lader: 0
   enemyObj: {fileID: 940997880}
+  laderObj: {fileID: 244517753}
 --- !u!1 &819217724
 GameObject:
   m_ObjectHideFlags: 0
