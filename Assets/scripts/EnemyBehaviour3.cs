@@ -9,11 +9,11 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public State state;
 	private NavMeshAgent agent;
 	private SoundEnemy sound;
-
+    private SoundObj soundObj;
 	public float timeCounter;
     public float timeCounterHit;
-    public float idleTime = 1.0f;
-	public float sleepTime = 3.0f;
+    public float idleTime;
+	public float sleepTime;
 	public float hitTime = 3.0f;
 	private bool slept;
     private bool trembled;
@@ -35,17 +35,17 @@ public class EnemyBehaviour3 : MonoBehaviour
 	[Header("Attack Properties")]
     public float attackDistance;
 	public float attackTime;
-    public int EnemyDamage;
+    //public int EnemyDamage;
 	private Animator animator;
 
-	private int startingHealth = 5;
+	public int startingHealth;
 	public int currentHealt;
 
 	/*public float radius;
 	public LayerMask targetMask;*/
 
-	private float iniSpeed = 0.6f;
-	private float finalSpeed = 1.0f;
+	public float iniSpeed;
+	public float finalSpeed;
 
 	private CollisionDamage colDamage;
     private CapsuleCollider colliderEnemy;
@@ -57,6 +57,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	{
 		agent = GetComponent<NavMeshAgent>();
 		sound = GetComponentInChildren<SoundEnemy>();
+        soundObj = GetComponentInChildren<SoundObj>();
 		animator = GetComponentInChildren<Animator>();
 		//plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
 		colDamage = GetComponentInChildren<CollisionDamage>();
@@ -313,6 +314,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         timeCounter = 0;
         //anim.SetBool("isMoving", true);
         agent.isStopped = true;
+        soundObj.Play(6);
         //particulas.Stop();
 		//maxRadius = normalRadius;
         state = State.Idle;
@@ -323,6 +325,7 @@ public class EnemyBehaviour3 : MonoBehaviour
     void SetPatrol()
     {
         //anim.SetBool("isMoving", true);
+        soundObj.Play(5);
         agent.isStopped = false;
         agent.stoppingDistance = 0;
         state = State.Patrol;
@@ -336,7 +339,7 @@ public class EnemyBehaviour3 : MonoBehaviour
     {
         //anim.SetBool("isMoving", false);
         //anim.SetTrigger("IsChasing");
-		sound.Play(5);
+		soundObj.Play(5);
         agent.isStopped = false;
         agent.stoppingDistance = 0.9f;//La stopping distance determina la distancia 
         //a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
@@ -355,7 +358,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		state = State.Attack;
         animator.SetTrigger("attack");
 		canReciveDamage = true;
-        sound.Play(1);
+        soundObj.Play(1);
         timeCounter = 0;
     }
 	void SetDead()
@@ -367,7 +370,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         animator.SetTrigger("dead");
 		colDamage.CanDoDamage = false;
         colliderEnemy.enabled = false;
-        sound.Play(3);
+        soundObj.Play(3);
         //this.enabled = false;
         enemyIsDead = true;
 	}
@@ -376,7 +379,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		agent.isStopped = true;
 		state = State.Sleep;
         animator.SetTrigger("sleep");
-        sound.Play(2);
+        soundObj.Play(2);
 		//animator.SetBool("Attacking", false);
 		//animator.SetBool("Walking", false);
 	}
@@ -385,7 +388,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         agent.isStopped = true;
         state = State.Hit;
         agent.SetDestination(player.position);
-        sound.Play(0);
+        soundObj.Play(0);
         animator.SetTrigger("hit");
     }
 	#endregion
@@ -448,6 +451,6 @@ public class EnemyBehaviour3 : MonoBehaviour
     }
     public void PlayDeadFall()
     {
-        sound.Play(4);
+        soundObj.Play(4);
     }
 }
