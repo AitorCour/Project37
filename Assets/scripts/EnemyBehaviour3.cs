@@ -257,7 +257,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		//Chase -> Attack
 		else if(Vector3.Distance(transform.position, player.position) <= attackDistance)
 		{
-			colDamage.CanDoDamage = true;
+			//colDamage.CanDoDamage = true;
 			SetAttack();
 			return;
 		}
@@ -275,7 +275,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         //ATTACK -> ATTACK
         else if(Vector3.Distance(transform.position, player.position) <= attackDistance && timeCounter >= attackTime)
         {
-            colDamage.CanDoDamage = true;
+            //colDamage.CanDoDamage = true;
             SetAttack();
             timeCounter = 0;
             return;

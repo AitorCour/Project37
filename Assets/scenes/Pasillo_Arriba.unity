@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 10315179}
   - component: {fileID: 10315178}
   - component: {fileID: 10315177}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6451,7 +6451,7 @@ GameObject:
   - component: {fileID: 279077326}
   - component: {fileID: 279077325}
   - component: {fileID: 279077324}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16127,6 +16127,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Curation
       objectReference: {fileID: 0}
+    - target: {fileID: 114560334213951078, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: cameraGod
+      value: 
+      objectReference: {fileID: 1798768027}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
   m_IsPrefabAsset: 0
@@ -17678,7 +17683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1623379885}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Triggers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19611,7 +19616,7 @@ GameObject:
   - component: {fileID: 1930341909}
   - component: {fileID: 1930341908}
   - component: {fileID: 1930341907}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19700,11 +19705,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114777473090299742, guid: d01a5ac884e72a74c8aab477ade7263e,
-        type: 2}
-      propertyPath: points.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4923290735801882, guid: d01a5ac884e72a74c8aab477ade7263e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2.41
@@ -19737,15 +19737,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1881992317590342, guid: d01a5ac884e72a74c8aab477ade7263e, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114777473090299742, guid: d01a5ac884e72a74c8aab477ade7263e,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 994784357}
     - target: {fileID: 114777473090299742, guid: d01a5ac884e72a74c8aab477ade7263e,
         type: 2}
       propertyPath: points.Array.data[0]
@@ -19756,10 +19747,11 @@ Prefab:
       propertyPath: points.Array.data[1]
       value: 
       objectReference: {fileID: 1739019654}
-    - target: {fileID: 4923290735801882, guid: d01a5ac884e72a74c8aab477ade7263e, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 114777473090299742, guid: d01a5ac884e72a74c8aab477ade7263e,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 994784357}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d01a5ac884e72a74c8aab477ade7263e, type: 2}
   m_IsPrefabAsset: 0
@@ -19901,7 +19893,7 @@ GameObject:
   - component: {fileID: 1993635259}
   - component: {fileID: 1993635258}
   - component: {fileID: 1993635257}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
