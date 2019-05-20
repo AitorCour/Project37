@@ -7,10 +7,11 @@ using System;
 public class PasilloW_Data
 {
     public bool lader;
-
+    public bool enemy;
     public PasilloW_Data()
     {
         lader = true;
+        enemy = true;
     }
 }
 
@@ -19,6 +20,9 @@ public class PasilloWLevelManager : LevelManager
     public PasilloW_Data data;
     public GameObject laderObj;
     private Lader lader;
+    private EnemyBehaviour3 enemy;
+    public GameObject enemyObj;
+    private PlayerBehaviour plBehaviour;
 
     protected override void Awake()
     {
@@ -47,10 +51,18 @@ public class PasilloWLevelManager : LevelManager
     }
     void Start()
     {
+        plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         if (data.lader == true)
         {
             lader = GameObject.FindGameObjectWithTag("Misc").GetComponent<Lader>();
         }
+        if(plBehaviour.key1 && data.enemy)
+        {
+            enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
+            enemyObj.SetActive(true);
+        }
+        else enemyObj.SetActive(false);
+
     }
 
     public override void SaveLevelData()
@@ -60,6 +72,13 @@ public class PasilloWLevelManager : LevelManager
             if (lader.getObj == true)
             {
                 data.lader = false;
+            }
+        }
+        if(plBehaviour.key1 && data.enemy)
+        {
+            if (enemy.enemyIsDead)
+            {
+                data.enemy = false;
             }
         }
         try
