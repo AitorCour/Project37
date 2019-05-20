@@ -5,7 +5,7 @@ using UnityEngine;
 public class Trigger_Rayo : MonoBehaviour 
 {
 	private Animator animRayo;
-    private bool activated;
+    public bool activated;
     private AudioSource audioSc;
 	void Start()
 	{
@@ -22,8 +22,7 @@ public class Trigger_Rayo : MonoBehaviour
                 audioSc.Play();
                 activated = true;
             }
-            else return;
-			
+            else return;	
         }
     }
 }

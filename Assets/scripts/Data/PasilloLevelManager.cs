@@ -8,10 +8,12 @@ public class Pasillo1_Data
 {
     public bool enemyDead;
     public bool lader;
+    public bool rayo;
     public Pasillo1_Data()
     {
         enemyDead = false;
         lader = false;
+        rayo = false;
     }
 }
 
@@ -22,6 +24,8 @@ public class PasilloLevelManager : LevelManager
     public GameObject enemyObj;
     private LaderPos lader;
     public GameObject laderObj;
+    private Trigger_Rayo rayo;
+    //public GameObject rayoObj;
 
     protected override void Awake()
     {
@@ -63,6 +67,11 @@ public class PasilloLevelManager : LevelManager
         {
             lader.laderActive = true;
         }
+        rayo = GameObject.FindGameObjectWithTag("rayo").GetComponent<Trigger_Rayo>();
+        if(data.rayo)
+        {
+            rayo.activated = true;
+        }
     }
 
     public override void SaveLevelData()
@@ -81,6 +90,15 @@ public class PasilloLevelManager : LevelManager
             if(lader.laderActive)
             {
                 data.lader = true;
+            }
+        }
+        if(!data.rayo)
+        {
+            {
+                if(rayo.activated)
+                {
+                    data.rayo = true;
+                }
             }
         }
         // Guardarlos
