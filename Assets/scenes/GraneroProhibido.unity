@@ -20246,6 +20246,7 @@ MonoBehaviour:
   data:
     nota_1: 1
     nota_2: 1
+    rayo: 0
   noteObj_1: {fileID: 1759840823}
   noteObj_2: {fileID: 778676480}
 --- !u!1 &288826763
@@ -63780,10 +63781,10 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.82
-  m_Radius: 0.38
+  m_Radius: 0.23
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.0001
+  m_StepOffset: 0
+  m_SkinWidth: 0.005
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.04, z: 0}
 --- !u!114 &969869475
@@ -84768,7 +84769,7 @@ GameObject:
   - component: {fileID: 1348308629}
   m_Layer: 0
   m_Name: Trigger_Rayo
-  m_TagString: Untagged
+  m_TagString: rayo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84796,6 +84797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c989aa744b754004f915d7c9dc898fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 0
 --- !u!23 &1348308626
 MeshRenderer:
   m_ObjectHideFlags: 0

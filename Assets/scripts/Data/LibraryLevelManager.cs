@@ -8,10 +8,12 @@ public class Library_Data
 {
     public bool nota_1;
     public bool nota_2;
+    public bool rayo;
     public Library_Data()
     {
         nota_1 = true;
         nota_2 = true;
+        rayo = false;
     }
 }
 
@@ -22,6 +24,7 @@ public class LibraryLevelManager : LevelManager
     private Nota_2 note_1;
     public GameObject noteObj_2;
     private Note_3 note_2;
+    private Trigger_Rayo rayo;
 
     protected override void Awake()
     {
@@ -62,6 +65,12 @@ public class LibraryLevelManager : LevelManager
         {
             note_2 = GameObject.FindGameObjectWithTag("Misc").GetComponent<Note_3>();
         }
+        rayo = GameObject.FindGameObjectWithTag("rayo").GetComponent<Trigger_Rayo>();
+        if (data.rayo)
+        {
+            rayo.activated = true;
+        }
+        else rayo.activated = false;
     }
 
     public override void SaveLevelData()
@@ -78,6 +87,13 @@ public class LibraryLevelManager : LevelManager
             if (note_2.getObj == true)
             {
                 data.nota_2 = false;
+            }
+        }
+        if (!data.rayo)
+        {
+            if (rayo.activated)
+            {
+                data.rayo = true;
             }
         }
         try

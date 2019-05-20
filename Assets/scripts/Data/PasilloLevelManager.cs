@@ -68,10 +68,11 @@ public class PasilloLevelManager : LevelManager
             lader.laderActive = true;
         }
         rayo = GameObject.FindGameObjectWithTag("rayo").GetComponent<Trigger_Rayo>();
-        if(data.rayo)
+        if (data.rayo)
         {
             rayo.activated = true;
         }
+        else rayo.activated = false;
     }
 
     public override void SaveLevelData()
@@ -94,12 +95,12 @@ public class PasilloLevelManager : LevelManager
         }
         if(!data.rayo)
         {
+            
+            if(rayo.activated)
             {
-                if(rayo.activated)
-                {
-                    data.rayo = true;
-                }
+                data.rayo = true;
             }
+            
         }
         // Guardarlos
         try
