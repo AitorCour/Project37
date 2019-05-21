@@ -6,19 +6,20 @@ using System;
 [System.Serializable]
 public class Hall_Data
 {
-    //public bool nota;
-    /*public Cuadros_Data()
+    public bool wDoorOpen;
+    public bool nDoorOpen;
+    public Hall_Data()
     {
-        nota = true;
-    }*/
+        wDoorOpen = false;
+        nDoorOpen = false;
+    }
 }
 
 public class HallLevelManager : LevelManager
 {
     public Hall_Data data;
-    /*public GameObject noteObj;
-    private Notes note;
-    */
+    private DoorBlocked door;
+    private DoorBlocked door2;
     protected override void Awake()
     {
         // Cargar si existe datos de Pasillo1
@@ -46,10 +47,20 @@ public class HallLevelManager : LevelManager
     }
     void Start()
     {
-        /*if (data.nota == true)
+        
+        door = GameObject.FindGameObjectWithTag("TextReader").GetComponent<DoorBlocked>();
+        door2 = GameObject.FindGameObjectWithTag("cure").GetComponent<DoorBlocked>();
+
+        if (data.wDoorOpen)
         {
-            note = GameObject.FindGameObjectWithTag("TextReader").GetComponent<Notes>();
-        }*/
+            door.isDoorOpen = true;
+        }
+        else door.isDoorOpen = false;
+        if (data.nDoorOpen)
+        {
+            door2.isDoorOpen = true;
+        }
+        else door2.isDoorOpen = false;
     }
 
     public override void SaveLevelData()
