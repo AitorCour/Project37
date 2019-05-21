@@ -18,6 +18,7 @@ public class PasilloW_Data
 public class PasilloWLevelManager : LevelManager
 {
     public PasilloW_Data data;
+    public Hall_Data data_Hall;
     public GameObject laderObj;
     private Lader lader;
     private EnemyBehaviour3 enemy;
@@ -81,9 +82,11 @@ public class PasilloWLevelManager : LevelManager
                 data.enemy = false;
             }
         }
+        data_Hall.wDoorOpen = true;
         try
         {
             DataManager.SaveToText<PasilloW_Data>(data, "PasilloWData", Application.persistentDataPath + "/Levels");
+            DataManager.SaveToText<Hall_Data>(data_Hall, "HallData", Application.persistentDataPath + "/Levels");
             Debug.Log("[GDM] Save succeed!");
         }
         catch (Exception e)

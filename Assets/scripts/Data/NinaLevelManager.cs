@@ -16,6 +16,7 @@ public class Nina_Data
 public class NinaLevelManager : LevelManager
 {
     public Nina_Data data;
+    public Hall_Data data_Hall;
     private ActiveSafe safe;
     public GameObject safeObj;
     protected override void Awake()
@@ -60,10 +61,11 @@ public class NinaLevelManager : LevelManager
                 data.puzzle = false;
             }
         }
-
+        data_Hall.nDoorOpen = true;
         try
         {
             DataManager.SaveToText<Nina_Data>(data, "NinaData", Application.persistentDataPath + "/Levels");
+            DataManager.SaveToText<Hall_Data>(data_Hall, "HallData", Application.persistentDataPath + "/Levels");
             Debug.Log("[GDM] Save succeed!");
         }
         catch (Exception e)
