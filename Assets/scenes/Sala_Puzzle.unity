@@ -665,6 +665,10 @@ Prefab:
       propertyPath: eText
       value: 
       objectReference: {fileID: 124184542}
+    - target: {fileID: 1765899534890284, guid: bbe22346edfd092439f746b684464454, type: 2}
+      propertyPath: m_TagString
+      value: cure
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbe22346edfd092439f746b684464454, type: 2}
   m_IsPrefabAsset: 0
@@ -11207,6 +11211,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     puzzle: 1
+  data_Hall:
+    wDoorOpen: 0
+    nDoorOpen: 0
+    aDoorOpen: 0
   puzzleObj: {fileID: 2068050160}
   trigger1: {fileID: 1463469312}
   trigger2: {fileID: 853128616}

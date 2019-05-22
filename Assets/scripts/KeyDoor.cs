@@ -11,7 +11,7 @@ public class KeyDoor : MonoBehaviour
 	public int scene; //se introduce la scena a la que se quiere ir
 	private bool isInsideTrigger = false;
 	//public int key = 1; //Con esto se podrá poner cuantas llaves se necesitará para la puerta
-	private bool isDoorOpen = false;
+	public bool isDoorOpen = false;
 	private bool MessageReaded = false;
 	public string message = "Hello World";
     public string message_2;

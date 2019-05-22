@@ -8,10 +8,12 @@ public class Hall_Data
 {
     public bool wDoorOpen;
     public bool nDoorOpen;
+    public bool aDoorOpen;
     public Hall_Data()
     {
         wDoorOpen = false;
         nDoorOpen = false;
+        aDoorOpen = false;
     }
 }
 
@@ -20,6 +22,7 @@ public class HallLevelManager : LevelManager
     public Hall_Data data;
     private DoorBlocked door;
     private DoorBlocked door2;
+    private DoorBlocked door3;
     protected override void Awake()
     {
         // Cargar si existe datos de Pasillo1
@@ -50,7 +53,7 @@ public class HallLevelManager : LevelManager
         
         door = GameObject.FindGameObjectWithTag("TextReader").GetComponent<DoorBlocked>();
         door2 = GameObject.FindGameObjectWithTag("cure").GetComponent<DoorBlocked>();
-
+        door3 = GameObject.FindGameObjectWithTag("ammo").GetComponent<DoorBlocked>();
         if (data.wDoorOpen)
         {
             door.isDoorOpen = true;
@@ -61,6 +64,11 @@ public class HallLevelManager : LevelManager
             door2.isDoorOpen = true;
         }
         else door2.isDoorOpen = false;
+        if (data.aDoorOpen)
+        {
+            door3.isDoorOpen = true;
+        }
+        else door3.isDoorOpen = false;
     }
 
     public override void SaveLevelData()

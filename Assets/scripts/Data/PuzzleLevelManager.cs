@@ -17,6 +17,7 @@ public class Puzzle_Data
 public class PuzzleLevelManager : LevelManager
 {
     public Puzzle_Data data;
+    public Hall_Data data_Hall;
     public GameObject puzzleObj;
     public GameObject trigger1;
     public GameObject trigger2;
@@ -28,6 +29,7 @@ public class PuzzleLevelManager : LevelManager
     public Transform ballObj;
     public Transform boxObj;
     private UseObject puzzle;
+    private KeyDoor door;
 
     protected override void Awake()
     {
@@ -68,6 +70,7 @@ public class PuzzleLevelManager : LevelManager
         {
             puzzle = GameObject.FindGameObjectWithTag("ObjectPosition").GetComponent<UseObject>();
         }
+        door = GameObject.FindGameObjectWithTag("cure").GetComponent<KeyDoor>();
     }
 
     public override void SaveLevelData()
@@ -79,10 +82,14 @@ public class PuzzleLevelManager : LevelManager
                 data.puzzle = false;
             }
         }
-
+        if(door.isDoorOpen)
+        {
+            data_Hall.aDoorOpen = true;
+        }
         try
         {
             DataManager.SaveToText<Puzzle_Data>(data, "PuzzleData", Application.persistentDataPath + "/Levels");
+            DataManager.SaveToText<Hall_Data>(data_Hall, "HallData", Application.persistentDataPath + "/Levels");
             Debug.Log("[GDM] Save succeed!");
         }
         catch (Exception e)
