@@ -10,6 +10,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	private NavMeshAgent agent;
 	private SoundEnemy sound;
     private SoundObj soundObj;
+	public ParticleSystem blood;
 	public float timeCounter;
     public float timeCounterHit;
     public float idleTime;
@@ -424,7 +425,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		else
 		{
 			currentHealt -= amount;
-
+			blood.Play();
             if (currentHealt != 2 && currentHealt != 0)
             {
                 SetHit();

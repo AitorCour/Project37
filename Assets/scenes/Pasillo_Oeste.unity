@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.023254292, g: 0.01641606, b: 0.0151345385, a: 1}
+  m_IndirectSpecularColor: {r: 0.02325446, g: 0.016415743, b: 0.015135017, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6105,6 +6105,14 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.3252831
       objectReference: {fileID: 0}
+    - target: {fileID: 1774389466612538, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
+      propertyPath: m_Name
+      value: Puerta_Hall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774389466612538, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
   m_IsPrefabAsset: 0
@@ -6361,6 +6369,65 @@ Transform:
   m_Father: {fileID: 1798071438}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.13620861, y: -0.27664053, z: 35.27726}
+--- !u!1001 &211599455
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 372300000}
+    m_Modifications:
+    - target: {fileID: 4897347704088026, guid: 672bb643a0951e14680b5b4c5f440463, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897347704088026, guid: 672bb643a0951e14680b5b4c5f440463, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897347704088026, guid: 672bb643a0951e14680b5b4c5f440463, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897347704088026, guid: 672bb643a0951e14680b5b4c5f440463, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897347704088026, guid: 672bb643a0951e14680b5b4c5f440463, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897347704088026, guid: 672bb643a0951e14680b5b4c5f440463, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897347704088026, guid: 672bb643a0951e14680b5b4c5f440463, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897347704088026, guid: 672bb643a0951e14680b5b4c5f440463, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897347704088026, guid: 672bb643a0951e14680b5b4c5f440463, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897347704088026, guid: 672bb643a0951e14680b5b4c5f440463, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897347704088026, guid: 672bb643a0951e14680b5b4c5f440463, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 672bb643a0951e14680b5b4c5f440463, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!198 &211599456 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198035592708938072, guid: 672bb643a0951e14680b5b4c5f440463,
+    type: 2}
+  m_PrefabInternal: {fileID: 211599455}
 --- !u!1 &231639920
 GameObject:
   m_ObjectHideFlags: 0
@@ -7278,7 +7345,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1285021772399686, guid: d01a5ac884e72a74c8aab477ade7263e, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4757703324311952, guid: d01a5ac884e72a74c8aab477ade7263e, type: 2}
       propertyPath: m_LocalRotation.x
@@ -7304,9 +7371,19 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114777473090299742, guid: d01a5ac884e72a74c8aab477ade7263e,
+        type: 2}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 211599456}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d01a5ac884e72a74c8aab477ade7263e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &372300000 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4995042092709860, guid: d01a5ac884e72a74c8aab477ade7263e,
+    type: 2}
+  m_PrefabInternal: {fileID: 372299999}
 --- !u!1 &377662155
 GameObject:
   m_ObjectHideFlags: 0
@@ -16559,8 +16636,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 969869472}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.526, y: 1, z: 0.143}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 2.8, y: 1, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 847904872}
@@ -16570,7 +16647,7 @@ Transform:
   - {fileID: 1798768031}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &996492819
 GameObject:
   m_ObjectHideFlags: 0
@@ -18277,6 +18354,10 @@ MonoBehaviour:
   data:
     lader: 1
     enemy: 1
+  data_Hall:
+    wDoorOpen: 0
+    nDoorOpen: 0
+    aDoorOpen: 0
   laderObj: {fileID: 1598377460}
   enemyObj: {fileID: 1092410925}
 --- !u!1 &1322567801
@@ -18974,9 +19055,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 95da341042cb94d4baa859d81a633289, type: 3}
   - {fileID: 8300000, guid: 68382a7c8712bfe4e89c567a91c7cd2f, type: 3}
   clipDirts:
-  - {fileID: 8300000, guid: 3f5aa374418de47409cfd88a46f84e10, type: 3}
-  - {fileID: 8300000, guid: b2889f7a835fa7044b93f165db3ac7b9, type: 3}
-  - {fileID: 8300000, guid: ac79ac9cd3ec5db488c79877c2c603f2, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   clipHall:
   - {fileID: 8300000, guid: 0f16d0059372df547a7071d135bf1554, type: 3}
   - {fileID: 8300000, guid: 7e1d34a1409bb394facab4b04c35c356, type: 3}

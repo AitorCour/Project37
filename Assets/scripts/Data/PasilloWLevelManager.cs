@@ -24,7 +24,7 @@ public class PasilloWLevelManager : LevelManager
     private EnemyBehaviour3 enemy;
     public GameObject enemyObj;
     private PlayerBehaviour plBehaviour;
-
+    private NormalDoor door;
     protected override void Awake()
     {
         // Cargar si existe datos de Pasillo1
@@ -63,7 +63,7 @@ public class PasilloWLevelManager : LevelManager
             enemyObj.SetActive(true);
         }
         else enemyObj.SetActive(false);
-
+        door = GameObject.FindGameObjectWithTag("door").GetComponent<NormalDoor>();
     }
 
     public override void SaveLevelData()
@@ -82,7 +82,10 @@ public class PasilloWLevelManager : LevelManager
                 data.enemy = false;
             }
         }
-        data_Hall.wDoorOpen = true;
+        if(door.doorOpened)
+        {
+            data_Hall.wDoorOpen = true;
+        }
         try
         {
             DataManager.SaveToText<PasilloW_Data>(data, "PasilloWData", Application.persistentDataPath + "/Levels");

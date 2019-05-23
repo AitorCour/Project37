@@ -6,7 +6,7 @@ public class NormalDoor : MonoBehaviour
 {
     public int scene; //se introduce la scena a la que se quiere ir
     private bool isInsideTrigger = false;
-
+    public bool doorOpened;
     //public Animator animator;
     //public Image black;
     private AudioSource audioSource;
@@ -30,6 +30,7 @@ public class NormalDoor : MonoBehaviour
         {
             //Debug.Log("Change Scene");
             audioSource.Play();
+            doorOpened = true;
             changeSc.FadeChangeScene(scene);
             changeSc.pX = xPos;
             changeSc.pZ = zPos;
