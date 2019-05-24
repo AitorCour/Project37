@@ -14312,6 +14312,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1252181598326740, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
+      propertyPath: m_TagString
+      value: door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
   m_IsPrefabAsset: 0
@@ -14740,6 +14744,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     puzzle: 1
+  data_Hall:
+    wDoorOpen: 0
+    nDoorOpen: 0
+    aDoorOpen: 0
   safeObj: {fileID: 1841048135}
 --- !u!1 &1317515000
 GameObject:
@@ -15212,9 +15220,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 95da341042cb94d4baa859d81a633289, type: 3}
   - {fileID: 8300000, guid: 68382a7c8712bfe4e89c567a91c7cd2f, type: 3}
   clipDirts:
-  - {fileID: 8300000, guid: 3f5aa374418de47409cfd88a46f84e10, type: 3}
-  - {fileID: 8300000, guid: b2889f7a835fa7044b93f165db3ac7b9, type: 3}
-  - {fileID: 8300000, guid: ac79ac9cd3ec5db488c79877c2c603f2, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   clipHall:
   - {fileID: 8300000, guid: 0f16d0059372df547a7071d135bf1554, type: 3}
   - {fileID: 8300000, guid: 7e1d34a1409bb394facab4b04c35c356, type: 3}

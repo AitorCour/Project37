@@ -8,10 +8,12 @@ public class PasilloW_Data
 {
     public bool lader;
     public bool enemy;
+    public bool door;
     public PasilloW_Data()
     {
         lader = true;
         enemy = true;
+        door = false;
     }
 }
 
@@ -53,16 +55,26 @@ public class PasilloWLevelManager : LevelManager
     void Start()
     {
         plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
         if (data.lader == true)
         {
             lader = GameObject.FindGameObjectWithTag("Misc").GetComponent<Lader>();
         }
-        if(plBehaviour.key1 && data.enemy)
+        if(Data.IsKeyUnlock(0) == true && data.enemy == true)
         {
-            enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
-            enemyObj.SetActive(true);
+            //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
+            enemyObj.transform.position = new Vector3(-2, 1, 0);
+            //enemy.GetComponent<EnemyBehaviour3>().enabled = false;
+            Debug.Log("ManequinActive");
         }
-        else enemyObj.SetActive(false);
+        else if(plBehaviour.key1 == false || !data.enemy)
+        {
+            //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
+            enemyObj.transform.position = new Vector3(-20, 1, 0);
+            //enemy.GetComponent<EnemyBehaviour3>().enabled = false;
+            GameObject.Find("EnemyTocho").GetComponent<EnemyBehaviour3>().enabled = false;
+            Debug.Log("NotActive");
+        }
         door = GameObject.FindGameObjectWithTag("door").GetComponent<NormalDoor>();
     }
 
@@ -77,14 +89,15 @@ public class PasilloWLevelManager : LevelManager
         }
         if(plBehaviour.key1 && data.enemy)
         {
-            if (enemy.enemyIsDead)
+            if (/*enemy.enemyIsDead || */GameObject.Find("EnemyTocho").GetComponent<EnemyBehaviour3>().enemyIsDead == true)
             {
                 data.enemy = false;
             }
         }
-        if(door.doorOpened)
+        if(door.doorOpened || data.door)
         {
             data_Hall.wDoorOpen = true;
+            data.door = true;
         }
         try
         {

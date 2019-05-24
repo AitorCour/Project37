@@ -58,28 +58,30 @@ public class HallLevelManager : LevelManager
         {
             door.isDoorOpen = true;
         }
-        else door.isDoorOpen = false;
         if (data.nDoorOpen)
         {
             door2.isDoorOpen = true;
         }
-        else door2.isDoorOpen = false;
         if (data.aDoorOpen)
         {
             door3.isDoorOpen = true;
         }
-        else door3.isDoorOpen = false;
     }
 
     public override void SaveLevelData()
     {
-        /*if (data.nota == true)
+        if (door.isDoorOpen == true)
         {
-            if (note.getObj == true)
-            {
-                data.nota = false;
-            }
-        }*/
+            data.wDoorOpen = true;
+        }
+        if (door2.isDoorOpen == true)
+        {
+            data.nDoorOpen = true;
+        }
+        if (door3.isDoorOpen == true)
+        {
+            data.aDoorOpen = true;
+        }
 
         try
         {

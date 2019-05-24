@@ -7,10 +7,11 @@ using System;
 public class Puzzle_Data
 {
     public bool puzzle;
-
+    public bool door;
     public Puzzle_Data()
     {
         puzzle = true;
+        door = false;
     }
 }
 
@@ -82,9 +83,10 @@ public class PuzzleLevelManager : LevelManager
                 data.puzzle = false;
             }
         }
-        if(door.isDoorOpen)
+        if(door.isDoorOpen || data.door)
         {
             data_Hall.aDoorOpen = true;
+            data.door = true;
         }
         try
         {

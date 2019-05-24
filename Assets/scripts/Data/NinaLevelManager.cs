@@ -7,9 +7,11 @@ using System;
 public class Nina_Data
 {
     public bool puzzle;
+    public bool door;
     public Nina_Data()
     {
         puzzle = true;
+        door = false;
     }
 }
 
@@ -19,6 +21,7 @@ public class NinaLevelManager : LevelManager
     public Hall_Data data_Hall;
     private ActiveSafe safe;
     public GameObject safeObj;
+    private KeyDoor_2 door;
     protected override void Awake()
     {
         // Cargar si existe datos de Pasillo1
@@ -50,6 +53,7 @@ public class NinaLevelManager : LevelManager
         {
             safe = GameObject.FindGameObjectWithTag("Misc").GetComponent<ActiveSafe>();
         }
+        door = GameObject.FindGameObjectWithTag("door").GetComponent<KeyDoor_2>();
     }
 
     public override void SaveLevelData()
@@ -61,7 +65,11 @@ public class NinaLevelManager : LevelManager
                 data.puzzle = false;
             }
         }
-        data_Hall.nDoorOpen = true;
+        if (door.isDoorOpen || data.door)
+        {
+            data_Hall.nDoorOpen = true;
+            data.door = true;
+        }
         try
         {
             DataManager.SaveToText<Nina_Data>(data, "NinaData", Application.persistentDataPath + "/Levels");
