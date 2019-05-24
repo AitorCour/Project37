@@ -175,6 +175,7 @@ public class PlayerBehaviour : MonoBehaviour
 		lader = false;
 		hud.hasLader = false;
 		hud.SetKey();
+		Data.LoseLader();
 	}
     //Perder Llaves
     //Sumar Pociones
