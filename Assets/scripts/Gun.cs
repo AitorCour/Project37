@@ -53,6 +53,7 @@ public class Gun : MonoBehaviour
         if(currentAmmo <= 0)
         {
             plBehaviour.NoShootSound();
+            return;
         }
         else if(currentAmmo > 0)
         {
