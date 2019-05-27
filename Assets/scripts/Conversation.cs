@@ -15,23 +15,32 @@ public class Conversation : MonoBehaviour
 
     public Text eText;
     private InputManager iM;
-
+    private float timeCounter;
+    public float messageTime;
     void Start()
     {
         //player = GameObject.FindGameObjectWithTag("Player");
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
+        //timeCounter = 0;
     }
-
+    void Update()
+    {
+        if(timeCounter >= messageTime)
+        {
+            
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player") //solo funciona con player
         {
+            ReadEnd();
             if (messageReaded)
             {
                 return;
             }
             else Read();
-
+            //messageTime = 4;
             isInsideTrigger = true; //cambia el bool
         }
     }
@@ -46,6 +55,7 @@ public class Conversation : MonoBehaviour
             }
             else 
             isInsideTrigger = false;
+
         }
     }
 
@@ -53,13 +63,15 @@ public class Conversation : MonoBehaviour
     {
         TextPanel.SetActive(true);
         eText.text = message;
-        //Debug.Log("reading");
+        Debug.Log("reading");
         messageReaded = true;
+        //messageTime = 4;
     }
 
     private void ReadEnd()
     {
         TextPanel.SetActive(false);
-        //Debug.Log("quit");
+        Debug.Log("quit");
+        //messageTime = 4;
     }
 }
