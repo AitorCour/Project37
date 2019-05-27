@@ -14,14 +14,14 @@ public class Lader : MonoBehaviour
 	public Text eText;
 	private bool MessageReaded = false;
 
-	private SoundPlayer sound;
+	private AudioSource sound;
     private InputManager iM;
     public bool getObj;
     // Use this for initialization
     void Start () 
 	{
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-		sound = GetComponentInChildren<SoundPlayer>();
+		sound = GetComponent<AudioSource>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
     }
 
@@ -66,6 +66,7 @@ public class Lader : MonoBehaviour
         Data.SetLader();
 		//sound.Play(1, 2);
         iM.canPause = false;
+        sound.Play();
     }
 	private void ReadEnd()
 	{

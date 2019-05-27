@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.02325446, g: 0.016415743, b: 0.015135017, a: 1}
+  m_IndirectSpecularColor: {r: 0.023254292, g: 0.01641606, b: 0.0151345385, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5890,13 +5890,20 @@ Prefab:
     - target: {fileID: 114721962686534430, guid: d4fbcca8ea0ad5449af13865a5293bff,
         type: 2}
       propertyPath: message
-      value: You got the red key
+      value: I get a red key
       objectReference: {fileID: 0}
     - target: {fileID: 4477157155262400, guid: d4fbcca8ea0ad5449af13865a5293bff, type: 2}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114596791089895732, guid: d4fbcca8ea0ad5449af13865a5293bff,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
+    m_RemovedComponents:
+    - {fileID: 82025626999128726, guid: d4fbcca8ea0ad5449af13865a5293bff, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: d4fbcca8ea0ad5449af13865a5293bff, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &248667635
@@ -14362,7 +14369,7 @@ Prefab:
     - target: {fileID: 114558545236071474, guid: 831a384683ba75d45bf486e7e9f2889a,
         type: 2}
       propertyPath: message
-      value: I need a key to open the door
+      value: It's locked. There is a red mark.
       objectReference: {fileID: 0}
     - target: {fileID: 114558545236071474, guid: 831a384683ba75d45bf486e7e9f2889a,
         type: 2}
@@ -14378,7 +14385,14 @@ Prefab:
       propertyPath: m_TagString
       value: door
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114533212234841990, guid: 831a384683ba75d45bf486e7e9f2889a,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
+    m_RemovedComponents:
+    - {fileID: 82476865862324338, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1166558533
@@ -17545,6 +17559,12 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Curation
       objectReference: {fileID: 0}
+    - target: {fileID: 114687622649543834, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
   m_IsPrefabAsset: 0
@@ -17745,7 +17765,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1985676024}
   - component: {fileID: 1985676026}
-  - component: {fileID: 1985676025}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -17766,101 +17785,6 @@ Transform:
   m_Father: {fileID: 1851112779}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1985676025
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1985676023}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &1985676026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17876,7 +17800,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 993366eb415c06041bb4a3fe4f91811a, type: 3}
   - {fileID: 8300000, guid: 7a1fe4d8d7f6b374a8e7a014f7b8477e, type: 3}
   - {fileID: 8300000, guid: 42c385494402818419a8e47e6fa54271, type: 3}
-  fxGroup: {fileID: 0}
+  fxGroup: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f, type: 2}
 --- !u!1 &1986847151
 GameObject:
   m_ObjectHideFlags: 0

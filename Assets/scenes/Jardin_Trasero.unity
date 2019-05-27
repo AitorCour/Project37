@@ -6745,10 +6745,6 @@ Prefab:
       propertyPath: eText
       value: 
       objectReference: {fileID: 1837095655}
-    - target: {fileID: 1107750041230164, guid: 08793ea6f828d7349933dd4733d10225, type: 2}
-      propertyPath: m_TagString
-      value: cure
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08793ea6f828d7349933dd4733d10225, type: 2}
   m_IsPrefabAsset: 0
@@ -7430,6 +7426,12 @@ Prefab:
       propertyPath: cameraGod
       value: 
       objectReference: {fileID: 1798768027}
+    - target: {fileID: 114687622649543834, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
   m_IsPrefabAsset: 0
@@ -7990,7 +7992,14 @@ Prefab:
       propertyPath: clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 5bdf9f01adacea94e9acdf351cb11f79, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 114533212234841990, guid: 831a384683ba75d45bf486e7e9f2889a,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
+    m_RemovedComponents:
+    - {fileID: 82476865862324338, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &2022543990 stripped

@@ -6667,6 +6667,17 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114627696173274792, guid: bbe22346edfd092439f746b684464454,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
+    - target: {fileID: 114386274386411872, guid: bbe22346edfd092439f746b684464454,
+        type: 2}
+      propertyPath: message
+      value: It's locked. There is a green mark.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbe22346edfd092439f746b684464454, type: 2}
   m_IsPrefabAsset: 0
@@ -7478,6 +7489,12 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114982109269003752, guid: d01a5ac884e72a74c8aab477ade7263e,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d01a5ac884e72a74c8aab477ade7263e, type: 2}
   m_IsPrefabAsset: 0
@@ -9658,7 +9675,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 179
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -18419,6 +18436,12 @@ Prefab:
       propertyPath: cameraGod
       value: 
       objectReference: {fileID: 1798768027}
+    - target: {fileID: 114687622649543834, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
   m_IsPrefabAsset: 0
@@ -18457,6 +18480,7 @@ MonoBehaviour:
   data:
     lader: 1
     enemy: 1
+    door: 0
   data_Hall:
     wDoorOpen: 0
     nDoorOpen: 0
@@ -20318,6 +20342,7 @@ GameObject:
   - component: {fileID: 1598377463}
   - component: {fileID: 1598377462}
   - component: {fileID: 1598377461}
+  - component: {fileID: 1598377464}
   m_Layer: 0
   m_Name: LaderObj
   m_TagString: Misc
@@ -20370,6 +20395,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1598377464
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1598377460}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 2b304540b7680d84eb5a859b882a5606, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1617899245
 GameObject:
   m_ObjectHideFlags: 0

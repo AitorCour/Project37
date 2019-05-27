@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114358981783351898}
   m_Layer: 0
   m_Name: Cure
-  m_TagString: Untagged
+  m_TagString: cure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,6 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips:
   - {fileID: 8300000, guid: 9fb73706b11ded3429ce2da6ff54b011, type: 3}
+  fxGroup: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f, type: 2}
 --- !u!114 &114358981783351898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -312,7 +313,8 @@ MonoBehaviour:
   TextPanel: {fileID: 0}
   message: You get a Bandage
   eText: {fileID: 0}
-  MessageReaded: 0
+  messageReaded: 0
+  getObj: 0
 --- !u!198 &198137836137767754
 ParticleSystem:
   m_ObjectHideFlags: 1

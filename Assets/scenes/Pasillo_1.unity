@@ -1324,9 +1324,9 @@ Transform:
   - {fileID: 1784995048}
   - {fileID: 1976620280}
   - {fileID: 1268097444}
-  - {fileID: 1055813450}
   - {fileID: 258489238}
   - {fileID: 400851467}
+  - {fileID: 1055813450}
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11433,7 +11433,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4898430588306304, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1252181598326740, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
       propertyPath: m_Name
@@ -11457,12 +11457,12 @@ Prefab:
     - target: {fileID: 114558545236071474, guid: 831a384683ba75d45bf486e7e9f2889a,
         type: 2}
       propertyPath: message
-      value: I need a Key
+      value: Door locked.There is a red mark.
       objectReference: {fileID: 0}
     - target: {fileID: 114558545236071474, guid: 831a384683ba75d45bf486e7e9f2889a,
         type: 2}
       propertyPath: message_2
-      value: Door Opened
+      value: Door Unlocked
       objectReference: {fileID: 0}
     - target: {fileID: 114558545236071474, guid: 831a384683ba75d45bf486e7e9f2889a,
         type: 2}
@@ -11477,7 +11477,14 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.3252831
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114533212234841990, guid: 831a384683ba75d45bf486e7e9f2889a,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
+    m_RemovedComponents:
+    - {fileID: 82476865862324338, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &258489238 stripped
@@ -12581,7 +12588,7 @@ Transform:
   - {fileID: 1239790443}
   - {fileID: 244517754}
   m_Father: {fileID: 123041977}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &404104492
 GameObject:
@@ -20099,6 +20106,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114687622649543834, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
   m_IsPrefabAsset: 0
@@ -20666,12 +20679,8 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 994784357}
-    - target: {fileID: 114284611685625230, guid: 867f2efa7aa42d1489432795b0e91422,
-        type: 2}
-      propertyPath: source
-      value: 
-      objectReference: {fileID: 1722819939}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 82326584302742922, guid: 867f2efa7aa42d1489432795b0e91422, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 867f2efa7aa42d1489432795b0e91422, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &859546088
@@ -22722,7 +22731,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4898430588306304, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1252181598326740, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
       propertyPath: m_Name
@@ -22746,12 +22755,12 @@ Prefab:
     - target: {fileID: 114558545236071474, guid: 831a384683ba75d45bf486e7e9f2889a,
         type: 2}
       propertyPath: message
-      value: I need a Key
+      value: Door locked. There is a red mark.
       objectReference: {fileID: 0}
     - target: {fileID: 114558545236071474, guid: 831a384683ba75d45bf486e7e9f2889a,
         type: 2}
       propertyPath: message_2
-      value: Door Opened
+      value: Door Unlocked.
       objectReference: {fileID: 0}
     - target: {fileID: 114558545236071474, guid: 831a384683ba75d45bf486e7e9f2889a,
         type: 2}
@@ -22781,7 +22790,14 @@ Prefab:
       propertyPath: clips.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 9d282d71512cba44dbbfcc7912035e28, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 114533212234841990, guid: 831a384683ba75d45bf486e7e9f2889a,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
+    m_RemovedComponents:
+    - {fileID: 82476865862324338, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 831a384683ba75d45bf486e7e9f2889a, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &1055813450 stripped
@@ -27861,11 +27877,6 @@ Transform:
   m_Father: {fileID: 1351126108}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1722819939 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 82326584302742922, guid: 867f2efa7aa42d1489432795b0e91422,
-    type: 2}
-  m_PrefabInternal: {fileID: 849907527}
 --- !u!1 &1729519313
 GameObject:
   m_ObjectHideFlags: 0

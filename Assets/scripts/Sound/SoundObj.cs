@@ -9,10 +9,6 @@ public class SoundObj : MonoBehaviour
     //public AudioMixerGroup output;
     //private AudioSource source;
     public AudioMixerGroup fxGroup;
-    void Start()
-    {
-        //source = GetComponent<AudioSource>();
-    }
     public void Play(GameObject go,int numClip/*, float vol*/)
     {
         /*GameObject obj = new GameObject();

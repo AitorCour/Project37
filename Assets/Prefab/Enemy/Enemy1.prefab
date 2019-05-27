@@ -2064,7 +2064,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4052efc25bb364840b18cf890017c1de, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2185,6 +2185,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 08dc52fd1b5844a4fbdec362efe31c88, type: 3}
   - {fileID: 8300000, guid: e4a44a322ee97294e8dc7cdeab477b30, type: 3}
   - {fileID: 8300000, guid: bebbcbe051054944eb20c11b8e7eb5ea, type: 3}
+  fxGroup: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f, type: 2}
 --- !u!114 &114363917119714402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2247,8 +2248,6 @@ MonoBehaviour:
   detected: 0
   attackDistance: 1.05
   attackTime: 3.25
-  startingHealth: 5
-  currentHealt: 0
   iniSpeed: 0.6
   finalSpeed: 1
   canReciveDamage: 0

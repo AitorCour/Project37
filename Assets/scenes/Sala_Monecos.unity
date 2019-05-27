@@ -9914,7 +9914,13 @@ Prefab:
       propertyPath: eText
       value: 
       objectReference: {fileID: 1399014776}
-    m_RemovedComponents: []
+    - target: {fileID: 82098832355216260, guid: 08793ea6f828d7349933dd4733d10225,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fb73706b11ded3429ce2da6ff54b011, type: 3}
+    m_RemovedComponents:
+    - {fileID: 82098832355216260, guid: 08793ea6f828d7349933dd4733d10225, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 08793ea6f828d7349933dd4733d10225, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &432418507 stripped
@@ -23238,7 +23244,8 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 82326584302742922, guid: 867f2efa7aa42d1489432795b0e91422, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 867f2efa7aa42d1489432795b0e91422, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1159156857 stripped
@@ -26978,6 +26985,12 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Curation
       objectReference: {fileID: 0}
+    - target: {fileID: 114687622649543834, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
   m_IsPrefabAsset: 0
@@ -29337,7 +29350,14 @@ Prefab:
       propertyPath: eText
       value: 
       objectReference: {fileID: 1399014776}
-    m_RemovedComponents: []
+    - target: {fileID: 114586582415684786, guid: dd4a3b3c38d41a9418cc725099de856b,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
+    m_RemovedComponents:
+    - {fileID: 82418333505381700, guid: dd4a3b3c38d41a9418cc725099de856b, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: dd4a3b3c38d41a9418cc725099de856b, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1654292954 stripped

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.02325446, g: 0.016415743, b: 0.015135017, a: 1}
+  m_IndirectSpecularColor: {r: 0.023254292, g: 0.01641606, b: 0.0151345385, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14280,7 +14280,6 @@ GameObject:
   - component: {fileID: 1205419965}
   - component: {fileID: 1205419964}
   - component: {fileID: 1205419963}
-  - component: {fileID: 1205419967}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -14367,22 +14366,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1205419961}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1205419967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1205419961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a03bfed110fcf54a93e7d21867bdca6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextPanel: {fileID: 1230560064}
-  message: It was strange, something in that voice...
-  eText: {fileID: 149355009}
-  messageTime: 5
-  startCou: 0
 --- !u!1 &1206449446
 GameObject:
   m_ObjectHideFlags: 0
@@ -14931,10 +14914,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextPanel: {fileID: 1230560064}
-  message: That call comes from the Garham castle, south of Tightrope woods.
+  message_1: That call comes from the Garham Castle, South of Tightrope Woods.
+  message_2: It was strange, something in that voice...
+  message_3: Going there and look will be good for me, I need to clear my mind.
+  message_4: Since I lost Emily, I spend all my nights in vigil,
+  message_5: and when I finally fall sleep, the nightmares pursue me.
   eText: {fileID: 149355009}
-  messageTime: 5
-  startCou: 0
+  timeCounter: 0
 --- !u!1 &1251957616
 GameObject:
   m_ObjectHideFlags: 0
@@ -17461,7 +17447,6 @@ GameObject:
   - component: {fileID: 1410737904}
   - component: {fileID: 1410737903}
   - component: {fileID: 1410737902}
-  - component: {fileID: 1410737906}
   m_Layer: 0
   m_Name: Cube (9)
   m_TagString: Untagged
@@ -17548,22 +17533,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1410737900}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1410737906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1410737900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a03bfed110fcf54a93e7d21867bdca6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextPanel: {fileID: 1230560064}
-  message: And when I finally fall asleep, the nightmares pursue me.
-  eText: {fileID: 149355009}
-  messageTime: 0
-  startCou: 0
 --- !u!1 &1414765060
 GameObject:
   m_ObjectHideFlags: 0
@@ -19534,7 +19503,6 @@ GameObject:
   - component: {fileID: 1595273720}
   - component: {fileID: 1595273719}
   - component: {fileID: 1595273718}
-  - component: {fileID: 1595273722}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: Untagged
@@ -19621,22 +19589,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1595273716}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1595273722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1595273716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a03bfed110fcf54a93e7d21867bdca6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextPanel: {fileID: 1230560064}
-  message: Going there, and take a look will be good for me, I need to clear my mind
-  eText: {fileID: 149355009}
-  messageTime: 5
-  startCou: 0
 --- !u!1 &1610335894
 GameObject:
   m_ObjectHideFlags: 0
@@ -20532,6 +20484,12 @@ Prefab:
       propertyPath: cameraGod
       value: 
       objectReference: {fileID: 1267115338}
+    - target: {fileID: 114687622649543834, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: fxGroup
+      value: 
+      objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
   m_IsPrefabAsset: 0
@@ -22385,7 +22343,6 @@ GameObject:
   - component: {fileID: 1827282965}
   - component: {fileID: 1827282964}
   - component: {fileID: 1827282963}
-  - component: {fileID: 1827282967}
   m_Layer: 0
   m_Name: Cube (7)
   m_TagString: Untagged
@@ -22472,22 +22429,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1827282961}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1827282967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1827282961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a03bfed110fcf54a93e7d21867bdca6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextPanel: {fileID: 1230560064}
-  message: 'Since I lost Emily I spend all my nights in vigil. '
-  eText: {fileID: 149355009}
-  messageTime: 0
-  startCou: 0
 --- !u!1 &1828673458
 GameObject:
   m_ObjectHideFlags: 0
