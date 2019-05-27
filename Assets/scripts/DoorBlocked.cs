@@ -37,7 +37,7 @@ public class DoorBlocked : MonoBehaviour
             else if (isDoorOpen) // utilizar esto para si vuelve a la habitación o lo que sea, que la puerta ya esté abierta
             {
                 //SceneManager.LoadScene(scene);
-                soundObj.Play(2);
+                soundObj.Play(this.gameObject, 2);
                 //StartCoroutine(Fade());
                 changeSc.FadeChangeScene(scene);
                 changeSc.pX = xPos;
@@ -73,7 +73,7 @@ public class DoorBlocked : MonoBehaviour
         MessageReaded = true;
         Time.timeScale = 0;
         eText.text = message;
-        soundObj.Play(0);
+        soundObj.Play(this.gameObject, 0);
     }
     private void ReadEnd()
     {

@@ -62,7 +62,7 @@ public class Key2 : MonoBehaviour
 		MessageReaded = true;
 		Time.timeScale = 0;
 		plBehaviour.GetKey2();
-		sound.Play(0);
+		sound.Play(this.gameObject, 0);
         iM.canPause = false;
     }
 	private void ReadEnd()

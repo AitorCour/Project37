@@ -59,9 +59,9 @@ public class InputManager : MonoBehaviour
     }
 	void Update ()
     {
-        if(Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
+        //if(Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
 		
-        else if(Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
+        if(Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
 
         //Debug.Log(canShoot);
 
@@ -145,7 +145,7 @@ public class InputManager : MonoBehaviour
 			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu && canPause)
 			{
 				gameManager.OpenInventory();
-                sound.Play(4);
+                sound.Play(this.gameObject, 4);
 				//Debug.Log ("Z pressed");
 				//mouseCursor.ShowCursor();
 			}

@@ -66,7 +66,7 @@ public class Munition : MonoBehaviour
 		messageReaded = true;
 		Time.timeScale = 0;
 		weapon.GetAmmo(munition);
-		sound.Play(0);
+		sound.Play(this.gameObject, 0);
         iM.canPause = false;
     }
 	private void ReadEnd()

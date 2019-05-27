@@ -41,21 +41,21 @@ public class SafeBox : MonoBehaviour
 		if(cylinder.eulerAngles.z >= 170 && cylinder.eulerAngles.z <= 190 && Input.GetButtonDown("Action"))
 		{
 			Debug.Log("Click 1");
-            sound.Play(0);
+            sound.Play(this.gameObject, 0);
             firstActive = true;
 		}
 		//Segundo
 		else if(cylinder.eulerAngles.z >= 30 && cylinder.eulerAngles.z <= 50 && Input.GetButtonDown("Action") && firstActive == true)
 		{
 			Debug.Log("Click 2");
-            sound.Play(0);
+            sound.Play(this.gameObject, 0);
             secondActive = true;
 		}
 		//Tercero
 		else if(cylinder.eulerAngles.z >= 245 && cylinder.eulerAngles.z <= 265 && Input.GetButtonDown("Action") && secondActive == true && thirdActive == false)
 		{
 			Debug.Log("Click 3");
-            sound.Play(0);
+            sound.Play(this.gameObject, 0);
             thirdActive = true;
 		}
 		//Quarto
@@ -64,7 +64,7 @@ public class SafeBox : MonoBehaviour
 			Debug.Log("Click 4");
 			fourthActive = true;
 			Debug.Log("OPEN");
-            sound.Play(2);
+            sound.Play(this.gameObject, 2);
             key2.SetActive(true);
             acSafe.PuzzleEnd();
         }
@@ -72,7 +72,7 @@ public class SafeBox : MonoBehaviour
 		else if(Input.GetButtonDown("Action"))
 		{
 			Debug.Log("NO");
-            sound.Play(1);
+            sound.Play(this.gameObject, 1);
 			firstActive = false;
 			secondActive = false;
 			thirdActive = false;

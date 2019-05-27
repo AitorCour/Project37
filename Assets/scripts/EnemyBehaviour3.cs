@@ -39,8 +39,8 @@ public class EnemyBehaviour3 : MonoBehaviour
     //public int EnemyDamage;
 	private Animator animator;
 
-	public int startingHealth;
-	public int currentHealt;
+    private int startingHealth;
+	private int currentHealt;
 
 	/*public float radius;
 	public LayerMask targetMask;*/
@@ -65,6 +65,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 
 		GoNearOther();
         SetIdle();
+        startingHealth = 5;
 		currentHealt = startingHealth;
         colliderEnemy = GetComponent<CapsuleCollider>();
 		
@@ -315,7 +316,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         timeCounter = 0;
         //anim.SetBool("isMoving", true);
         agent.isStopped = true;
-        soundObj.Play(6);
+        soundObj.Play(this.gameObject, 6);
         //particulas.Stop();
 		//maxRadius = normalRadius;
         state = State.Idle;
@@ -326,7 +327,7 @@ public class EnemyBehaviour3 : MonoBehaviour
     void SetPatrol()
     {
         //anim.SetBool("isMoving", true);
-        soundObj.Play(5);
+        soundObj.Play(this.gameObject, 5);
         agent.isStopped = false;
         agent.stoppingDistance = 0;
         state = State.Patrol;
@@ -340,7 +341,7 @@ public class EnemyBehaviour3 : MonoBehaviour
     {
         //anim.SetBool("isMoving", false);
         //anim.SetTrigger("IsChasing");
-		soundObj.Play(5);
+		soundObj.Play(this.gameObject, 5);
         agent.isStopped = false;
         agent.stoppingDistance = 0.9f;//La stopping distance determina la distancia 
         //a la que se para el enemigo del player. Si es mayor que el attack distance, se quedará parado
@@ -359,7 +360,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		state = State.Attack;
         animator.SetTrigger("attack");
 		canReciveDamage = true;
-        soundObj.Play(1);
+        soundObj.Play(this.gameObject, 1);
         timeCounter = 0;
     }
 	void SetDead()
@@ -371,7 +372,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         animator.SetTrigger("dead");
 		colDamage.CanDoDamage = false;
         colliderEnemy.enabled = false;
-        soundObj.Play(3);
+        soundObj.Play(this.gameObject, 3);
         //this.enabled = false;
         enemyIsDead = true;
 	}
@@ -380,7 +381,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		agent.isStopped = true;
 		state = State.Sleep;
         animator.SetTrigger("sleep");
-        soundObj.Play(2);
+        soundObj.Play(this.gameObject, 2);
 		//animator.SetBool("Attacking", false);
 		//animator.SetBool("Walking", false);
 	}
@@ -389,7 +390,7 @@ public class EnemyBehaviour3 : MonoBehaviour
         agent.isStopped = true;
         state = State.Hit;
         agent.SetDestination(player.position);
-        soundObj.Play(0);
+        soundObj.Play(this.gameObject, 0);
         animator.SetTrigger("hit");
     }
 	#endregion
@@ -452,6 +453,6 @@ public class EnemyBehaviour3 : MonoBehaviour
     }
     public void PlayDeadFall()
     {
-        soundObj.Play(4);
+        soundObj.Play(this.gameObject, 4);
     }
 }

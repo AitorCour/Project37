@@ -64,7 +64,7 @@ public class Potion : MonoBehaviour
 		messageReaded = true;
 		Time.timeScale = 0;
 		plBehaviour.GetPotions(potion);
-		sound.Play(0);
+		sound.Play(this.gameObject, 0);
         iM.canPause = false;
     }
 	public void ReadEnd()

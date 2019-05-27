@@ -58,7 +58,7 @@ public class Notes : MonoBehaviour
 		Debug.Log("reading");
 		MessageReaded = true;
 		Time.timeScale = 0;
-        sound.Play(0);
+        sound.Play(this.gameObject, 0);
         hud.hasFragNote_1 = true;
         hud.SetKey();
         Data.SetNoteFrag_1();

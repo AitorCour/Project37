@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class SoundObj : MonoBehaviour
 {
     public AudioClip[] clips;
     //public AudioMixerGroup output;
-    private AudioSource source;
+    //private AudioSource source;
+    public AudioMixerGroup fxGroup;
     void Start()
     {
-        source = GetComponent<AudioSource>();
+        //source = GetComponent<AudioSource>();
     }
-    public void Play(int numClip/*, float vol*/)
+    public void Play(GameObject go,int numClip/*, float vol*/)
     {
-        GameObject obj = new GameObject();
+        /*GameObject obj = new GameObject();
         obj.transform.position = transform.position;
         //obj.name = "AUDIO_" + clips[numClip].name;
 
@@ -24,6 +26,21 @@ public class SoundObj : MonoBehaviour
         source.spatialBlend = 1; // 1 --> 3D  0--> 2D
         source.Play();
         //Debug.Log(obj);
-        Destroy(obj.gameObject, clips[numClip].length);
+        Destroy(obj.gameObject, clips[numClip].length);*/
+
+        AudioSource audioSource = go.AddComponent<AudioSource>();
+
+        audioSource.outputAudioMixerGroup = fxGroup;
+
+        audioSource.clip = clips[numClip];
+        audioSource.volume = 1;
+        audioSource.pitch = 1;
+        //audioSource.clip = clip;
+        audioSource.loop = false;
+        audioSource.reverbZoneMix = 1;
+
+        audioSource.Play();
+
+        Destroy(audioSource, clips[numClip].length);
     }
 }

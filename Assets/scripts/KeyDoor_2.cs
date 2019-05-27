@@ -44,7 +44,7 @@ public class KeyDoor_2 : MonoBehaviour
             else if (isDoorOpen && !MessageReaded) // utilizar esto para si vuelve a la habitación o lo que sea, que la puerta ya esté abierta
             {
                 //SceneManager.LoadScene(scene);
-                soundObj.Play(2);
+                soundObj.Play(this.gameObject, 2);
                 //StartCoroutine(Fade());
                 changeSc.FadeChangeScene(scene);
                 changeSc.pX = xPos;
@@ -83,12 +83,12 @@ public class KeyDoor_2 : MonoBehaviour
         if (!isDoorOpen)
         {
             eText.text = message;
-            soundObj.Play(0);
+            soundObj.Play(this.gameObject, 0);
         }
         else
         {
             eText.text = message_2;
-            soundObj.Play(1);
+            soundObj.Play(this.gameObject, 1);
         }
     }
     private void ReadEnd()
