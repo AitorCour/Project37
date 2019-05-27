@@ -14,11 +14,12 @@ public class ActiveSafe : MonoBehaviour
     public Text eText;
     public GameObject textPanel = null;
     public string message = "Hello World";
+    private ParticleSystem pS;
     // Use this for initialization
     void Start ()
     {
         tank = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControls2>();
-
+        pS = GetComponentInChildren<ParticleSystem>();
     }
 	
 	// Update is called once per frame
@@ -27,10 +28,12 @@ public class ActiveSafe : MonoBehaviour
 		if(Input.GetButton("Action") && isInsideTrigger)
         {
             ActiveBox();
+            pS.Stop();
         }
         else if(Input.GetButton("Fire") && isInsideTrigger)
         {
             DesactiveBox();
+            pS.Play();
         }
 	}
     void OnTriggerEnter(Collider other)
@@ -74,5 +77,6 @@ public class ActiveSafe : MonoBehaviour
         textPanel.SetActive(false);
         puzzleActive = false;
         this.enabled = false;
+        pS.Stop();
     }
 }

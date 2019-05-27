@@ -8,11 +8,13 @@ public class Maniqui_Data
 {
     public bool enemyDead;
     public bool ammo;
+    public bool potion;
 
     public Maniqui_Data()
     {
         enemyDead = false;
         ammo = true;
+        potion = true;
     }
 }
 
@@ -23,6 +25,8 @@ public class ManiquiLevelManager : LevelManager
     public GameObject enemyObj;
     public GameObject ammoObj;
     private Munition munition;
+    public GameObject potionObj;
+    private Potion pot;
     protected override void Awake()
     {
         // Cargar si existe datos de Pasillo1
@@ -47,6 +51,10 @@ public class ManiquiLevelManager : LevelManager
         {
             ammoObj.SetActive(false);
         }
+        if (data.potion == false)
+        {
+            potionObj.SetActive(false);
+        }
     }
     public void NewGame()
     {
@@ -61,6 +69,10 @@ public class ManiquiLevelManager : LevelManager
         if (data.ammo == true)
         {
             munition = GameObject.FindGameObjectWithTag("ammo").GetComponent<Munition>();
+        }
+        if (data.potion == true)
+        {
+            pot = GameObject.FindGameObjectWithTag("cure").GetComponent<Potion>();
         }
     }
 
@@ -79,6 +91,13 @@ public class ManiquiLevelManager : LevelManager
             if (munition.getObj == true)
             {
                 data.ammo = false;
+            }
+        }
+        if (data.potion == true)
+        {
+            if (pot.getObj == true)
+            {
+                data.potion = false;
             }
         }
         // Guardarlos

@@ -14,12 +14,15 @@ public class SafeBox : MonoBehaviour
 	public bool fourthActive = false;
     private SoundObj sound;
     private ActiveSafe acSafe;
+    //private ParticleSystem pS;
 	// Use this for initialization
 	void Start () 
 	{
         sound = GetComponentInChildren<SoundObj>();
         key2.SetActive(false);
         acSafe = GetComponentInChildren<ActiveSafe>();
+        //pS = GetComponentInChildren<ParticleSystem>();
+        //pS.Stop();
 	}
 	
 	// Update is called once per frame

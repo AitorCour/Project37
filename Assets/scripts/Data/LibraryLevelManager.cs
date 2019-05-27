@@ -9,11 +9,14 @@ public class Library_Data
     public bool nota_1;
     public bool nota_2;
     public bool rayo;
+    public bool ammo;
+
     public Library_Data()
     {
         nota_1 = true;
         nota_2 = true;
         rayo = false;
+        ammo = true;
     }
 }
 
@@ -25,6 +28,8 @@ public class LibraryLevelManager : LevelManager
     public GameObject noteObj_2;
     private Note_3 note_2;
     private Trigger_Rayo rayo;
+    private Munition munition;
+    public GameObject ammoObj;
 
     protected override void Awake()
     {
@@ -50,6 +55,10 @@ public class LibraryLevelManager : LevelManager
         {
             noteObj_2.SetActive(false);
         }
+        if (data.ammo == false)
+        {
+            ammoObj.SetActive(false);
+        }
     }
     public void NewGame()
     {
@@ -71,6 +80,10 @@ public class LibraryLevelManager : LevelManager
             rayo.activated = true;
         }
         else rayo.activated = false;
+        if (data.ammo == true)
+        {
+            munition = GameObject.FindGameObjectWithTag("ammo").GetComponent<Munition>();
+        }
     }
 
     public override void SaveLevelData()
@@ -94,6 +107,13 @@ public class LibraryLevelManager : LevelManager
             if (rayo.activated)
             {
                 data.rayo = true;
+            }
+        }
+        if (data.ammo == true)
+        {
+            if (munition.getObj == true)
+            {
+                data.ammo = false;
             }
         }
         try
