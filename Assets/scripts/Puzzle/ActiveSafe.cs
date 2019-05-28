@@ -20,6 +20,7 @@ public class ActiveSafe : MonoBehaviour
     {
         tank = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControls2>();
         pS = GetComponentInChildren<ParticleSystem>();
+        puzzleActive = true;
     }
 	
 	// Update is called once per frame
