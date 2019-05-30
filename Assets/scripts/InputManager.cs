@@ -284,5 +284,11 @@ public class InputManager : MonoBehaviour
     public void DeleteData()
     {
         Data.DeleteFolder();
+        Data.Delete("Player");
+        Data.NewGame();
+    }
+    public void LoadData()
+    {
+        Data.Load("Player");
     }
 }

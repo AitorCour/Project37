@@ -18,8 +18,6 @@ public class BosqueLevelManager : LevelManager
 {
     public Bosque_Data data;
     public Segura_Data seguraData;
-    public Playerdata playerData;
-    public GameData gameData;
     public GameObject continueObj;
     public bool dataExist;
 
@@ -40,7 +38,6 @@ public class BosqueLevelManager : LevelManager
         try
         {
             seguraData = (Segura_Data)DataManager.LoadFromText<Segura_Data>("SeguraData", Application.persistentDataPath + "/Levels");
-            playerData = (Playerdata)DataManager.LoadFromText<Playerdata>("Player", Application.persistentDataPath + "/Levels");
             dataExist = true;
         }
         catch (Exception e) //guarda el motivo de fallo en exception
@@ -48,15 +45,6 @@ public class BosqueLevelManager : LevelManager
             Debug.Log("[GDM] Load error: " + e);
             dataExist = false;
             Debug.Log("Only new Game");
-        }
-        try
-        {
-            playerData = (Playerdata)DataManager.LoadFromText<Playerdata>("Player", Application.persistentDataPath + "/Levels");
-            Debug.Log("[GDM] Load Player succeed!");
-        }
-        catch (Exception e) //guarda el motivo de fallo en exception
-        {
-            Debug.Log("[GDM] Load error: " + e);
         }
         // fileName = "Pasillo1Data"
         // Si existen, inicializar cambios dependiendo de los datos

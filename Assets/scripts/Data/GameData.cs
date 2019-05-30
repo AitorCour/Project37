@@ -48,6 +48,8 @@ public class Playerdata
 public class GameData //Datos permanentes entre partida y partida
 {
     public Playerdata pData;
+
+
     //public Scene1Data scene1;
    
     public GameData()
@@ -65,7 +67,7 @@ public static class Data
     public static void Save(string fileName)
     {
         string path = Application.persistentDataPath + "/Data";
-
+        
         try//nueva funcion, lo usaremos para comprobar si ha fallado
         {
             //DataManager.SaveToXML<GameData>(data, fileName, path);
@@ -147,6 +149,7 @@ public static class Data
     public static void SetLife(int i)
     {
         gameData.pData.plLife = i;
+        Debug.Log(Application.persistentDataPath);
     }
     public static void SetAmmo(int i)
     {
