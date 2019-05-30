@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using UnityEngine.UI;
 [System.Serializable]
 public class Hall_Data
 {
@@ -23,6 +23,13 @@ public class HallLevelManager : LevelManager
     private DoorBlocked door;
     private DoorBlocked door2;
     private DoorBlocked door3;
+    private TankControls2 tank;
+    private InputManager inM;
+    private bool firstTime;
+    public GameObject barrasCine;//Barras de cinematica
+    public GameObject TextPanel = null;
+    public string message = "Hello World";
+    public Text eText;
     protected override void Awake()
     {
         // Cargar si existe datos de Pasillo1
@@ -31,11 +38,13 @@ public class HallLevelManager : LevelManager
         {
             data = (Hall_Data)DataManager.LoadFromText<Hall_Data>("HallData", Application.persistentDataPath + "/Levels");
             Debug.Log("[GDM] Load succeed!");
+            firstTime = false;
         }
         catch (Exception e) //guarda el motivo de fallo en exception
         {
             Debug.Log("[GDM] Load error: " + e);
             NewGame();
+            firstTime = true;
         }
         // fileName = "Pasillo1Data"
         // Si existen, inicializar cambios dependiendo de los datos
@@ -54,6 +63,8 @@ public class HallLevelManager : LevelManager
         door = GameObject.FindGameObjectWithTag("TextReader").GetComponent<DoorBlocked>();
         door2 = GameObject.FindGameObjectWithTag("cure").GetComponent<DoorBlocked>();
         door3 = GameObject.FindGameObjectWithTag("ammo").GetComponent<DoorBlocked>();
+        tank = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControls2>();
+        inM = GetComponent<InputManager>();
         if (data.wDoorOpen)
         {
             door.isDoorOpen = true;
@@ -66,8 +77,24 @@ public class HallLevelManager : LevelManager
         {
             door3.isDoorOpen = true;
         }
+        if(firstTime)
+        {
+            eText.text = message;
+            barrasCine.SetActive(true);
+            TextPanel.SetActive(true);
+            tank.canWalk = false;
+            inM.canPause = false;
+            StartCoroutine(WaitForReload());
+        }
     }
-
+    private IEnumerator WaitForReload()
+    {
+        yield return new WaitForSeconds(5);
+        barrasCine.SetActive(false);
+        TextPanel.SetActive(false);
+        tank.canWalk = true;
+        inM.canPause = true;
+    }
     public override void SaveLevelData()
     {
         if (door.isDoorOpen == true)

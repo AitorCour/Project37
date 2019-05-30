@@ -101,6 +101,7 @@ public class Gun : MonoBehaviour
         if(Munition <= 0 ) return;
 		if(currentAmmo == maxAmmo) return;
         isReloading = true;
+        plBehaviour.ReloadSound();
         // animacion.SetTrigger("recharge");
         //reload.SetTrigger ("reload");
         StartCoroutine(WaitForReload());

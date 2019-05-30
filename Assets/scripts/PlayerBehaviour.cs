@@ -143,6 +143,10 @@ public class PlayerBehaviour : MonoBehaviour
 	{
         sound.Play(3);
 	}
+	public void ReloadSound()
+	{
+		sound.Play(4);
+	}
 	//Sumar Llaves
 	public void GetKey1()
 	{
