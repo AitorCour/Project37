@@ -7904,6 +7904,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     partida: 0
+  seguraData:
+    potion: 1
+    ammo: 1
   continueObj: {fileID: 1229483371}
   dataExist: 0
 --- !u!1 &633078434
@@ -14668,7 +14671,7 @@ MonoBehaviour:
           m_StringArgument: ntro_Transition
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1424602018}
+      - m_Target: {fileID: 1978151215}
         m_MethodName: Play
         m_Mode: 3
         m_Arguments:
@@ -14707,7 +14710,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 12
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -17715,12 +17718,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1419566679}
   m_Mesh: {fileID: 4300002, guid: 8a5c4ff199d423f4b972685eb0322884, type: 3}
---- !u!114 &1424602018 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114687622649543834, guid: 4a995961023b3f94dbefaf5267e2e8ff,
-    type: 2}
-  m_PrefabInternal: {fileID: 1674133135}
-  m_Script: {fileID: 11500000, guid: b84babb96bba28a409a846a97b906f5c, type: 3}
 --- !u!1 &1430427667
 GameObject:
   m_ObjectHideFlags: 0
@@ -20490,6 +20487,21 @@ Prefab:
       value: 
       objectReference: {fileID: 243278475060210040, guid: 91888a1698bcee04dae924d61ff5a27f,
         type: 2}
+    - target: {fileID: 114586143751710356, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1978151215}
+    - target: {fileID: 114808613356439574, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1978151215}
+    - target: {fileID: 114761433273082086, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1978151215}
     m_RemovedComponents:
     - {fileID: 114983924472378098, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 4a995961023b3f94dbefaf5267e2e8ff, type: 2}
@@ -24461,6 +24473,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1976098700}
   m_Mesh: {fileID: 4300026, guid: 8a5c4ff199d423f4b972685eb0322884, type: 3}
+--- !u!114 &1978151215 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114752769042431436, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1674133135}
+  m_Script: {fileID: 11500000, guid: 40e7052836c8e6c46a87a84d1a710164, type: 3}
 --- !u!1 &1982876500
 GameObject:
   m_ObjectHideFlags: 0

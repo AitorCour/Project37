@@ -61,7 +61,6 @@ public class GameData //Datos permanentes entre partida y partida
 public static class Data
 {
     public static GameData gameData;
-
     // Load/save persistent data
     public static void Save(string fileName)
     {
