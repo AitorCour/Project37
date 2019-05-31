@@ -17,7 +17,7 @@ public class Bosque_Data
 public class BosqueLevelManager : LevelManager
 {
     public Bosque_Data data;
-    public Segura_Data seguraData;
+    //public Segura_Data seguraData;
     public GameObject continueObj;
     public bool dataExist;
 
@@ -37,8 +37,12 @@ public class BosqueLevelManager : LevelManager
         }
         try
         {
-            seguraData = (Segura_Data)DataManager.LoadFromText<Segura_Data>("SeguraData", Application.persistentDataPath + "/Levels");
-            dataExist = true;
+            //seguraData = (Segura_Data)DataManager.LoadFromText<Segura_Data>("SeguraData", Application.persistentDataPath + "/Levels");
+            if(Data.DataExists("Player"))
+            {
+                dataExist = true;
+            }
+            //dataExist = true;
         }
         catch (Exception e) //guarda el motivo de fallo en exception
         {
