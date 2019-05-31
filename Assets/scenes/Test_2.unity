@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.02325446, g: 0.016415743, b: 0.015135017, a: 1}
+  m_IndirectSpecularColor: {r: 0.023254292, g: 0.01641606, b: 0.0151345385, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13708,9 +13708,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 95da341042cb94d4baa859d81a633289, type: 3}
   - {fileID: 8300000, guid: 68382a7c8712bfe4e89c567a91c7cd2f, type: 3}
   clipDirts:
-  - {fileID: 8300000, guid: 3f5aa374418de47409cfd88a46f84e10, type: 3}
-  - {fileID: 8300000, guid: b2889f7a835fa7044b93f165db3ac7b9, type: 3}
-  - {fileID: 8300000, guid: ac79ac9cd3ec5db488c79877c2c603f2, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   clipHall:
   - {fileID: 8300000, guid: 0f16d0059372df547a7071d135bf1554, type: 3}
   - {fileID: 8300000, guid: 7e1d34a1409bb394facab4b04c35c356, type: 3}
@@ -14448,6 +14448,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 114766905371870870, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 84447917}
     - target: {fileID: 114656478826416156, guid: 4a995961023b3f94dbefaf5267e2e8ff,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
@@ -14458,21 +14463,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
       objectReference: {fileID: 1976049929}
-    - target: {fileID: 114560334213951078, guid: 4a995961023b3f94dbefaf5267e2e8ff,
-        type: 2}
-      propertyPath: cameraGod
-      value: 
-      objectReference: {fileID: 1798768027}
-    - target: {fileID: 114160818645649768, guid: 4a995961023b3f94dbefaf5267e2e8ff,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
-      value: 
-      objectReference: {fileID: 176691392}
-    - target: {fileID: 114766905371870870, guid: 4a995961023b3f94dbefaf5267e2e8ff,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 84447917}
     - target: {fileID: 114648321089314156, guid: 4a995961023b3f94dbefaf5267e2e8ff,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -14483,17 +14473,27 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 84447917}
-    - target: {fileID: 114193591886568926, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+    - target: {fileID: 114626950332029788, guid: 4a995961023b3f94dbefaf5267e2e8ff,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 1976049929}
+      objectReference: {fileID: 176691392}
+    - target: {fileID: 114560334213951078, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: cameraGod
+      value: 
+      objectReference: {fileID: 1798768027}
     - target: {fileID: 114198740417926194, guid: 4a995961023b3f94dbefaf5267e2e8ff,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 176691392}
-    - target: {fileID: 114626950332029788, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+    - target: {fileID: 114193591886568926, guid: 4a995961023b3f94dbefaf5267e2e8ff,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1976049929}
+    - target: {fileID: 114160818645649768, guid: 4a995961023b3f94dbefaf5267e2e8ff,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 

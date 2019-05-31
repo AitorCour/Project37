@@ -8,12 +8,16 @@ public class Pasillo1_Data
 {
     public bool enemyDead;
     public bool lader;
+    public bool laderPoint;
     public bool rayo;
+    public bool note;
     public Pasillo1_Data()
     {
         enemyDead = false;
         lader = false;
+        laderPoint = true;
         rayo = false;
+        note = true;
     }
 }
 
@@ -24,7 +28,10 @@ public class PasilloLevelManager : LevelManager
     public GameObject enemyObj;
     private LaderPos lader;
     public GameObject laderObj;
+    public GameObject laderPoint;
     private Trigger_Rayo rayo;
+    public GameObject noteObj;
+    private Note_4 note_4;
     //public GameObject rayoObj;
 
     protected override void Awake()
@@ -51,6 +58,19 @@ public class PasilloLevelManager : LevelManager
         {
             laderObj.SetActive(true);
         }
+        /*if(data.note)
+        {
+            noteObj.transform.position = new Vector3(-14f, -0.2f, 14.5f);
+        }
+        else if(!data.note)
+        {
+            noteObj.transform.position = new Vector3(-14f, -2.0f, 14.5f);
+        }*/
+        /*if (data.laderPoint)
+        {
+            laderPoint.transform.position = new Vector3(-14.5f, 0f, 14.5f);
+        }
+        else laderPoint.transform.position = new Vector3(-14.5f, -5f, 14.5f);*/
     }
     public void NewGame()
     {
@@ -58,7 +78,8 @@ public class PasilloLevelManager : LevelManager
     }
     void Start()
     {
-        if(!data.enemyDead)
+        note_4 = GameObject.FindGameObjectWithTag("note").GetComponent<Note_4>();
+        if (!data.enemyDead)
         {
             enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
         }
@@ -73,8 +94,28 @@ public class PasilloLevelManager : LevelManager
             rayo.activated = true;
         }
         else rayo.activated = false;
+        if (Data.IsKeyUnlock(0) == true && data.note == true)
+        {
+            laderPoint.transform.position = new Vector3(-14.5f, -5f, 14.5f);
+            noteObj.transform.position = new Vector3(-14f, -0.2f, 14.5f);
+            
+            Debug.Log("NoteActive");
+        }
+        else if (Data.IsKeyUnlock(0) == false)
+        {
+            laderPoint.transform.position = new Vector3(-14.5f, 0f, 14.5f);
+            noteObj.transform.position = new Vector3(-14f, -2.0f, 14.5f);
+            
+            Debug.Log("NoteNotActive");
+        }
+        else if (Data.IsKeyUnlock(0) == true && data.note == false)
+        {
+            noteObj.transform.position = new Vector3(-14f, -2.0f, 14.5f);
+            laderPoint.transform.position = new Vector3(-14.5f, -5f, 14.5f);
+            //all deactivated
+        }
     }
-
+    
     public override void SaveLevelData()
     {
         // Actualizar datos
@@ -86,21 +127,27 @@ public class PasilloLevelManager : LevelManager
             }
         }
 
-        if(!data.lader)
+        if(!data.lader && !lader.used)
         {
             if(lader.laderActive)
             {
                 data.lader = true;
+                Debug.Log("keep lader");
             }
         }
         if(!data.rayo)
-        {
-            
+        { 
             if(rayo.activated)
             {
                 data.rayo = true;
             }
-            
+        }
+        if(data.note)
+        {
+            if (note_4.getObj == true)
+            {
+                data.note = false;
+            }
         }
         // Guardarlos
         try

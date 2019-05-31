@@ -60,7 +60,7 @@ public class HallLevelManager : LevelManager
     void Start()
     {
         
-        door = GameObject.FindGameObjectWithTag("TextReader").GetComponent<DoorBlocked>();
+        door = GameObject.FindGameObjectWithTag("door").GetComponent<DoorBlocked>();
         door2 = GameObject.FindGameObjectWithTag("cure").GetComponent<DoorBlocked>();
         door3 = GameObject.FindGameObjectWithTag("ammo").GetComponent<DoorBlocked>();
         tank = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControls2>();
@@ -97,7 +97,7 @@ public class HallLevelManager : LevelManager
     }
     public override void SaveLevelData()
     {
-        if (door.isDoorOpen == true)
+        if (/*door.isDoorOpen == true*/ GameObject.Find("PuertaBlocked_W").GetComponent<DoorBlocked>().isDoorOpen)
         {
             data.wDoorOpen = true;
         }

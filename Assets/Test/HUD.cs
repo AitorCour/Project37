@@ -18,12 +18,14 @@ public class HUD : MonoBehaviour
     public GameObject note_1;
     public GameObject note_2;
     public GameObject note_3;
+    public GameObject note_4;
     public bool hasKey1;
     public bool hasKey2;
     public bool hasLader;
     public bool hasFragNote_1;
     public bool hasFragNote_2;
     public bool hasNote_2;
+    public bool hasNote_4;
 
     //
     public GameObject Busto;
@@ -40,18 +42,24 @@ public class HUD : MonoBehaviour
 		if(Data.GetNoteFrag_1() == true)
         {
             hasFragNote_1 = true;
-            SetKey();
+            //SetKey();
         }
         if(Data.GetNoteFrag_2() == true)
         {
             hasFragNote_2 = true;
-            SetKey();
+            //SetKey();
         }
         if(Data.GetNote_2() == true)
         {
             hasNote_2 = true;
-            SetKey();
+            //SetKey();
         }
+        if (Data.GetNote_4() == true)
+        {
+            hasNote_4 = true;
+            //SetKey();
+        }
+        SetKey();
     }
     public void SetAmmo(int cA, int mun)
     {
@@ -93,7 +101,11 @@ public class HUD : MonoBehaviour
         {
             note_2.SetActive(true);
         }
-	}
+        if (hasNote_4)
+        {
+            note_4.SetActive(true);
+        }
+    }
 	public void SetBandages(int newBand)
 	{
 		bandages.text = "x " + newBand.ToString();

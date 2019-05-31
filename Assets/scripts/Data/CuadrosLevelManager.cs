@@ -48,7 +48,7 @@ public class CuadrosLevelManager : LevelManager
     {
         if(data.nota == true)
         {
-            note = GameObject.FindGameObjectWithTag("TextReader").GetComponent<Notes>();
+            note = GameObject.FindGameObjectWithTag("door").GetComponent<Notes>();
         }
     }
 

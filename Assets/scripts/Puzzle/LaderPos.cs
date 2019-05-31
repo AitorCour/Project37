@@ -17,15 +17,17 @@ public class LaderPos : MonoBehaviour
 	private bool MessageReaded = false;
     public bool laderActive;
     private bool isInsideTrigger;
-
+    public bool used;
     public float xPos;
     public float zPos;
+    public Pasillo1_Data dataPas;
     // Use this for initialization
     void Start ()
     {
         plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
         changeSc = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
+        //used = false;
     }
 
     void Update ()
@@ -49,6 +51,7 @@ public class LaderPos : MonoBehaviour
         if(laderActive && isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
         {
             ChangeScene();
+            used = true;
         }
     }
     void OnTriggerEnter(Collider other)
