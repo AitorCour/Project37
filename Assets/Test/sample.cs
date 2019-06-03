@@ -8,7 +8,7 @@ public class sample : MonoBehaviour {
 
 	public float timeCounter;
 	public int scene;
-	private float videoTime = 5.0f;
+	public float videoTime = 5.0f;
     public Image black;
     public Animator animator;
     // Use this for initialization
