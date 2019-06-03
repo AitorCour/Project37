@@ -30,7 +30,8 @@ public class SaveTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
+        
+        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened && !saving)
         {
             Read();
         }
