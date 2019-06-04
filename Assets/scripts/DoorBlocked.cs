@@ -17,6 +17,7 @@ public class DoorBlocked : MonoBehaviour
     //public Image black;
     private SoundObj soundObj;
     private ChangeScene changeSc;
+    private InputManager iM;
     //Donde irá
     public float xPos;
     public float zPos;
@@ -25,10 +26,11 @@ public class DoorBlocked : MonoBehaviour
     {
         soundObj = GetComponentInChildren<SoundObj>();
         changeSc = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
+        iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
     }
     void Update()
     {
-        if (isInsideTrigger && Input.GetButtonDown("Action"))
+        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
         {
             if(!MessageReaded && !isDoorOpen)
             {
@@ -74,6 +76,7 @@ public class DoorBlocked : MonoBehaviour
         Time.timeScale = 0;
         eText.text = message;
         soundObj.Play(this.gameObject, 0);
+        iM.canPause = false;
     }
     private void ReadEnd()
     {
@@ -81,5 +84,6 @@ public class DoorBlocked : MonoBehaviour
         Debug.Log("quit");
         MessageReaded = false;
         Time.timeScale = 1;
+        iM.canPause = true;
     }
 }

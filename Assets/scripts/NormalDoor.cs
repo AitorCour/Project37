@@ -11,6 +11,7 @@ public class NormalDoor : MonoBehaviour
     //public Image black;
     private AudioSource audioSource;
     private ChangeScene changeSc;
+    private InputManager iM;
     //Donde irá
     public float xPos;
     public float zPos;
@@ -21,12 +22,13 @@ public class NormalDoor : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         changeSc = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
+        iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (isInsideTrigger && Input.GetButtonDown("Action"))
+        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
         {
             //Debug.Log("Change Scene");
             audioSource.Play();
@@ -36,6 +38,7 @@ public class NormalDoor : MonoBehaviour
             changeSc.pZ = zPos;
             changeSc.pY = yPos;
             changeSc.SavePosition();
+            iM.canPause = false;
         }
     }
     void OnTriggerEnter(Collider other)

@@ -21,6 +21,7 @@ public class KeyDoor : MonoBehaviour
 	//public Image black;
     private SoundObj soundObj;
     private ChangeScene changeSc;
+    private InputManager iM;
     //Donde irá
     public float xPos;
     public float zPos;
@@ -30,10 +31,11 @@ public class KeyDoor : MonoBehaviour
 		plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
         soundObj = GetComponentInChildren<SoundObj>();
         changeSc = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
+        iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
     }
 	void Update()
 	{
-		if (isInsideTrigger && Input.GetButtonDown("Action"))
+		if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
 		{
 			if(plBehaviour.key1 == true && !MessageReaded && !isDoorOpen)
 			{
@@ -81,6 +83,7 @@ public class KeyDoor : MonoBehaviour
 		Debug.Log("reading");
 		MessageReaded = true;
 		Time.timeScale = 0;
+        iM.canPause = false;
         if (!isDoorOpen)
         {
             eText.text = message;
@@ -98,5 +101,6 @@ public class KeyDoor : MonoBehaviour
 		Debug.Log("quit");
 		MessageReaded = false;
 		Time.timeScale = 1;
-	}
+        iM.canPause = true;
+    }
 }

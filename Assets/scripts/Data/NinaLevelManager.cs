@@ -36,6 +36,16 @@ public class NinaLevelManager : LevelManager
             Debug.Log("[GDM] Load error: " + e);
             NewGame();
         }
+        try//nueva funcion, lo usaremos para comprobar si ha fallado
+        {
+            data_Hall = (Hall_Data)DataManager.LoadFromText<Hall_Data>("HallData", Application.persistentDataPath + "/Levels");
+            Debug.Log("[GDM] Load succeed!");
+        }
+        catch (Exception e) //guarda el motivo de fallo en exception
+        {
+            Debug.Log("[GDM] Load error: " + e);
+            NewGameHall();
+        }
         // fileName = "Pasillo1Data"
         // Si existen, inicializar cambios dependiendo de los datos
         if (data.puzzle == false)
@@ -46,6 +56,10 @@ public class NinaLevelManager : LevelManager
     public void NewGame()
     {
         data = new Nina_Data();
+    }
+    public void NewGameHall()
+    {
+        data_Hall = new Hall_Data();
     }
     void Start()
     {
