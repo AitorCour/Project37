@@ -286,6 +286,7 @@ public class InputManager : MonoBehaviour
         Data.DeleteFolder();
         Data.Delete("Player");
         Data.NewGame();
+        plBehaviour.playerLife = 3;
     }
     public void LoadData()
     {
