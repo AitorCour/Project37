@@ -7,6 +7,7 @@ public class NormalDoor : MonoBehaviour
     public int scene; //se introduce la scena a la que se quiere ir
     private bool isInsideTrigger = false;
     public bool doorOpened;
+    public bool opening = false;
     //public Animator animator;
     //public Image black;
     private AudioSource audioSource;
@@ -28,7 +29,7 @@ public class NormalDoor : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
+        if (!opening && isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
         {
             //Debug.Log("Change Scene");
             audioSource.Play();
@@ -39,6 +40,7 @@ public class NormalDoor : MonoBehaviour
             changeSc.pY = yPos;
             changeSc.SavePosition();
             iM.canPause = false;
+            opening = true;
         }
     }
     void OnTriggerEnter(Collider other)

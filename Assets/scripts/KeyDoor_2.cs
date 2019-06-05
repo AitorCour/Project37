@@ -12,6 +12,7 @@ public class KeyDoor_2 : MonoBehaviour
     //public int key = 1; //Con esto se podrá poner cuantas llaves se necesitará para la puerta
     public bool isDoorOpen = false;
     private bool MessageReaded = false;
+    public bool opening = false;
     public string message = "Hello World";
     public string message_2;
     public Text eText;
@@ -34,7 +35,7 @@ public class KeyDoor_2 : MonoBehaviour
     }
     void Update()
     {
-        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
+        if (!opening && isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
         {
             if (plBehaviour.key2 == true && !MessageReaded && !isDoorOpen)
             {
@@ -53,6 +54,7 @@ public class KeyDoor_2 : MonoBehaviour
                 changeSc.pZ = zPos;
                 changeSc.pY = yPos;
                 changeSc.SavePosition();
+                opening = true;
             }
             else if (MessageReaded)
             {
