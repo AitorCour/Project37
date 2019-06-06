@@ -81,7 +81,7 @@ public class KeyDoor_2 : MonoBehaviour
     private void Read()
     {
         TextPanel.SetActive(true);
-        Debug.Log("reading");
+        //Debug.Log("reading");
         MessageReaded = true;
         Time.timeScale = 0;
         iM.canPause = false;
@@ -99,7 +99,7 @@ public class KeyDoor_2 : MonoBehaviour
     private void ReadEnd()
     {
         TextPanel.SetActive(false);
-        Debug.Log("quit");
+        //Debug.Log("quit");
         MessageReaded = false;
         Time.timeScale = 1;
         iM.canPause = true;

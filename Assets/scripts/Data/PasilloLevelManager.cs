@@ -54,9 +54,14 @@ public class PasilloLevelManager : LevelManager
             enemyObj.SetActive(false);
             enemy = null;
         }
-        if(data.lader)
+        if(data.lader && Data.IsLaderPositioned() == true)
         {
             laderObj.SetActive(true);
+        }
+        else if(Data.IsLaderPositioned() == false)
+        {
+            data.lader = false;
+            laderObj.SetActive(false);
         }
         /*if(data.note)
         {
@@ -99,14 +104,14 @@ public class PasilloLevelManager : LevelManager
             laderPoint.transform.position = new Vector3(-14.5f, -5f, 14.5f);
             noteObj.transform.position = new Vector3(-14f, -0.2f, 14.5f);
             
-            Debug.Log("NoteActive");
+            //Debug.Log("NoteActive");
         }
         else if (Data.IsKeyUnlock(0) == false)
         {
             laderPoint.transform.position = new Vector3(-14.5f, 0f, 14.5f);
             noteObj.transform.position = new Vector3(-14f, -2.0f, 14.5f);
             
-            Debug.Log("NoteNotActive");
+            //Debug.Log("NoteNotActive");
         }
         else if (Data.IsKeyUnlock(0) == true && data.note == false)
         {
@@ -132,7 +137,7 @@ public class PasilloLevelManager : LevelManager
             if(lader.laderActive)
             {
                 data.lader = true;
-                Debug.Log("keep lader");
+                //Debug.Log("keep lader");
             }
         }
         if(!data.rayo)

@@ -48,9 +48,14 @@ public class NinaLevelManager : LevelManager
         }
         // fileName = "Pasillo1Data"
         // Si existen, inicializar cambios dependiendo de los datos
-        if (data.puzzle == false)
+        if (data.puzzle == false && Data.IsPuzzle2Solved() == true)
         {
             safeObj.SetActive(false);
+        }
+        else if (Data.IsPuzzle2Solved() == false)
+        {
+            data.puzzle = true;
+            NewGame();
         }
     }
     public void NewGame()
@@ -77,6 +82,7 @@ public class NinaLevelManager : LevelManager
             if (safe.puzzleActive == false)
             {
                 data.puzzle = false;
+                Data.Puzzle2Solved();
             }
         }
         if (door.isDoorOpen || data.door)

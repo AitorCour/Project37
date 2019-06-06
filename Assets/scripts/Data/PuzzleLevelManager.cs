@@ -57,7 +57,7 @@ public class PuzzleLevelManager : LevelManager
         }
         // fileName = "Pasillo1Data"
         // Si existen, inicializar cambios dependiendo de los datos
-        if (data.puzzle == false)
+        if (data.puzzle == false && (Data.IsPuzzle1Solved() == true))
         {
             puzzleObj.SetActive(false);
             trigger1.SetActive(false);
@@ -69,6 +69,13 @@ public class PuzzleLevelManager : LevelManager
             bustObj.transform.Translate(-9.4f, 0.6f, 3.4f);
             boxObj.transform.Translate(-7f, 0.55f, 3f);
             ballObj.transform.Translate(-9.5f, 0.42f, 6f);
+            //Debug.Log("Solved");
+        }
+        else if (Data.IsPuzzle1Solved() == false)
+        {
+            data.puzzle = true;
+            //Debug.Log("Not solved");
+            NewGame();
         }
     }
     public void NewGame()
@@ -95,6 +102,7 @@ public class PuzzleLevelManager : LevelManager
             if (puzzle.puzzleComplete == true)
             {
                 data.puzzle = false;
+                Data.Puzzle1Solved();
             }
         }
         if(door.isDoorOpen || data.door)

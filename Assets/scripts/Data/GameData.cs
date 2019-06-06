@@ -13,11 +13,14 @@ public class Playerdata
     public bool hasNote_2;
     public bool hasNote_4;
     public bool hasLader;
+    public bool puzzle1;
+    public bool puzzle2;
+    public bool laderActive;
     public int plLife;
     public int plAmmo;
     public int plMunition;
     public int plBandages;
-
+    
     //PLAYER POSITION
     public float pX;
     public float pZ;
@@ -40,6 +43,9 @@ public class Playerdata
         hasNote_2 = false;
         hasNote_4 = false;
         hasLader = false;
+        puzzle1 = false;
+        puzzle2 = false;
+        laderActive = false;
         pX = -8;
         pZ = 1;
         pY = 1;
@@ -196,6 +202,18 @@ public static class Data
     {
         gameData.pData.hasLader = false;
     }
+    public static void Puzzle1Solved()
+    {
+        gameData.pData.puzzle1 = true;
+    }
+    public static void Puzzle2Solved()
+    {
+        gameData.pData.puzzle2 = true;
+    }
+    public static void LaderPositioned()
+    {
+        gameData.pData.laderActive = true;
+    }
     public static int GetLife()
     { return gameData.pData.plLife; }
     public static int GetAmmo()
@@ -215,6 +233,18 @@ public static class Data
     public static bool IsLaderUnlock()
     {
         return gameData.pData.hasLader;
+    }
+    public static bool IsPuzzle1Solved()
+    {
+        return gameData.pData.puzzle1;
+    }
+    public static bool IsPuzzle2Solved()
+    {
+        return gameData.pData.puzzle2;
+    }
+    public static bool IsLaderPositioned()
+    {
+        return gameData.pData.laderActive;
     }
     public static float GetPositionX()
     {

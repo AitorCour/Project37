@@ -16,9 +16,9 @@ public class InputManager : MonoBehaviour
 	private TankControls2 tankControl;
 	private EnableDisable enDis;
 	public int damage;
-	private int cure = 1;
+	//private int cure = 1;
 
-    private MouseCursor mouseCursor;
+    //private MouseCursor mouseCursor;
 
 	public bool isPaused = false;
 	public bool isInventoryOpened = false;
@@ -54,14 +54,14 @@ public class InputManager : MonoBehaviour
         sound = GameObject.FindGameObjectWithTag("HUD").GetComponent<SoundObj>();
 
 
-        mouseCursor = new MouseCursor();
-        mouseCursor.HideCursor();
+        /*mouseCursor = new MouseCursor();
+        mouseCursor.HideCursor();*/
     }
 	void Update ()
     {
         //if(Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
 		
-        if(Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
+        //if(Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
 
         //Debug.Log(canShoot);
 
@@ -83,15 +83,11 @@ public class InputManager : MonoBehaviour
         if(Input.GetButtonDown("Reload") /*&& gun.currentAmmo <= 0*/ && enDis.isPointing)
 		{
 			gun.Reload();
-			Debug.Log("reload");
+			//Debug.Log("reload");
 		}
-
-
-
-
 		//            TEST             //
 		//QuitarseVida
-		if(Input.GetKeyDown(KeyCode.Q)) 
+		/*if(Input.GetKeyDown(KeyCode.Q)) 
 		{
 			plBehaviour.Damage(damage);
 		}
@@ -116,7 +112,7 @@ public class InputManager : MonoBehaviour
 			{
 				Data.DeleteFolder();
 			}
-        }
+        }*/
 
 		//PAUSE
 		if (Input.GetButtonDown("Esc"))
@@ -169,7 +165,7 @@ public class InputManager : MonoBehaviour
 			if(!isPaused && !isInventoryOpened && !isMapOpened && !ini_menu && canPause)
 			{
 				gameManager.OpenMap();
-				Debug.Log ("map pressed");
+				//Debug.Log ("map pressed");
 				//mouseCursor.ShowCursor();
 			}
 			else if(isPaused)

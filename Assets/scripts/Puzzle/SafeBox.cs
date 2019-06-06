@@ -41,14 +41,14 @@ public class SafeBox : MonoBehaviour
             //sound.Play(0);
         }
 		//Primero
-		if(cylinder.eulerAngles.z >= 170 && cylinder.eulerAngles.z <= 190 && Input.GetButtonDown("Action"))
+		if(cylinder.eulerAngles.z >= 170 && cylinder.eulerAngles.z <= 190 && Input.GetButtonDown("Action") && !firstActive )
 		{
 			Debug.Log("Click 1");
             sound.Play(this.gameObject, 0);
             firstActive = true;
 		}
 		//Segundo
-		else if(cylinder.eulerAngles.z >= 30 && cylinder.eulerAngles.z <= 50 && Input.GetButtonDown("Action") && firstActive == true)
+		else if(cylinder.eulerAngles.z >= 30 && cylinder.eulerAngles.z <= 50 && Input.GetButtonDown("Action") && firstActive == true && !secondActive)
 		{
 			Debug.Log("Click 2");
             sound.Play(this.gameObject, 0);

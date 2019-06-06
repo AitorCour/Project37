@@ -31,7 +31,7 @@ public class ActiveSafe : MonoBehaviour
             ActiveBox();
             pS.Stop();
         }
-        else if(Input.GetButton("Fire") && isInsideTrigger)
+        else if(Input.GetButton("Fire") && isInsideTrigger || Input.GetButton("Back") && isInsideTrigger)
         {
             DesactiveBox();
             pS.Play();
