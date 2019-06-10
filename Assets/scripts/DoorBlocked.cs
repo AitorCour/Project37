@@ -9,6 +9,7 @@ public class DoorBlocked : MonoBehaviour
     public int scene; //se introduce la scena a la que se quiere ir
     private bool isInsideTrigger = false;
     public bool isDoorOpen;
+    public bool opening = false;
     private bool MessageReaded = false;
     public string message = "Hello World";
     public Text eText;
@@ -27,10 +28,11 @@ public class DoorBlocked : MonoBehaviour
         soundObj = GetComponentInChildren<SoundObj>();
         changeSc = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChangeScene>();
         iM = GameObject.FindGameObjectWithTag("Manager").GetComponent<InputManager>();
+        opening = false;
     }
     void Update()
     {
-        if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
+        if (!opening && isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
         {
             if(!MessageReaded && !isDoorOpen)
             {
@@ -46,6 +48,7 @@ public class DoorBlocked : MonoBehaviour
                 changeSc.pZ = zPos;
                 changeSc.pY = yPos;
                 changeSc.SavePosition();
+                opening = true;
             }
             else if (MessageReaded)
             {
