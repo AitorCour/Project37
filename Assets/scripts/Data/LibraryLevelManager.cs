@@ -68,7 +68,7 @@ public class LibraryLevelManager : LevelManager
     {
         if (data.nota_1 == true)
         {
-            note_1 = GameObject.FindGameObjectWithTag("TextReader").GetComponent<Nota_2>();
+            note_1 = GameObject.FindGameObjectWithTag("note").GetComponent<Nota_2>();
         }
         if (data.nota_2 == true)
         {

@@ -62,6 +62,7 @@ public class Nota_2 : MonoBehaviour
         Debug.Log("reading");
         messageReaded = true;
         Time.timeScale = 0;
+        getObj = true;
         iM.canPause = false;
         eText.text = message;
     }
@@ -71,6 +72,7 @@ public class Nota_2 : MonoBehaviour
         sound.Play(this.gameObject, 0);
         hud.hasFragNote_2 = true;
         hud.SetKey();
+        getObj = true;
         Data.SetNoteFrag_2();
         stRead = true;
         eText.text = message3;
