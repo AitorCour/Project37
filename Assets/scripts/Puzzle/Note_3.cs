@@ -53,7 +53,6 @@ public class Note_3 : MonoBehaviour
     private void Read()
     {
         TextPanel.SetActive(true);
-        eText.text = message;
         Debug.Log("reading");
         MessageReaded = true;
         Time.timeScale = 0;
@@ -62,6 +61,8 @@ public class Note_3 : MonoBehaviour
         hud.SetKey();
         Data.SetNote_2();
         iM.canPause = false;
+        eText.text = message;
+        
     }
     private void ReadEnd()
     {

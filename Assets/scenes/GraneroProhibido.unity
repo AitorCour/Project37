@@ -36929,6 +36929,81 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 671708644}
   m_Mesh: {fileID: 4300010, guid: d23ea6ee112b53e44b4039c3d82193f2, type: 3}
+--- !u!1001 &672123088
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -4.319
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.951
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3.362
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 3.1401522
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2.2479
+      objectReference: {fileID: 0}
+    - target: {fileID: 23750773539292938, guid: 54c5b6ff954564e42aa0277a49660013,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236195171377850, guid: 54c5b6ff954564e42aa0277a49660013,
+        type: 2}
+      propertyPath: TextPanel
+      value: 
+      objectReference: {fileID: 288198670}
+    - target: {fileID: 114236195171377850, guid: 54c5b6ff954564e42aa0277a49660013,
+        type: 2}
+      propertyPath: eText
+      value: 
+      objectReference: {fileID: 288198669}
+    - target: {fileID: 114236195171377850, guid: 54c5b6ff954564e42aa0277a49660013,
+        type: 2}
+      propertyPath: message
+      value: There is a lot of old books. Most of them are about herbal medicine and
+        alchemy.
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &673959982
 GameObject:
   m_ObjectHideFlags: 0
@@ -48429,7 +48504,17 @@ Prefab:
     - target: {fileID: 114272466691335980, guid: 24e62e8ec3af19c40901816b96ea612a,
         type: 2}
       propertyPath: message
-      value: I get a fragment of paper
+      value: What a horrible way to die, what the hell is happening here?
+      objectReference: {fileID: 0}
+    - target: {fileID: 114272466691335980, guid: 24e62e8ec3af19c40901816b96ea612a,
+        type: 2}
+      propertyPath: message2
+      value: What a horrible way to die, what the hell is happening here?
+      objectReference: {fileID: 0}
+    - target: {fileID: 114272466691335980, guid: 24e62e8ec3af19c40901816b96ea612a,
+        type: 2}
+      propertyPath: message3
+      value: Oh, she is holding a piece of paper...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24e62e8ec3af19c40901816b96ea612a, type: 2}
@@ -51787,7 +51872,7 @@ GameObject:
   - component: {fileID: 947835468}
   - component: {fileID: 947835467}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51801,7 +51886,8 @@ AudioSource:
   m_GameObject: {fileID: 947835466}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243102376215943902, guid: 91888a1698bcee04dae924d61ff5a27f,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 3ab2b7f4d8390204c85465208137e09f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.713

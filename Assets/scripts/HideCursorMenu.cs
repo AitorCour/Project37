@@ -14,10 +14,10 @@ public class HideCursorMenu : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	/*void Update () 
 	{
 		if(Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
 		
         else if(Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
-	}
+	}*/
 }

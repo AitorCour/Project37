@@ -9,9 +9,11 @@ public class Nota_2 : MonoBehaviour
 
     public GameObject TextPanel = null;
     public string message = "Hello World";
+    public string message3 = "Hello World";
     public Text eText;
-    private bool MessageReaded = false;
+    private bool messageReaded = false;
     public bool getObj;
+    private bool stRead = false;
     private SoundObj sound;
     private InputManager iM;
     private HUD hud;
@@ -28,9 +30,13 @@ public class Nota_2 : MonoBehaviour
     {
         if (isInsideTrigger && Input.GetButtonDown("Action") && !iM.isPaused && !iM.isInventoryOpened && !iM.isMapOpened)
         {
-            if (MessageReaded)
+            if (messageReaded && stRead)
             {
                 ReadEnd();
+            }
+            else if(messageReaded && !stRead)
+            {
+                Read_2();
             }
             else Read();
         }
@@ -53,24 +59,30 @@ public class Nota_2 : MonoBehaviour
     private void Read()
     {
         TextPanel.SetActive(true);
-        eText.text = message;
         Debug.Log("reading");
-        MessageReaded = true;
+        messageReaded = true;
         Time.timeScale = 0;
+        iM.canPause = false;
+        eText.text = message;
+    }
+    private void Read_2()
+    {
+        TextPanel.SetActive(true);
         sound.Play(this.gameObject, 0);
         hud.hasFragNote_2 = true;
         hud.SetKey();
         Data.SetNoteFrag_2();
-        iM.canPause = false;
+        stRead = true;
+        eText.text = message3;
     }
     private void ReadEnd()
     {
         TextPanel.SetActive(false);
         Debug.Log("quit");
-        MessageReaded = false;
+        messageReaded = false;
         getObj = true;
         Time.timeScale = 1;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         iM.canPause = true;
     }
 }

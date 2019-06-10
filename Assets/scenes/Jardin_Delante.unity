@@ -10943,6 +10943,84 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 234835192}
   m_Mesh: {fileID: 4300026, guid: 8a5c4ff199d423f4b972685eb0322884, type: 3}
+--- !u!1001 &234845786
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.947729
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 2.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.29897457
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9542611
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700480012717960, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_Name
+      value: Trigger_Cuadro (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -34.792
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 3.604671
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521852351875786, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 6.11217
+      objectReference: {fileID: 0}
+    - target: {fileID: 23750773539292938, guid: 54c5b6ff954564e42aa0277a49660013,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236195171377850, guid: 54c5b6ff954564e42aa0277a49660013,
+        type: 2}
+      propertyPath: message
+      value: What is the police doing here?
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236195171377850, guid: 54c5b6ff954564e42aa0277a49660013,
+        type: 2}
+      propertyPath: TextPanel
+      value: 
+      objectReference: {fileID: 211131088}
+    - target: {fileID: 114236195171377850, guid: 54c5b6ff954564e42aa0277a49660013,
+        type: 2}
+      propertyPath: eText
+      value: 
+      objectReference: {fileID: 211131087}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 54c5b6ff954564e42aa0277a49660013, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &235038886
 GameObject:
   m_ObjectHideFlags: 0
@@ -50590,7 +50668,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4166824618271208, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4166824618271208, guid: 57145e3523b78fb4b9c5e90c4fab3ad6, type: 2}
       propertyPath: m_LocalScale.z
@@ -100934,7 +101012,7 @@ GameObject:
   - component: {fileID: 2126252985}
   - component: {fileID: 2126252987}
   - component: {fileID: 2126252986}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
