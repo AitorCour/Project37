@@ -36,11 +36,11 @@ public class TankControls2 : MonoBehaviour
 
 	void Update ()
 	{
-        //Get a PlayerPOs
+        /*Get a PlayerPOs
         if(Input.GetKey("h"))
         {
             transform.Translate(-8, 1, 1);
-        }
+        }*/
 		if (canWalk == true && !pointing && !plBehaviour.damageRecived)
 		{
 			//var x = Input.GetAxis("Horizontal") * Time.deltaTime * rotSpeed;
@@ -203,7 +203,7 @@ public class TankControls2 : MonoBehaviour
             }
         }
 
-		if(godMode == true)
+		/*if(godMode == true)
 		{
 			if (Input.GetKey("z")) 
 			{
@@ -214,7 +214,7 @@ public class TankControls2 : MonoBehaviour
 				transform.Translate(0, -speed * Time.deltaTime, 0);
 			}
             speed = 5;
-		}	
+		}	*/
         if(!canWalk)
         {
             animator.SetBool("Walking", false);

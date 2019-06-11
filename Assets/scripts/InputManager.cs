@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
@@ -39,6 +40,10 @@ public class InputManager : MonoBehaviour
 
 	public string FolderName = "/Levels";
     public GameData gameData;
+
+    //MOUSE
+    private GameObject selectedObj;
+
     // Use this for initialization
     void Start ()
     {
@@ -52,7 +57,11 @@ public class InputManager : MonoBehaviour
 		tankControl = GameObject.FindGameObjectWithTag("Player").GetComponent<TankControls2>();
 		enDis = GameObject.FindGameObjectWithTag("Player").GetComponent<EnableDisable>();
         sound = GameObject.FindGameObjectWithTag("HUD").GetComponent<SoundObj>();
+        /*Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;*/
 
+        //MOUSE
+        selectedObj = EventSystem.current.currentSelectedGameObject;
 
         /*mouseCursor = new MouseCursor();
         mouseCursor.HideCursor();*/
@@ -60,12 +69,18 @@ public class InputManager : MonoBehaviour
 	void Update ()
     {
         //if(Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
-		
+
         //if(Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
 
         //Debug.Log(canShoot);
 
-		if (Input.GetButtonDown("Fire") && enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived) 
+        //MOUSE
+        if (EventSystem.current.currentSelectedGameObject == null)
+            EventSystem.current.SetSelectedGameObject(selectedObj);
+
+        selectedObj = EventSystem.current.currentSelectedGameObject;
+
+        if (Input.GetButtonDown("Fire") && enDis.isPointing && canShoot && !isInventoryOpened && !isPaused && !isMapOpened && !plBehaviour.damageRecived) 
 		{
 			gun.Shot ();
 			//Debug.Log("Shoot");
