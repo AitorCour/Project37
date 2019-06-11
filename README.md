@@ -1,5 +1,9 @@
 # Project Team
 
+Hey, the game is already available!
+If you want to play it, download it here:
+https://project-37-games.itch.io/dead-leaves
+
 | Member   | Rol                      |
 | -------- |:------------------------:|
 | Edgar    | Game Designer, Animator  |
