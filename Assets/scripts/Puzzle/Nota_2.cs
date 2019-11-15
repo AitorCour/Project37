@@ -59,7 +59,7 @@ public class Nota_2 : MonoBehaviour
     private void Read()
     {
         TextPanel.SetActive(true);
-        Debug.Log("reading");
+        //Debug.Log("reading");
         messageReaded = true;
         Time.timeScale = 0;
         getObj = true;
@@ -80,7 +80,7 @@ public class Nota_2 : MonoBehaviour
     private void ReadEnd()
     {
         TextPanel.SetActive(false);
-        Debug.Log("quit");
+        //Debug.Log("quit");
         messageReaded = false;
         getObj = true;
         Time.timeScale = 1;

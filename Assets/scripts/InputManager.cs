@@ -298,6 +298,7 @@ public class InputManager : MonoBehaviour
         Data.Delete("Player");
         Data.NewGame();
         plBehaviour.playerLife = 3;
+        plBehaviour.transform.position = new Vector3(-7.3f, 0.5f, -0.6f);
     }
     public void LoadData()
     {

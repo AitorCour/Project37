@@ -38,11 +38,11 @@ public class LibraryLevelManager : LevelManager
         try//nueva funcion, lo usaremos para comprobar si ha fallado
         {
             data = (Library_Data)DataManager.LoadFromText<Library_Data>("LibraryData", Application.persistentDataPath + "/Levels");
-            Debug.Log("[GDM] Load succeed!");
+            //Debug.Log("[GDM] Load succeed!");
         }
         catch (Exception e) //guarda el motivo de fallo en exception
         {
-            Debug.Log("[GDM] Load error: " + e);
+            //Debug.Log("[GDM] Load error: " + e);
             NewGame();
         }
         // fileName = "Pasillo1Data"
@@ -119,7 +119,7 @@ public class LibraryLevelManager : LevelManager
         try
         {
             DataManager.SaveToText<Library_Data>(data, "LibraryData", Application.persistentDataPath + "/Levels");
-            Debug.Log("[GDM] Save succeed!");
+            //Debug.Log("[GDM] Save succeed!");
         }
         catch (Exception e)
         {

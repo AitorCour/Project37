@@ -34,21 +34,21 @@ public class PasilloWLevelManager : LevelManager
         try//nueva funcion, lo usaremos para comprobar si ha fallado
         {
             data = (PasilloW_Data)DataManager.LoadFromText<PasilloW_Data>("PasilloWData", Application.persistentDataPath + "/Levels");
-            Debug.Log("[GDM] Load succeed!");
+            //Debug.Log("[GDM] Load succeed!");
         }
         catch (Exception e) //guarda el motivo de fallo en exception
         {
-            Debug.Log("[GDM] Load error: " + e);
+            //Debug.Log("[GDM] Load error: " + e);
             NewGame();
         }
         try//nueva funcion, lo usaremos para comprobar si ha fallado
         {
             data_Hall = (Hall_Data)DataManager.LoadFromText<Hall_Data>("HallData", Application.persistentDataPath + "/Levels");
-            Debug.Log("[GDM] Load succeed!");
+            //Debug.Log("[GDM] Load succeed!");
         }
         catch (Exception e) //guarda el motivo de fallo en exception
         {
-            Debug.Log("[GDM] Load error: " + e);
+            //Debug.Log("[GDM] Load error: " + e);
             NewGameHall();
         }
         // fileName = "Pasillo1Data"
@@ -79,7 +79,7 @@ public class PasilloWLevelManager : LevelManager
             //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
             enemyObj.transform.position = new Vector3(-2, 1, 0);
             //enemy.GetComponent<EnemyBehaviour3>().enabled = false;
-            Debug.Log("ManequinActive");
+            //Debug.Log("ManequinActive");
         }
         else if(plBehaviour.key1 == false || !data.enemy)
         {
@@ -87,7 +87,7 @@ public class PasilloWLevelManager : LevelManager
             enemyObj.transform.position = new Vector3(-20, 1, 0);
             //enemy.GetComponent<EnemyBehaviour3>().enabled = false;
             GameObject.Find("EnemyTocho").GetComponent<EnemyBehaviour3>().enabled = false;
-            Debug.Log("NotActive");
+            //Debug.Log("NotActive");
         }
         door = GameObject.FindGameObjectWithTag("door").GetComponent<NormalDoor>();
     }
@@ -117,7 +117,7 @@ public class PasilloWLevelManager : LevelManager
         {
             DataManager.SaveToText<PasilloW_Data>(data, "PasilloWData", Application.persistentDataPath + "/Levels");
             DataManager.SaveToText<Hall_Data>(data_Hall, "HallData", Application.persistentDataPath + "/Levels");
-            Debug.Log("[GDM] Save succeed!");
+            //Debug.Log("[GDM] Save succeed!");
         }
         catch (Exception e)
         {
