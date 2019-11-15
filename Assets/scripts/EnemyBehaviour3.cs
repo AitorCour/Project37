@@ -18,6 +18,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	public float hitTime = 3.0f;
 	private bool slept;
     private bool trembled;
+    private bool chasing;
 	//private PlayerBehaviour plBehaviour;
 
 	[Header("Path properties")]
@@ -170,9 +171,10 @@ public class EnemyBehaviour3 : MonoBehaviour
 	private void FixedUpdate () 
 	{
 		isInFov = inFOV(transform, player, maxAngle, maxRadius);
-		if (!isInFov)
+		if (!isInFov && chasing && detected)
 		{
-			detected = false;
+            //detected = false;
+            StartCoroutine(DetectedTime());
 		}
 		if (isInFov)
 		{
@@ -267,21 +269,22 @@ public class EnemyBehaviour3 : MonoBehaviour
 	void AttackUpdate()
 	{
 		//ATTACK -> Chase
-		if(Vector3.Distance(transform.position, player.position) > attackDistance && timeCounter >= attackTime)
+		if(/*Vector3.Distance(transform.position, player.position) > attackDistance &&*/ timeCounter >= attackTime)
 		{
 			colDamage.CanDoDamage = false;
 			SetChase();
             timeCounter = 0;
+            Debug.Log("FromAttackToChase");
             return;
 		}	
         //ATTACK -> ATTACK
-        else if(Vector3.Distance(transform.position, player.position) <= attackDistance && timeCounter >= attackTime)
+        /*else if(Vector3.Distance(transform.position, player.position) <= attackDistance && timeCounter >= attackTime)
         {
             //colDamage.CanDoDamage = true;
             SetAttack();
             timeCounter = 0;
             return;
-        }
+        }*/
 		else timeCounter += Time.deltaTime;
 	}
 	void SleepUpdate()
@@ -339,8 +342,7 @@ public class EnemyBehaviour3 : MonoBehaviour
     }
 	void SetChase()
     {
-        //anim.SetBool("isMoving", false);
-        //anim.SetTrigger("IsChasing");
+        if (chasing) return;
 		soundObj.Play(this.gameObject, 5);
         agent.isStopped = false;
         agent.stoppingDistance = 0.9f;//La stopping distance determina la distancia 
@@ -348,14 +350,14 @@ public class EnemyBehaviour3 : MonoBehaviour
 		//maxRadius = detectRadius;
         state = State.Chase;
 		animator.SetBool("Walking", true);
-		//animator.SetBool("Attacking", false);
-		//animator.SetBool("Sleeping", false);
-		//radius = 3;
 		canReciveDamage = true;
         timeCounter = 0;
+        chasing = true;
+        Debug.Log("SetChase");
     }
 	void SetAttack()
 	{
+        chasing = false;
 		agent.isStopped = true;
 		state = State.Attack;
         animator.SetTrigger("attack");
@@ -389,7 +391,8 @@ public class EnemyBehaviour3 : MonoBehaviour
     {
         agent.isStopped = true;
         state = State.Hit;
-        agent.SetDestination(player.position);
+        detected = true;
+        StartCoroutine(DetectedTime());
         soundObj.Play(this.gameObject, 0);
         animator.SetTrigger("hit");
     }
@@ -454,5 +457,13 @@ public class EnemyBehaviour3 : MonoBehaviour
     public void PlayDeadFall()
     {
         soundObj.Play(this.gameObject, 4);
+    }
+
+    private IEnumerator DetectedTime()
+    {
+        yield return new WaitForSeconds(5);
+        detected = false;
+        Debug.Log("NotDetected");
+        chasing = false;
     }
 }
