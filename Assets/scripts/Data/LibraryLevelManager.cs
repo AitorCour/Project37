@@ -42,7 +42,7 @@ public class LibraryLevelManager : LevelManager
         }
         catch (Exception e) //guarda el motivo de fallo en exception
         {
-            //Debug.Log("[GDM] Load error: " + e);
+            Debug.Log("[GDM] Load error: " + e);
             NewGame();
         }
         // fileName = "Pasillo1Data"

@@ -23,7 +23,7 @@ public class PasilloWLevelManager : LevelManager
     public Hall_Data data_Hall;
     public GameObject laderObj;
     private Lader lader;
-    private EnemyBehaviour3 enemy;
+    //private EnemyBehaviour3 enemy;
     public GameObject enemyObj;
     private PlayerBehaviour plBehaviour;
     private NormalDoor door;
@@ -38,7 +38,7 @@ public class PasilloWLevelManager : LevelManager
         }
         catch (Exception e) //guarda el motivo de fallo en exception
         {
-            //Debug.Log("[GDM] Load error: " + e);
+            Debug.Log("[GDM] Load error: " + e);
             NewGame();
         }
         try//nueva funcion, lo usaremos para comprobar si ha fallado
@@ -48,7 +48,7 @@ public class PasilloWLevelManager : LevelManager
         }
         catch (Exception e) //guarda el motivo de fallo en exception
         {
-            //Debug.Log("[GDM] Load error: " + e);
+            Debug.Log("[GDM] Load error: " + e);
             NewGameHall();
         }
         // fileName = "Pasillo1Data"
@@ -69,7 +69,7 @@ public class PasilloWLevelManager : LevelManager
     void Start()
     {
         plBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
+        //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyBehaviour3>();
         if (data.lader == true)
         {
             lader = GameObject.FindGameObjectWithTag("Misc").GetComponent<Lader>();

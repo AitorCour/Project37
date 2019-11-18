@@ -24,7 +24,7 @@ public class InputManager : MonoBehaviour
 	public bool isPaused = false;
 	public bool isInventoryOpened = false;
 	public bool isMapOpened = false;
-	private bool godActive = false;
+	//private bool godActive = false;
 	private bool canShoot;
 	public bool ini_menu;
     public bool canPause = true;
@@ -275,7 +275,7 @@ public class InputManager : MonoBehaviour
 		//rigidbody.useGravity = false;
 		plController.enabled = false;
 		cameraGod.SetActive(true);
-		godActive = true;
+		//godActive = true;
 	}
 	public void SetNormal()
 	{
@@ -284,7 +284,7 @@ public class InputManager : MonoBehaviour
 		//rigidbody.useGravity = true;
 		plController.enabled = true;
 		cameraGod.SetActive(false);
-		godActive = false;
+		//godActive = false;
 	}
 	public void PlayerCanWalk()
 	{

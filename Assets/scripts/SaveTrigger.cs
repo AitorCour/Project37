@@ -10,7 +10,7 @@ public class SaveTrigger : MonoBehaviour
     //public GameObject player;
 
     private bool isInsideTrigger = false;
-    private bool messageReaded = false;
+    //private bool messageReaded = false;
     private bool saving;
     private InputManager iM;
     private SavePlayerData save;
@@ -69,7 +69,7 @@ public class SaveTrigger : MonoBehaviour
         panelSave.SetActive(true);
         savingText.SetActive(false);
         //Debug.Log("reading");
-        messageReaded = true;
+        //messageReaded = true;
         //Time.timeScale = 0;
         iM.canPause = false;
         tank.canWalk = false;
@@ -82,7 +82,7 @@ public class SaveTrigger : MonoBehaviour
         TextPanel.SetActive(false);
         savingText.SetActive(false);
         //Debug.Log("quit");
-        messageReaded = false;
+        //messageReaded = false;
         //Time.timeScale = 1;
         iM.canPause = true;
         tank.canWalk = true;

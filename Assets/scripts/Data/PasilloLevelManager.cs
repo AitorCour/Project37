@@ -40,7 +40,7 @@ public class PasilloLevelManager : LevelManager
         try//nueva funcion, lo usaremos para comprobar si ha fallado
         {
             data = (Pasillo1_Data)DataManager.LoadFromText<Pasillo1_Data>("Pasillo1Data", Application.persistentDataPath + "/Levels");
-            Debug.Log("[GDM] Load succeed!");
+            //Debug.Log("[GDM] Load succeed!");
         }
         catch (Exception e) //guarda el motivo de fallo en exception
         {
@@ -158,7 +158,7 @@ public class PasilloLevelManager : LevelManager
         try
         {
             DataManager.SaveToText<Pasillo1_Data>(data, "Pasillo1Data", Application.persistentDataPath + "/Levels");
-            Debug.Log("[GDM] Save succeed!");
+            //Debug.Log("[GDM] Save succeed!");
         }
         catch (Exception e)
         {
