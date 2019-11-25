@@ -162,7 +162,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 				SleepUpdate();
 				break;
             case State.Hit:
-                HitUpdate();
+                //HitUpdate();
                 break;
 			default:
 				break;
@@ -301,7 +301,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 		canReciveDamage = false;
 		agent.speed = 0;
 	}
-    void HitUpdate()
+    /*void HitUpdate()
     {
         //HIT -> IDLE
         if (timeCounterHit >= hitTime)
@@ -311,7 +311,7 @@ public class EnemyBehaviour3 : MonoBehaviour
             //return;
         }
         else timeCounterHit += Time.deltaTime;
-    }
+    }*/
 	#region Sets
 
 	void SetIdle()
@@ -369,6 +369,7 @@ public class EnemyBehaviour3 : MonoBehaviour
 	{
         //gameObject.SetActive(false);
         musicaTension.SetActive(false);
+        animator.SetLayerWeight(1, 0);
         state = State.Dead;
 		agent.speed = 0.0f;//Parar al enemy cuando esta muerto
         animator.SetTrigger("dead");
@@ -389,8 +390,8 @@ public class EnemyBehaviour3 : MonoBehaviour
 	}
     void SetHit()
     {
-        agent.isStopped = true;
-        state = State.Hit;
+        //agent.isStopped = true;
+        //state = State.Hit;
         detected = true;
         StartCoroutine(DetectedTime());
         soundObj.Play(this.gameObject, 0);
