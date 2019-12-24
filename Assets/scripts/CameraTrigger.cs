@@ -18,6 +18,7 @@ public class CameraTrigger : MonoBehaviour
 		{
 			myCameraManager.DeactivateAllCameras();
 			myCamera.SetActive(true);
+            myCameraManager.GetActiveCamera();
 			//Debug.Log("Trigger");
 		}
 	}

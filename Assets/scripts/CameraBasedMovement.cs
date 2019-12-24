@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankControls2 : MonoBehaviour
+public class CameraBasedMovement : MonoBehaviour
 {
-	public float speed;
-	public float iniSpeed;
-	public float rotSpeed;
-	public float runSpeed;
-	public bool godMode;
-	
-	private bool isRunning;
-	public bool canWalk;
+    public GameObject cameraDef;
+
+    public float speed;
+    public float iniSpeed;
+    public float rotSpeed;
+    public float runSpeed;
+
+    private bool isRunning;
+    public bool canWalk;
     public bool pointing;
 
     private Animator animator;
     private PlayerBehaviour plBehaviour;
+    private CameraManager cameraManager;
+    public GameObject william;
 
     [Header("Speed Settings")]
     public float walkSpeed_1;
@@ -24,63 +27,70 @@ public class TankControls2 : MonoBehaviour
     public float runSpeed_1;
     public float runSpeed_2;
 
+    private float timeCount = 5;
+    private Vector3 rightDef;
+    private Vector3 forwardDef;
 
-    void Start () 
-	{
-		//speed = iniSpeed;
+    // Use this for initialization
+    void Start ()
+    {
         animator = GetComponentInChildren<Animator>();
-		//isRunning = false;
+        //animator = null;
+        //isRunning = false;
         plBehaviour = GetComponent<PlayerBehaviour>();
+        cameraManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<CameraManager>();
+        //ChangeCamera();
+        //plBehaviour = null;
         SetSpeed();
     }
-
+	
+	// Update is called once per frame
 	void Update ()
-	{
-        /*Get a PlayerPOs
-        if(Input.GetKey("h"))
+    {
+        if(Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
         {
-            transform.Translate(-8, 1, 1);
-        }*/
-		if (canWalk == true && !pointing && !plBehaviour.damageRecived)
-		{
-			//var x = Input.GetAxis("Horizontal") * Time.deltaTime * rotSpeed;
-			//var z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-            if(Input.GetAxisRaw("Horizontal") > 0)
-            {
-                var x = 1 * Time.deltaTime * rotSpeed;
-                transform.Rotate(0, x, 0);
-                //animator.SetBool("Walking", true);
-            }
-			if(Input.GetAxisRaw("Horizontal") < 0)
-            {
-                var x = -1 * Time.deltaTime * rotSpeed;
-                transform.Rotate(0, x, 0);
-                //animator.SetBool("Walking", true);
-                //hacer una condicion para saber si solo gira en el sitio, sin movimiento. desde allí podría ir al run directamente
-            }
-            if(Input.GetAxisRaw("Vertical") > 0)
-            {
-                float z = 1 * Time.deltaTime * speed;
-                transform.Translate(0, 0, z);
-
-				if(!isRunning)
-				{
-					//animator.SetBool("Walking", true);
-                    if(plBehaviour.playerLife == 3)
+            Vector3 right = cameraDef.transform.right;
+            Vector3 forward = Vector3.Cross(right, Vector3.up);
+            rightDef = right;
+            forwardDef = forward;
+        }
+        
+        Vector3 movement = Vector3.zero;
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+            movement += rightDef * (Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime);
+            movement += forwardDef * (Input.GetAxisRaw("Vertical") * speed * Time.deltaTime);
+            canWalk = true;
+        }
+        else canWalk = false;
+        transform.Translate(movement);
+        if(movement != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(movement);
+            william.transform.rotation = Quaternion.RotateTowards(william.transform.rotation, lookRotation, timeCount);
+            
+        }
+        if (canWalk == true && !pointing && !plBehaviour.damageRecived)
+        {
+            
+                if (!isRunning)
+                {
+                    //animator.SetBool("Walking", true);
+                    if (plBehaviour.playerLife == 3)
                     {
                         animator.SetBool("Walking", true);
                         animator.SetBool("Walking2", false);
                         animator.SetBool("Walking3", false);
                         SetSpeed();
                     }
-                    else if(plBehaviour.playerLife == 2)
+                    else if (plBehaviour.playerLife == 2)
                     {
                         animator.SetBool("Walking2", true);
                         animator.SetBool("Walking", false);
                         animator.SetBool("Walking3", false);
                         SetSpeed();
                     }
-                    else if(plBehaviour.playerLife == 1)
+                    else if (plBehaviour.playerLife == 1)
                     {
                         animator.SetBool("Walking3", true);
                         animator.SetBool("Walking", false);
@@ -90,8 +100,8 @@ public class TankControls2 : MonoBehaviour
                     animator.SetBool("Running", false);
                     animator.SetBool("Running2", false);
                 }
-				else if(isRunning)
-				{
+                else if (isRunning)
+                {
                     //animator.SetBool("Running", true);
                     if (plBehaviour.playerLife == 3)
                     {
@@ -107,27 +117,8 @@ public class TankControls2 : MonoBehaviour
                     animator.SetBool("Walking2", false);
                     animator.SetBool("Walking3", false);
                 }
-            }
-			else if(Input.GetAxisRaw("Vertical") < 0)
-            {
-                var z = -1 * Time.deltaTime * speed;
-                transform.Translate(0, 0, z);
-				if(plBehaviour.playerLife == 3)
-                {
-                    animator.SetBool("WalkingBack", true);
-                }
-                else animator.SetBool("WalkingBack", false);
-                if(plBehaviour.playerLife == 2)
-                {
-                    animator.SetBool("Back2", true);
-                }
-                else animator.SetBool("Back2", false);
-                if(plBehaviour.playerLife == 1)
-                {
-                    animator.SetBool("Back3", true);
-                }
-                else animator.SetBool("Back3", false);
-            }
+            
+
             else
             {
                 animator.SetBool("Walking", false);
@@ -142,47 +133,21 @@ public class TankControls2 : MonoBehaviour
             }
             //transform.Rotate(0, x, 0);
 
-			if (Input.GetButton("Run") && Input.GetAxisRaw("Vertical") > 0 && plBehaviour.playerLife >= 2)
-			{
+            if (Input.GetButton("Run") && plBehaviour.playerLife >= 2)
+            {
                 isRunning = true;
                 SetSpeed();
-			}
+            }
             if (isRunning && plBehaviour.playerLife <= 1)
             {
                 isRunning = false;
             }
-			if (Input.GetButton("Run") && Input.GetAxisRaw("Vertical") < 0) //hacia atras
-			{
-                SetSpeed();
-			    animator.SetBool("Walking", false);
-                animator.SetBool("Walking2", false);
-                animator.SetBool("Walking3", false);
-            
-                animator.SetBool("Running", false);
-                if(plBehaviour.playerLife == 3)
-                {
-                    animator.SetBool("WalkingBack", true);
-                }
-                else animator.SetBool("WalkingBack", false);
-                if(plBehaviour.playerLife == 2)
-                {
-                    animator.SetBool("Back2", true);
-                }
-                else animator.SetBool("Back2", false);
-			}
 
-			if (Input.GetButtonUp("Run"))
-			{
-			    //speed = iniSpeed;
-			    isRunning = false;
-			}
-
-			/*Fast Turn
-            if(Input.GetAxis("Vertical")  < 0 && Input.GetButtonDown("Run"))
+            if (Input.GetButtonUp("Run"))
             {
-                transform.Rotate(0, 180, 0);
-                //https://docs.unity3d.com/ScriptReference/Quaternion.Slerp.html
-            }*/
+                //speed = iniSpeed;
+                isRunning = false;
+            }
         }
 
         if (pointing && canWalk)
@@ -202,28 +167,13 @@ public class TankControls2 : MonoBehaviour
             }
         }
 
-		/*if(godMode == true)
-		{
-			if (Input.GetKey("z")) 
-			{
-				transform.Translate(0, speed * Time.deltaTime, 0);
-			}
-			if (Input.GetKey("x")) 
-			{
-				transform.Translate(0, -speed * Time.deltaTime, 0);
-			}
-            speed = 5;
-		}	*/
-        if(!canWalk)
+        if (!canWalk)
         {
             animator.SetBool("Walking", false);
             animator.SetBool("Walking2", false);
             animator.SetBool("Walking3", false);
             animator.SetBool("Running", false);
             animator.SetBool("Running2", false);
-            animator.SetBool("WalkingBack", false);
-            animator.SetBool("Back2", false);
-            animator.SetBool("Back3", false);
         }
         if (plBehaviour.playerLife == 2)
         {
@@ -237,9 +187,10 @@ public class TankControls2 : MonoBehaviour
         }
         else animator.SetBool("SuperInjured", false);
     }
+
     public void SetSpeed()
     {
-        if(isRunning)
+        if (isRunning)
         {
             if (plBehaviour.playerLife == 3)
             {
@@ -265,6 +216,11 @@ public class TankControls2 : MonoBehaviour
                 speed = walkSpeed_3;
             }
         }
-        
     }
+    public void ChangeCamera()
+    {
+        cameraDef = cameraManager.actualCamera;
+        Debug.Log("CameraChanged");
+    }
+
 }
