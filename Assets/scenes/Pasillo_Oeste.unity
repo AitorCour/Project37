@@ -6744,6 +6744,7 @@ MonoBehaviour:
   - {fileID: 413103045}
   - {fileID: 82168211}
   startCamera: {fileID: 714389009}
+  actualCamera: {fileID: 0}
 --- !u!114 &1321694241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8012,7 +8013,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4109089792296384, guid: 8e2a7ac001c61c045b7986973a42cb98, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4109089792296384, guid: 8e2a7ac001c61c045b7986973a42cb98, type: 2}
       propertyPath: m_LocalRotation.z
@@ -8020,7 +8021,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4109089792296384, guid: 8e2a7ac001c61c045b7986973a42cb98, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4109089792296384, guid: 8e2a7ac001c61c045b7986973a42cb98, type: 2}
       propertyPath: m_RootOrder

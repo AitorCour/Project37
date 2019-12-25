@@ -11,6 +11,7 @@ public class CameraManager : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+
         movement = GameObject.FindGameObjectWithTag("Player").GetComponent<CameraBasedMovement>();
 		cameras = GameObject.FindGameObjectsWithTag("Camera");
 		for(int i = 0; i < cameras.Length; i++)

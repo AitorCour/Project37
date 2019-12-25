@@ -47,14 +47,19 @@ public class CameraBasedMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if(Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
+        Move();
+    }
+    private void Move()
+    {
+        if (cameraDef == null) return;
+        else if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
         {
             Vector3 right = cameraDef.transform.right;
             Vector3 forward = Vector3.Cross(right, Vector3.up);
             rightDef = right;
             forwardDef = forward;
         }
-        
+
         Vector3 movement = Vector3.zero;
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
@@ -64,60 +69,60 @@ public class CameraBasedMovement : MonoBehaviour
         }
         else canWalk = false;
         transform.Translate(movement);
-        if(movement != Vector3.zero)
+        if (movement != Vector3.zero)
         {
             Quaternion lookRotation = Quaternion.LookRotation(movement);
             william.transform.rotation = Quaternion.RotateTowards(william.transform.rotation, lookRotation, timeCount);
-            
+
         }
         if (canWalk == true && !pointing && !plBehaviour.damageRecived)
         {
-            
-                if (!isRunning)
+
+            if (!isRunning)
+            {
+                //animator.SetBool("Walking", true);
+                if (plBehaviour.playerLife == 3)
                 {
-                    //animator.SetBool("Walking", true);
-                    if (plBehaviour.playerLife == 3)
-                    {
-                        animator.SetBool("Walking", true);
-                        animator.SetBool("Walking2", false);
-                        animator.SetBool("Walking3", false);
-                        SetSpeed();
-                    }
-                    else if (plBehaviour.playerLife == 2)
-                    {
-                        animator.SetBool("Walking2", true);
-                        animator.SetBool("Walking", false);
-                        animator.SetBool("Walking3", false);
-                        SetSpeed();
-                    }
-                    else if (plBehaviour.playerLife == 1)
-                    {
-                        animator.SetBool("Walking3", true);
-                        animator.SetBool("Walking", false);
-                        animator.SetBool("Walking2", false);
-                        SetSpeed();
-                    }
-                    animator.SetBool("Running", false);
-                    animator.SetBool("Running2", false);
-                }
-                else if (isRunning)
-                {
-                    //animator.SetBool("Running", true);
-                    if (plBehaviour.playerLife == 3)
-                    {
-                        animator.SetBool("Running", true);
-                        animator.SetBool("Running2", false);
-                    }
-                    else if (plBehaviour.playerLife == 2)
-                    {
-                        animator.SetBool("Running", false);
-                        animator.SetBool("Running2", true);
-                    }
-                    animator.SetBool("Walking", false);
+                    animator.SetBool("Walking", true);
                     animator.SetBool("Walking2", false);
                     animator.SetBool("Walking3", false);
+                    SetSpeed();
                 }
-            
+                else if (plBehaviour.playerLife == 2)
+                {
+                    animator.SetBool("Walking2", true);
+                    animator.SetBool("Walking", false);
+                    animator.SetBool("Walking3", false);
+                    SetSpeed();
+                }
+                else if (plBehaviour.playerLife == 1)
+                {
+                    animator.SetBool("Walking3", true);
+                    animator.SetBool("Walking", false);
+                    animator.SetBool("Walking2", false);
+                    SetSpeed();
+                }
+                animator.SetBool("Running", false);
+                animator.SetBool("Running2", false);
+            }
+            else if (isRunning)
+            {
+                //animator.SetBool("Running", true);
+                if (plBehaviour.playerLife == 3)
+                {
+                    animator.SetBool("Running", true);
+                    animator.SetBool("Running2", false);
+                }
+                else if (plBehaviour.playerLife == 2)
+                {
+                    animator.SetBool("Running", false);
+                    animator.SetBool("Running2", true);
+                }
+                animator.SetBool("Walking", false);
+                animator.SetBool("Walking2", false);
+                animator.SetBool("Walking3", false);
+            }
+
 
             else
             {
@@ -219,8 +224,10 @@ public class CameraBasedMovement : MonoBehaviour
     }
     public void ChangeCamera()
     {
+        
         cameraDef = cameraManager.actualCamera;
         Debug.Log("CameraChanged");
+        Move();
     }
 
 }
