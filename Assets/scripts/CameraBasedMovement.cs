@@ -222,10 +222,10 @@ public class CameraBasedMovement : MonoBehaviour
             }
         }
     }
-    public void ChangeCamera()
+    public void ChangeCamera(GameObject newCamera)
     {
         
-        cameraDef = cameraManager.actualCamera;
+        cameraDef = newCamera;
         Debug.Log("CameraChanged");
         Move();
     }

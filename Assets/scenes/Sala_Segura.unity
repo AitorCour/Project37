@@ -814,6 +814,20 @@ MonoBehaviour:
     ammo: 1
   potionObj: {fileID: 1868921219}
   ammoObj: {fileID: 1295435952}
+--- !u!114 &672756752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 672756749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7709cfc267b512b43a5b2bc79de83b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameras: []
+  startCamera: {fileID: 963713851}
+  actualCamera: {fileID: 0}
 --- !u!1 &758257743 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1583916309705354, guid: 4a995961023b3f94dbefaf5267e2e8ff,
@@ -824,6 +838,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1836342790199614, guid: 4a995961023b3f94dbefaf5267e2e8ff,
     type: 2}
   m_PrefabInternal: {fileID: 672756748}
+--- !u!1 &963713851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1521127229668872, guid: fdf19bb293f784440a0cf7e710e1a568,
+    type: 2}
+  m_PrefabInternal: {fileID: 1241936392}
 --- !u!1 &1006498565
 GameObject:
   m_ObjectHideFlags: 0

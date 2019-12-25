@@ -39,6 +39,6 @@ public class CameraManager : MonoBehaviour
                 actualCamera = cameras[i];
             }
         }
-        movement.ChangeCamera();
+        movement.ChangeCamera(actualCamera);
     }
 }
